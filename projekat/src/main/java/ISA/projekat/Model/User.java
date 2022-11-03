@@ -8,21 +8,16 @@ import ISA.projekat.Model.enums.UserCategory;
 @SuppressWarnings("serial")
 public class User implements Serializable{
 
+	private String email;
+	private String password;
 	private String name;
 	private String surname;
-	private String password;
+	private Gender gender;
+	private int jmbg;
 	private String adress;
 	private String city;
 	private String state;
 	private String phoneNumber;
-	private String email;
-	private int jmbg;
-	private Gender gender;
-	private String profession;
-	private String infoInstitution;
-	private String points;
-	private UserCategory userCatagory;
-	private String userPerks;
 	
 	public String getName() {
 		return name;
@@ -84,36 +79,8 @@ public class User implements Serializable{
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
-	public String getProfession() {
-		return profession;
-	}
-	public void setProfession(String profession) {
-		this.profession = profession;
-	}
-	public String getInfoInstitution() {
-		return infoInstitution;
-	}
-	public void setInfoInstitution(String infoInstitution) {
-		this.infoInstitution = infoInstitution;
-	}
-	public String getPoints() {
-		return points;
-	}
-	public void setPoints(String points) {
-		this.points = points;
-	}
-	public UserCategory getUserCatagory() {
-		return userCatagory;
-	}
-	public void setUserCatagory(UserCategory userCatagory) {
-		this.userCatagory = userCatagory;
-	}
-	public String getUserPerks() {
-		return userPerks;
-	}
-	public void setUserPerks(String userPerks) {
-		this.userPerks = userPerks;
-	}
+	
+	
 	
 	
 	

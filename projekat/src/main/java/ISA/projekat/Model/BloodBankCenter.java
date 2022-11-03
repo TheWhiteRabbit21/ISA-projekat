@@ -10,7 +10,7 @@ public class BloodBankCenter implements Serializable{
 	private String description;
 	private double averageRating;
 	private int[] idAdministrators;
-	private WorkCalendar workCalendar;
+	private WorkingHours workingHours;
 	
 	public String getName() {
 		return name;
@@ -42,11 +42,11 @@ public class BloodBankCenter implements Serializable{
 	public void setIdAdministrators(int[] idAdministrators) {
 		this.idAdministrators = idAdministrators;
 	}
-	public WorkCalendar getWorkCalendar() {
-		return workCalendar;
+	public WorkingHours getWorkCalendar() {
+		return workingHours;
 	}
-	public void setWorkCalendar(WorkCalendar workCalendar) {
-		this.workCalendar = workCalendar;
+	public void setWorkCalendar(WorkingHours workCalendar) {
+		this.workingHours = workCalendar;
 	}
 	
 	
