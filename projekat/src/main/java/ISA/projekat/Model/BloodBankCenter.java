@@ -1,6 +1,7 @@
 package ISA.projekat.Model;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 @SuppressWarnings("serial")
 public class BloodBankCenter implements Serializable{
@@ -11,6 +12,7 @@ public class BloodBankCenter implements Serializable{
 	private double averageRating;
 	private int[] idAdministrators;
 	private WorkingHours workingHours;
+	private HashMap<String, Integer> blood;
 	
 	public String getName() {
 		return name;
@@ -47,6 +49,12 @@ public class BloodBankCenter implements Serializable{
 	}
 	public void setWorkCalendar(WorkingHours workCalendar) {
 		this.workingHours = workCalendar;
+	}
+	public HashMap<String, Integer> getBlood() {
+		return blood;
+	}
+	public void setBlood(HashMap<String, Integer> blood) {
+		this.blood = blood;
 	}
 	
 	
