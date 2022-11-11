@@ -3,7 +3,6 @@ package ISA.projekat.Model;
 import java.io.Serializable;
 
 import ISA.projekat.Model.enums.Gender;
-import ISA.projekat.Model.enums.UserCategory;
 
 @SuppressWarnings("serial")
 public class User implements Serializable{
