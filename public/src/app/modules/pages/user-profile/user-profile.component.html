@@ -3,62 +3,58 @@
 </h1>
 <div  class="container" id="main-container">
 
+  <div  style="border: 10px solid black;">
+    <div class="container">
+      <img id="right" src="C:\Users\Tomo\Desktop\ISA-Projekat\ISA-projekat\public\src\assets\images\icons8-account-80.png">
+    </div >
+    <table class="table table-info">
+      <tr>
+        <td class="text-center">Name:</td>
+        <td ><input id="name-F" type="text" value="{{user.name}}"></td>
+      </tr>
+      <tr>
+        <td class="text-center">Surname:</td>
+        <td ><input id="surname-F" type="text" value="{{user.surname}}"></td>
+      </tr>
+      <tr>
+        <td class="text-center">ID:</td>
+        <td><input id="id-F" type="text" value="{{user.id}}"></td>
+      </tr>
+      <tr>
+        <td class="text-center">Gender:</td>
+        <td><input id="gender-F" type="text" value="{{user.gender}}"></td>
+      </tr>
+      <tr>
+        <td class="text-center">E-mail:</td>
+        <td><input id="email-F" type="text" value="{{user.email}}"></td>
+      </tr>
+      <tr>
+        <td class="text-center">Address:</td>
+        <td><input id="address-F" type="text" value="{{user.address}}"></td>
+      </tr>
+      <tr>
+        <td class="text-center">City:</td>
+        <td><input id="city-F" type="text" value="{{user.city}}"></td>
+      </tr>
+      <tr>
+        <td class="text-center">State:</td>
+        <td><input id="state-F" type="text" value="{{user.state}}"></td>
+      </tr>
+      <tr>
+        <td class="text-center">Phone number:</td>
+        <td><input id="phone-F" type="text" value="{{user.phone}}"></td>
+      </tr>
+      <tr>
+        <td class="text-center">Points:</td>
+        <td><input id="points-F" type="text" value="{{user.points}}"></td>
+      </tr>
+      <tr>
+        <td class="text-center">Category:</td>
+        <td><input id="category-F" type="text" value="{{user.category}}"></td>
+      </tr>
+    </table>
 
-    <div style="border: 10px solid black;">
-
-      <table class="table table-info">
-        <tr>
-          <td class="text-center">Name:</td>
-          <td ><input id="name-F" type="text" value="{{user.name}}"></td>
-        </tr>
-        <tr>
-            <td class="text-center">Surname:</td>
-            <td ><input id="surname-F" type="text" value="{{user.surname}}"></td>
-        </tr>
-        <tr>
-            <td class="text-center">ID:</td>
-            <td><input id="id-F" type="text" value="{{user.id}}"></td>
-        </tr>
-        <tr>
-            <td class="text-center">Gender:</td>
-            <td><input id="gender-F" type="text" value="{{user.gender}}"></td>
-        </tr>
-        <tr>
-            <td class="text-center">E-mail:</td>
-            <td><input id="email-F" type="text" value="{{user.email}}"></td>
-        </tr>
-        <tr>
-            <td class="text-center">Address:</td>
-            <td><input id="address-F" type="text" value="{{user.address}}"></td>
-        </tr>
-        <tr>
-            <td class="text-center">City:</td>
-            <td><input id="city-F" type="text" value="{{user.city}}"></td>
-        </tr>
-        <tr>
-            <td class="text-center">State:</td>
-            <td><input id="state-F" type="text" value="{{user.state}}"></td>
-        </tr>
-        <tr>
-            <td class="text-center">Phone number:</td>
-            <td><input id="phone-F" type="text" value="{{user.phone}}"></td>
-        </tr>
-        <tr>
-            <td class="text-center">Points:</td>
-            <td><input id="points-F" type="text" value="{{user.points}}"></td>
-        </tr>
-        <tr>
-            <td class="text-center">Category:</td>
-            <td><input id="category-F" type="text" value="{{user.category}}"></td>
-        </tr>
-      </table>
-
-    </div>
-    <div >
-      <div >
-        <!-- <a  (click)="onOpenModal('edit')" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"></a> -->
-      </div>
-    </div>
+  </div>
 
 </div >
 
@@ -72,7 +68,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Data Edit</h5>
+        <h3 class="modal-title" id="exampleModalLabel">Data Edit</h3>
 
       </div>
       <div class="modal-body">
