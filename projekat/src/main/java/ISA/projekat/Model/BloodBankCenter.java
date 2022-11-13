@@ -2,17 +2,45 @@ package ISA.projekat.Model;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 @SuppressWarnings("serial")
 public class BloodBankCenter implements Serializable{
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
+	@Column(nullable = false)
 	private String name;
+	
+	@Column(nullable = false)
 	private String adress;
+
+	@Column(nullable = false)
 	private String description;
+	
+	@Column(nullable = false)
 	private double averageRating;
-	private int[] idAdministrators;
-	private WorkingHours workingHours;
-	private HashMap<String, Integer> blood;
+	
+	
+	
+	//private WorkingHours workingHours;
+	
+	//private HashMap<String, Integer> blood;
+	
+	//private Set<Administrator> administrators;
+	
+	
+	
+	
 	
 	public String getName() {
 		return name;
@@ -38,24 +66,7 @@ public class BloodBankCenter implements Serializable{
 	public void setAverageRating(double averageRating) {
 		this.averageRating = averageRating;
 	}
-	public int[] getIdAdministrators() {
-		return idAdministrators;
-	}
-	public void setIdAdministrators(int[] idAdministrators) {
-		this.idAdministrators = idAdministrators;
-	}
-	public WorkingHours getWorkCalendar() {
-		return workingHours;
-	}
-	public void setWorkCalendar(WorkingHours workCalendar) {
-		this.workingHours = workCalendar;
-	}
-	public HashMap<String, Integer> getBlood() {
-		return blood;
-	}
-	public void setBlood(HashMap<String, Integer> blood) {
-		this.blood = blood;
-	}
+	
 	
 	
 }
