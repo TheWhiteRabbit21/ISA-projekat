@@ -20,14 +20,13 @@ public class BloodBankCenter implements Serializable{
 	private String name;
 	
 	@Column(nullable = false)
-	private String adress;
+	private String addressId;
 
 	@Column(nullable = false)
 	private String description;
 	
 	@Column(nullable = false)
 	private double averageRating;
-	
 	
 	
 	//private WorkingHours workingHours;
@@ -46,11 +45,11 @@ public class BloodBankCenter implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAdress() {
-		return adress;
+	public String getAdressId() {
+		return addressId;
 	}
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAdressId(String adress) {
+		this.addressId = adress;
 	}
 	public String getDescription() {
 		return description;

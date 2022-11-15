@@ -4,6 +4,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { AdminCenterProfileComponent } from './admin-center-profile/admin-center-profile.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AdminCenterProfileComponent } from './admin-center-profile/admin-center
   imports: [
     CommonModule,
     AppRoutingModule,
+    MatTableModule
   ]
 })
 export class PagesModule { }
