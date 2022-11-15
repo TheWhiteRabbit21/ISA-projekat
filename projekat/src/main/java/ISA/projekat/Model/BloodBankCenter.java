@@ -1,8 +1,6 @@
 package ISA.projekat.Model;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
