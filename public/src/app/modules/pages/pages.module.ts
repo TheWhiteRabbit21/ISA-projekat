@@ -5,12 +5,14 @@ import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { RegisterComponent } from './welcome/register/register.component';
+import { BloodBanksListComponent } from './blood-banks-list/blood-banks-list.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     WelcomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    BloodBanksListComponent
   ],
   imports: [
     CommonModule,
