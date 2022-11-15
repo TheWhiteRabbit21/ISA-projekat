@@ -2,10 +2,12 @@ package ISA.projekat.Service;
 
 import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.Model.Address;
-import ISA.projekat.Model.Center;
+import ISA.projekat.Model.BloodBankCenter;
 import ISA.projekat.Repository.AddressRepository;
 import ISA.projekat.Repository.CenterRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CenterService {
@@ -18,6 +20,9 @@ public class CenterService {
     }
     public void Create(CenterDTO centerDTO){
         Address address = addressRepository.save(new Address(centerDTO.country, centerDTO.city, centerDTO.street, centerDTO.number));
-        centerRepository.save(new Center(centerDTO.name, address.getId(), centerDTO.description));
+        centerRepository.save(new BloodBankCenter(centerDTO.name, address.getId(), centerDTO.description));
+    }
+    public List<BloodBankCenter> findAll(){
+        return centerRepository.findAll();
     }
 }
