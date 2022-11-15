@@ -1,6 +1,7 @@
 package ISA.projekat.Model;
 
 import java.io.Serializable;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
