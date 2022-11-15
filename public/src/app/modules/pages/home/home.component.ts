@@ -17,4 +17,8 @@ export class HomeComponent implements OnInit {
     this.bloodbanks = true;
   }
 
+  public closeBloodBanks(){
+    this.bloodbanks = false;
+  }
+
 }
