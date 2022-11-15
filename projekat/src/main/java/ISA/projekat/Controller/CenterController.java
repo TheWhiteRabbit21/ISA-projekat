@@ -10,7 +10,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
-@RequestMapping("/api/centers")
+@RequestMapping("/api/centers/")
 public class CenterController {
 
     @Autowired
@@ -18,7 +18,8 @@ public class CenterController {
 
     @PostMapping(produces = "application/json")
     @ResponseBody
-    public String helloWorld(@RequestBody CenterDTO center){
-        return "Hello World!";
+    public String helloWorld(@RequestBody CenterDTO centerDTO){
+        centerService.Create(centerDTO);
+        return "Dosao";
     }
 }

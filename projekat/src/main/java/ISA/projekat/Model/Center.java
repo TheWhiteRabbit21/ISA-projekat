@@ -24,7 +24,10 @@ public class Center implements Serializable {
     @Column(nullable = true)
     private int administratorCenterId;
 
-    public Center() {
+    public Center(String name, int addressId, String description) {
+        this.name = name;
+        this.addressId = addressId;
+        this.description = description;
     }
 
     public int getId() {
