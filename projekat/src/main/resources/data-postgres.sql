@@ -1,1 +1,0 @@
-insert into users (email, password, name, surname, gender, jmbg, adress, city, phoneNumber) values ('pera@gmail.com', '123456789', 'Pera', 'Peric', 'MALE', 2506997102490, 'Bulevar Oslobodjenja 37', 'Novi Sad', 'Srbija', '0625932648');
