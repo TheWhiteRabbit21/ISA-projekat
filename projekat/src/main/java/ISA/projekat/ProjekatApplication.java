@@ -12,7 +12,7 @@ public class ProjekatApplication {
 		SpringApplication.run(ProjekatApplication.class, args); 
 		
 		
-		
+		System.out.println("MNSDJKFNAJWSNFJKSDNJFKG NBSDHJKGBN HJKSDBNGJIKSDNBFUJGSDB HF");
 		
 	}
 

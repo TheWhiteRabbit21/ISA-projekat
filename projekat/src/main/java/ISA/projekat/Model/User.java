@@ -40,7 +40,7 @@ public class User implements Serializable{
 	private int jmbg;
 	
 	@Column(nullable = false)
-	private String adress;
+	private String address;
 	
 	@Column(nullable = false)
 	private String city;
@@ -65,7 +65,7 @@ public class User implements Serializable{
 		this.surname = surname;
 		this.gender = gender;
 		this.jmbg = jmbg;
-		this.adress = adress;
+		this.address = adress;
 		this.city = city;
 		this.state = state;
 		this.phoneNumber = phoneNumber;
@@ -89,11 +89,11 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String adress) {
+		this.address = adress;
 	}
 	public String getCity() {
 		return city;
@@ -136,7 +136,7 @@ public class User implements Serializable{
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", surname="
-				+ surname + ", gender=" + gender + ", jmbg=" + jmbg + ", adress=" + adress + ", city=" + city
+				+ surname + ", gender=" + gender + ", jmbg=" + jmbg + ", adress=" + address + ", city=" + city
 				+ ", state=" + state + ", phoneNumber=" + phoneNumber + "]";
 	}
 	
