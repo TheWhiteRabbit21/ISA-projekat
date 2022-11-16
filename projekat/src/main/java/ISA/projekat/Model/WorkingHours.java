@@ -26,7 +26,9 @@ public class WorkingHours implements Serializable{
 	/*@Column(nullable = false)
 	private Set<Appointment> appointment;*/
 
-	
+	public WorkingHours() {
+		super();
+	}
 	
 	
 	

@@ -32,7 +32,9 @@ public class RegisteredUser extends User {
 	@Column(nullable = true)
 	private UserCategory userCatagory;
 	
-	
+	public RegisteredUser() {
+		super();
+	}
 	
 	public Double getPoints() {
 		return points;

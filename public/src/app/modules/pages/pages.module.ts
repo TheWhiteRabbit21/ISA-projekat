@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppRoutingModule } from 'src/app/app-routing.module'; 
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HomeComponent } from './home/home.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { AdminCenterProfileComponent } from './admin-center-profile/admin-center-profile.component';
+import { MatTableModule } from '@angular/material/table';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { RegisterComponent } from './welcome/register/register.component';
@@ -13,6 +17,9 @@ import { RegisterCenterAdminComponent } from './register-center-admin/register-c
 @NgModule({
   declarations: [
     HomeComponent,
+    UserProfileComponent,
+    AdminProfileComponent,
+    AdminCenterProfileComponent,
     WelcomeComponent,
     RegisterComponent,
     BloodBanksListComponent,
@@ -23,7 +30,10 @@ import { RegisterCenterAdminComponent } from './register-center-admin/register-c
     FormsModule,
     CommonModule,
     AppRoutingModule,
+    FormsModule,
+    MatTableModule,
     MaterialModule
+
   ]
 })
 export class PagesModule { }
