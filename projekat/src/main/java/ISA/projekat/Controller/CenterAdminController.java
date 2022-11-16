@@ -1,7 +1,6 @@
 package ISA.projekat.Controller;
 
 import ISA.projekat.DTOs.CenterAdminDTO;
-import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.Service.CenterAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
