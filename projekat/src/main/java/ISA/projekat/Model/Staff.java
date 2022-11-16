@@ -1,9 +1,6 @@
 package ISA.projekat.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @SuppressWarnings("serial")
@@ -13,5 +10,7 @@ public class Staff extends User{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	//private Set<Appointment> appointments = new HashSet<Appointment>(); 
-	
+	/*@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "blood_bank_center_id")
+	private BloodBankCenter center;*/
 }
