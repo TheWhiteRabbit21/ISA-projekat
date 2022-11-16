@@ -20,7 +20,7 @@ public class BloodBankCenter implements Serializable{
 	private String name;
 	
 	@Column(nullable = false)
-	private String addressId;
+	private String address;
 
 	@Column(nullable = false)
 	private String description;
@@ -46,10 +46,10 @@ public class BloodBankCenter implements Serializable{
 		this.name = name;
 	}
 	public String getAdressId() {
-		return addressId;
+		return address;
 	}
 	public void setAdressId(String adress) {
-		this.addressId = adress;
+		this.address = adress;
 	}
 	public String getDescription() {
 		return description;
