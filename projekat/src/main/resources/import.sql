@@ -9,3 +9,4 @@ insert into addresses (country, city, street, number) values ('Srbija', 'Novi Sa
 insert into addresses (country, city, street, number) values ('Srbija', 'Novi Sad', 'bul Avnoja', 42);
 insert into addresses (country, city, street, number) values ('Srbija', 'Novi Sad', 'bul Mihajla Pupina', 96);
 insert into addresses (country, city, street, number) values ('Srbija', 'Novi Sad', 'bul patrijarha Pavla', 101);
+
