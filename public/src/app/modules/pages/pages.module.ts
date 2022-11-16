@@ -3,17 +3,29 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { MaterialModule } from 'src/app/material/material.module';
+import { RegisterComponent } from './welcome/register/register.component';
+import { BloodBanksListComponent } from './blood-banks-list/blood-banks-list.component';
+import { RegisterCenterComponent } from './register-center/register-center.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     HomeComponent,
     UserProfileComponent,
+    WelcomeComponent,
+    RegisterComponent,
+    BloodBanksListComponent,
+    RegisterCenterComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MaterialModule
+
   ]
 })
 export class PagesModule { }
