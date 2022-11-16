@@ -3,7 +3,6 @@ package ISA.projekat.Model;
 import ISA.projekat.Model.enums.Gender;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @SuppressWarnings("serial")
