@@ -1,0 +1,1 @@
+insert into blood_bank_center (id, name, adress, description, average_rating) values (1, 'Pera', 'bul Oslobodjenja', 'Opis neki nesto', 3.14);
