@@ -2,18 +2,14 @@ package ISA.projekat.Model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import ISA.projekat.Model.enums.Gender;
 
 @Entity
 @Table(name = "users")
 @SuppressWarnings("serial")
+@DiscriminatorColumn(name="user_type", discriminatorType = DiscriminatorType.INTEGER)
 public class User implements Serializable{
 
 	@Id
@@ -37,15 +33,9 @@ public class User implements Serializable{
 	
 	@Column(nullable = false)
 	private int jmbg;
-	
+
 	@Column(nullable = false)
-	private String adress;
-	
-	@Column(nullable = false)
-	private String city;
-	
-	@Column(nullable = false)
-	private String state;
+	private int address;
 	
 	@Column(nullable = false)
 	private String phoneNumber;
@@ -56,7 +46,7 @@ public class User implements Serializable{
 	}
 	
 	public User(String email, String password, String name, String surname, Gender gender, int jmbg,
-			String adress, String city, String state, String phoneNumber) {
+			int address, String phoneNumber) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -64,9 +54,7 @@ public class User implements Serializable{
 		this.surname = surname;
 		this.gender = gender;
 		this.jmbg = jmbg;
-		this.adress = adress;
-		this.city = city;
-		this.state = state;
+		this.address = address;
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -88,23 +76,11 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getAdress() {
-		return adress;
+	public int getAddress() {
+		return address;
 	}
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
+	public void setAddress(int address) {
+		this.address = address;
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -135,8 +111,7 @@ public class User implements Serializable{
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", surname="
-				+ surname + ", gender=" + gender + ", jmbg=" + jmbg + ", adress=" + adress + ", city=" + city
-				+ ", state=" + state + ", phoneNumber=" + phoneNumber + "]";
+				+ surname + ", gender=" + gender + ", jmbg=" + jmbg + ", address=" + address + ", phoneNumber=" + phoneNumber + "]";
 	}
 	
 	

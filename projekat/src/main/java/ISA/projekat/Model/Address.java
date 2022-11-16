@@ -31,6 +31,10 @@ public class Address implements Serializable {
         this.number = number;
     }
 
+    public Address() {
+
+    }
+
     public int getId() {
         return id;
     }

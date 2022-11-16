@@ -1,28 +1,35 @@
 package ISA.projekat.Model;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import ISA.projekat.Model.enums.UserCategory;
+import org.hibernate.annotations.DiscriminatorFormula;
+
+import java.io.Serial;
+import java.io.Serializable;
 
 @Entity
 @SuppressWarnings("serial")
+@DiscriminatorValue("1")
 public class RegisteredUser extends User {
 
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Double points;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String userPerks;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String infoInstitution;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String profession;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private UserCategory userCatagory;
 	
 	
