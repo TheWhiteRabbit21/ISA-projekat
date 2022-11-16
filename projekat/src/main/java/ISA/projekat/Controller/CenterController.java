@@ -23,11 +23,11 @@ public class CenterController {
     
     @PostMapping(produces = "application/json")
     @ResponseBody
-    public String helloWorld(@RequestBody CenterDTO centerDTO){
+    public String CreateCenter(@RequestBody CenterDTO centerDTO){
         centerService.Create(centerDTO);
         return "Dosao";
     }
-    
+
     @GetMapping(produces = "application/json")
     @ResponseBody
     public List<BloodBankCenter> helloWorld(){
