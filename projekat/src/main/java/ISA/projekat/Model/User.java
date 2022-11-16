@@ -106,8 +106,23 @@ public class User implements Serializable{
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
-	
-	
+	private String city;
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	private String state;
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", surname="
