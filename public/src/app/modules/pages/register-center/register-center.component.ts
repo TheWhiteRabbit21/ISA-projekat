@@ -9,6 +9,7 @@ import { Center, RegisterCenterService } from './register-center.service';
 export class RegisterCenterComponent implements OnInit {
 
   public center : Center = {
+    id : '',
     name : '',
     country : '',
     city : '',

@@ -25,7 +25,9 @@ public class RegisteredUser extends User {
 	@Column(nullable = false)
 	private UserCategory userCatagory;
 	
-	
+	public RegisteredUser() {
+		super();
+	}
 	
 	public Double getPoints() {
 		return points;

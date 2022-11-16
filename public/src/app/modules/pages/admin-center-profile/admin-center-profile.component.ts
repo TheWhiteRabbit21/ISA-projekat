@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { tap } from 'rxjs';
+import { Center, UpdateCenterService } from './admin-center-profile.service';
 
 @Component({
   selector: 'app-admin-center-profile',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminCenterProfileComponent implements OnInit {
 
-  constructor() { }
+  public center : Center = {
+    id : '',
+    name : '',
+    country : '',
+    city : '',
+    street : '',
+    number : '',
+    description : ''
+  }
+
+  constructor(
+    private updateCenterService : UpdateCenterService,
+    private _route: ActivatedRoute,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
+    let id  = this._route.snapshot.paramMap.get('id');
+    if(id != null){
+      this.center.id = id;
+    }
+  }
+
+  submit() : void{
+    this.updateCenterService.submit(this.center).pipe(
+      tap(() => this.router.navigate(['../welcome']))
+      ).subscribe();
   }
 
 }
