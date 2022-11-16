@@ -39,7 +39,8 @@ public class CenterController {
         // convert users to DTOs
         List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
         for (BloodBankCenter c : bloodBankCenters) {
-        	bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), c.getAddress(), c.getDescription()));
+            Address address = addressService.findOne(c.getAddress());
+        	bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
         }
 
         return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);

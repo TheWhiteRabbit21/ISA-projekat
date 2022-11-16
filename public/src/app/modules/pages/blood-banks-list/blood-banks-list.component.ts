@@ -7,7 +7,8 @@ import { BloodBankListService } from './blood-bank-list.service';
 export interface BloodBank {
   name: string;
   averagePoints: number;
-  address: number;
+  city: string;
+  country: string;
   description: string;
 }
 
@@ -19,7 +20,7 @@ export interface BloodBank {
 export class BloodBanksListComponent implements AfterViewInit, OnInit {
 
   public bloodbanks: BloodBank[] = [];
-  displayedColumns: string[] = ['name', 'averagePoints', 'address', 'description'];
+  displayedColumns: string[] = ['name', 'averagePoints', 'city', 'country', 'description'];
   public dataSource = new MatTableDataSource(this.bloodbanks);
   
   constructor(private _liveAnnouncer: LiveAnnouncer, private _bloodBankService: BloodBankListService) {}

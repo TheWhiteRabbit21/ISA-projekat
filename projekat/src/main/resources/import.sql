@@ -6,8 +6,8 @@ insert into blood_bank_center (name, address, description, average_rating) value
 insert into blood_bank_center (name, address, description, average_rating) values ('Cetvrta Banka krvi', 4, 'Opis neki neki', '2.3');
 insert into blood_bank_center (name, address, description, average_rating) values ('Peta Banka krvi', 5, 'Opis nesto nesto', '3');
 
-insert into addresses (country, city, street, number) values ('Srbija', 'Novi Sad', 'bul Oslobodjenja', 69);
-insert into addresses (country, city, street, number) values ('Srbija', 'Novi Sad', 'bul cara Lazara', 21);
-insert into addresses (country, city, street, number) values ('Srbija', 'Novi Sad', 'bul Avnoja', 42);
-insert into addresses (country, city, street, number) values ('Srbija', 'Novi Sad', 'bul Mihajla Pupina', 96);
-insert into addresses (country, city, street, number) values ('Srbija', 'Novi Sad', 'bul patrijarha Pavla', 101);
+insert into addresses (country, city, street, number) values ('Srbija', 'Novi Sad', 'bulevar Oslobodjenja', 69);
+insert into addresses (country, city, street, number) values ('Bosna i Hercegovina', 'Sarajevo', 'bulevar Ćevapa', 21);
+insert into addresses (country, city, street, number) values ('Hrvatska', 'Split', 'bulevar Avnoja', 42);
+insert into addresses (country, city, street, number) values ('Crna Gora', 'Budva', 'bulevar Mihajla Pupina', 96);
+insert into addresses (country, city, street, number) values ('Slovenija', 'Ljutomer', 'Franca Miklošića', 101);
