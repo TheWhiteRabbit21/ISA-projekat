@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { AdminCenterProfileComponent } from './admin-center-profile/admin-center-profile.component';
+import { MatTableModule } from '@angular/material/table';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { RegisterComponent } from './welcome/register/register.component';
@@ -14,6 +17,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     HomeComponent,
     UserProfileComponent,
+    AdminProfileComponent,
+    AdminCenterProfileComponent,
     WelcomeComponent,
     RegisterComponent,
     BloodBanksListComponent,
@@ -24,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     AppRoutingModule,
     FormsModule,
+    MatTableModule,
     MaterialModule
 
   ]

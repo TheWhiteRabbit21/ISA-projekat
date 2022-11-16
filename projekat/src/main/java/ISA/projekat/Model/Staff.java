@@ -13,4 +13,10 @@ public class Staff extends User{
 	/*@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "blood_bank_center_id")
 	private BloodBankCenter center;*/
+	
+	public Staff() {
+		super();
+	}
+	
+	
 }
