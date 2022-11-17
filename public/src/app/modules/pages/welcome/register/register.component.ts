@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
     state: new FormControl(),
     phoneNumber: new FormControl(),
     jmbg: new FormControl(),
-    gender: new FormControl(),
+    gender: new FormControl(0),
     occupation: new FormControl(),
     establishmentInfo: new FormControl()
   },
