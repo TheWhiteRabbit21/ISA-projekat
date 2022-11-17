@@ -29,9 +29,8 @@ public class UserService {
         return userRepository.findAllUsersBySurname(surname);
     }
     
-    public void RegisterUser(RegisteredUserDTO registeredUserDTO){
-        //addressRepository.save(new Address(registeredUserDTO.getState(), registeredUserDTO.getCity(), registeredUserDTO.getStreet(), registeredUserDTO.getNumber()));
-        userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), Gender.MALE, registeredUserDTO.getJmbg(), 500, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE));
+    public void RegisterUser(RegisteredUserDTO registeredUserDTO, int addressId){
+    	userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), addressId, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE));
     }
 
     public User findOneByJmbg(Integer jmbg) {
