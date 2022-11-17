@@ -13,6 +13,7 @@ import { BloodBanksListComponent } from './blood-banks-list/blood-banks-list.com
 import { RegisterCenterComponent } from './register-center/register-center.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterCenterAdminComponent } from './register-center-admin/register-center-admin.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,8 +33,8 @@ import { RegisterCenterAdminComponent } from './register-center-admin/register-c
     AppRoutingModule,
     FormsModule,
     MatTableModule,
-    MaterialModule
-
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }

@@ -1,99 +1,90 @@
-<h1> Register: </h1>
 
-  <section>
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input [(ngModel)]="registeringUser.email" placeholder="example@email.com" matInput>
-    </mat-form-field>
-  </section>
-
-  <section>
-    <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
-      <input type="password" matInput>
-    </mat-form-field>
-  </section>
-
-  <section>
-    <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
-      <input [(ngModel)]="registeringUser.password" type="password" matInput>
-    </mat-form-field>
-  </section>
-
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
-      <input [(ngModel)]="registeringUser.name" matInput>
-    </mat-form-field>
-  
-
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Surname</mat-label>
-      <input [(ngModel)]="registeringUser.surname" matInput>
-    </mat-form-field><br>
-  
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Street</mat-label>
-      <input [(ngModel)]="registeringUser.street" matInput>
-    </mat-form-field>
-  
-
-    <mat-form-field appearance="fill">
-      <mat-label>Number</mat-label>
-      <input [(ngModel)]="registeringUser.number" matInput>
-    </mat-form-field>
-  
-  
-    <mat-form-field appearance="fill">
-      <mat-label>City</mat-label>
-      <input [(ngModel)]="registeringUser.city" matInput>
-    </mat-form-field>
- 
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Country</mat-label>
-      <input [(ngModel)]="registeringUser.state" matInput>
-    </mat-form-field><br>
-
-   
+<section class="form">
+  <h1> Register: </h1>
+  <form [formGroup]="registerUserForm">
+    
       <mat-form-field appearance="fill">
-        <mat-label>Telephone number</mat-label>
-        <input [(ngModel)]="registeringUser.phoneNumber" placeholder="ex: 065123456" matInput>
+        <mat-label for="email">Email</mat-label>
+        <input required [(ngModel)]="registeringUser.email" placeholder="example@email.com" matInput formControlName="email">
       </mat-form-field>
     
-    <section>
       <mat-form-field appearance="fill">
-        <mat-label>JMBG</mat-label>
-        <input [(ngModel)]="registeringUser.jmbg" matInput>
+        <mat-label>Password</mat-label>
+        <input required type="password" formControlName="password" matInput>
       </mat-form-field>
-    </section>
-
-    <mat-label>Gender:  </mat-label><br>
-    <mat-radio-group aria-label="Select an option">
-      <mat-radio-button value="1">Male</mat-radio-button>
-      <mat-radio-button value="2">Female</mat-radio-button>
-      <mat-radio-button value="3">Other</mat-radio-button>
-    </mat-radio-group>
-
-    <section>
+    
       <mat-form-field appearance="fill">
-        <mat-label>Occupation</mat-label>
-        <input [(ngModel)]="registeringUser.occupation" matInput>
+        <mat-label>Confirm password</mat-label>
+        <input required [(ngModel)]="registeringUser.password" type="password" formControlName="confirmPassword" matInput>
       </mat-form-field>
-    </section>
-
-    <section>
+      
+      <div *ngIf="passwordMatchError">
+        Password does not match
+      </div>
+  
       <mat-form-field appearance="fill">
-        <mat-label>Company/Univeristy/School information</mat-label>
-        <input [(ngModel)]="registeringUser.establishmentInfo" matInput>
+        <mat-label>Name</mat-label>
+        <input required [(ngModel)]="registeringUser.name" formControlName="name" matInput>
       </mat-form-field>
-    </section>
+ 
+      <mat-form-field appearance="fill">
+        <mat-label>Surname</mat-label>
+        <input required [(ngModel)]="registeringUser.surname" formControlName="surname" matInput>
+      </mat-form-field><br>
+    
+      <mat-form-field appearance="fill">
+        <mat-label>Street</mat-label>
+        <input required [(ngModel)]="registeringUser.street" formControlName="street" matInput>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill">
+        <mat-label>Number</mat-label>
+        <input required [(ngModel)]="registeringUser.number" formControlName="number" matInput>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill">
+        <mat-label>City</mat-label>
+        <input required [(ngModel)]="registeringUser.city" formControlName="city" matInput>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Country</mat-label>
+        <input required [(ngModel)]="registeringUser.state" formControlName="state" matInput>
+      </mat-form-field><br>
 
-    <button (click)="submit()">Submit</button>
+      <mat-form-field appearance="fill">
+        <mat-label>Telephone number</mat-label>
+        <input required [(ngModel)]="registeringUser.phoneNumber" placeholder="ex: 065123456" formControlName="phoneNumber" matInput>
+      </mat-form-field>
+      
+        <mat-form-field appearance="fill">
+          <mat-label>JMBG</mat-label>
+          <input required [(ngModel)]="registeringUser.jmbg" formControlName="jmbg" matInput>
+        </mat-form-field><br>
 
+      <mat-label>Gender:  </mat-label><br>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">Male</mat-radio-button>
+        <mat-radio-button value="2">Female</mat-radio-button>
+      </mat-radio-group>
+
+      <section>
+        <mat-form-field appearance="fill">
+          <mat-label>Occupation</mat-label>
+          <input required [(ngModel)]="registeringUser.occupation" formControlName="occupation" matInput>
+        </mat-form-field>
+      </section>
+
+      <section>
+        <mat-form-field appearance="fill">
+          <mat-label>Company/Univeristy/School information</mat-label>
+          <input required [(ngModel)]="registeringUser.establishmentInfo" formControlName="establishmentInfo" matInput>
+        </mat-form-field>
+      </section>
+
+      <button mat-raised-button [disabled]="!registerUserForm.valid" (click)="submit()">Register</button>
+    </form>
+</section>
     
   
   
