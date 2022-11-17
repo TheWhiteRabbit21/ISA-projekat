@@ -1,5 +1,8 @@
 package ISA.projekat.DTOs;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class CenterDTO {
 	public String id;
     public String name;
@@ -8,13 +11,13 @@ public class CenterDTO {
     public String street;
     public String number;
     public String description;
-    
+    public Set<Integer> admins = new HashSet<Integer>();
     
     public CenterDTO(){
 
     }
     
-    public CenterDTO(String id, String name, String city, String country, String street, String number, String description) {
+    public CenterDTO(String id, String name, String city, String country, String street, String number, String description, Set<Integer> admins) {
         this.id = id;
     	this.name = name;
         this.city = city;
@@ -22,6 +25,7 @@ public class CenterDTO {
         this.street = street;
         this.number = number;
         this.description = description;
+		this.admins = admins;
     }
     
 	public String getId() {

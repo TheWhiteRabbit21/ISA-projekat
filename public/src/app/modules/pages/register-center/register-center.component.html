@@ -4,4 +4,16 @@
 <input type="text" [(ngModel)]="center.street" placeholder="Street">
 <input type="text" [(ngModel)]="center.number" placeholder="Number">
 <input type="text" [(ngModel)]="center.description" placeholder="Description">
+<table>
+    <tr *ngFor="let centerAdmin of pom">
+        <td>{{centerAdmin.name}} {{centerAdmin.surname}}</td>
+        <td><button (click)="remove(centerAdmin)">Remove</button></td>
+    </tr>
+</table>
+<table>
+    <tr *ngFor="let centerAdmin of centerAdmins">
+        <td>{{centerAdmin.name}} {{centerAdmin.surname}}</td>
+        <td><button (click)="add(centerAdmin)">Add</button></td>
+    </tr>
+</table>
 <button (click)="submit()">Submit</button>
