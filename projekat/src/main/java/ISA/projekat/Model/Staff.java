@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @SuppressWarnings("serial")
+@DiscriminatorValue("2")
 public class Staff extends User{
 
 	@Id

@@ -2,18 +2,14 @@ package ISA.projekat.Model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import ISA.projekat.Model.enums.Gender;
 
 @Entity
 @Table(name = "users")
 @SuppressWarnings("serial")
+@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.INTEGER)
 public class User implements Serializable{
 
 	@Id
@@ -39,7 +35,7 @@ public class User implements Serializable{
 	private int jmbg;
 	
 	@Column(nullable = false)
-	private String address;
+	private int address;
 	
 	@Column(nullable = false)
 	private String city;
@@ -49,14 +45,15 @@ public class User implements Serializable{
 	
 	@Column(nullable = false)
 	private String phoneNumber;
-	
+
+
 	
 	public User() {
 		super();
 	}
 	
 	public User(String email, String password, String name, String surname, Gender gender, int jmbg,
-			String adress, String city, String state, String phoneNumber) {
+			int address, String city, String state, String phoneNumber) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -64,7 +61,7 @@ public class User implements Serializable{
 		this.surname = surname;
 		this.gender = gender;
 		this.jmbg = jmbg;
-		this.address = adress;
+		this.address = address;
 		this.city = city;
 		this.state = state;
 		this.phoneNumber = phoneNumber;
@@ -88,11 +85,11 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getAddress() {
+	public int getAddress() {
 		return address;
 	}
-	public void setAddress(String adress) {
-		this.address = adress;
+	public void setAddress(int address) {
+		this.address = address;
 	}
 	public String getCity() {
 		return city;

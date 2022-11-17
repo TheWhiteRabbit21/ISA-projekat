@@ -19,7 +19,7 @@
         </tr>
         <tr>
           <td class="text-center">ID:</td>
-          <td><input id="id-F" type="text" value="{{user.id}}"></td>
+          <td><input id="id-F" type="text" value="{{user.jmbg}}"></td>
         </tr>
         <tr>
           <td class="text-center">Gender:</td>
@@ -43,7 +43,7 @@
         </tr>
         <tr>
           <td class="text-center">Phone number:</td>
-          <td><input id="phone-F" type="text" value="{{user.phone}}"></td>
+          <td><input id="phone-F" type="text" value="{{user.phoneNumber}}"></td>
         </tr>
         <tr>
           <td class="text-center">Points:</td>
@@ -98,7 +98,7 @@
           </div>
           <div  class="form-group">
             <label for="phone">Phone number</label>
-            <input type="text" [(ngModel)]="editedUser.phone" name="phone" class="form-control" id="phoneE" placeholder="Phone number">
+            <input type="text" [(ngModel)]="editedUser.phoneNumber" name="phone" class="form-control" id="phoneE" placeholder="Phone number">
          </div>
        </form>
       </div>

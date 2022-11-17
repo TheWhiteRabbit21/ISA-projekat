@@ -1,5 +1,6 @@
 package ISA.projekat.Service;
 
+import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Model.User;
 import ISA.projekat.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,35 +14,35 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> findByLastName(String surname) {
+    public List<RegisteredUser> findByLastName(String surname) {
         return userRepository.findAllUsersBySurname(surname);
     }
 
-    public List<User> findAllUsersBySurname(String surname) {
+    public List<RegisteredUser> findAllUsersBySurname(String surname) {
         return userRepository.findAllUsersBySurname(surname);
     }
 
-    public User findOneByJmbg(Integer jmbg) {
+    public RegisteredUser findOneByJmbg(Integer jmbg) {
         return userRepository.findOneByJmbg(jmbg);
     }
 
-    public User findByPassword(String password) {
+    public RegisteredUser findByPassword(String password) {
         return userRepository.findByPassword(password);
     }
 
-    public List<User> findByNameAndSurnameAllIgnoringCase(String name, String surname) {
+    public List<RegisteredUser> findByNameAndSurnameAllIgnoringCase(String name, String surname) {
         return userRepository.findByNameAndSurnameAllIgnoringCase(name, surname);
     }
 
-    public List<User> findAllUsersByName(String name) {
+    public List<RegisteredUser> findAllUsersByName(String name) {
         return userRepository.findAllUsersByName(name);
     }
 
-    public User save(User user) {
+    public RegisteredUser save(RegisteredUser user) {
         return userRepository.save(user);
     }
 
-    public List<User> findAll() {
+    public List<RegisteredUser> findAll() {
         return userRepository.findAll();
     }
 }

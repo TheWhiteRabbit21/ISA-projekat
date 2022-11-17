@@ -1,6 +1,7 @@
 package ISA.projekat.Controller;
 
 import ISA.projekat.DTOs.UserDTO;
+import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Model.User;
 import ISA.projekat.Service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -20,10 +21,10 @@ public class UserController {
     private UserService userService;
 
 
-    @PostMapping(consumes = "application/json")
+    @PostMapping("/edit")
     public ResponseEntity<UserDTO> saveUser(@RequestBody UserDTO userDTO) {
 
-        User user = new User();
+        RegisteredUser user = new RegisteredUser();
         user.setName(userDTO.getName());
         user.setSurname(userDTO.getSurname());
 
@@ -34,21 +35,21 @@ public class UserController {
     @GetMapping(value = "/all")
     public ResponseEntity<List<UserDTO>> getAllUsers() {
 
-        List<User> users = userService.findAll();
+        List<RegisteredUser> users = userService.findAll();
 
         // convert users to DTOs
         List<UserDTO> usersDTO = new ArrayList<>();
-        for (User u : users) {
+        for (RegisteredUser u : users) {
             usersDTO.add(new UserDTO(u));
         }
 
         return new ResponseEntity<>(usersDTO, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{jmbg}")
-    public ResponseEntity<UserDTO> getUserByJmbg(@PathVariable Integer jmbg) {
+    @GetMapping(value = "/find/{jmbg}")
+    public ResponseEntity<UserDTO> getUserByJmbg(@PathVariable("jmbg") Integer jmbg) {
 
-        User user = userService.findOneByJmbg(jmbg);
+        RegisteredUser user = userService.findOneByJmbg(jmbg);
 
         // user must exist
         if (user == null) {

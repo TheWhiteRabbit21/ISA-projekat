@@ -10,3 +10,4 @@ insert into addresses (country, city, street, number) values ('Srbija', 'Novi Sa
 insert into addresses (country, city, street, number) values ('Srbija', 'Novi Sad', 'bul Mihajla Pupina', 96);
 insert into addresses (country, city, street, number) values ('Srbija', 'Novi Sad', 'bul patrijarha Pavla', 101);
 
+insert into users (user_type,email, password, name, surname, gender, jmbg, address, city, state, phone_number, points, user_catagory) values (1,'juzer@gmail.com','123', 'Mo', 'Salah', 1, 123123123, 2,'Novi Sad','Srbija', '18921892',5.00,1);

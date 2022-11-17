@@ -1,5 +1,8 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { User } from './user';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -7,29 +10,24 @@ import {NgForm} from '@angular/forms';
 })
 export class UserProfileComponent implements OnInit {
 
-  user  = {
-    name: "Milos",
-    surname: "Obilic",
-    id:"0304000230023",
-    gender:"male",
-    email:"asdf@gmail.com",
-    address:"ulica 12",
-    city:"Paracin",
-    state:"Srbija",
-    phone:"0611234123",
-    points:"3",
-    category:"2"
-  };
+  public user: any  = {} as User;
 
-  editedUser = Object.assign({}, this.user);
-  constructor() { }
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     //ovde dobavis podatke iz bekenda
 
 
-    // console.log(user);
+    this.http.get("localhost:8084/api/users/find/123123123").subscribe(res => {
+      this.user = res;
+    });
+    console.log("ASDASDASDASDASDSAD")
+    console.log(this.user);
   }
+
+
+  editedUser = Object.assign({}, this.user);
 
   public onOpenModal( mode: string): void {
     const container = document.getElementById('main-container');
