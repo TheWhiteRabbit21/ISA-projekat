@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 
@@ -41,18 +41,19 @@ public class UserController {
         return "Dosao";
     }
 
-    @GetMapping(value = "/all")
+	@GetMapping(value = "/all")
     public ResponseEntity<List<UserDTO>> getAllUsers() {
 
-        List<User> users = userService.findAll();
+//        List<User> users = userService.findAll();
 
         // convert users to DTOs
-        List<UserDTO> usersDTO = new ArrayList<>();
-        for (User u : users) {
-            //usersDTO.add(new UserDTO(u));
-        }
+//        List<UserDTO> usersDTO = new ArrayList<>();
+//        for (User u : users) {
+//            usersDTO.add(new UserDTO(u));
+//        }
 
-        return new ResponseEntity<>(usersDTO, HttpStatus.OK);
+//        return new ResponseEntity<>(usersDTO, HttpStatus.OK);
+    	return null;
     }
 
     @GetMapping(value = "/{jmbg}")
@@ -69,21 +70,7 @@ public class UserController {
     }
     
     
-    @PutMapping(value = "/update", consumes = "application/json")
-    @ResponseBody
-    public ResponseEntity<UserDTO> updateCenter(@RequestBody UserDTO userDTO){
-    	
-    	//TODO
-//    	System.out.println(userDTO.getName());
-//    	System.out.println(userDTO.getId());
-//    	System.out.println(userDTO);
-    	
-    	
-    	
-    	
-    	
-    	return new ResponseEntity<>(HttpStatus.OK);
-    }
+    
     
     
     

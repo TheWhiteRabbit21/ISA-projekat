@@ -6,13 +6,14 @@ export class Admin{
     id: string = '';
     name: string = '';
     surname: string = '';
+    password: string = '';
     email: string = '';
     gender: string = '';
-    jmbg: string = '';
-    state: string = '';
+    jmbg: number = 0;
+    country: string = '';
     city: string = '';
     street: string = '';
-    streetNumber: string = '';
+    number: string = '';
     phoneNumber: string = '';
   }
   @Injectable({
@@ -25,6 +26,6 @@ export class Admin{
     constructor(private http: HttpClient) { }
   
     submit(admin: any): Observable<any> {
-        return this.http.put<any>(this.route + 'api/users/update', admin, {headers: this.headers});
+        return this.http.put<any>(this.route + 'api/center-admins/update', admin, {headers: this.headers});
     }
   }

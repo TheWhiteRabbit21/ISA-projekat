@@ -10,13 +10,13 @@ export interface AdminInfo {
   address: string;
   city: string;
   state: string;
-  phoneNumber: number;
+  phoneNumber: string;
 }
 
 
 
 const ELEMENT_DATA: AdminInfo[] = [
-  {name: 'Petar', surname: 'Petrović', jmbg: 2506997202356, address: 'Bulevar Oslobođenja 37', city: 'Novi Sad', state: 'Srbija', phoneNumber: 38643366462}
+  {name: 'Petar', surname: 'Petrović', jmbg: 2506997202356, address: 'Bulevar Oslobođenja 37', city: 'Novi Sad', state: 'Srbija', phoneNumber: '38643366462'}
 ];
 
 
@@ -33,13 +33,14 @@ export class AdminProfileComponent implements OnInit{
     id: '',
     name: '',
     surname: '',
+    password: ' ',
     email: '',
     gender: '',
-    jmbg: '',
-    state: '',
+    jmbg: 0,
+    country: '',
     city: '',
     street: '',
-    streetNumber: '',
+    number: '',
     phoneNumber: ''
   }
 
