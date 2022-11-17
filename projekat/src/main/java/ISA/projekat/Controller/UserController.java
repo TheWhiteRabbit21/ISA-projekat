@@ -4,7 +4,10 @@ import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.DTOs.RegisteredUserDTO;
 import ISA.projekat.DTOs.UserDTO;
 import ISA.projekat.Model.User;
+import ISA.projekat.Model.enums.UserCategory;
+import ISA.projekat.Model.Address;
 import ISA.projekat.Model.RegisteredUser;
+import ISA.projekat.Service.AddressService;
 import ISA.projekat.Service.UserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private AddressService addressService;
 
 
     @PostMapping(consumes = "application/json")
@@ -36,9 +42,13 @@ public class UserController {
     
     @PostMapping(produces = "application/json", value = "add")
     @ResponseBody
-    public String RegisterUser(@RequestBody RegisteredUserDTO registeredUserDTO){
-        userService.RegisterUser(registeredUserDTO);
-        return "Dosao";
+    public ResponseEntity<RegisteredUserDTO> RegisterUser(@RequestBody RegisteredUserDTO registeredUserDTO){
+        
+    	Address address = new Address(registeredUserDTO.getState(), registeredUserDTO.getCity(), registeredUserDTO.getStreet(), registeredUserDTO.getNumber());
+    	addressService.save(address);
+    	userService.RegisterUser(registeredUserDTO, address.getId());
+    	
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 	@GetMapping(value = "/all")

@@ -8,6 +8,7 @@ import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.BloodBankCenter;
 import ISA.projekat.Model.Staff;
+import ISA.projekat.Model.User;
 import ISA.projekat.Repository.AddressRepository;
 
 @Service
@@ -40,5 +41,9 @@ public class AddressService {
 		
 		
 	}
+	
+	public Address save(Address address) {
+        return addressRepository.save(address);
+    }
 
 }
