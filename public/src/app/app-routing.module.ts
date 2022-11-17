@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'register-center', component: RegisterCenterComponent },
   { path: 'register-center-admin', component: RegisterCenterAdminComponent },
-  {path: 'userProfile', component: UserProfileComponent},
+  { path: 'userProfile', component: UserProfileComponent},
   { path: 'adminprofile', component: AdminProfileComponent },
   { path: 'admincenterprofile/:id', component: AdminCenterProfileComponent },
   { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
