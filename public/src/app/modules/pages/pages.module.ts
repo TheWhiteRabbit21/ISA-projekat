@@ -12,6 +12,7 @@ import { RegisterComponent } from './welcome/register/register.component';
 import { BloodBanksListComponent } from './blood-banks-list/blood-banks-list.component';
 import { RegisterCenterComponent } from './register-center/register-center.component';
 import { FormsModule } from '@angular/forms';
+import { RegisterCenterAdminComponent } from './register-center-admin/register-center-admin.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     WelcomeComponent,
     RegisterComponent,
     BloodBanksListComponent,
-    RegisterCenterComponent
+    RegisterCenterComponent,
+    RegisterCenterAdminComponent
   ],
   imports: [
     FormsModule,

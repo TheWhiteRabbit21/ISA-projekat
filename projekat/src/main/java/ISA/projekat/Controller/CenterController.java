@@ -1,5 +1,6 @@
 package ISA.projekat.Controller;
 
+import ISA.projekat.DTOs.BloodCenterListDTO;
 import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.BloodBankCenter;
@@ -10,28 +11,39 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/centers")
+@RequestMapping(value = "/api/centers")
 public class CenterController {
 
     @Autowired
     private CenterService centerService;
+    
     @Autowired
     private AddressService addressService;
     
     @PostMapping(produces = "application/json")
     @ResponseBody
-    public String helloWorld(@RequestBody CenterDTO centerDTO){
+    public String CreateCenter(@RequestBody CenterDTO centerDTO){
         centerService.Create(centerDTO);
         return "Dosao";
     }
-    
-    @GetMapping(produces = "application/json")
-    @ResponseBody
-    public List<BloodBankCenter> helloWorld(){
-        return centerService.findAll();
+
+    @GetMapping(value = "/all")
+    public ResponseEntity<List<BloodCenterListDTO>> getAllBloodCenters() {
+
+        List<BloodBankCenter> bloodBankCenters = centerService.findAll();
+
+        // convert users to DTOs
+        List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
+        for (BloodBankCenter c : bloodBankCenters) {
+            Address address = addressService.findOne(c.getAddress());
+        	bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
+        }
+
+        return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);
     }
     
     @PutMapping(value = "/update", consumes = "application/json")

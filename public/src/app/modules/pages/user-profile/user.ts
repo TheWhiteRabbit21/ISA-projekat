@@ -1,5 +1,5 @@
 export interface User {
-  jmbg: number;
+  jmbg: String;
   name: string;
   surname: string;
   email: string;
@@ -9,7 +9,7 @@ export interface User {
   state: string;
   password: string;
   phoneNumber: string;
-  points: number;
+  points: String;
   category: string;
 
 }

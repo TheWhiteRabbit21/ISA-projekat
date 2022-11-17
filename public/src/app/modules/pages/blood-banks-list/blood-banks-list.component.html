@@ -7,9 +7,9 @@
   </ng-container>
 
   
-  <ng-container matColumnDef="averageRating">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by average rating"> Average Rating </th>
-    <td mat-cell *matCellDef="let element"> {{element.averageRating}} </td>
+  <ng-container matColumnDef="averagePoints">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by average rating"> Average Points </th>
+    <td mat-cell *matCellDef="let element"> {{element.averagePoints}} </td>
   </ng-container>
 
  
@@ -24,9 +24,9 @@
     <td mat-cell *matCellDef="let element"> {{element.country}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="descritpion">
-    <th mat-header-cell *matHeaderCellDef> Descritpion </th>
-    <td mat-cell *matCellDef="let element"> {{element.descritpion}} </td>
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

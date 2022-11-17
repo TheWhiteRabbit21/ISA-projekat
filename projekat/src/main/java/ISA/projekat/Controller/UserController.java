@@ -25,11 +25,11 @@ public class UserController {
     public ResponseEntity<UserDTO> saveUser(@RequestBody UserDTO userDTO) {
 
         RegisteredUser user = new RegisteredUser();
-        user.setName(userDTO.getName());
-        user.setSurname(userDTO.getSurname());
+        user.setName(userDTO.name);
+        user.setSurname(userDTO.surname);
 
         user = userService.save(user);
-        return new ResponseEntity<>(new UserDTO(user), HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/all")
@@ -39,8 +39,10 @@ public class UserController {
 
         // convert users to DTOs
         List<UserDTO> usersDTO = new ArrayList<>();
+
         for (RegisteredUser u : users) {
             usersDTO.add(new UserDTO(u));
+
         }
 
         return new ResponseEntity<>(usersDTO, HttpStatus.OK);
@@ -56,8 +58,35 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
+    
+    
+    @PutMapping(value = "/update", consumes = "application/json")
+    @ResponseBody
+    public ResponseEntity<UserDTO> updateCenter(@RequestBody UserDTO userDTO){
+    	
+    	//TODO
+//    	System.out.println(userDTO.getName());
+//    	System.out.println(userDTO.getId());
+//    	System.out.println(userDTO);
+    	
+    	
+    	
+    	
+    	
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 }

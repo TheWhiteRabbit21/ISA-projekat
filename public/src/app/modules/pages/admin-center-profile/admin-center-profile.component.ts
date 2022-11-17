@@ -35,7 +35,7 @@ export class AdminCenterProfileComponent implements OnInit {
 
   submit() : void{
     this.updateCenterService.submit(this.center).pipe(
-      tap(() => this.router.navigate(['../welcome']))
+      tap(() => this.router.navigate(['../home']))
       ).subscribe();
   }
 

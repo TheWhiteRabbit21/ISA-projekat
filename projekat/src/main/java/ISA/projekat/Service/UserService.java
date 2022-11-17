@@ -2,6 +2,7 @@ package ISA.projekat.Service;
 
 import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Model.User;
+import ISA.projekat.Model.enums.Gender;
 import ISA.projekat.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,5 +45,13 @@ public class UserService {
 
     public List<RegisteredUser> findAll() {
         return userRepository.findAll();
+    }
+
+    public Gender parseGender(String gender){
+        if(gender.equals("Male")){
+            return Gender.MALE;
+        }else{
+            return Gender.FEMALE;
+        }
     }
 }

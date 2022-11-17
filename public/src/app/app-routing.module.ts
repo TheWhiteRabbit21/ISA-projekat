@@ -6,6 +6,7 @@ import { HomeComponent } from "./modules/pages/home/home.component";
 import { UserProfileComponent } from "./modules/pages/user-profile/user-profile.component"
 import { RegisterCenterComponent } from "./modules/pages/register-center/register-center.component";
 import { WelcomeComponent } from "./modules/pages/welcome/welcome.component";
+import { RegisterCenterAdminComponent } from "./modules/pages/register-center-admin/register-center-admin.component";
 
 
 
@@ -15,8 +16,9 @@ const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register-center', component: RegisterCenterComponent },
-  {path: 'userProfile', component: UserProfileComponent},
-  { path: 'adminprofile', component: AdminProfileComponent },
+  { path: 'register-center-admin', component: RegisterCenterAdminComponent },
+  { path: 'userProfile', component: UserProfileComponent},
+  { path: 'adminprofile/:id', component: AdminProfileComponent },
   { path: 'admincenterprofile/:id', component: AdminCenterProfileComponent },
   { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
 
