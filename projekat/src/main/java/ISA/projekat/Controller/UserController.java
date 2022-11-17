@@ -28,7 +28,7 @@ public class UserController {
         user.setSurname(userDTO.getSurname());
 
         user = userService.save(user);
-        return new ResponseEntity<>(new UserDTO(user), HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/all")
@@ -39,7 +39,7 @@ public class UserController {
         // convert users to DTOs
         List<UserDTO> usersDTO = new ArrayList<>();
         for (User u : users) {
-            usersDTO.add(new UserDTO(u));
+            //usersDTO.add(new UserDTO(u));
         }
 
         return new ResponseEntity<>(usersDTO, HttpStatus.OK);
@@ -55,8 +55,35 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
+    
+    
+    @PutMapping(value = "/update", consumes = "application/json")
+    @ResponseBody
+    public ResponseEntity<UserDTO> updateCenter(@RequestBody UserDTO userDTO){
+    	
+    	//TODO
+//    	System.out.println(userDTO.getName());
+//    	System.out.println(userDTO.getId());
+//    	System.out.println(userDTO);
+    	
+    	
+    	
+    	
+    	
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 }
