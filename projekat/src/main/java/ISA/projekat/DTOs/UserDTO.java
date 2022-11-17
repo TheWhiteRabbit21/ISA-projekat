@@ -1,79 +1,118 @@
 package ISA.projekat.DTOs;
 
-import ISA.projekat.Model.User;
-import ISA.projekat.Model.enums.Gender;
-
 public class UserDTO {
-    private Integer jmbg;
+	private String id;
     private String name;
     private String surname;
     private String email;
-    private Gender gender;
-    private int address;
-    private String city;
+    private String gender;
+    private String jmbg;
     private String state;
-    private String password;
+    private String city;
+    private String street;
+    private String streetNumber;
     private String phoneNumber;
 
 
     public UserDTO() {
 
     }
+    
+    /*public UserDTO(User user) {
+    this(user.getEmail(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getJmbg(), user.getAddress(), user.getCity(), user.getState(), user.getPhoneNumber());
+	}*/
+    
+    
+	public String getId() {
+		return id;
+	}
 
-    public UserDTO(User user) {
-        this(user.getEmail(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getJmbg(), user.getAddress(), user.getCity(), user.getState(), user.getPhoneNumber());
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public UserDTO(String email, String password, String name, String surname, Gender gender, Integer jmbg, int address, String city, String state, String phoneNumber) {
-        this.email=email;
-        this.password=password;
-        this.name =  name;
-        this.surname = surname;
-        this.gender = gender;
-        this.jmbg = jmbg;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.phoneNumber = phoneNumber;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Integer getJmbg() {
-        return jmbg;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getName(){
-        return name;
-    }
+	public String getSurname() {
+		return surname;
+	}
 
-    public String getSurname() {
-        return surname;
-    }
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public Gender getGender() {
-        return gender;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public int getAddress() {
-        return address;
-    }
+	public String getGender() {
+		return gender;
+	}
 
-    public String getCity() {
-        return city;
-    }
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
-    public String getState() {
-        return state;
-    }
+	public String getJmbg() {
+		return jmbg;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setJmbg(String jmbg) {
+		this.jmbg = jmbg;
+	}
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getStreetNumber() {
+		return streetNumber;
+	}
+
+	public void setStreetNumber(String streetNumber) {
+		this.streetNumber = streetNumber;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+    
+    
+    
+    
 }
