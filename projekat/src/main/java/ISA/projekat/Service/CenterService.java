@@ -3,7 +3,10 @@ package ISA.projekat.Service;
 import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.BloodBankCenter;
+import ISA.projekat.Model.Staff;
+import ISA.projekat.Model.enums.Gender;
 import ISA.projekat.Repository.AddressRepository;
+import ISA.projekat.Repository.CenterAdminRepository;
 import ISA.projekat.Repository.CenterRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +17,22 @@ public class CenterService {
 
     private final CenterRepository centerRepository;
     private final AddressRepository addressRepository;
+    private final CenterAdminRepository centerAdminRepository;
     
-    public CenterService(CenterRepository centerRepository, AddressRepository addressRepository) {
+    public CenterService(CenterRepository centerRepository, AddressRepository addressRepository, CenterAdminRepository centerAdminRepository) {
         this.centerRepository = centerRepository;
         this.addressRepository = addressRepository;
+        this.centerAdminRepository = centerAdminRepository;
     }
     
     public void Create(CenterDTO centerDTO){
         Address address = addressRepository.save(new Address(centerDTO.country, centerDTO.city, centerDTO.street, centerDTO.number));
-        centerRepository.save(new BloodBankCenter(centerDTO.name, address.getId(), centerDTO.description));
+        BloodBankCenter bloodBankCenter = centerRepository.save(new BloodBankCenter(centerDTO.name, address.getId(), centerDTO.description));
+        for(int id : centerDTO.admins){
+            Staff staff = centerAdminRepository.findById(id).get();
+            staff.setBloodBankCenter(bloodBankCenter);
+            centerAdminRepository.save(staff);
+        }
     }
     
     public List<BloodBankCenter> findAll(){

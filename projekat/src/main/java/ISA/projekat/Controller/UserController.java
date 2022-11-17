@@ -1,5 +1,6 @@
 package ISA.projekat.Controller;
 
+import ISA.projekat.DTOs.SearchUserDTO;
 import ISA.projekat.DTOs.UserDTO;
 import ISA.projekat.Model.User;
 import ISA.projekat.Service.UserService;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,14 +28,16 @@ public class UserController {
         user.setSurname(userDTO.getSurname());
 
         //user = userService.save(user);
-        //return new ResponseEntity<>(new UserDTO(user), HttpStatus.CREATED);
-        return null;
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping(produces = "application/json")
     public ResponseEntity<List<UserDTO>> getAllUsers() {
-        //return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
-        return null;
+
+        List<UserDTO> usersDTO = userService.findAll();
+
+
+        return new ResponseEntity<>(usersDTO, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{jmbg}")
@@ -48,8 +50,28 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
+    
+    
+    @PutMapping(value = "/update", consumes = "application/json")
+    @ResponseBody
+    public ResponseEntity<UserDTO> updateCenter(@RequestBody UserDTO userDTO){
+    	
+    	//TODO
+//    	System.out.println(userDTO.getName());
+//    	System.out.println(userDTO.getId());
+//    	System.out.println(userDTO);
+    	
+    	
+    	
+    	
+    	
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PostMapping(produces = "application/json", value = "/search")
+    @ResponseBody
+    public ResponseEntity<List<UserDTO>> getAllUsersByNameAndSurname(@RequestBody SearchUserDTO searchUserDTO) {
+        return new ResponseEntity<>(userService.findByNameAndSurnameAllIgnoringCase(searchUserDTO.getName(), searchUserDTO.getSurname()),HttpStatus.OK);
+    }
 }

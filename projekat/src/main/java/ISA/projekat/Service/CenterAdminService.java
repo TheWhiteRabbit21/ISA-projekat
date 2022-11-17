@@ -8,6 +8,9 @@ import ISA.projekat.Repository.AddressRepository;
 import ISA.projekat.Repository.CenterAdminRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CenterAdminService {
     private final CenterAdminRepository centerAdminRepository;
@@ -21,6 +24,14 @@ public class CenterAdminService {
         Address address = addressRepository.save(new Address(centerAdminDTO.country, centerAdminDTO.city, centerAdminDTO.street, centerAdminDTO.number));
         centerAdminRepository.save(new Staff(centerAdminDTO.email,centerAdminDTO.password,centerAdminDTO.name,
                 centerAdminDTO.surname, parseGender(centerAdminDTO.gender), centerAdminDTO.jmbg, address.getId(),centerAdminDTO.phoneNumber));
+    }
+    public List<CenterAdminDTO> GetAvailableAdmins(){
+        List<CenterAdminDTO> admins = new ArrayList<CenterAdminDTO>();
+        for(Staff admin : centerAdminRepository.findAllByBloodBankCenterIsNull()){
+            admins.add(new CenterAdminDTO(admin.getId(),admin.getName(),admin.getSurname()));
+            System.out.println(admin.getId());
+        }
+        return admins;
     }
     public Gender parseGender(String gender){
         if(gender.equals("Male")){

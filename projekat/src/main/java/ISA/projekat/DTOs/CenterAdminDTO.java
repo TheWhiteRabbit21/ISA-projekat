@@ -1,6 +1,7 @@
 package ISA.projekat.DTOs;
 
 public class CenterAdminDTO {
+    public int id;
     public String name;
     public String surname;
     public String city;
@@ -25,6 +26,12 @@ public class CenterAdminDTO {
         this.password = password;
         this.jmbg = jmbg;
         this.phoneNumber = phoneNumber;
+    }
+
+    public CenterAdminDTO(int id, String name, String surname) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
     }
 
     public CenterAdminDTO() {

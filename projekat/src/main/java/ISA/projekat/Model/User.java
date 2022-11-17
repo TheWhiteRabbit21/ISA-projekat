@@ -14,7 +14,7 @@ public class User implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 	
 	@Column(unique = true, nullable = false)
 	private String email;
@@ -106,7 +106,15 @@ public class User implements Serializable{
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", surname="

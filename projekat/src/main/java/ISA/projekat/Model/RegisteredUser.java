@@ -3,13 +3,8 @@ package ISA.projekat.Model;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import ISA.projekat.Model.enums.UserCategory;
-import org.hibernate.annotations.DiscriminatorFormula;
 
-import java.io.Serial;
-import java.io.Serializable;
 
 @Entity
 @SuppressWarnings("serial")

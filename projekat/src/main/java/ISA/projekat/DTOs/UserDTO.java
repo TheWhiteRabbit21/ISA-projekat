@@ -1,79 +1,131 @@
 package ISA.projekat.DTOs;
 
+import ISA.projekat.Model.Address;
 import ISA.projekat.Model.User;
-import ISA.projekat.Model.enums.Gender;
 
 public class UserDTO {
-    private Integer jmbg;
+	private String id;
     private String name;
     private String surname;
     private String email;
-    private Gender gender;
-    private String address;
-    private String city;
+    private String gender;
+    private String jmbg;
     private String state;
-    private String password;
+    private String city;
+    private String street;
+    private String streetNumber;
     private String phoneNumber;
 
+	public UserDTO(String name, String surname, String email, String gender, String jmbg, String state, String city, String street, String streetNumber, String phoneNumber) {
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.gender = gender;
+		this.jmbg = jmbg;
+		this.state = state;
+		this.city = city;
+		this.street = street;
+		this.streetNumber = streetNumber;
+		this.phoneNumber = phoneNumber;
+	}
 
-    public UserDTO() {
+	public UserDTO() {
 
     }
 
-    public UserDTO(User user) {
-        //this(user.getEmail(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getJmbg(), user.getAddress(), user.getCity(), user.getState(), user.getPhoneNumber());
-    }
 
-    public UserDTO(String email, String password, String name, String surname, Gender gender, Integer jmbg, String address, String city, String state, String phoneNumber) {
-        this.email=email;
-        this.password=password;
-        this.name =  name;
-        this.surname = surname;
-        this.gender = gender;
-        this.jmbg = jmbg;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.phoneNumber = phoneNumber;
-    }
 
-    public Integer getJmbg() {
-        return jmbg;
-    }
+    public UserDTO(User user, Address address) {
+    	this(user.getName(), user.getSurname(), user.getEmail(), user.getGender().toString(), Integer.toString(user.getJmbg()), address.getCountry()
+				, address.getCity(), address.getStreet(), address.getNumber(), user.getPhoneNumber());
+	}
+    
+    
+	public String getId() {
+		return id;
+	}
 
-    public String getName(){
-        return name;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public String getSurname() {
-        return surname;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Gender getGender() {
-        return gender;
-    }
+	public String getSurname() {
+		return surname;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
 
-    public String getCity() {
-        return city;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getState() {
-        return state;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getGender() {
+		return gender;
+	}
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getJmbg() {
+		return jmbg;
+	}
+
+	public void setJmbg(String jmbg) {
+		this.jmbg = jmbg;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getStreetNumber() {
+		return streetNumber;
+	}
+
+	public void setStreetNumber(String streetNumber) {
+		this.streetNumber = streetNumber;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 }
