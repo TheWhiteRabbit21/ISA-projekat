@@ -21,7 +21,7 @@ public class UserDTO {
     }
 
     public UserDTO(User user) {
-        this(user.getEmail(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getJmbg(), user.getAddress(), user.getCity(), user.getState(), user.getPhoneNumber());
+        //this(user.getEmail(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getJmbg(), user.getAddress(), user.getCity(), user.getState(), user.getPhoneNumber());
     }
 
     public UserDTO(String email, String password, String name, String surname, Gender gender, Integer jmbg, String address, String city, String state, String phoneNumber) {

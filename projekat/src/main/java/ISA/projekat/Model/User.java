@@ -107,7 +107,6 @@ public class User implements Serializable{
 		this.gender = gender;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", surname="

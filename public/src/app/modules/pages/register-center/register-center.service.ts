@@ -16,7 +16,7 @@ export class Center{
 })
 export class RegisterCenterService {
 
-  route: string = 'http://localhost:8084/';
+  route: string = 'http://localhost:8088/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient) { }
 

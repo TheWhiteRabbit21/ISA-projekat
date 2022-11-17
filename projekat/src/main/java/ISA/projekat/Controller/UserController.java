@@ -27,22 +27,15 @@ public class UserController {
         user.setName(userDTO.getName());
         user.setSurname(userDTO.getSurname());
 
-        user = userService.save(user);
-        return new ResponseEntity<>(new UserDTO(user), HttpStatus.CREATED);
+        //user = userService.save(user);
+        //return new ResponseEntity<>(new UserDTO(user), HttpStatus.CREATED);
+        return null;
     }
 
-    @GetMapping(value = "/all")
+    @GetMapping(produces = "application/json")
     public ResponseEntity<List<UserDTO>> getAllUsers() {
-
-        List<User> users = userService.findAll();
-
-        // convert users to DTOs
-        List<UserDTO> usersDTO = new ArrayList<>();
-        for (User u : users) {
-            usersDTO.add(new UserDTO(u));
-        }
-
-        return new ResponseEntity<>(usersDTO, HttpStatus.OK);
+        //return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+        return null;
     }
 
     @GetMapping(value = "/{jmbg}")

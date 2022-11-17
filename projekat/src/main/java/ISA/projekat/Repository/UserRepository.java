@@ -1,6 +1,7 @@
 package ISA.projekat.Repository;
 
 
+import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Model.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,20 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<RegisteredUser, Integer> {
 
-    public User findOneByJmbg(Integer jmbg);
+    public RegisteredUser findOneByJmbg(Integer jmbg);
 
 
-    @Query("select u from User u where u.surname = ?1")
-    public List<User> findAllUsersBySurname(String surname);
+    @Query("select u from RegisteredUser u where u.surname = ?1")
+    public List<RegisteredUser> findAllUsersBySurname(String surname);
 
-    @Query("select u from User u where u.name = ?1")
-    public List<User> findAllUsersByName(String name);
-    public User findByPassword(String password);
+    @Query("select u from RegisteredUser u where u.name = ?1")
+    public List<RegisteredUser> findAllUsersByName(String name);
+    public RegisteredUser findByPassword(String password);
 
-    public List<User> findByNameAndSurnameAllIgnoringCase(String name, String surname);
+    public List<RegisteredUser> findByNameAndSurnameAllIgnoringCase(String name, String surname);
 
-    public Page<User> findAll(Pageable pageable);
+    public Page<RegisteredUser> findAll(Pageable pageable);
 
 }
