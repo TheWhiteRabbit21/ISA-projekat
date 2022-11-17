@@ -16,28 +16,28 @@ public class User implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(unique = true, nullable = false)
+	@Column(unique = true, nullable = true)
 	private String email;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String password;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String name;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String surname;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Gender gender;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private int jmbg;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private int address;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String phoneNumber;
 	
 	
@@ -56,6 +56,30 @@ public class User implements Serializable{
 		this.jmbg = jmbg;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
+	}
+
+	
+	
+	public User(Integer id, String email, String password, String name, String surname, Gender gender, int jmbg,
+			int address, String phoneNumber) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.gender = gender;
+		this.jmbg = jmbg;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -105,14 +129,6 @@ public class User implements Serializable{
 	}
 	public void setGender(Gender gender) {
 		this.gender = gender;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	@Override

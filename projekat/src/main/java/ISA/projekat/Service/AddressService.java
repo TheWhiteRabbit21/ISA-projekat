@@ -3,9 +3,12 @@ package ISA.projekat.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ISA.projekat.DTOs.CenterAdminDTO;
 import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.BloodBankCenter;
+import ISA.projekat.Model.Staff;
+import ISA.projekat.Model.User;
 import ISA.projekat.Repository.AddressRepository;
 
 @Service
@@ -28,5 +31,19 @@ public class AddressService {
 		return addressRepository.save(address);
 		
 	}
+
+	public Address Update(CenterAdminDTO centerAdminDTO, Staff staff) {
+		
+		Address address = new Address(staff.getAddress(), centerAdminDTO.country, 
+				centerAdminDTO.city, centerAdminDTO.street, centerAdminDTO.number);
+		
+		return addressRepository.save(address);
+		
+		
+	}
+	
+	public Address save(Address address) {
+        return addressRepository.save(address);
+    }
 
 }

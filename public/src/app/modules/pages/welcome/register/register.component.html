@@ -3,7 +3,7 @@
   <section>
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
-      <input placeholder="example@email.com" matInput>
+      <input [(ngModel)]="registeringUser.email" placeholder="example@email.com" matInput>
     </mat-form-field>
   </section>
 
@@ -17,51 +17,57 @@
   <section>
     <mat-form-field appearance="fill">
       <mat-label>Password</mat-label>
-      <input type="password" matInput>
+      <input [(ngModel)]="registeringUser.password" type="password" matInput>
     </mat-form-field>
   </section>
 
-  <section>
-    <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
-      <input matInput>
-    </mat-form-field>
-  </section>
-
-  <section>
-    <mat-form-field appearance="fill">
-      <mat-label>Surname</mat-label>
-      <input matInput>
-    </mat-form-field>
-  </section>
   
     <mat-form-field appearance="fill">
-      <mat-label>Address</mat-label>
-      <input matInput>
+      <mat-label>Name</mat-label>
+      <input [(ngModel)]="registeringUser.name" matInput>
+    </mat-form-field>
+  
+
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Surname</mat-label>
+      <input [(ngModel)]="registeringUser.surname" matInput>
+    </mat-form-field><br>
+  
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Street</mat-label>
+      <input [(ngModel)]="registeringUser.street" matInput>
+    </mat-form-field>
+  
+
+    <mat-form-field appearance="fill">
+      <mat-label>Number</mat-label>
+      <input [(ngModel)]="registeringUser.number" matInput>
     </mat-form-field>
   
   
     <mat-form-field appearance="fill">
       <mat-label>City</mat-label>
-      <input matInput>
+      <input [(ngModel)]="registeringUser.city" matInput>
     </mat-form-field>
  
   
     <mat-form-field appearance="fill">
       <mat-label>Country</mat-label>
-      <input matInput>
-    </mat-form-field>
+      <input [(ngModel)]="registeringUser.state" matInput>
+    </mat-form-field><br>
 
-    <section>
+   
       <mat-form-field appearance="fill">
         <mat-label>Telephone number</mat-label>
-        <input placeholder="ex: 065123456" matInput>
+        <input [(ngModel)]="registeringUser.phoneNumber" placeholder="ex: 065123456" matInput>
       </mat-form-field>
-    </section>
+    
     <section>
       <mat-form-field appearance="fill">
         <mat-label>JMBG</mat-label>
-        <input matInput>
+        <input [(ngModel)]="registeringUser.jmbg" matInput>
       </mat-form-field>
     </section>
 
@@ -75,16 +81,18 @@
     <section>
       <mat-form-field appearance="fill">
         <mat-label>Occupation</mat-label>
-        <input matInput>
+        <input [(ngModel)]="registeringUser.occupation" matInput>
       </mat-form-field>
     </section>
 
     <section>
       <mat-form-field appearance="fill">
         <mat-label>Company/Univeristy/School information</mat-label>
-        <input matInput>
+        <input [(ngModel)]="registeringUser.establishmentInfo" matInput>
       </mat-form-field>
     </section>
+
+    <button (click)="submit()">Submit</button>
 
     
   

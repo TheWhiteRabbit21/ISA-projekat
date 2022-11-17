@@ -29,4 +29,10 @@ public class Staff extends User {
 	public void setBloodBankCenter(BloodBankCenter bloodBankCenter) {
 		this.bloodBankCenter = bloodBankCenter;
 	}
+
+	public Staff(Integer id, String email, String password, String name, String surname, Gender gender, int jmbg,
+			int address, String phoneNumber) {
+		super(id, email, password, name, surname, gender, jmbg, address, phoneNumber);
+
+	}
 }

@@ -4,6 +4,13 @@ import ISA.projekat.DTOs.UserDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Model.User;
+
+import ISA.projekat.DTOs.RegisteredUserDTO;
+import ISA.projekat.Model.Address;
+import ISA.projekat.Model.RegisteredUser;
+import ISA.projekat.Model.User;
+import ISA.projekat.Model.enums.Gender;
+import ISA.projekat.Model.enums.UserCategory;
 import ISA.projekat.Repository.AddressRepository;
 import ISA.projekat.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +46,10 @@ public class UserService {
 
     public List<RegisteredUser> findAllUsersBySurname(String surname) {
         return userRepository.findAllUsersBySurname(surname);
+    }
+    
+    public void RegisterUser(RegisteredUserDTO registeredUserDTO, int addressId){
+    	userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), addressId, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE));
     }
 
     public RegisteredUser findOneByJmbg(Integer jmbg) {
