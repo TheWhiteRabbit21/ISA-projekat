@@ -1,11 +1,14 @@
 package ISA.projekat.Controller;
 
 import ISA.projekat.DTOs.CenterDTO;
+import ISA.projekat.DTOs.RegisteredUser2DTO;
 import ISA.projekat.DTOs.RegisteredUserDTO;
 import ISA.projekat.DTOs.UserDTO;
+import ISA.projekat.Model.Address;
 import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Model.User;
 import ISA.projekat.Model.RegisteredUser;
+import ISA.projekat.Service.AddressService;
 import ISA.projekat.Service.UserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +25,32 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private AddressService _addressService;
 
+    @PutMapping(value = "/edit")
+    public ResponseEntity<RegisteredUser2DTO> saveUser(@RequestBody RegisteredUser2DTO userDTO) {
 
-    @PostMapping("/edit")
-    public ResponseEntity<UserDTO> saveUser(@RequestBody UserDTO userDTO) {
-
-        RegisteredUser user = new RegisteredUser();
-        user.setName(userDTO.name);
-        user.setSurname(userDTO.surname);
-
+        RegisteredUser user = userService.findByEmail(userDTO.getEmail());
+        Address address = _addressService.findById(userDTO.getAddress().getId());
+        address.setCity(userDTO.getAddress().getCity());
+        address.setCountry(userDTO.getAddress().getCountry());
+        address.setNumber(userDTO.getAddress().getNumber());
+        address.setStreet(userDTO.getAddress().getStreet());
+        user.setName(userDTO.getName());
+        user.setSurname(userDTO.getSurname());
+        user.setEmail(userDTO.getEmail());
+        user.setPassword(userDTO.getPassword());
+        user.setAddress(userDTO.getAddress().getId());
+        user.setJmbg(userDTO.getJmbg());
+        user.setPhoneNumber(userDTO.getPhoneNumber());
+        user.setGender(userDTO.getGender());
+        user.setInfoInstitution(userDTO.getEstablishmentInfo());
+        user.setPoints(Double.parseDouble(userDTO.getPoints()));
+        user.setProfession(userDTO.getOccupation());
+        user.setUserCatagory(userDTO.getUser_catagory());
         user = userService.save(user);
+        address = _addressService.save(address);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     
@@ -43,32 +62,37 @@ public class UserController {
     }
 
     @GetMapping(value = "/all")
-    public ResponseEntity<List<UserDTO>> getAllUsers() {
+    public ResponseEntity<List<RegisteredUser2DTO>> getAllUsers() {
 
         List<RegisteredUser> users = userService.findAll();
 
         // convert users to DTOs
-        List<UserDTO> usersDTO = new ArrayList<>();
+        List<RegisteredUser2DTO> usersDTO = new ArrayList<>();
 
         for (RegisteredUser u : users) {
-            usersDTO.add(new UserDTO(u));
+            Address address = _addressService.findOne(u.getAddress());
+            usersDTO.add(new RegisteredUser2DTO(u.getEmail(),u.getPassword(),u.getName(),u.getSurname(),address,u.getPhoneNumber(),u.getJmbg(),u.getGender(),u.getProfession(),u.getInfoInstitution(),String.valueOf(u.getPoints()),String.valueOf(u.getUserCatagory())));
 
         }
 
         return new ResponseEntity<>(usersDTO, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/find/{jmbg}")
-    public ResponseEntity<UserDTO> getUserByJmbg(@PathVariable("jmbg") Integer jmbg) {
+    @GetMapping(value = "/find/{id}")
+    public ResponseEntity<RegisteredUser2DTO> getUserById(@PathVariable("id") Integer id) {
 
-        RegisteredUser user = userService.findOneByJmbg(jmbg);
+        RegisteredUser u = userService.findOneById(id);
 
         // user must exist
-        if (user == null) {
+        if (u == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        }
+        Address address = _addressService.findOne(u.getAddress());
+        RegisteredUser2DTO  userDTO = new RegisteredUser2DTO(u.getEmail(),u.getPassword(),u.getName(),u.getSurname(),address,u.getPhoneNumber(),u.getJmbg(),u.getGender(),u.getProfession(),u.getInfoInstitution(),String.valueOf(u.getPoints()),String.valueOf(u.getUserCatagory()));
+
+
+        return new ResponseEntity<>(userDTO , HttpStatus.OK);
     }
     
     

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { User } from './user';
@@ -11,7 +11,7 @@ import { User } from './user';
 export class UserProfileComponent implements OnInit {
 
   public user: any  = {} as User;
-
+  editedUser: any = {} as User;
 
   constructor(private http: HttpClient) { }
 
@@ -19,17 +19,18 @@ export class UserProfileComponent implements OnInit {
     //ovde dobavis podatke iz bekenda
 
 
-    this.http.get("localhost:8084/api/users/find/123123123").subscribe(res => {
+    this.http.get("http://localhost:8084/api/users/find/1").subscribe(res => {
       this.user = res;
+      this.editedUser = Object.assign({}, this.user);
+      console.log(this.user);
     });
-    console.log("ASDASDASDASDASDSAD")
-    console.log(this.user);
+
   }
 
 
-  editedUser = Object.assign({}, this.user);
 
   public onOpenModal( mode: string): void {
+
     const container = document.getElementById('main-container');
     // console.log("KONTEJENR",container);
     const button = document.createElement('button');
@@ -47,7 +48,16 @@ export class UserProfileComponent implements OnInit {
   }
 
   public saveButton(): void {
-    this.user = Object.assign({}, this.editedUser);
+    //this.user = Object.assign({}, this.editedUser);
+
+    var headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    this.http.put("http://localhost:8084/api/users/edit", JSON.stringify(this.editedUser),{headers:headers}).subscribe(res => {
+      this.user = res;
+      console.log(res);
+    });
 
   }
 

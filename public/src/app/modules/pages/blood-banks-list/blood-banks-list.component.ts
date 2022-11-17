@@ -1,4 +1,5 @@
 import {LiveAnnouncer} from '@angular/cdk/a11y';
+import { HttpClient } from '@angular/common/http';
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -18,13 +19,16 @@ export interface BloodBank {
   styleUrls: ['./blood-banks-list.component.css']
 })
 export class BloodBanksListComponent implements AfterViewInit, OnInit {
-
+  countries: string[] = [];
+  filterCountry: string = 'Reset';
+  name: string = '';
+  city: string = '';
   public bloodbanks: BloodBank[] = [];
   displayedColumns: string[] = ['name', 'averagePoints', 'city', 'country', 'description'];
   public dataSource = new MatTableDataSource(this.bloodbanks);
-  
-  constructor(private _liveAnnouncer: LiveAnnouncer, private _bloodBankService: BloodBankListService) {}
-  
+
+  constructor(private _liveAnnouncer: LiveAnnouncer, private _bloodBankService: BloodBankListService, private http:HttpClient) {}
+
   ngOnInit(): void {
     this.getBloodCenters();
   }
@@ -34,6 +38,9 @@ export class BloodBanksListComponent implements AfterViewInit, OnInit {
       this.bloodbanks = res;
       this.dataSource = new MatTableDataSource(this.bloodbanks);
       this.dataSource.sort = this.sort;
+      for(let i = 0; i<this.bloodbanks.length; i++){
+        this.countries.push(this.bloodbanks[i].country);
+      }
     })
   }
 
@@ -52,5 +59,36 @@ export class BloodBanksListComponent implements AfterViewInit, OnInit {
     }
   }
 
+  searchByName() {
+    if(this.name !== ''){
+      this.http.get(`http://localhost:8084/api/centers/search_name/${this.name}`).subscribe((res:any) =>{
+      this.dataSource = new MatTableDataSource(res);
+    })
+    } else {
+        this.dataSource = new MatTableDataSource(this.bloodbanks);
+    }
 
+  }
+
+  searchByCity() {
+    if(this.city !== ''){
+      this.http.get(`http://localhost:8084/api/centers/search_city/${this.city}`).subscribe((res:any) =>{
+      this.dataSource = new MatTableDataSource(res);
+    })
+    } else {
+        this.dataSource = new MatTableDataSource(this.bloodbanks);
+    }
+
+  }
+
+  filterByCountry() {
+    if(this.filterCountry !== 'Reset'){
+      this.http.get(`http://localhost:8084/api/centers/filter_country/${this.filterCountry}`).subscribe((res:any) =>{
+      this.dataSource = new MatTableDataSource(res);
+    });
+    } else{
+      this.dataSource = new MatTableDataSource(this.bloodbanks);
+    }
+
+  }
 }

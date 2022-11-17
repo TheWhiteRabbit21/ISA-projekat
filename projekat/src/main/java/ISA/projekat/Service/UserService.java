@@ -34,8 +34,8 @@ public class UserService {
         userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), Gender.MALE, registeredUserDTO.getJmbg(), 500, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE));
     }
 
-    public RegisteredUser findOneByJmbg(Integer jmbg) {
-        return userRepository.findOneByJmbg(jmbg);
+    public RegisteredUser findOneById(Integer jmbg) {
+        return userRepository.findOneById(jmbg);
     }
 
     public RegisteredUser findByPassword(String password) {
@@ -56,6 +56,10 @@ public class UserService {
 
     public List<RegisteredUser> findAll() {
         return userRepository.findAll();
+    }
+
+    public RegisteredUser findByEmail(String email){
+        return userRepository.findByEmail(email).get();
     }
 
     public Gender parseGender(String gender){

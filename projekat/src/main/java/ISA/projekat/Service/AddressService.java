@@ -1,5 +1,6 @@
 package ISA.projekat.Service;
 
+import ISA.projekat.Model.RegisteredUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +29,10 @@ public class AddressService {
 		return addressRepository.save(address);
 		
 	}
-
+	public Address findById(int id){
+		return addressRepository.findById(id).get();
+	}
+	public Address save(Address address) {
+		return addressRepository.save(address);
+	}
 }

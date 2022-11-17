@@ -1,15 +1,17 @@
+import { Address } from "./address";
+
 export interface User {
-  jmbg: String;
+  jmbg: string;
   name: string;
   surname: string;
   email: string;
   gender: string;
-  address: number;
+  address: Address;
   city: string;
   state: string;
   password: string;
   phoneNumber: string;
-  points: String;
-  category: string;
+  points: string;
+  user_catagory: string;
 
 }

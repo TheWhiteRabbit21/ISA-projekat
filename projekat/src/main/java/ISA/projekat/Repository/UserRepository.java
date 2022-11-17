@@ -10,11 +10,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<RegisteredUser, Integer> {
 
-    public RegisteredUser findOneByJmbg(Integer jmbg);
+    public RegisteredUser findOneById(Integer id);
 
+    Optional<RegisteredUser> findByEmail(String email);
 
     @Query("select u from User u where u.surname = ?1")
     public List<RegisteredUser> findAllUsersBySurname(String surname);

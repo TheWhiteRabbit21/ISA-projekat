@@ -57,8 +57,15 @@ public class RegisteredUser extends User {
 	public UserCategory getUserCatagory() {
 		return userCatagory;
 	}
-	public void setUserCatagory(UserCategory userCatagory) {
-		this.userCatagory = userCatagory;
+	public void setUserCatagory(String userCatagory) {
+		if(userCatagory.equals("BRONZE")){
+			this.userCatagory = UserCategory.BRONZE;
+		} else if(userCatagory.equals("SILVER")){
+			this.userCatagory = UserCategory.SILVER;
+		} else {
+		this.userCatagory = UserCategory.GOLD;
+		}
+
 	}
 	public String getUserPerks() {
 		return userPerks;
@@ -81,7 +88,7 @@ public class RegisteredUser extends User {
 	@Override
 	public String toString() {
 		return "RegisteredUser [points=" + points + ", userPerks=" + userPerks + ", infoInstitution=" + infoInstitution
-				+ ", profession=" + profession + ", userCatagory=" + userCatagory + "]";
+				+ ", profession=" + profession + ", userCatagory=" + userCatagory + ", name="+  "]";
 	}
 	
 	

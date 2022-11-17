@@ -32,7 +32,7 @@ public class User implements Serializable{
 	private Gender gender;
 	
 	@Column(nullable = true)
-	private int jmbg;
+	private Integer jmbg;
 
 	@Column(nullable = true)
 	private int address;
@@ -47,7 +47,7 @@ public class User implements Serializable{
 		super();
 	}
 	
-	public User(String email, String password, String name, String surname, Gender gender, int jmbg,
+	public User(String email, String password, String name, String surname, Gender gender, Integer jmbg,
 
 			int address, String phoneNumber) {
 
@@ -99,7 +99,7 @@ public class User implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getJmbg() {
+	public Integer getJmbg() {
 		return jmbg;
 	}
 	public void setJmbg(int jmbg) {

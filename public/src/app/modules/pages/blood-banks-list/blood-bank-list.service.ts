@@ -8,7 +8,7 @@ import { BloodBank } from "./blood-banks-list.component";
 })
 export class BloodBankListService {
 
-    route: string = 'http://localhost:8088/';
+    route: string = 'http://localhost:8084/';
     headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     constructor(private http: HttpClient) { }
 

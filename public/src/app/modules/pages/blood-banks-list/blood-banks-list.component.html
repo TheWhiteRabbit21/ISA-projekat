@@ -1,24 +1,24 @@
 <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
 
- 
+
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name"> Name </th>
     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
-  
+
   <ng-container matColumnDef="averagePoints">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by average rating"> Average Points </th>
     <td mat-cell *matCellDef="let element"> {{element.averagePoints}} </td>
   </ng-container>
 
- 
+
   <ng-container matColumnDef="city">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by city"> City </th>
     <td mat-cell *matCellDef="let element"> {{element.city}} </td>
   </ng-container>
 
- 
+
   <ng-container matColumnDef="country">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by country"> Country </th>
     <td mat-cell *matCellDef="let element"> {{element.country}} </td>
@@ -32,3 +32,17 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<div>
+  <input type="text" [(ngModel)]="name" placeholder="Name">
+  <button (click)="searchByName()">Search Name</button>
+</div>
+<div>
+  <input type="text" [(ngModel)]="city" placeholder="City">
+  <button (click)="searchByCity()">Search City</button>
+</div>
+<div>
+  <select [(ngModel)]="filterCountry" (change)="filterByCountry()">
+    <option >Reset</option>
+    <option *ngFor="let c of countries">{{c}}</option>
+  </select>
+</div>
