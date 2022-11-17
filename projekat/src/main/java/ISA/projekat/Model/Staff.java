@@ -9,9 +9,6 @@ import javax.persistence.*;
 @DiscriminatorValue("2")
 public class Staff extends User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 	//private Set<Appointment> appointments = new HashSet<Appointment>(); 
 	/*@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "blood_bank_center_id")
@@ -23,6 +20,12 @@ public class Staff extends User {
 
 	public Staff() {
 		super();
+	}
+
+	public Staff(Integer id, String email, String password, String name, String surname, Gender gender, int jmbg,
+			int address, String phoneNumber) {
+		super(id, email, password, name, surname, gender, jmbg, address, phoneNumber);
+
 	}
 	
 }
