@@ -16,28 +16,28 @@ public class User implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(unique = true, nullable = false)
+	@Column(unique = true, nullable = true)
 	private String email;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String password;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String name;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String surname;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Gender gender;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private int jmbg;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private int address;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String phoneNumber;
 	
 	
