@@ -1,7 +1,10 @@
 package ISA.projekat.Controller;
 
+import ISA.projekat.DTOs.CenterDTO;
+import ISA.projekat.DTOs.RegisteredUserDTO;
 import ISA.projekat.DTOs.UserDTO;
 import ISA.projekat.Model.User;
+import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Service.UserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,13 @@ public class UserController {
 
         user = userService.save(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+    
+    @PostMapping(produces = "application/json", value = "add")
+    @ResponseBody
+    public String RegisterUser(@RequestBody RegisteredUserDTO registeredUserDTO){
+        userService.RegisterUser(registeredUserDTO);
+        return "Dosao";
     }
 
     @GetMapping(value = "/all")
