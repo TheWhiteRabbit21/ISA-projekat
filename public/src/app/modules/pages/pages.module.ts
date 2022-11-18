@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { RegisterCenterAdminComponent } from './register-center-admin/register-center-admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BloodDonorFormComponent } from './blood-donor-form/blood-donor-form.component';
+import { RegisteredUsersListComponent } from './registered-users-list/registered-users-list.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { BloodDonorFormComponent } from './blood-donor-form/blood-donor-form.com
     BloodBanksListComponent,
     RegisterCenterComponent,
     RegisterCenterAdminComponent,
-    BloodDonorFormComponent
+    BloodDonorFormComponent,
+    RegisteredUsersListComponent
   ],
   imports: [
     FormsModule,

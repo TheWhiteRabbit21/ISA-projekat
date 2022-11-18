@@ -8,6 +8,7 @@ import { RegisterCenterComponent } from "./modules/pages/register-center/registe
 import { WelcomeComponent } from "./modules/pages/welcome/welcome.component";
 import { RegisterCenterAdminComponent } from "./modules/pages/register-center-admin/register-center-admin.component";
 import { BloodDonorFormComponent } from "./modules/pages/blood-donor-form/blood-donor-form.component";
+import { RegisteredUsersListComponent } from "./modules/pages/registered-users-list/registered-users-list.component";
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'register-center', component: RegisterCenterComponent },
   { path: 'register-center-admin', component: RegisterCenterAdminComponent },
+  { path: 'registered-users', component: RegisteredUsersListComponent },
   { path: 'userProfile', component: UserProfileComponent},
   { path: 'adminprofile/:id', component: AdminProfileComponent },
   { path: 'admincenterprofile/:id', component: AdminCenterProfileComponent },

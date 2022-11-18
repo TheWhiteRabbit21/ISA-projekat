@@ -10,9 +10,9 @@ import javax.persistence.*;
 public class Staff extends User {
 
 	//private Set<Appointment> appointments = new HashSet<Appointment>(); 
-	/*@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "blood_bank_center_id")
-	private BloodBankCenter center;*/
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "bloodBankCenter_id")
+	private BloodBankCenter bloodBankCenter;
 
 	public Staff(String email, String password, String name, String surname, Gender gender, int jmbg, int address, String phoneNumber) {
 		super(email, password, name, surname, gender, jmbg, address, phoneNumber);
@@ -22,10 +22,17 @@ public class Staff extends User {
 		super();
 	}
 
+	public BloodBankCenter getBloodBankCenter() {
+		return bloodBankCenter;
+	}
+
+	public void setBloodBankCenter(BloodBankCenter bloodBankCenter) {
+		this.bloodBankCenter = bloodBankCenter;
+	}
+
 	public Staff(Integer id, String email, String password, String name, String surname, Gender gender, int jmbg,
 			int address, String phoneNumber) {
 		super(id, email, password, name, surname, gender, jmbg, address, phoneNumber);
 
 	}
-	
 }

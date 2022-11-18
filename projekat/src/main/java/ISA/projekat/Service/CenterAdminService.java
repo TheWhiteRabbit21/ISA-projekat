@@ -11,6 +11,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CenterAdminService {
 	
@@ -27,7 +30,13 @@ public class CenterAdminService {
         centerAdminRepository.save(new Staff(centerAdminDTO.email,centerAdminDTO.password,centerAdminDTO.name,
                 centerAdminDTO.surname, parseGender(centerAdminDTO.gender), centerAdminDTO.jmbg, address.getId(),centerAdminDTO.phoneNumber));
     }
-    
+    public List<CenterAdminDTO> GetAvailableAdmins(){
+        List<CenterAdminDTO> admins = new ArrayList<CenterAdminDTO>();
+        for(Staff admin : centerAdminRepository.findAllByBloodBankCenterIsNull()){
+            admins.add(new CenterAdminDTO(admin.getId(),admin.getName(),admin.getSurname()));
+        }
+        return admins;
+    }
     public Gender parseGender(String gender){
         if(gender.equals("Male")){
             return Gender.MALE;

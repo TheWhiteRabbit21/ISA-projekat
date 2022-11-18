@@ -14,7 +14,7 @@ public class User implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 	
 	@Column(unique = true, nullable = true)
 	private String email;
@@ -74,11 +74,11 @@ public class User implements Serializable{
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

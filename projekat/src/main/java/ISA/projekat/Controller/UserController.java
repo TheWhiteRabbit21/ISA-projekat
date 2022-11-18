@@ -1,5 +1,6 @@
 package ISA.projekat.Controller;
 
+import ISA.projekat.DTOs.SearchUserDTO;
 import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.DTOs.RegisteredUserDTO;
 import ISA.projekat.DTOs.UserDTO;
@@ -36,8 +37,8 @@ public class UserController {
         user.setName(userDTO.getName());
         user.setSurname(userDTO.getSurname());
 
-        user = userService.save(user);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        //user = userService.save(user);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
     
     @PostMapping(produces = "application/json", value = "add")
@@ -51,16 +52,10 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-	@GetMapping(value = "/all")
+    @GetMapping(produces = "application/json")
     public ResponseEntity<List<UserDTO>> getAllUsers() {
 
-//        List<User> users = userService.findAll();
-
-        // convert users to DTOs
-//        List<UserDTO> usersDTO = new ArrayList<>();
-//        for (User u : users) {
-//            usersDTO.add(new UserDTO(u));
-//        }
+        List<UserDTO> usersDTO = userService.findAll();
 
 //        return new ResponseEntity<>(usersDTO, HttpStatus.OK);
     	return null;
@@ -78,19 +73,25 @@ public class UserController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
-
+    @PutMapping(value = "/update", consumes = "application/json")
+    @ResponseBody
+    public ResponseEntity<UserDTO> updateCenter(@RequestBody UserDTO userDTO){
+    	
+    	//TODO
+//    	System.out.println(userDTO.getName());
+//    	System.out.println(userDTO.getId());
+//    	System.out.println(userDTO);
+    	
+    	
+    	
+    	
+    	
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PostMapping(produces = "application/json", value = "/search")
+    @ResponseBody
+    public ResponseEntity<List<UserDTO>> getAllUsersByNameAndSurname(@RequestBody SearchUserDTO searchUserDTO) {
+        return new ResponseEntity<>(userService.findByNameAndSurnameAllIgnoringCase(searchUserDTO.getName(), searchUserDTO.getSurname()),HttpStatus.OK);
+    }
 }

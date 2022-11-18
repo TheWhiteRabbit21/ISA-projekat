@@ -1,6 +1,8 @@
 package ISA.projekat.Model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -10,7 +12,7 @@ public class BloodBankCenter implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 	
 	@Column(nullable = false)
 	private String name;
@@ -27,8 +29,8 @@ public class BloodBankCenter implements Serializable{
 	
 	//private HashMap<String, Integer> blood;
 
-	//@OneToMany(mappedBy = "bloodBankCenter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	//private Set<Staff> administrators = new HashSet<Staff>();
+	@OneToMany(mappedBy = "bloodBankCenter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Staff> staff = new HashSet<Staff>();
 
 	public BloodBankCenter() {
 		super();
@@ -75,11 +77,19 @@ public class BloodBankCenter implements Serializable{
 		this.averageRating = averageRating;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Set<Staff> getAdministrators() {
+		return staff;
+	}
+
+	public void setAdministrators(Set<Staff> stuff) {
+		this.staff = stuff;
 	}
 }
