@@ -7,14 +7,17 @@ import { UserProfileComponent } from "./modules/pages/user-profile/user-profile.
 import { RegisterCenterComponent } from "./modules/pages/register-center/register-center.component";
 import { WelcomeComponent } from "./modules/pages/welcome/welcome.component";
 import { RegisterCenterAdminComponent } from "./modules/pages/register-center-admin/register-center-admin.component";
+import { BloodBankListService } from "./modules/pages/blood-banks-list/blood-bank-list.service";
+import { BloodBanksListComponent } from "./modules/pages/blood-banks-list/blood-banks-list.component";
 import { BloodDonorFormComponent } from "./modules/pages/blood-donor-form/blood-donor-form.component";
 import { RegisteredUsersListComponent } from "./modules/pages/registered-users-list/registered-users-list.component";
 
 
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-
+  {path: 'centers', component: BloodBanksListComponent},
   { path: 'welcome', component: WelcomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register-center', component: RegisterCenterComponent },

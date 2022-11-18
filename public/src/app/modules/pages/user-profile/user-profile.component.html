@@ -18,8 +18,8 @@
           <td ><input id="surname-F" type="text" value="{{user.surname}}"></td>
         </tr>
         <tr>
-          <td class="text-center">ID:</td>
-          <td><input id="id-F" type="text" value="{{user.id}}"></td>
+          <td class="text-center">Jmbg:</td>
+          <td><input id="id-F" type="text" value="{{user.jmbg}}"></td>
         </tr>
         <tr>
           <td class="text-center">Gender:</td>
@@ -30,20 +30,20 @@
           <td><input id="email-F" type="text" value="{{user.email}}"></td>
         </tr>
         <tr>
-          <td class="text-center">Address:</td>
-          <td><input id="address-F" type="text" value="{{user.address}}"></td>
+          <td class="text-center">Street:</td>
+          <td><input id="address-F" type="text" value="{{user.address.street}} {{user.address.number}}"></td>
         </tr>
         <tr>
           <td class="text-center">City:</td>
-          <td><input id="city-F" type="text" value="{{user.city}}"></td>
+          <td><input id="city-F" type="text" value="{{user.address.city}}"></td>
         </tr>
         <tr>
           <td class="text-center">State:</td>
-          <td><input id="state-F" type="text" value="{{user.state}}"></td>
+          <td><input id="state-F" type="text" value="{{user.address.country}}"></td>
         </tr>
         <tr>
           <td class="text-center">Phone number:</td>
-          <td><input id="phone-F" type="text" value="{{user.phone}}"></td>
+          <td><input id="phone-F" type="text" value="{{user.phoneNumber}}"></td>
         </tr>
         <tr>
           <td class="text-center">Points:</td>
@@ -51,7 +51,7 @@
         </tr>
         <tr>
           <td class="text-center">Category:</td>
-          <td><input id="category-F" type="text" value="{{user.category}}"></td>
+          <td><input id="category-F" type="text" value="{{user.user_catagory}}"></td>
         </tr>
       </table>
     </div>
@@ -86,25 +86,25 @@
           </div>
           <div  class="form-group">
              <label for="address">Address</label>
-             <input type="text" [(ngModel)]="editedUser.address"  name="address" class="form-control" id="addressE" placeholder="Address">
+             <input type="text" [(ngModel)]="editedUser.address.street + ' ' +editedUser.address.number" name="address" class="form-control" id="addressE" placeholder="Address">
           </div>
           <div  class="form-group">
              <label for="city">City</label>
-             <input type="text" [(ngModel)]="editedUser.city"  name="city" class="form-control" id="cityE" name="city" placeholder="City">
+             <input type="text" [(ngModel)]="editedUser.address.city"  name="city" class="form-control" id="cityE" name="city" placeholder="City">
           </div>
           <div  class="form-group">
              <label for="state">State</label>
-             <input type="text"  [(ngModel)]="editedUser.state"   name="state" class="form-control" id="stateE" placeholder="State">
+             <input type="text"  [(ngModel)]="editedUser.address.country"   name="state" class="form-control" id="stateE" placeholder="State">
           </div>
           <div  class="form-group">
             <label for="phone">Phone number</label>
-            <input type="text" [(ngModel)]="editedUser.phone" name="phone" class="form-control" id="phoneE" placeholder="Phone number">
+            <input type="text" [(ngModel)]="editedUser.phoneNumber" name="phone" class="form-control" id="phoneE" placeholder="Phone number">
          </div>
        </form>
       </div>
       <div  class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="saveButton()">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="saveButton()" data-bs-dismiss="modal" >Save changes</button>
       </div>
     </div>
   </div>

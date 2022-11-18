@@ -10,10 +10,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<RegisteredUser, Integer> {
 
-    public RegisteredUser findOneByJmbg(Integer jmbg);
+
+    public RegisteredUser findOneById(Integer id);
+
+    Optional<RegisteredUser> findByEmail(String email);
 
 
     @Query("select u from RegisteredUser u where u.surname = ?1")
@@ -24,6 +29,7 @@ public interface UserRepository extends JpaRepository<RegisteredUser, Integer> {
     public RegisteredUser findByPassword(String password);
 
     @Query("select u from RegisteredUser u where u.name like %?1% and u.surname like %?2% ")
+
     public List<RegisteredUser> findByNameAndSurnameAllIgnoringCase(String name, String surname);
 
     public Page<RegisteredUser> findAll(Pageable pageable);

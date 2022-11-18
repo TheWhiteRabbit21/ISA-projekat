@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api/center-admins")
 public class CenterAdminController {
 
+
     @Autowired
     private CenterAdminService centerAdminService;
 
@@ -77,3 +78,4 @@ public class CenterAdminController {
     
     
 }
+

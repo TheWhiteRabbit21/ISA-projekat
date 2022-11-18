@@ -24,6 +24,7 @@ public class CenterAdminService {
         this.centerAdminRepository = centerAdminRepository;
         this.addressRepository = addressRepository;
     }
+
     
     public void CreateCenterAdmin(CenterAdminDTO centerAdminDTO){
         Address address = addressRepository.save(new Address(centerAdminDTO.country, centerAdminDTO.city, centerAdminDTO.street, centerAdminDTO.number));
@@ -37,6 +38,7 @@ public class CenterAdminService {
         }
         return admins;
     }
+
     public Gender parseGender(String gender){
         if(gender.equals("Male")){
             return Gender.MALE;

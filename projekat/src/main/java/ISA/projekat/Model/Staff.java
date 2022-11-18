@@ -7,7 +7,14 @@ import javax.persistence.*;
 @Entity
 @SuppressWarnings("serial")
 @DiscriminatorValue("2")
+
 public class Staff extends User {
+
+
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	//private Set<Appointment> appointments = new HashSet<Appointment>(); 
 	@ManyToOne(fetch = FetchType.EAGER)

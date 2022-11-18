@@ -70,15 +70,60 @@ public class CenterController {
     	
     	return new ResponseEntity<>(HttpStatus.OK);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    @GetMapping(value = "/search_name/{name}")
+    public ResponseEntity<List<BloodCenterListDTO>>  searchByName(@PathVariable("name") String name){
+
+        List<BloodBankCenter> bloodBankCenters = centerService.findAll();
+
+        // convert users to DTOs
+        List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
+        for (BloodBankCenter c : bloodBankCenters) {
+            if(!c.getName().toLowerCase().contains(name.toLowerCase())){
+                continue;
+            }
+            Address address = addressService.findOne(c.getAddress());
+            bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
+        }
+
+        return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/search_city/{city}")
+    public ResponseEntity<List<BloodCenterListDTO>>  searchByCity(@PathVariable("city") String city){
+
+        List<BloodBankCenter> bloodBankCenters = centerService.findAll();
+
+        // convert users to DTOs
+        List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
+        for (BloodBankCenter c : bloodBankCenters) {
+            Address ad = addressService.findById(c.getAddress());
+            if(!ad.getCity().toLowerCase().contains(city.toLowerCase())){
+                continue;
+            }
+            Address address = addressService.findOne(c.getAddress());
+            bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
+        }
+
+        return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);
+    }
+
+
+    @GetMapping(value = "/filter_country/{country}")
+    public ResponseEntity<List<BloodCenterListDTO>>  searchByCountry(@PathVariable("country") String country){
+
+        List<BloodBankCenter> bloodBankCenters = centerService.findAll();
+
+        // convert users to DTOs
+        List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
+        for (BloodBankCenter c : bloodBankCenters) {
+            Address ad = addressService.findById(c.getAddress());
+            if(!ad.getCountry().toLowerCase().contains(country.toLowerCase())){
+                continue;
+            }
+            Address address = addressService.findOne(c.getAddress());
+            bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
+        }
+
+        return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);
+    }
 }
