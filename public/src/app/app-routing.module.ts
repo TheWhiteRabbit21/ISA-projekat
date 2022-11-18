@@ -11,7 +11,7 @@ import { BloodBankListService } from "./modules/pages/blood-banks-list/blood-ban
 import { BloodBanksListComponent } from "./modules/pages/blood-banks-list/blood-banks-list.component";
 import { BloodDonorFormComponent } from "./modules/pages/blood-donor-form/blood-donor-form.component";
 import { RegisteredUsersListComponent } from "./modules/pages/registered-users-list/registered-users-list.component";
-
+import { AdminDashboardComponent } from "./modules/pages/admin-dashboard/admin-dashboard.component";
 
 
 
@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'register-center-admin', component: RegisterCenterAdminComponent },
   { path: 'registered-users', component: RegisteredUsersListComponent },
   { path: 'userProfile', component: UserProfileComponent},
+  { path: 'admin-dashboard', component: AdminDashboardComponent},
   { path: 'adminprofile/:id', component: AdminProfileComponent },
   { path: 'admincenterprofile/:id', component: AdminCenterProfileComponent },
   {path: 'blood-donor-form', component: BloodDonorFormComponent},

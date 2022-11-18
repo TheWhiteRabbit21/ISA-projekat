@@ -16,6 +16,7 @@ import { RegisterCenterAdminComponent } from './register-center-admin/register-c
 import { ReactiveFormsModule } from '@angular/forms';
 import { BloodDonorFormComponent } from './blood-donor-form/blood-donor-form.component';
 import { RegisteredUsersListComponent } from './registered-users-list/registered-users-list.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { RegisteredUsersListComponent } from './registered-users-list/registered
     RegisterCenterComponent,
     RegisterCenterAdminComponent,
     BloodDonorFormComponent,
-    RegisteredUsersListComponent
+    RegisteredUsersListComponent,
+    AdminDashboardComponent
   ],
   imports: [
     FormsModule,
