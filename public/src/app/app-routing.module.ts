@@ -7,7 +7,9 @@ import { UserProfileComponent } from "./modules/pages/user-profile/user-profile.
 import { RegisterCenterComponent } from "./modules/pages/register-center/register-center.component";
 import { WelcomeComponent } from "./modules/pages/welcome/welcome.component";
 import { RegisterCenterAdminComponent } from "./modules/pages/register-center-admin/register-center-admin.component";
+import { BloodDonorFormComponent } from "./modules/pages/blood-donor-form/blood-donor-form.component";
 import { RegisteredUsersListComponent } from "./modules/pages/registered-users-list/registered-users-list.component";
+
 
 
 const routes: Routes = [
@@ -21,6 +23,7 @@ const routes: Routes = [
   { path: 'userProfile', component: UserProfileComponent},
   { path: 'adminprofile/:id', component: AdminProfileComponent },
   { path: 'admincenterprofile/:id', component: AdminCenterProfileComponent },
+  {path: 'blood-donor-form', component: BloodDonorFormComponent},
   { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
 
 ];

@@ -13,7 +13,10 @@ import { BloodBanksListComponent } from './blood-banks-list/blood-banks-list.com
 import { RegisterCenterComponent } from './register-center/register-center.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterCenterAdminComponent } from './register-center-admin/register-center-admin.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BloodDonorFormComponent } from './blood-donor-form/blood-donor-form.component';
 import { RegisteredUsersListComponent } from './registered-users-list/registered-users-list.component';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import { RegisteredUsersListComponent } from './registered-users-list/registered
     BloodBanksListComponent,
     RegisterCenterComponent,
     RegisterCenterAdminComponent,
+    BloodDonorFormComponent,
     RegisteredUsersListComponent
   ],
   imports: [
@@ -34,8 +38,8 @@ import { RegisteredUsersListComponent } from './registered-users-list/registered
     AppRoutingModule,
     FormsModule,
     MatTableModule,
-    MaterialModule
-
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }

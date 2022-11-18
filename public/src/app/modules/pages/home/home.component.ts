@@ -21,4 +21,8 @@ export class HomeComponent implements OnInit {
     this.bloodbanks = false;
   }
 
+  public bloodDonorForm(){
+    window.location.href="http://localhost:4200/blood-donor-form"
+  }
+
 }
