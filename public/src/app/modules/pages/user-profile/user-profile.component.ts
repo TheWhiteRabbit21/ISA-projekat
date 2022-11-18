@@ -12,6 +12,7 @@ export class UserProfileComponent implements OnInit {
 
   public user: any  = {} as User;
   editedUser: any = {} as User;
+  closeModalEvent: any;
 
   constructor(private http: HttpClient) { }
 
@@ -48,7 +49,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   public saveButton(): void {
-    //this.user = Object.assign({}, this.editedUser);
+    this.user = Object.assign({}, this.editedUser);
 
     var headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -58,8 +59,11 @@ export class UserProfileComponent implements OnInit {
       this.user = res;
       console.log(res);
     });
-
+    this.onCloseModal;
   }
 
+  onCloseModal(event: any){
+    this.closeModalEvent.emit(false);
+  }
 
 }

@@ -101,7 +101,7 @@ public class CenterController {
         return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);
     }
 
-    
+
     @GetMapping(value = "/filter_country/{country}")
     public ResponseEntity<List<BloodCenterListDTO>>  searchByCountry(@PathVariable("country") String country){
 

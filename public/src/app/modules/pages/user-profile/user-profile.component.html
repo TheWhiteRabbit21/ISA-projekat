@@ -18,7 +18,7 @@
           <td ><input id="surname-F" type="text" value="{{user.surname}}"></td>
         </tr>
         <tr>
-          <td class="text-center">ID:</td>
+          <td class="text-center">Jmbg:</td>
           <td><input id="id-F" type="text" value="{{user.jmbg}}"></td>
         </tr>
         <tr>
@@ -104,7 +104,7 @@
       </div>
       <div  class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="saveButton()">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="saveButton()" data-bs-dismiss="modal" >Save changes</button>
       </div>
     </div>
   </div>
