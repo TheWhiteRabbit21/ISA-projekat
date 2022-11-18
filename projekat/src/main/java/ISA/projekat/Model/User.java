@@ -14,7 +14,7 @@ public class User implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 	
 	@Column(unique = true, nullable = true)
 	private String email;
@@ -60,6 +60,30 @@ public class User implements Serializable{
 		this.jmbg = jmbg;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
+	}
+
+	
+	
+	public User(Integer id, String email, String password, String name, String surname, Gender gender, int jmbg,
+			int address, String phoneNumber) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.gender = gender;
+		this.jmbg = jmbg;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -110,22 +134,6 @@ public class User implements Serializable{
 	}
 	public void setGender(Gender gender) {
 		this.gender = gender;
-	}
-	private String city;
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	private String state;
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
 	}
 
 	@Override

@@ -1,10 +1,12 @@
 package ISA.projekat.Controller;
 
 import ISA.projekat.DTOs.BloodCenterListDTO;
+import ISA.projekat.DTOs.CenterAdminDTO;
 import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.BloodBankCenter;
 import ISA.projekat.Service.AddressService;
+import ISA.projekat.Service.CenterAdminService;
 import ISA.projekat.Service.CenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +22,8 @@ public class CenterController {
 
     @Autowired
     private CenterService centerService;
-    
+    @Autowired
+    private CenterAdminService centerAdminService;
     @Autowired
     private AddressService addressService;
     
@@ -45,7 +48,10 @@ public class CenterController {
 
         return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);
     }
-    
+    @GetMapping(value = "/getAdmins")
+    public ResponseEntity<List<CenterAdminDTO>> getAllAvailabelAdmins() {
+        return new ResponseEntity<>(centerAdminService.GetAvailableAdmins(),HttpStatus.OK);
+    }
     @PutMapping(value = "/update", consumes = "application/json")
     @ResponseBody
     public ResponseEntity<CenterDTO> updateCenter(@RequestBody CenterDTO centerDTO) {

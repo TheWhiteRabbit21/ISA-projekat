@@ -1,5 +1,6 @@
 package ISA.projekat.Controller;
 
+import ISA.projekat.DTOs.SearchUserDTO;
 import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.DTOs.RegisteredUser2DTO;
 import ISA.projekat.DTOs.RegisteredUserDTO;
@@ -7,6 +8,8 @@ import ISA.projekat.DTOs.UserDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Model.User;
+import ISA.projekat.Model.enums.UserCategory;
+import ISA.projekat.Model.Address;
 import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Service.AddressService;
 import ISA.projekat.Service.UserService;
@@ -15,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+//import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +29,10 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
     @Autowired
     private AddressService _addressService;
+
 
     @PutMapping(value = "/edit")
     public ResponseEntity<RegisteredUser2DTO> saveUser(@RequestBody RegisteredUser2DTO userDTO) {
@@ -52,14 +58,24 @@ public class UserController {
         user = userService.save(user);
         address = _addressService.save(address);
         return new ResponseEntity<>(HttpStatus.CREATED);
+
+
+        //user = userService.save(user);
+
+
     }
     
     @PostMapping(produces = "application/json", value = "add")
     @ResponseBody
-    public String RegisterUser(@RequestBody RegisteredUserDTO registeredUserDTO){
-        userService.RegisterUser(registeredUserDTO);
-        return "Dosao";
+    public ResponseEntity<RegisteredUserDTO> RegisterUser(@RequestBody RegisteredUserDTO registeredUserDTO){
+        
+    	Address address = new Address(registeredUserDTO.getState(), registeredUserDTO.getCity(), registeredUserDTO.getStreet(), registeredUserDTO.getNumber());
+        _addressService.save(address);
+    	userService.RegisterUser(registeredUserDTO, address.getId());
+    	
+        return new ResponseEntity<>(HttpStatus.OK);
     }
+
 
     @GetMapping(value = "/all")
     public ResponseEntity<List<RegisteredUser2DTO>> getAllUsers() {
@@ -76,6 +92,7 @@ public class UserController {
         }
 
         return new ResponseEntity<>(usersDTO, HttpStatus.OK);
+
     }
 
     @GetMapping(value = "/find/{id}")
@@ -94,8 +111,7 @@ public class UserController {
 
         return new ResponseEntity<>(userDTO , HttpStatus.OK);
     }
-    
-    
+
     @PutMapping(value = "/update", consumes = "application/json")
     @ResponseBody
     public ResponseEntity<UserDTO> updateCenter(@RequestBody UserDTO userDTO){
@@ -111,16 +127,9 @@ public class UserController {
     	
     	return new ResponseEntity<>(HttpStatus.OK);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
+    @PostMapping(produces = "application/json", value = "/search")
+    @ResponseBody
+    public ResponseEntity<List<UserDTO>> getAllUsersByNameAndSurname(@RequestBody SearchUserDTO searchUserDTO) {
+        return new ResponseEntity<>(userService.findByNameAndSurnameAllIgnoringCase(searchUserDTO.getName(), searchUserDTO.getSurname()),HttpStatus.OK);
+    }
 }

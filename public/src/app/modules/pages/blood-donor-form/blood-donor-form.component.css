@@ -1,14 +1,13 @@
-.mat-radio-button ~ .mat-radio-button {
-    margin-left: 16px;
-    margin-bottom: 16px;
-}
-
 .form {
     justify-content: center;
     align-items: center;
     height: 1100px;
     padding: 20px;
-    width: 320px;
+    width: 1000px;
     background-color: rgb(233, 229, 229);
     margin: auto;
+}
+
+mat-radio-button{
+    margin: 3px;
 }

@@ -15,16 +15,20 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<RegisteredUser, Integer> {
 
+
     public RegisteredUser findOneById(Integer id);
 
     Optional<RegisteredUser> findByEmail(String email);
 
-    @Query("select u from User u where u.surname = ?1")
+
+    @Query("select u from RegisteredUser u where u.surname = ?1")
     public List<RegisteredUser> findAllUsersBySurname(String surname);
 
-    @Query("select u from User u where u.name = ?1")
+    @Query("select u from RegisteredUser u where u.name = ?1")
     public List<RegisteredUser> findAllUsersByName(String name);
     public RegisteredUser findByPassword(String password);
+
+    @Query("select u from RegisteredUser u where u.name like %?1% and u.surname like %?2% ")
 
     public List<RegisteredUser> findByNameAndSurnameAllIgnoringCase(String name, String surname);
 

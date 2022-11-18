@@ -3,6 +3,9 @@ package ISA.projekat.DTOs;
 
 import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Model.enums.UserCategory;
+import ISA.projekat.Model.Address;
+import ISA.projekat.Model.User;
+
 
 public class UserDTO {
 	public String id;
@@ -18,35 +21,40 @@ public class UserDTO {
 	public String password;
 	public String phoneNumber;
 
-	public String points;
 
-	public String user_catagory;
+	public UserDTO(String name, String surname, String email, String gender, String jmbg, String state, String city, String street, String streetNumber, String phoneNumber) {
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.gender = gender;
+		this.jmbg = jmbg;
+		this.state = state;
+		this.city = city;
+		this.street = street;
+		this.streetNumber = streetNumber;
+		this.phoneNumber = phoneNumber;
+	}
 
 	public UserDTO() {
 
+    }
+
+
+
+    public UserDTO(User user, Address address) {
+    	this(user.getName(), user.getSurname(), user.getEmail(), user.getGender().toString(), Integer.toString(user.getJmbg()), address.getCountry()
+				, address.getCity(), address.getStreet(), address.getNumber(), user.getPhoneNumber());
 	}
     
-    /*public UserDTO(User user) {
-    this(user.getEmail(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getJmbg(), user.getAddress(), user.getCity(), user.getState(), user.getPhoneNumber());
-	}*/
-
-
-
-
-	public UserDTO(String email, String password, String name, String surname, String gender, String jmbg, String city, String state, String phoneNumber, String points, String user_catagory) {
-		this.email = email;
-		this.password = password;
-		this.name = name;
-		this.surname = surname;
-		this.gender = gender;
-		this.jmbg = jmbg;
-		this.city = city;
-		this.state = state;
-		this.phoneNumber = phoneNumber;
-		this.points = points;
-		this.user_catagory = user_catagory;
+    
+	public String getId() {
+		return id;
 	}
 
-	public UserDTO(RegisteredUser u) {
-	}
+
+
+
+
+
 }
+

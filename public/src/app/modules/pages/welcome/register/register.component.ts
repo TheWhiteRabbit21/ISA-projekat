@@ -1,5 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { RegisteringUser, RegisterUserService } from './register-user.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
+export class CustomValidators {
+  static MatchValidator(source: string, target: string): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const sourceCtrl = control.get(source);
+      const targetCtrl = control.get(target);
+
+      return sourceCtrl && targetCtrl && sourceCtrl.value !== targetCtrl.value
+        ? { mismatch: true }
+        : null;
+    };
+  }
+}
 
 @Component({
   selector: 'app-register',
@@ -16,22 +31,53 @@ export class RegisterComponent implements OnInit {
     street: '',
     number: 0,
     city: '',
-    country: '',
-    telephoneNumber: 0,
+    state: '',
+    phoneNumber: 0,
     jmbg: 0,
     gender: 0,
     occupation: '',
     establishmentInfo: '',
   }
 
-  constructor(private _registerUserService : RegisterUserService) { }
+  registerUserForm = new FormGroup(
+  {
+    email: new FormControl(),
+    password: new FormControl(),
+    confirmPassword: new FormControl(),
+    name: new FormControl(),
+    surname: new FormControl(),
+    street: new FormControl(),
+    number: new FormControl(),
+    city: new FormControl(),
+    state: new FormControl(),
+    phoneNumber: new FormControl(),
+    jmbg: new FormControl(),
+    gender: new FormControl(0),
+    occupation: new FormControl(),
+    establishmentInfo: new FormControl()
+  },
+   [CustomValidators.MatchValidator('password', 'confirmPassword')]
+  )
+
+  constructor(private _registerUserService : RegisterUserService, private _snackBar : MatSnackBar) { }
 
   ngOnInit() {
   }
 
+  get passwordMatchError() {
+    return (
+      this.registerUserForm.getError('mismatch') &&
+      this.registerUserForm.get('confirmPassword')?.touched
+    );
+  }
+
   submit() : void{
     this._registerUserService.submit(this.registeringUser).subscribe(res => {
-
+      this._snackBar.open("Registration successful.", "Ok");
+      setTimeout(() => {
+        window.location.href="http://localhost:4200/home"
+      }, 
+      3000);
     });
   }
 
