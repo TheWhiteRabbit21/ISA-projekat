@@ -9,6 +9,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSortModule } from '@angular/material/sort';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -32,7 +33,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatTooltipModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule {}

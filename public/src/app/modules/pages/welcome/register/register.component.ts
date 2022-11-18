@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { RegisteringUser, RegisterUserService } from './register-user.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export class CustomValidators {
   static MatchValidator(source: string, target: string): ValidatorFn {
@@ -58,7 +59,7 @@ export class RegisterComponent implements OnInit {
    [CustomValidators.MatchValidator('password', 'confirmPassword')]
   )
 
-  constructor(private _registerUserService : RegisterUserService) { }
+  constructor(private _registerUserService : RegisterUserService, private _snackBar : MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -72,7 +73,11 @@ export class RegisterComponent implements OnInit {
 
   submit() : void{
     this._registerUserService.submit(this.registeringUser).subscribe(res => {
-
+      this._snackBar.open("Registration successful.", "Ok");
+      setTimeout(() => {
+        window.location.href="http://localhost:4200/home"
+      }, 
+      3000);
     });
   }
 
