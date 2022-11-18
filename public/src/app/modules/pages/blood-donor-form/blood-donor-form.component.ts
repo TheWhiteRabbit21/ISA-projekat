@@ -12,4 +12,5 @@ export class BloodDonorFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  submit() : void{};
 }
