@@ -42,7 +42,15 @@
 </div>
 <div>
   <select [(ngModel)]="filterCountry" (change)="filterByCountry()">
-    <option >Reset</option>
+    <option >Reset Country</option>
     <option *ngFor="let c of countries">{{c}}</option>
+  </select>
+  <select [(ngModel)]="filterAvgPoints" (change)="filterByAvgPoints()">
+    <option>Reset Rating</option>
+    <option>0-1</option>
+    <option>1-2</option>
+    <option>2-3</option>
+    <option>3-4</option>
+    <option>4-5</option>
   </select>
 </div>

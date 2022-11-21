@@ -20,7 +20,8 @@ export interface BloodBank {
 })
 export class BloodBanksListComponent implements AfterViewInit, OnInit {
   countries: string[] = [];
-  filterCountry: string = 'Reset';
+  filterCountry: string = 'Reset Country';
+  filterAvgPoints: string = 'Reset Rating';
   name: string = '';
   city: string = '';
   public bloodbanks: BloodBank[] = [];
@@ -82,8 +83,19 @@ export class BloodBanksListComponent implements AfterViewInit, OnInit {
   }
 
   filterByCountry() {
-    if(this.filterCountry !== 'Reset'){
+    if(this.filterCountry !== 'Reset Country'){
       this.http.get(`http://localhost:8084/api/centers/filter_country/${this.filterCountry}`).subscribe((res:any) =>{
+      this.dataSource = new MatTableDataSource(res);
+    });
+    } else{
+      this.dataSource = new MatTableDataSource(this.bloodbanks);
+    }
+
+  }
+
+  filterByAvgPoints() {
+    if(this.filterAvgPoints !== 'Reset Rating'){
+      this.http.get(`http://localhost:8084/api/centers/filter_avgPoints/${this.filterAvgPoints}`).subscribe((res:any) =>{
       this.dataSource = new MatTableDataSource(res);
     });
     } else{
