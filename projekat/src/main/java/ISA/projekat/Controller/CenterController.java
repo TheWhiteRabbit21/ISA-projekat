@@ -29,9 +29,9 @@ public class CenterController {
     
     @PostMapping(produces = "application/json")
     @ResponseBody
-    public String CreateCenter(@RequestBody CenterDTO centerDTO){
+    public ResponseEntity CreateCenter(@RequestBody CenterDTO centerDTO){
         centerService.Create(centerDTO);
-        return "Dosao";
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping(value = "/all")

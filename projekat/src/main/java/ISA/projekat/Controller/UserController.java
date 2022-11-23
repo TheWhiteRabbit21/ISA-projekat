@@ -76,7 +76,6 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
     @GetMapping(value = "/all")
     public ResponseEntity<List<RegisteredUser2DTO>> getAllUsers() {
 

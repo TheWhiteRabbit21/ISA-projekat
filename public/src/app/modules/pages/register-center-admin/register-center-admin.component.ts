@@ -28,7 +28,7 @@ export class RegisterCenterAdminComponent implements OnInit {
 
   submit(): void {
     this.registerCenterAdminService.submit(this.centerAdmin).subscribe(res => {
-      console.log(res)
+      window.location.href="http://localhost:4200/admin-dashboard"
     });
   }
 }
