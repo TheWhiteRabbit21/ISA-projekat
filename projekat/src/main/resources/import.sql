@@ -1,8 +1,8 @@
 insert into users (user_type,email, password, name, surname, gender, jmbg, address,phone_number, points, user_catagory) values (1,'juzer@gmail.com','123', 'Mo', 'Salah', 1, 123123123, 2, '18921892',5.00,1);
 insert into users (user_type,email, password, name, surname, gender, jmbg, address,phone_number, points, user_catagory) values (1,'asdf@gmail.com','321', 'Petar', 'Trs', 1, 12, 1, '2313211',3.00,2);
-insert into users (user_type ,email, password, name, surname, gender, jmbg, address, phone_number) values (2,'juzer3@gmail.com','123', 'Md', 'Dh', 1, 121123123, 2, '18921892');
+insert into users (user_type ,email, password, name, surname, gender, jmbg, address, phone_number) values (1,'juzer3@gmail.com','123', 'Md', 'Dh', 1, 121123123, 2, '18921892');
 
-insert into users (user_type, email, password, name, surname, gender, jmbg, address, phone_number) values (2, 'juzer3@gmail.com','222', 'Og', 'Gol', 0, 22123123, 3, '23121412');
+insert into users (user_type, email, password, name, surname, gender, jmbg, address, phone_number) values (2, 'juzer6@gmail.com','222', 'Og', 'Gol', 0, 22123123, 3, '23121412');
 insert into users (user_type, email, password, name, surname, gender, jmbg, address, phone_number) values (2, 'juzer4@gmail.com','111', 'Mil', 'Mar', 1, 321124412, 4, '746352332');
 insert into users (user_type, email, password, name, surname, gender, jmbg, address, phone_number) values (2, 'juzer5@gmail.com','333', 'To', 'And', 1, 412412123, 5, '574456443');
 

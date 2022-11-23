@@ -48,7 +48,7 @@ public class UserService {
     }
 
 
-    public RegisteredUser findOneById(Integer jmbg) {
+    public RegisteredUser findOneById(int jmbg) {
         return userRepository.findOneById(jmbg);
 
     }

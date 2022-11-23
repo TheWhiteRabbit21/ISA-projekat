@@ -22,7 +22,7 @@ export class RegisteredUsersListService {
   constructor(private http: HttpClient) { }
 
   getAllUsers() : Observable<User[]> {
-      return this.http.get<User[]>(this.route + 'api/users/', {headers: this.headers});
+      return this.http.get<User[]>(this.route + 'api/users/all', {headers: this.headers});
   }
   search(search : any) : Observable<User[]> {
     return this.http.post<User[]>(this.route + 'api/users/search/', search, {headers: this.headers});
