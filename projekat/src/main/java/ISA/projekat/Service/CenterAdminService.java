@@ -1,18 +1,16 @@
 package ISA.projekat.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import ISA.projekat.DTOs.CenterAdminDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.Staff;
 import ISA.projekat.Model.enums.Gender;
 import ISA.projekat.Repository.AddressRepository;
 import ISA.projekat.Repository.CenterAdminRepository;
-
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class CenterAdminService {

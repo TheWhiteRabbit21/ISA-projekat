@@ -1,6 +1,6 @@
 package ISA.projekat.Service;
 
-import ISA.projekat.Model.RegisteredUser;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,6 @@ import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.BloodBankCenter;
 import ISA.projekat.Model.Staff;
-import ISA.projekat.Model.User;
 import ISA.projekat.Repository.AddressRepository;
 
 @Service
