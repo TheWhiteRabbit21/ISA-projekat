@@ -26,7 +26,7 @@ public class AddressService {
 
 	public Address Update(CenterDTO centerDTO, BloodBankCenter bbCenter) {
 		
-		Address address = new Address(bbCenter.getAddress(), centerDTO.getCountry(), 
+		Address address = new Address(bbCenter.getAddress().getId(), centerDTO.getCountry(),
 				centerDTO.getCity(), centerDTO.getStreet(), centerDTO.getNumber());
 		
 		return addressRepository.save(address);
@@ -42,7 +42,7 @@ public class AddressService {
 
 	public Address Update(CenterAdminDTO centerAdminDTO, Staff staff) {
 		
-		Address address = new Address(staff.getAddress(), centerAdminDTO.country, 
+		Address address = new Address(staff.getAddress().getId(), centerAdminDTO.country,
 				centerAdminDTO.city, centerAdminDTO.street, centerAdminDTO.number);
 		
 		return addressRepository.save(address);

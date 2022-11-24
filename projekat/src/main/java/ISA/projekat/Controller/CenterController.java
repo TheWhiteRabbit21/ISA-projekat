@@ -42,7 +42,7 @@ public class CenterController {
         // convert users to DTOs
         List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
         for (BloodBankCenter c : bloodBankCenters) {
-            Address address = addressService.findOne(c.getAddress());
+            Address address = addressService.findOne(c.getAddress().getId());
         	bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
         }
 
@@ -58,7 +58,7 @@ public class CenterController {
     	
     	BloodBankCenter bbCenter = centerService.findOne(Integer.parseInt(centerDTO.getId()));
     	
-    	Address address = addressService.findOne(bbCenter.getAddress());
+    	Address address = addressService.findOne(bbCenter.getAddress().getId());
     	
     	
     	if (bbCenter == null || address == null) {
@@ -81,7 +81,7 @@ public class CenterController {
             if(!c.getName().toLowerCase().contains(name.toLowerCase())){
                 continue;
             }
-            Address address = addressService.findOne(c.getAddress());
+            Address address = addressService.findOne(c.getAddress().getId());
             bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
         }
 
@@ -96,11 +96,11 @@ public class CenterController {
         // convert users to DTOs
         List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
         for (BloodBankCenter c : bloodBankCenters) {
-            Address ad = addressService.findById(c.getAddress());
+            Address ad = addressService.findById(c.getAddress().getId());
             if(!ad.getCity().toLowerCase().contains(city.toLowerCase())){
                 continue;
             }
-            Address address = addressService.findOne(c.getAddress());
+            Address address = addressService.findOne(c.getAddress().getId());
             bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
         }
 
@@ -116,11 +116,11 @@ public class CenterController {
         // convert users to DTOs
         List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
         for (BloodBankCenter c : bloodBankCenters) {
-            Address ad = addressService.findById(c.getAddress());
+            Address ad = addressService.findById(c.getAddress().getId());
             if(!ad.getCountry().toLowerCase().contains(country.toLowerCase())){
                 continue;
             }
-            Address address = addressService.findOne(c.getAddress());
+            Address address = addressService.findOne(c.getAddress().getId());
             bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
         }
 

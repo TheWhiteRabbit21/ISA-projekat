@@ -34,8 +34,9 @@ public class User implements Serializable{
 	@Column(nullable = true)
 	private Integer jmbg;
 
-	@Column(nullable = true)
-	private int address;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
+	private Address address;
 
 	
 	@Column(nullable = true)
@@ -49,7 +50,7 @@ public class User implements Serializable{
 	
 	public User(String email, String password, String name, String surname, Gender gender, Integer jmbg,
 
-			int address, String phoneNumber) {
+			Address address, String phoneNumber) {
 
 		super();
 		this.email = email;
@@ -65,7 +66,7 @@ public class User implements Serializable{
 	
 	
 	public User(Integer id, String email, String password, String name, String surname, Gender gender, int jmbg,
-			int address, String phoneNumber) {
+			Address address, String phoneNumber) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -104,10 +105,10 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getAddress() {
+	public Address getAddress() {
 		return address;
 	}
-	public void setAddress(int address) {
+	public void setAddress(Address address) {
 		this.address = address;
 
 	}

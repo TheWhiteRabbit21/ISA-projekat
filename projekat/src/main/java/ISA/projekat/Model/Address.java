@@ -24,6 +24,12 @@ public class Address implements Serializable {
     @Column(nullable = true)
     private String number;
 
+    @OneToOne(mappedBy = "address")
+    private User user;
+
+    @OneToOne(mappedBy = "address")
+    private BloodBankCenter bloodBankCenter;
+
     public Address(String country, String city, String street, String number){
         this.country = country;
         this.city = city;

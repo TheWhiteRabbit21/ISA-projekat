@@ -36,7 +36,7 @@ public class RegisteredUser extends User {
 	
 	
 	public RegisteredUser(String email, String password, String name, String surname, Gender gender, int jmbg,
-			int address, String phoneNumber, Double points, String userPerks, String infoInstitution, String profession,
+			Address address, String phoneNumber, Double points, String userPerks, String infoInstitution, String profession,
 			UserCategory userCatagory) {
 		super(email, password, name, surname, gender, jmbg, address, phoneNumber);
 		this.points = points;
