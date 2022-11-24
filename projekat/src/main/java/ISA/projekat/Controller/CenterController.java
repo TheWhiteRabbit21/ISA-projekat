@@ -157,7 +157,7 @@ public class CenterController {
     @ResponseBody()
     public ResponseEntity<List<BloodCenterListDTO>> findByNameAndCity(@RequestBody SearchCenterDTO searchCenterDTO){
         List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
-        for (BloodBankCenter c : centerService.findAllByNameAndCity(searchCenterDTO.name, searchCenterDTO.city )) {
+        for (BloodBankCenter c : centerService.findAllByNameAndCity(searchCenterDTO.name.toLowerCase(), searchCenterDTO.city.toLowerCase() )) {
             Address ad = addressService.findById(c.getAddress().getId());
 
             bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), ad.getCity(), ad.getCountry(), c.getDescription()));

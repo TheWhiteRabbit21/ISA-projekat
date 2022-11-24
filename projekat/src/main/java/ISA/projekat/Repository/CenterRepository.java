@@ -15,7 +15,7 @@ import java.util.List;
 public interface CenterRepository extends JpaRepository<BloodBankCenter, Integer> {
 	public Page<BloodBankCenter> findAll(Pageable pageable);
 
-	@Query("select b from BloodBankCenter b where b.name like %?1% and b.address.city like %?2%")
+	@Query("select b from BloodBankCenter b where lower(b.name)  like %?1% and lower(b.address.city) like %?2%")
 	public List<BloodBankCenter> findAllByNameAndCity(String name,String city);
 
 }
