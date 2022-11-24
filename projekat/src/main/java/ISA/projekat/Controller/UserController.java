@@ -129,6 +129,6 @@ public class UserController {
     @PostMapping(produces = "application/json", value = "/search")
     @ResponseBody
     public ResponseEntity<List<UserDTO>> getAllUsersByNameAndSurname(@RequestBody SearchUserDTO searchUserDTO) {
-        return new ResponseEntity<>(userService.findByNameAndSurnameAllIgnoringCase(searchUserDTO.getName(), searchUserDTO.getSurname()),HttpStatus.OK);
+        return new ResponseEntity<>(userService.findByNameAndSurnameAllIgnoringCase(searchUserDTO.getName().toLowerCase(), searchUserDTO.getSurname().toLowerCase()),HttpStatus.OK);
     }
 }

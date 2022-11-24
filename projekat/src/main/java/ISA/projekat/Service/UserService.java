@@ -57,7 +57,7 @@ public class UserService {
     }
 
     public List<UserDTO> findByNameAndSurnameAllIgnoringCase(String name, String surname) {
-        return parseList(userRepository.findByNameAndSurnameAllIgnoringCase(name, surname));
+        return parseList(userRepository.findAllByNameAndSurnameIgnoreCase(name, surname));
 
     }
 
