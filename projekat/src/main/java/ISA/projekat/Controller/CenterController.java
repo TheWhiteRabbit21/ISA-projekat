@@ -3,6 +3,7 @@ package ISA.projekat.Controller;
 import ISA.projekat.DTOs.BloodCenterListDTO;
 import ISA.projekat.DTOs.CenterAdminDTO;
 import ISA.projekat.DTOs.CenterDTO;
+import ISA.projekat.DTOs.SearchCenterDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.BloodBankCenter;
 import ISA.projekat.Service.AddressService;
@@ -29,9 +30,11 @@ public class CenterController {
 
     @PostMapping(produces = "application/json")
     @ResponseBody
-    public String CreateCenter(@RequestBody CenterDTO centerDTO) {
+
+    public ResponseEntity CreateCenter(@RequestBody CenterDTO centerDTO){
+
         centerService.Create(centerDTO);
-        return "Dosao";
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping(value = "/all")
@@ -42,8 +45,8 @@ public class CenterController {
         // convert users to DTOs
         List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
         for (BloodBankCenter c : bloodBankCenters) {
-            Address address = addressService.findOne(c.getAddress());
-            bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
+            Address address = addressService.findOne(c.getAddress().getId());
+        	bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
         }
 
         return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);
@@ -58,19 +61,20 @@ public class CenterController {
     @ResponseBody
     public ResponseEntity<CenterDTO> updateCenter(@RequestBody CenterDTO centerDTO) {
 
-        BloodBankCenter bbCenter = centerService.findOne(Integer.parseInt(centerDTO.getId()));
-
-        Address address = addressService.findOne(bbCenter.getAddress());
-
-
-        if (bbCenter == null || address == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-
-        addressService.Update(centerDTO, bbCenter);
-        centerService.Update(centerDTO, bbCenter);
-
-        return new ResponseEntity<>(HttpStatus.OK);
+    	
+    	BloodBankCenter bbCenter = centerService.findOne(Integer.parseInt(centerDTO.getId()));
+    	
+    	Address address = addressService.findOne(bbCenter.getAddress().getId());
+    	
+    	
+    	if (bbCenter == null || address == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+    	
+    	addressService.Update(centerDTO, bbCenter);
+    	centerService.Update(centerDTO, bbCenter);
+    	
+    	return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping(value = "/search_name/{name}")
@@ -84,7 +88,7 @@ public class CenterController {
             if (!c.getName().toLowerCase().contains(name.toLowerCase())) {
                 continue;
             }
-            Address address = addressService.findOne(c.getAddress());
+            Address address = addressService.findOne(c.getAddress().getId());
             bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
         }
 
@@ -99,11 +103,12 @@ public class CenterController {
         // convert users to DTOs
         List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
         for (BloodBankCenter c : bloodBankCenters) {
-            Address ad = addressService.findById(c.getAddress());
-            if (!ad.getCity().toLowerCase().contains(city.toLowerCase())) {
+            Address ad = addressService.findById(c.getAddress().getId());
+            if(!ad.getCity().toLowerCase().contains(city.toLowerCase())){
+
                 continue;
             }
-            Address address = addressService.findOne(c.getAddress());
+            Address address = addressService.findOne(c.getAddress().getId());
             bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
         }
 
@@ -119,11 +124,11 @@ public class CenterController {
         // convert users to DTOs
         List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
         for (BloodBankCenter c : bloodBankCenters) {
-            Address ad = addressService.findById(c.getAddress());
-            if (!ad.getCountry().toLowerCase().contains(country.toLowerCase())) {
+            Address ad = addressService.findById(c.getAddress().getId());
+            if(!ad.getCountry().toLowerCase().contains(country.toLowerCase())){
                 continue;
             }
-            Address address = addressService.findOne(c.getAddress());
+            Address address = addressService.findOne(c.getAddress().getId());
             bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
         }
 
@@ -139,11 +144,24 @@ public class CenterController {
         // convert users to DTOs
         List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
         for (BloodBankCenter c : bloodBankCenters) {
-            Address ad = addressService.findById(c.getAddress());
+            Address ad = addressService.findById(c.getAddress().getId());
             if (c.getAverageRating() >= first && c.getAverageRating() <= last) {
 
                 bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), ad.getCity(), ad.getCountry(), c.getDescription()));
             }
+
+        }
+        return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);
+    }
+    @PostMapping(value = "/search_name_city", produces = "application/json")
+    @ResponseBody()
+    public ResponseEntity<List<BloodCenterListDTO>> findByNameAndCity(@RequestBody SearchCenterDTO searchCenterDTO){
+        List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
+        for (BloodBankCenter c : centerService.findAllByNameAndCity(searchCenterDTO.name, searchCenterDTO.city )) {
+            Address ad = addressService.findById(c.getAddress().getId());
+
+            bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), ad.getCity(), ad.getCountry(), c.getDescription()));
+
 
         }
         return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);

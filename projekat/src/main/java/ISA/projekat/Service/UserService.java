@@ -29,8 +29,7 @@ public class UserService {
     private List<UserDTO> parseList(List<RegisteredUser> registeredUsers){
         List<UserDTO> users = new ArrayList<UserDTO>();
         for(RegisteredUser user : registeredUsers){
-            Address address = addressRepository.findById(user.getAddress()).get();
-            users.add(new UserDTO(user, address));
+            users.add(new UserDTO(user, user.getAddress()));
         }
         return users;
     }
@@ -43,8 +42,8 @@ public class UserService {
         return userRepository.findAllUsersBySurname(surname);
     }
     
-    public void RegisterUser(RegisteredUserDTO registeredUserDTO, int addressId){
-    	userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), addressId, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE));
+    public void RegisterUser(RegisteredUserDTO registeredUserDTO, Address address){
+    	userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), address, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE));
     }
 
 

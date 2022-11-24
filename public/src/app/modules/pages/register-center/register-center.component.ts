@@ -46,7 +46,7 @@ export class RegisterCenterComponent implements OnInit {
   }
   submit() : void{
     this.registerCenterService.submit(this.center).subscribe(res => {
-
+      window.location.href="http://localhost:4200/admin-dashboard"
     });
   }
 

@@ -47,7 +47,7 @@ public class UserController {
         user.setSurname(userDTO.getSurname());
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
-        user.setAddress(userDTO.getAddress().getId());
+        user.setAddress(userDTO.getAddress());
         user.setJmbg(userDTO.getJmbg());
         user.setPhoneNumber(userDTO.getPhoneNumber());
         user.setGender(userDTO.getGender());
@@ -71,11 +71,10 @@ public class UserController {
         
     	Address address = new Address(registeredUserDTO.getState(), registeredUserDTO.getCity(), registeredUserDTO.getStreet(), registeredUserDTO.getNumber());
         _addressService.save(address);
-    	userService.RegisterUser(registeredUserDTO, address.getId());
+    	userService.RegisterUser(registeredUserDTO, address);
     	
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 
     @GetMapping(value = "/all")
     public ResponseEntity<List<RegisteredUser2DTO>> getAllUsers() {
@@ -86,7 +85,7 @@ public class UserController {
         List<RegisteredUser2DTO> usersDTO = new ArrayList<>();
 
         for (RegisteredUser u : users) {
-            Address address = _addressService.findOne(u.getAddress());
+            Address address = _addressService.findOne(u.getAddress().getId());
             usersDTO.add(new RegisteredUser2DTO(u.getEmail(),u.getPassword(),u.getName(),u.getSurname(),address,u.getPhoneNumber(),u.getJmbg(),u.getGender(),u.getProfession(),u.getInfoInstitution(),String.valueOf(u.getPoints()),String.valueOf(u.getUserCatagory())));
 
         }
@@ -105,7 +104,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         }
-        Address address = _addressService.findOne(u.getAddress());
+        Address address = _addressService.findOne(u.getAddress().getId());
         RegisteredUser2DTO  userDTO = new RegisteredUser2DTO(u.getEmail(),u.getPassword(),u.getName(),u.getSurname(),address,u.getPhoneNumber(),u.getJmbg(),u.getGender(),u.getProfession(),u.getInfoInstitution(),String.valueOf(u.getPoints()),String.valueOf(u.getUserCatagory()));
 
 

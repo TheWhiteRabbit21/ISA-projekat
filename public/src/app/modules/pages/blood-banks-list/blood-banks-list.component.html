@@ -33,12 +33,12 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 <div>
-  <input type="text" [(ngModel)]="name" placeholder="Name">
-  <button (click)="searchByName()">Search Name</button>
+  <input type="text" [(ngModel)]="searchCenter.name" placeholder="Name">
+  <!-- <button (click)="searchByName()">Search Name</button> -->
 </div>
 <div>
-  <input type="text" [(ngModel)]="city" placeholder="City">
-  <button (click)="searchByCity()">Search City</button>
+  <input type="text" [(ngModel)]="searchCenter.city" placeholder="City">
+  <button (click)="search()">Search</button>
 </div>
 <div>
   <select [(ngModel)]="filterCountry" (change)="filterByCountry()">

@@ -16,9 +16,10 @@ public class BloodBankCenter implements Serializable{
 	
 	@Column(nullable = false)
 	private String name;
-	
-	@Column(nullable = false)
-	private int address;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
+	private Address address;
 
 	@Column(nullable = false)
 	private String description;
@@ -36,14 +37,14 @@ public class BloodBankCenter implements Serializable{
 		super();
 	}
 	
-	public BloodBankCenter(String name, int address, String description) {
+	public BloodBankCenter(String name, Address address, String description) {
 		super();
 		this.name = name;
 		this.address = address;
 		this.description = description;
 	}
 
-	public BloodBankCenter(Integer id, String name, int address, String description, double averageRating) {
+	public BloodBankCenter(Integer id, String name, Address address, String description, double averageRating) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -58,10 +59,10 @@ public class BloodBankCenter implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getAddress() {
+	public Address getAddress() {
 		return address;
 	}
-	public void setAddress(int address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 	public String getDescription() {

@@ -3,159 +3,85 @@
   <h1> Упитник за даваоца крви или компоненти крви </h1>
     <section>
       <mat-label>1. Да ли сте до сада добровољно давали крв или компоненте крви? </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.bloodPast">
+        <mat-radio-button value = true  name="yes">Да </mat-radio-button>
+        <mat-radio-button value = false  name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
       <mat-label>2. Да ли сте икада били одбијени као давалац крви или компоненте крви? </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.everRejected">
+        <mat-radio-button value = true  name="yes">Да </mat-radio-button>
+        <mat-radio-button value = false  name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
       <mat-label>3. Да ли се тренутно осећате здравим, способним и одморним да дате крв или компоненте крви?
       </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.feelHealthy">
+        <mat-radio-button value = true  name="yes">Да </mat-radio-button>
+        <mat-radio-button value = false  name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
       <mat-label>4. Да ли сте нешто јели пре доласка на давање крви или компоненте крви?
       </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.ateSomething">
+        <mat-radio-button value = true  name="yes">Да </mat-radio-button>
+        <mat-radio-button value = false name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
       <mat-label>5. Да ли се бавите опасним занимањем или хобијем?
       </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.haveDangerousJob">
+        <mat-radio-button value = true  name="yes">Да </mat-radio-button>
+        <mat-radio-button value = false name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
       <mat-label>6. Да ли редовно (свакодневно) узимате било какве лекове?
       </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.regularlyTakeMedicine">
+        <mat-radio-button value = true  name="yes">Да </mat-radio-button>
+        <mat-radio-button value = false  name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
       <mat-label>7. Да ли сте последња 2-3 дана узимали било какве лекове (нпр. Бруфен, Кафетин, Аналгин...)?
       </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.takenMedicineInLast3Days">
+        <mat-radio-button value = true  name="yes">Да </mat-radio-button>
+        <mat-radio-button value = false  name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
       <mat-label>8. Да ли стално узимате Аспирин (Cardiopirin)? Да ли сте га узимали у последњих 5 дана?
       </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.AspirinLast5Days">
+        <mat-radio-button value = true  name="yes">Да </mat-radio-button>
+        <mat-radio-button value = false  name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
       <mat-label>9. Да ли сте до сада испитивани или лечени у болници или сте тренутно на испитивању или боловању?
       </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.hospitalEverOrNow">
+        <mat-radio-button value = true  name="yes">Да </mat-radio-button>
+        <mat-radio-button value = false  name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
       <mat-label>10. Да ли сте вадили зуб у протеклих 7 дана?
       </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.takenToothOutInLast7Days">
+        <mat-radio-button value = true  name="yes">Да </mat-radio-button>
+        <mat-radio-button value = false name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
-    <section>
-      <mat-label>11. Да ли сте у последњих 7 до 10 дана имали температуру преко 38 C, кијавицу, прехладу или узимали антибиотике?
-      </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
-      </mat-radio-group>
-    </section>
-    <section>
-      <mat-label>12. Да ли сте примили било коју вакцину или серум у протеклих 12 месеци?
-      </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
-      </mat-radio-group>
-    </section>
-    <section>
-      <mat-label>13. Да ли сте у последњих 6 месеци нагло изгубили на тежини?
-      </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
-      </mat-radio-group>
-    </section>
-    <section>
-      <mat-label>14. Да ли сте имали убоде крпеља у протеклих 12 месеци и да ли сте се због тога јављали лекару?
-      </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
-      </mat-radio-group>
-    </section>
-    <section>
-      <mat-label>15. Да ли сте икада лечени од епилепсије (падавице), шећерне болести, астме, туберкулозе, инфаркта, можданог удара,
-        малигних обољења, менталних болести или маларије?        
-      </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
-      </mat-radio-group>
-    </section>
-    <section>
-      <mat-label>16. Да ли болујете од неке друге хроничне болести: срца, плућа, бубрега, јетре, желуца и црева, костију и зглобова,
-        нервног система, крви и крвних судова?        
-      </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
-      </mat-radio-group>
-    </section>
-    <section>
-      <mat-label>17. Да ли сте икада имали проблема са штитастом жлездом, хипофизом и/или примали хормоне?
-      </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
-      </mat-radio-group>
-    </section>
-    <section>
-      <mat-label>18. Да ли имате неке промене на кожи или болујете од алергије?
-      </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
-      </mat-radio-group>
-    </section>
-    <section>
-      <mat-label>19. Да ли дуго крварите после повреде или спонтано добијате модрице?
-      </mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="0"  name="yes">Да </mat-radio-button>
-        <mat-radio-button value="1"  name="no">Не</mat-radio-button>
-      </mat-radio-group>
-    </section>
-      
-      <br>
-      <button mat-raised-button (click)="submit()">Send</button>
+
+    <br>
+    <button mat-raised-button (click)="submit()">Send</button>
    
 </section>
     
