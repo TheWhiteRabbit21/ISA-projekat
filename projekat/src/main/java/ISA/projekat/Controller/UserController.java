@@ -70,7 +70,6 @@ public class UserController {
     public ResponseEntity<RegisteredUserDTO> RegisterUser(@RequestBody RegisteredUserDTO registeredUserDTO){
         
     	Address address = new Address(registeredUserDTO.getState(), registeredUserDTO.getCity(), registeredUserDTO.getStreet(), registeredUserDTO.getNumber());
-        _addressService.save(address);
     	userService.RegisterUser(registeredUserDTO, address);
     	
         return new ResponseEntity<>(HttpStatus.OK);
