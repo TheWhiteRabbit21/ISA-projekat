@@ -26,8 +26,8 @@ public class CenterService {
     }
     
     public void Create(CenterDTO centerDTO){
-        Address address = addressRepository.save(new Address(centerDTO.country, centerDTO.city, centerDTO.street, centerDTO.number));
-        BloodBankCenter bloodBankCenter = centerRepository.save(new BloodBankCenter(centerDTO.name, address.getId(), centerDTO.description));
+        Address address = new Address(centerDTO.country, centerDTO.city, centerDTO.street, centerDTO.number);
+        BloodBankCenter bloodBankCenter = centerRepository.save(new BloodBankCenter(centerDTO.name, address, centerDTO.description));
         for(int id : centerDTO.admins){
             Staff staff = centerAdminRepository.findById(id).get();
             staff.setBloodBankCenter(bloodBankCenter);

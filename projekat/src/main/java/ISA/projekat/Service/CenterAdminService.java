@@ -25,9 +25,9 @@ public class CenterAdminService {
 
     
     public void CreateCenterAdmin(CenterAdminDTO centerAdminDTO){
-        Address address = addressRepository.save(new Address(centerAdminDTO.country, centerAdminDTO.city, centerAdminDTO.street, centerAdminDTO.number));
+        Address address = new Address(centerAdminDTO.country, centerAdminDTO.city, centerAdminDTO.street, centerAdminDTO.number);
         centerAdminRepository.save(new Staff(centerAdminDTO.email,centerAdminDTO.password,centerAdminDTO.name,
-                centerAdminDTO.surname, parseGender(centerAdminDTO.gender), centerAdminDTO.jmbg, address.getId(),centerAdminDTO.phoneNumber));
+                centerAdminDTO.surname, parseGender(centerAdminDTO.gender), centerAdminDTO.jmbg, address,centerAdminDTO.phoneNumber));
     }
     public List<CenterAdminDTO> GetAvailableAdmins(){
         List<CenterAdminDTO> admins = new ArrayList<CenterAdminDTO>();

@@ -34,7 +34,7 @@ public class CenterAdminController {
         // convert users to DTOs
         List<CenterAdminDTO> centerAdminDTO = new ArrayList<>();
         for (Staff s : staffs) {
-            Address address = addressService.findOne(s.getAddress());
+            Address address = addressService.findOne(s.getAddress().getId());
             centerAdminDTO.add(new CenterAdminDTO(s.getId(), s.getName(), s.getSurname(), address.getCity(), address.getCountry(), address.getStreet(), 
             		address.getNumber(), s.getGender().toString(), s.getEmail(), s.getPassword(), s.getJmbg(), s.getPhoneNumber()));
         }
@@ -57,7 +57,7 @@ public class CenterAdminController {
 
     	Staff staff = centerAdminService.findOne(centerAdminDTO.id);
     	
-    	Address address = addressService.findOne(staff.getAddress());
+    	Address address = addressService.findOne(staff.getAddress().getId());
     	
     	if (staff == null || address == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

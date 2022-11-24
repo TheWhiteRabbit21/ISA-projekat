@@ -15,7 +15,7 @@ public class Staff extends User {
 	@JoinColumn(name = "bloodBankCenter_id")
 	private BloodBankCenter bloodBankCenter;
 
-	public Staff(String email, String password, String name, String surname, Gender gender, int jmbg, int address, String phoneNumber) {
+	public Staff(String email, String password, String name, String surname, Gender gender, int jmbg, Address address, String phoneNumber) {
 		super(email, password, name, surname, gender, jmbg, address, phoneNumber);
 	}
 
@@ -32,7 +32,7 @@ public class Staff extends User {
 	}
 
 	public Staff(int id, String email, String password, String name, String surname, Gender gender, int jmbg,
-			int address, String phoneNumber) {
+			Address address, String phoneNumber) {
 		super(id, email, password, name, surname, gender, jmbg, address, phoneNumber);
 
 	}
