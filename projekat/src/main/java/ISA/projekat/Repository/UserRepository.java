@@ -27,9 +27,8 @@ public interface UserRepository extends JpaRepository<RegisteredUser, Integer> {
     public List<RegisteredUser> findAllUsersByName(String name);
     public RegisteredUser findByPassword(String password);
 
-    @Query("select u from RegisteredUser u where u.name like %?1% and u.surname like %?2% ")
-
-    public List<RegisteredUser> findByNameAndSurnameAllIgnoringCase(String name, String surname);
+    @Query("select u from RegisteredUser u where lower(u.name) like %?1% and lower(u.surname) like %?2% ")
+    public List<RegisteredUser> findAllByNameAndSurnameIgnoreCase(String name, String surname);
 
     public Page<RegisteredUser> findAll(Pageable pageable);
 
