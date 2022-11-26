@@ -70,7 +70,6 @@ public class UserController {
     public ResponseEntity<RegisteredUserDTO> RegisterUser(@RequestBody RegisteredUserDTO registeredUserDTO){
         
     	Address address = new Address(registeredUserDTO.getState(), registeredUserDTO.getCity(), registeredUserDTO.getStreet(), registeredUserDTO.getNumber());
-        _addressService.save(address);
     	userService.RegisterUser(registeredUserDTO, address);
     	
         return new ResponseEntity<>(HttpStatus.OK);
@@ -129,6 +128,6 @@ public class UserController {
     @PostMapping(produces = "application/json", value = "/search")
     @ResponseBody
     public ResponseEntity<List<UserDTO>> getAllUsersByNameAndSurname(@RequestBody SearchUserDTO searchUserDTO) {
-        return new ResponseEntity<>(userService.findByNameAndSurnameAllIgnoringCase(searchUserDTO.getName(), searchUserDTO.getSurname()),HttpStatus.OK);
+        return new ResponseEntity<>(userService.findByNameAndSurnameAllIgnoringCase(searchUserDTO.getName().toLowerCase(), searchUserDTO.getSurname().toLowerCase()),HttpStatus.OK);
     }
 }
