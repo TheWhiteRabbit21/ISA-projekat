@@ -12,6 +12,10 @@ export interface BloodBank {
   country: string;
   description: string;
 }
+export interface SearchCenter {
+  name: string;
+  city: string;
+}
 
 @Component({
   selector: 'app-blood-banks-list',
@@ -20,13 +24,14 @@ export interface BloodBank {
 })
 export class BloodBanksListComponent implements AfterViewInit, OnInit {
   countries: string[] = [];
-  filterCountry: string = 'Reset';
+  filterCountry: string = 'Reset Country';
+  filterAvgPoints: string = 'Reset Rating';
   name: string = '';
   city: string = '';
   public bloodbanks: BloodBank[] = [];
   displayedColumns: string[] = ['name', 'averagePoints', 'city', 'country', 'description'];
   public dataSource = new MatTableDataSource(this.bloodbanks);
-
+  public searchCenter: SearchCenter = {name : '', city : ''}
   constructor(private _liveAnnouncer: LiveAnnouncer, private _bloodBankService: BloodBankListService, private http:HttpClient) {}
 
   ngOnInit(): void {
@@ -82,7 +87,7 @@ export class BloodBanksListComponent implements AfterViewInit, OnInit {
   }
 
   filterByCountry() {
-    if(this.filterCountry !== 'Reset'){
+    if(this.filterCountry !== 'Reset Country'){
       this.http.get(`http://localhost:8084/api/centers/filter_country/${this.filterCountry}`).subscribe((res:any) =>{
       this.dataSource = new MatTableDataSource(res);
     });
@@ -91,4 +96,19 @@ export class BloodBanksListComponent implements AfterViewInit, OnInit {
     }
 
   }
+
+  filterByAvgPoints() {
+    if(this.filterAvgPoints !== 'Reset Rating'){
+      this.http.get(`http://localhost:8084/api/centers/filter_avgPoints/${this.filterAvgPoints}`).subscribe((res:any) =>{
+      this.dataSource = new MatTableDataSource(res);
+    });
+    } else{
+      this.dataSource = new MatTableDataSource(this.bloodbanks);
+    }
+
+  }
+  search() {
+      this.http.post(`http://localhost:8084/api/centers/search_name_city/`, this.searchCenter).subscribe((res:any) =>{
+      this.dataSource = new MatTableDataSource(res);
+          })}
 }

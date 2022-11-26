@@ -49,4 +49,8 @@ public class CenterService {
 		
 		return centerRepository.save(temp);
 	}
+
+    public List<BloodBankCenter> findAllByNameAndCity(String name, String city){
+        return centerRepository.findAllByNameAndCity(name,city);
+    }
 }

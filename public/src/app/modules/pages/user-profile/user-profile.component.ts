@@ -59,11 +59,9 @@ export class UserProfileComponent implements OnInit {
       this.user = res;
       console.log(res);
     });
-    this.onCloseModal;
+
   }
 
-  onCloseModal(event: any){
-    this.closeModalEvent.emit(false);
-  }
+
 
 }

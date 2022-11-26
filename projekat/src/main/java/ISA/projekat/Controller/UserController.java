@@ -94,7 +94,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/find/{id}")
-    public ResponseEntity<RegisteredUser2DTO> getUserById(@PathVariable("id") Integer id) {
+    public ResponseEntity<RegisteredUser2DTO> getUserById(@PathVariable("id") int id) {
 
         RegisteredUser u = userService.findOneById(id);
 
