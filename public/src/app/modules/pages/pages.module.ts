@@ -8,7 +8,7 @@ import { AdminCenterProfileComponent } from './admin-center-profile/admin-center
 import { MatTableModule } from '@angular/material/table';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MaterialModule } from 'src/app/material/material.module';
-import { RegisterComponent } from './welcome/register/register.component';
+import { RegisterComponent } from './register/register.component';
 import { BloodBanksListComponent } from './blood-banks-list/blood-banks-list.component';
 import { RegisterCenterComponent } from './register-center/register-center.component';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BloodDonorFormComponent } from './blood-donor-form/blood-donor-form.component';
 import { RegisteredUsersListComponent } from './registered-users-list/registered-users-list.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     RegisterCenterAdminComponent,
     BloodDonorFormComponent,
     RegisteredUsersListComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
