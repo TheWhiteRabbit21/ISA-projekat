@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  bloodbanks: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public showBloodBanks(){
+    this.bloodbanks = true;
+  }
+
+  public closeBloodBanks(){
+    this.bloodbanks = false;
+  }
+
+  public bloodDonorForm(){
+    window.location.href="http://localhost:4200/blood-donor-form"
   }
 
 }

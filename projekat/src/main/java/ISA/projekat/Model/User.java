@@ -2,23 +2,91 @@ package ISA.projekat.Model;
 
 import java.io.Serializable;
 
-import ISA.projekat.Model.enums.Gender;
-import ISA.projekat.Model.enums.UserCategory;
+import javax.persistence.*;
 
+import ISA.projekat.Model.enums.Gender;
+
+@Entity
+@Table(name = "users")
 @SuppressWarnings("serial")
+@DiscriminatorColumn(name="user_type", discriminatorType = DiscriminatorType.INTEGER)
 public class User implements Serializable{
 
-	private String email;
-	private String password;
-	private String name;
-	private String surname;
-	private Gender gender;
-	private int jmbg;
-	private String adress;
-	private String city;
-	private String state;
-	private String phoneNumber;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	
+	@Column(unique = true, nullable = true)
+	private String email;
+	
+	@Column(nullable = true)
+	private String password;
+	
+	@Column(nullable = true)
+	private String name;
+	
+	@Column(nullable = true)
+	private String surname;
+	
+	@Column(nullable = true)
+	private Gender gender;
+	
+	@Column(nullable = true)
+	private Integer jmbg;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
+	private Address address;
+
+	
+	@Column(nullable = true)
+	private String phoneNumber;
+
+
+	
+	public User() {
+		super();
+	}
+	
+	public User(String email, String password, String name, String surname, Gender gender, Integer jmbg,
+
+			Address address, String phoneNumber) {
+
+		super();
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.gender = gender;
+		this.jmbg = jmbg;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+	}
+
+	
+	
+	public User(Integer id, String email, String password, String name, String surname, Gender gender, int jmbg,
+			Address address, String phoneNumber) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.gender = gender;
+		this.jmbg = jmbg;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -37,23 +105,12 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getAdress() {
-		return adress;
+	public Address getAddress() {
+		return address;
 	}
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
+	public void setAddress(Address address) {
+		this.address = address;
+
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -67,7 +124,7 @@ public class User implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getJmbg() {
+	public Integer getJmbg() {
 		return jmbg;
 	}
 	public void setJmbg(int jmbg) {
@@ -79,12 +136,12 @@ public class User implements Serializable{
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", surname="
+				+ surname + ", gender=" + gender + ", jmbg=" + jmbg + ", address=" + address + ", phoneNumber=" + phoneNumber + "]";
+	}
 	
-	
-	
-	
-	
-	
-	
-	
+
 }

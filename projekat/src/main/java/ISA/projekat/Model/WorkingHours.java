@@ -2,16 +2,37 @@ package ISA.projekat.Model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 @SuppressWarnings("serial")
 public class WorkingHours implements Serializable{
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
+	@Column(nullable = false)
 	private LocalDateTime workHourBegin;
+	
+	@Column(nullable = false)
 	private LocalDateTime workHourEnd;
 
-	private List<Appointment> appointment;
+	/*@Column(nullable = false)
+	private Set<Appointment> appointment;*/
 
+	public WorkingHours() {
+		super();
+	}
+	
+	
+	
+	
 	public LocalDateTime getWorkHourBegin() {
 		return workHourBegin;
 	}
@@ -28,11 +49,22 @@ public class WorkingHours implements Serializable{
 		this.workHourEnd = workHourEnd;
 	}
 
-	public List<Appointment> getAppointment() {
+	@Override
+	public String toString() {
+		return "WorkingHours [workHourBegin=" + workHourBegin + ", workHourEnd=" + workHourEnd + "]";
+	}
+
+	/*public Set<Appointment> getAppointment() {
 		return appointment;
 	}
 
-	public void setAppointment(List<Appointment> appointment) {
+	public void setAppointment(Set<Appointment> appointment) {
 		this.appointment = appointment;
-	}
+	}*/
+	
+	
+	
+	
+	
+	
 }

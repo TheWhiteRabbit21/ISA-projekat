@@ -1,0 +1,19 @@
+<input type="email" [(ngModel)]="centerAdmin.email" placeholder="Email">
+<input type="password" [(ngModel)]="centerAdmin.password" placeholder="Password">
+<input type="text" [(ngModel)]="centerAdmin.name" placeholder="Name">
+<input type="text" [(ngModel)]="centerAdmin.surname" placeholder="Surname">
+<input type="text" [(ngModel)]="centerAdmin.country" placeholder="Country">
+<input type="text" [(ngModel)]="centerAdmin.city" placeholder="City">
+<input type="text" [(ngModel)]="centerAdmin.street" placeholder="Street">
+<input type="text" [(ngModel)]="centerAdmin.number" placeholder="Number">
+<input type="number" [(ngModel)]="centerAdmin.jmbg" placeholder="JMBG">
+<select name="Gender" [(ngModel)]="centerAdmin.gender">
+    <option>
+        Male
+    </option>
+    <option>
+        Female
+    </option>
+</select>
+<input type="text" [(ngModel)]="centerAdmin.phoneNumber" placeholder="Phone Number">
+<button (click)="submit()">Submit</button>
