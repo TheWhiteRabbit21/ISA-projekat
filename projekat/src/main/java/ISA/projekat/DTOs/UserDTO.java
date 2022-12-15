@@ -1,8 +1,8 @@
 package ISA.projekat.DTOs;
 
 
-import ISA.projekat.Model.RegisteredUser;
-import ISA.projekat.Model.enums.UserCategory;
+//import ISA.projekat.Model.RegisteredUser;
+//import ISA.projekat.Model.enums.UserCategory;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.User;
 

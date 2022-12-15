@@ -4,7 +4,7 @@ import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.BloodBankCenter;
 import ISA.projekat.Model.Staff;
-import ISA.projekat.Model.enums.Gender;
+//import ISA.projekat.Model.enums.Gender;
 import ISA.projekat.Repository.AddressRepository;
 import ISA.projekat.Repository.CenterAdminRepository;
 import ISA.projekat.Repository.CenterRepository;
@@ -16,12 +16,12 @@ import java.util.List;
 public class CenterService {
 
     private final CenterRepository centerRepository;
-    private final AddressRepository addressRepository;
+//    private final AddressRepository addressRepository;
     private final CenterAdminRepository centerAdminRepository;
     
     public CenterService(CenterRepository centerRepository, AddressRepository addressRepository, CenterAdminRepository centerAdminRepository) {
         this.centerRepository = centerRepository;
-        this.addressRepository = addressRepository;
+//        this.addressRepository = addressRepository;
         this.centerAdminRepository = centerAdminRepository;
     }
     

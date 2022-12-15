@@ -9,18 +9,18 @@ import ISA.projekat.DTOs.CenterAdminDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.Staff;
 import ISA.projekat.Model.enums.Gender;
-import ISA.projekat.Repository.AddressRepository;
+//import ISA.projekat.Repository.AddressRepository;
 import ISA.projekat.Repository.CenterAdminRepository;
 
 @Service
 public class CenterAdminService {
 	
     private final CenterAdminRepository centerAdminRepository;
-    private final AddressRepository addressRepository;
+//    private final AddressRepository addressRepository;
 
-    public CenterAdminService(CenterAdminRepository centerAdminRepository, AddressRepository addressRepository) {
+    public CenterAdminService(CenterAdminRepository centerAdminRepository/*, AddressRepository addressRepository*/) {
         this.centerAdminRepository = centerAdminRepository;
-        this.addressRepository = addressRepository;
+//        this.addressRepository = addressRepository;
     }
 
     
