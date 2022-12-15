@@ -1,12 +1,10 @@
 package ISA.projekat.Model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @SuppressWarnings("serial")
@@ -14,51 +12,66 @@ public class Appointment implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 	
 	@Column(nullable = false)
-	private Date dateBegin;	//datum i tacno vreme termina pregleda, isto mozda ne date.
+	private LocalDate date;
 	
 	@Column(nullable = false)
-	private Date dateEnd;	//Also ili trajanje da se ubaci kao polje, ili da ima samo dateEnd do kad traje termin.
-	
+	private LocalTime time;
+
+	@Column(nullable = false)
+	private int duration;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
+	private RegisteredUser user;
+
 	@Column(nullable = false)
 	private boolean taken;
-	
-	
-	/*@ManyToMany(mappedBy = "appointment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Staff> staffs = new HashSet<Staff>();*/
-	
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "workCalendar_id")
+	private WorkCalendar workCalendar;
+
 	public Appointment() {
 		super();
 	}
 	
-	public Appointment(Date dateBegin, Date dateEnd, boolean taken/*, Set<Staff> staffs*/) {
+	public Appointment(LocalDate date, LocalTime time, int duration) {
 		super();
-		this.dateBegin = dateBegin;
-		this.dateEnd = dateEnd;
-		this.taken = taken;
-		//this.staffs = staffs;
+		this.date = date;
+		this.time = time;
+		this.duration = duration;
+		this.taken = false;
 	}
 
-
-	/*public Set<Staff> getStaffs() {
-		return staffs;
+	public LocalDate getDate() {
+		return date;
 	}
-	public void setStaffs(Set<Staff> staffs) {
-		this.staffs = staffs;
-	}*/
-	public Date getDateBegin() {
-		return dateBegin;
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
-	public void setDateBegin(Date dateBegin) {
-		this.dateBegin = dateBegin;
+	public LocalTime getTime() {
+		return time;
 	}
-	public Date getDateEnd() {
-		return dateEnd;
+	public void setTime(LocalTime time) {
+		this.time = time;
 	}
-	public void setDateEnd(Date dateEnd) {
-		this.dateEnd = dateEnd;
+	public int getId() {
+		return id;
+	}
+	public int getDuration() {
+		return duration;
+	}
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+	public RegisteredUser getUser() {
+		return user;
+	}
+	public void setUser(RegisteredUser user) {
+		this.user = user;
 	}
 	public boolean isTaken() {
 		return taken;
@@ -69,28 +82,12 @@ public class Appointment implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Appointment [dateBegin=" + dateBegin + ", dateEnd=" + dateEnd + ", taken=" + taken + "]";
+		return "Appointment{" +
+				"date=" + date +
+				", time=" + time +
+				", duration=" + duration +
+				", user=" + user +
+				", taken=" + taken +
+				'}';
 	}
-
-	
-	/*public void addStaff(Staff staff) {
-		staffs.add(staff);
-		//staff.setAppointment(this);
-	}
-	
-	public void removeStaff(Staff staff) {
-		staffs.remove(staff);
-		//staff.setAppointment(null);
-	}*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
