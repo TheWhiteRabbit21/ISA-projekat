@@ -33,6 +33,9 @@ public class BloodBankCenter implements Serializable{
 	@OneToMany(mappedBy = "bloodBankCenter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Staff> staff = new HashSet<Staff>();
 
+	@OneToOne(mappedBy = "bloodBankCenter")
+	private WorkCalendar workCalendar;
+
 	public BloodBankCenter() {
 		super();
 	}

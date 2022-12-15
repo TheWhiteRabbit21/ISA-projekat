@@ -3,6 +3,7 @@ package ISA.projekat.Model;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 import ISA.projekat.Model.enums.Gender;
 import ISA.projekat.Model.enums.UserCategory;
@@ -28,6 +29,9 @@ public class RegisteredUser extends User {
 	
 	@Column(nullable = true)
 	private UserCategory userCatagory;
+
+	@OneToOne(mappedBy = "Appointment")
+	private Appointment appointment;
 	
 	public RegisteredUser() {
 		super();
