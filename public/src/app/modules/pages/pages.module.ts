@@ -18,6 +18,7 @@ import { BloodDonorFormComponent } from './blood-donor-form/blood-donor-form.com
 import { RegisteredUsersListComponent } from './registered-users-list/registered-users-list.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { BloodDonorsListComponent } from './blood-donors-list/blood-donors-list.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { LoginComponent } from './login/login.component';
     BloodDonorFormComponent,
     RegisteredUsersListComponent,
     AdminDashboardComponent,
-    LoginComponent
+    LoginComponent,
+    BloodDonorsListComponent
   ],
   imports: [
     FormsModule,
