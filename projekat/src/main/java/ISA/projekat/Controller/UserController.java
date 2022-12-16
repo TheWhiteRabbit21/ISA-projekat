@@ -1,14 +1,9 @@
 package ISA.projekat.Controller;
 
 import ISA.projekat.DTOs.SearchUserDTO;
-import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.DTOs.RegisteredUser2DTO;
 import ISA.projekat.DTOs.RegisteredUserDTO;
 import ISA.projekat.DTOs.UserDTO;
-import ISA.projekat.Model.Address;
-import ISA.projekat.Model.RegisteredUser;
-import ISA.projekat.Model.User;
-import ISA.projekat.Model.enums.UserCategory;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Service.AddressService;
