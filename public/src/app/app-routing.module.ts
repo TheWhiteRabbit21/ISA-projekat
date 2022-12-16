@@ -12,7 +12,7 @@ import { BloodBanksListComponent } from "./modules/pages/blood-banks-list/blood-
 import { BloodDonorFormComponent } from "./modules/pages/blood-donor-form/blood-donor-form.component";
 import { RegisteredUsersListComponent } from "./modules/pages/registered-users-list/registered-users-list.component";
 import { AdminDashboardComponent } from "./modules/pages/admin-dashboard/admin-dashboard.component";
-
+import { AdminAppointmentComponent } from "./modules/pages/admin-appointment/admin-appointment.component"
 
 
 const routes: Routes = [
@@ -28,8 +28,8 @@ const routes: Routes = [
   { path: 'adminprofile/:id', component: AdminProfileComponent },
   { path: 'admincenterprofile/:id', component: AdminCenterProfileComponent },
   {path: 'blood-donor-form', component: BloodDonorFormComponent},
-  { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
-
+  { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
+  {path: 'adminAppointment', component: AdminAppointmentComponent}
 ];
 
 @NgModule({

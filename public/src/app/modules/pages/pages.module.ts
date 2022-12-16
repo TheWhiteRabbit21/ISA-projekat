@@ -17,7 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BloodDonorFormComponent } from './blood-donor-form/blood-donor-form.component';
 import { RegisteredUsersListComponent } from './registered-users-list/registered-users-list.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-
+import { AdminAppointmentComponent } from './admin-appointment/admin-appointment.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     RegisterCenterAdminComponent,
     BloodDonorFormComponent,
     RegisteredUsersListComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    AdminAppointmentComponent
   ],
   imports: [
     FormsModule,
