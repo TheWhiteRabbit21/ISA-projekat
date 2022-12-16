@@ -30,7 +30,7 @@ public class RegisteredUser extends User {
 	@Column(nullable = true)
 	private UserCategory userCatagory;
 
-	@OneToOne(mappedBy = "Appointment")
+	@OneToOne(mappedBy = "user")
 	private Appointment appointment;
 	
 	public RegisteredUser() {

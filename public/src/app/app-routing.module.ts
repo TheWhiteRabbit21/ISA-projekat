@@ -4,31 +4,35 @@ import { AdminCenterProfileComponent } from "./modules/pages/admin-center-profil
 import { AdminProfileComponent } from "./modules/pages/admin-profile/admin-profile.component";
 import { HomeComponent } from "./modules/pages/home/home.component";
 import { UserProfileComponent } from "./modules/pages/user-profile/user-profile.component"
-import { RegisterCenterComponent } from "./modules/pages/register-center/register-center.component";
 import { WelcomeComponent } from "./modules/pages/welcome/welcome.component";
-import { RegisterCenterAdminComponent } from "./modules/pages/register-center-admin/register-center-admin.component";
 import { BloodBankListService } from "./modules/pages/blood-banks-list/blood-bank-list.service";
 import { BloodBanksListComponent } from "./modules/pages/blood-banks-list/blood-banks-list.component";
 import { BloodDonorFormComponent } from "./modules/pages/blood-donor-form/blood-donor-form.component";
-import { RegisteredUsersListComponent } from "./modules/pages/registered-users-list/registered-users-list.component";
-import { AdminDashboardComponent } from "./modules/pages/admin-dashboard/admin-dashboard.component";
 import { RegisterComponent } from "./modules/pages/register/register.component";
 import { LoginComponent } from "./modules/pages/login/login.component";
 
 
 
 const routes: Routes = [
+  {
+    path: 'admin',
+    loadChildren: () => import('./modules/admin/admin.module').then(a => a.AdminModule)
+  },
+  {
+    path: 'admin-center',
+    loadChildren: () => import('./modules/admin-center/admin-center.module').then(ac => ac.AdminCenterModule)
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./modules/user/user.module').then(ac => ac.UserModule)
+  },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'centers', component: BloodBanksListComponent},
   { path: 'welcome', component: WelcomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register-center', component: RegisterCenterComponent },
-  { path: 'register-center-admin', component: RegisterCenterAdminComponent },
-  { path: 'registered-users', component: RegisteredUsersListComponent },
   { path: 'userProfile', component: UserProfileComponent},
-  { path: 'admin-dashboard', component: AdminDashboardComponent},
   { path: 'adminprofile/:id', component: AdminProfileComponent },
   { path: 'admincenterprofile/:id', component: AdminCenterProfileComponent },
   { path: 'blood-donor-form', component: BloodDonorFormComponent},
