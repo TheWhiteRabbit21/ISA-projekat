@@ -28,7 +28,8 @@ public class CenterController {
     @Autowired
     private AddressService addressService;
 
-    @PostMapping(produces = "application/json")
+    @SuppressWarnings("rawtypes")
+	@PostMapping(produces = "application/json")
     @ResponseBody
 
     public ResponseEntity CreateCenter(@RequestBody CenterDTO centerDTO){

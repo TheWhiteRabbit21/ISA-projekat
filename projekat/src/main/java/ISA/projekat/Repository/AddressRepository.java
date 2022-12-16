@@ -1,7 +1,7 @@
 package ISA.projekat.Repository;
 
 import ISA.projekat.Model.Address;
-import ISA.projekat.Model.RegisteredUser;
+//import ISA.projekat.Model.RegisteredUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

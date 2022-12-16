@@ -13,13 +13,17 @@ import { BloodDonorFormComponent } from "./modules/pages/blood-donor-form/blood-
 import { RegisteredUsersListComponent } from "./modules/pages/registered-users-list/registered-users-list.component";
 import { AdminDashboardComponent } from "./modules/pages/admin-dashboard/admin-dashboard.component";
 import { AdminAppointmentComponent } from "./modules/pages/admin-appointment/admin-appointment.component"
-
+import { RegisterComponent } from "./modules/pages/register/register.component";
+import { LoginComponent } from "./modules/pages/login/login.component";
+import { BloodDonorsListComponent } from "./modules/pages/blood-donors-list/blood-donors-list.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-  {path: 'centers', component: BloodBanksListComponent},
+  { path: 'centers', component: BloodBanksListComponent},
   { path: 'welcome', component: WelcomeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'register-center', component: RegisterCenterComponent },
   { path: 'register-center-admin', component: RegisterCenterAdminComponent },
   { path: 'registered-users', component: RegisteredUsersListComponent },
@@ -27,9 +31,14 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashboardComponent},
   { path: 'adminprofile/:id', component: AdminProfileComponent },
   { path: 'admincenterprofile/:id', component: AdminCenterProfileComponent },
+
   {path: 'blood-donor-form', component: BloodDonorFormComponent},
   { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
-  {path: 'adminAppointment', component: AdminAppointmentComponent}
+  {path: 'adminAppointment', component: AdminAppointmentComponent},
+  { path: 'blood-donor-form', component: BloodDonorFormComponent},
+  { path: 'blood-donors-list', component: BloodDonorsListComponent},
+  { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+
 ];
 
 @NgModule({
