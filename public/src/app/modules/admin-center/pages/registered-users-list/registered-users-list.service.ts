@@ -27,5 +27,5 @@ export class RegisteredUsersListService {
   }
   search(search : any) : Observable<User[]> {
     return this.http.post<User[]>(this.route + 'api/users/search/', search, {headers: this.headers});
-}
+  }
 }

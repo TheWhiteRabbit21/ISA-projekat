@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-appointment',
@@ -9,15 +9,20 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class AdminAppointmentComponent implements OnInit {
   id: number | undefined;
 
-  constructor(private _route: ActivatedRoute) { }
+  constructor(private _route: ActivatedRoute,
+              private _router: Router) { }
 
   ngOnInit(): void {
     this._route.params
     .subscribe((params: Params) => {
       this.id = +params['id'];
-      console.log(this.id);
-    }
-    );
+      //console.log(this.id);
+    });
   }
+
+  onBack(): void {
+    this._router.navigate(['/admin-center']);
+  }
+
 
 }
