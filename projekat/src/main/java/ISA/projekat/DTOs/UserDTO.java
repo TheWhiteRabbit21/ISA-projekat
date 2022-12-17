@@ -48,9 +48,9 @@ public class UserDTO {
 	}
     
     
-	public int getId() {
-		return id;
-	}
+//	public int getId() {
+//		return id;
+//	}
 
 
 
