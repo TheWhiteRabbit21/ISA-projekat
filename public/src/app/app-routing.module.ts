@@ -11,6 +11,7 @@ import { BloodDonorFormComponent } from "./modules/pages/blood-donor-form/blood-
 import { RegisterComponent } from "./modules/pages/register/register.component";
 import { LoginComponent } from "./modules/pages/login/login.component";
 import { BloodDonorsListComponent } from "./modules/pages/blood-donors-list/blood-donors-list.component";
+import { AdminAppointmentComponent } from "./modules/admin-center/pages/admin-appointment/admin-appointment.component";
 
 
 
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'admincenterprofile/:id', component: AdminCenterProfileComponent },
   { path: 'blood-donor-form', component: BloodDonorFormComponent},
   { path: 'blood-donors-list', component: BloodDonorsListComponent},
+  { path: 'admin-appointment/:id', component: AdminAppointmentComponent},
   { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
 
 ];
