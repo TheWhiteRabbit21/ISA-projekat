@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
 export interface User{
+  id : number,
   name : string,
   surname : string,
   jmbg : string,

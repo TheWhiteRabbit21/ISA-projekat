@@ -80,7 +80,7 @@ public class UserController {
 
         for (RegisteredUser u : users) {
             Address address = _addressService.findOne(u.getAddress().getId());
-            usersDTO.add(new RegisteredUser2DTO(u.getEmail(),u.getPassword(),u.getName(),u.getSurname(),address,u.getPhoneNumber(),u.getJmbg(),u.getGender(),u.getProfession(),u.getInfoInstitution(),String.valueOf(u.getPoints()),String.valueOf(u.getUserCatagory())));
+            usersDTO.add(new RegisteredUser2DTO(u.getId(), u.getEmail(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(), u.getGender(), u.getProfession(), u.getInfoInstitution(),String.valueOf(u.getPoints()), String.valueOf(u.getUserCatagory())));
 
         }
 
@@ -99,7 +99,7 @@ public class UserController {
 
         }
         Address address = _addressService.findOne(u.getAddress().getId());
-        RegisteredUser2DTO  userDTO = new RegisteredUser2DTO(u.getEmail(),u.getPassword(),u.getName(),u.getSurname(),address,u.getPhoneNumber(),u.getJmbg(),u.getGender(),u.getProfession(),u.getInfoInstitution(),String.valueOf(u.getPoints()),String.valueOf(u.getUserCatagory()));
+        RegisteredUser2DTO  userDTO = new RegisteredUser2DTO(u.getId(), u.getEmail(),u.getPassword(),u.getName(),u.getSurname(),address,u.getPhoneNumber(),u.getJmbg(),u.getGender(),u.getProfession(),u.getInfoInstitution(),String.valueOf(u.getPoints()),String.valueOf(u.getUserCatagory()));
 
 
         return new ResponseEntity<>(userDTO , HttpStatus.OK);

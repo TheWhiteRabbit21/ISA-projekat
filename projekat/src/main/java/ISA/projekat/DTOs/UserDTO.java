@@ -8,7 +8,7 @@ import ISA.projekat.Model.User;
 
 
 public class UserDTO {
-	public String id;
+	public int id;
 	public String name;
 	public String surname;
 	public String email;
@@ -22,7 +22,8 @@ public class UserDTO {
 	public String phoneNumber;
 
 
-	public UserDTO(String name, String surname, String email, String gender, String jmbg, String state, String city, String street, String streetNumber, String phoneNumber) {
+	public UserDTO(int id, String name, String surname, String email, String gender, String jmbg, String state, String city, String street, String streetNumber, String phoneNumber) {
+		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
@@ -42,12 +43,12 @@ public class UserDTO {
 
 
     public UserDTO(User user, Address address) {
-    	this(user.getName(), user.getSurname(), user.getEmail(), user.getGender().toString(), Integer.toString(user.getJmbg()), address.getCountry()
+    	this(user.getId(), user.getName(), user.getSurname(), user.getEmail(), user.getGender().toString(), Integer.toString(user.getJmbg()), address.getCountry()
 				, address.getCity(), address.getStreet(), address.getNumber(), user.getPhoneNumber());
 	}
     
     
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
