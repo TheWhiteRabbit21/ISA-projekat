@@ -10,16 +10,13 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { RegisterComponent } from './register/register.component';
 import { BloodBanksListComponent } from './blood-banks-list/blood-banks-list.component';
-import { RegisterCenterComponent } from './register-center/register-center.component';
 import { FormsModule } from '@angular/forms';
-import { RegisterCenterAdminComponent } from './register-center-admin/register-center-admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BloodDonorFormComponent } from './blood-donor-form/blood-donor-form.component';
-import { RegisteredUsersListComponent } from './registered-users-list/registered-users-list.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminAppointmentComponent } from './admin-appointment/admin-appointment.component';
 import { LoginComponent } from './login/login.component';
 import { BloodDonorsListComponent } from './blood-donors-list/blood-donors-list.component';
+import { RegisteredUsersListComponent } from '../admin/pages/registered-users-list/registered-users-list.component';
 
 @NgModule({
   declarations: [
@@ -30,15 +27,10 @@ import { BloodDonorsListComponent } from './blood-donors-list/blood-donors-list.
     WelcomeComponent,
     RegisterComponent,
     BloodBanksListComponent,
-    RegisterCenterComponent,
-    RegisterCenterAdminComponent,
     BloodDonorFormComponent,
-    RegisteredUsersListComponent,
-    AdminDashboardComponent,
     AdminAppointmentComponent,
     LoginComponent,
     BloodDonorsListComponent
-
   ],
   imports: [
     FormsModule,

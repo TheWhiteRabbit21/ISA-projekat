@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UpdateAdminService } from '../admin-profile/admin-profile.service';
+import { UpdateAdminService } from 'src/app/modules/pages/admin-profile/admin-profile.service';
 import { Admin, Center, RegisterCenterService } from './register-center.service';
 
 @Component({
