@@ -18,7 +18,7 @@ export interface BloodDonorInfo{
 export class AdminAppointmentComponent implements OnInit {
   
   id: number = 0;
-  displayedColumns: string[] = ['id', 'name', 'surname'];
+  displayedColumns: string[] = ['question', 'answer'];
   dataSource: BloodDonorInfo[] = [];
 
   constructor(private _route: ActivatedRoute,
