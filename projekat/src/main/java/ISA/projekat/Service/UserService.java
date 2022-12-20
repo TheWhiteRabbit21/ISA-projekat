@@ -1,20 +1,23 @@
 package ISA.projekat.Service;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+//import ISA.projekat.Model.User;
+import ISA.projekat.DTOs.RegisteredUserDTO;
 import ISA.projekat.DTOs.UserDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.RegisteredUser;
-//import ISA.projekat.Model.User;
-import ISA.projekat.DTOs.RegisteredUserDTO;
+import ISA.projekat.Model.User;
 import ISA.projekat.Model.enums.Gender;
 import ISA.projekat.Model.enums.UserCategory;
 //import ISA.projekat.Repository.AddressRepository;
 import ISA.projekat.Repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 //import java.util.Optional;
 
 @Service
@@ -22,10 +25,11 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-//    @Autowired
-//    private AddressRepository addressRepository;
 
-
+    public User findByUsername(String email) throws UsernameNotFoundException {
+		return userRepository.findByUsername(email);
+	}
+    
     private List<UserDTO> parseList(List<RegisteredUser> registeredUsers){
         List<UserDTO> users = new ArrayList<UserDTO>();
         for(RegisteredUser user : registeredUsers){
