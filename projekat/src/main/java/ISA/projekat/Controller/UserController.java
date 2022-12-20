@@ -1,21 +1,28 @@
 package ISA.projekat.Controller;
 
-import ISA.projekat.DTOs.SearchUserDTO;
+//import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import ISA.projekat.DTOs.RegisteredUser2DTO;
-import ISA.projekat.DTOs.RegisteredUserDTO;
+import ISA.projekat.DTOs.SearchUserDTO;
 import ISA.projekat.DTOs.UserDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Service.AddressService;
 import ISA.projekat.Service.UserService;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
-//import java.util.ArrayList;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @RestController
@@ -60,7 +67,7 @@ public class UserController {
 
     }
     
-    @PostMapping(produces = "application/json", value = "add")
+   /* @PostMapping(produces = "application/json", value = "add")
     @ResponseBody
     public ResponseEntity<RegisteredUserDTO> RegisterUser(@RequestBody RegisteredUserDTO registeredUserDTO){
         
@@ -68,7 +75,7 @@ public class UserController {
     	userService.RegisterUser(registeredUserDTO, address);
     	
         return new ResponseEntity<>(HttpStatus.OK);
-    }
+    }*/
 
     @GetMapping(value = "/all")
     public ResponseEntity<List<RegisteredUser2DTO>> getAllUsers() {

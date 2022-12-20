@@ -1,7 +1,9 @@
 package ISA.projekat.Model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -41,6 +43,9 @@ public class User implements Serializable, UserDetails{
 	
 	@Column(nullable = true)
     private boolean enabled;
+	
+	@Column(name = "last_password_reset_date")
+    private Timestamp lastPasswordResetDate;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id", referencedColumnName = "id")
@@ -131,9 +136,21 @@ public class User implements Serializable, UserDetails{
 	public String getPassword() {
 		return password;
 	}
+	
 	public void setPassword(String password) {
-		this.password = password;
-	}
+        Timestamp now = new Timestamp(new Date().getTime());
+        this.setLastPasswordResetDate(now);
+        this.password = password;
+    }
+	
+	public Timestamp getLastPasswordResetDate() {
+        return lastPasswordResetDate;
+    }
+	
+	public void setLastPasswordResetDate(Timestamp lastPasswordResetDate) {
+        this.lastPasswordResetDate = lastPasswordResetDate;
+    }
+	
 	public Address getAddress() {
 		return address;
 	}

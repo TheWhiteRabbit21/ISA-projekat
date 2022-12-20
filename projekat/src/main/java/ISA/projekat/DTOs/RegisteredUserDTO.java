@@ -3,6 +3,7 @@ package ISA.projekat.DTOs;
 import ISA.projekat.Model.enums.Gender;
 
 public class RegisteredUserDTO {
+		private Long id;
 		private String email;
 		private String password;
 	    private String name;
@@ -143,9 +144,13 @@ public class RegisteredUserDTO {
 		public void setEstablishmentInfo(String establishmentInfo) {
 			this.establishmentInfo = establishmentInfo;
 		}
-		
-		
-	   
-	   
-	    
+
+		public Long getId() {
+			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+    
 }

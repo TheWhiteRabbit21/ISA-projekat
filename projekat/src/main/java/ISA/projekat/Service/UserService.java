@@ -1,14 +1,11 @@
 package ISA.projekat.Service;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-//import ISA.projekat.Model.User;
 import ISA.projekat.DTOs.RegisteredUserDTO;
 import ISA.projekat.DTOs.UserDTO;
 import ISA.projekat.Model.Address;
@@ -16,9 +13,8 @@ import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Model.User;
 import ISA.projekat.Model.enums.Gender;
 import ISA.projekat.Model.enums.UserCategory;
-//import ISA.projekat.Repository.AddressRepository;
 import ISA.projekat.Repository.UserRepository;
-//import java.util.Optional;
+
 
 @Service
 public class UserService {
@@ -49,7 +45,6 @@ public class UserService {
     public void RegisterUser(RegisteredUserDTO registeredUserDTO, Address address){
     	userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), address, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE));
     }
-
 
     public RegisteredUser findOneById(int jmbg) {
         return userRepository.findOneById(jmbg);
