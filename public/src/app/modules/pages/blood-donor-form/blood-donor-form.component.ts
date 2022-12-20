@@ -10,16 +10,16 @@ import { BloodDonor, BloodDonorFormService } from './blood-donor-form.service';
 export class BloodDonorFormComponent implements OnInit {
 
   public bloodDonorInfo: BloodDonor = {
-    bloodPast: false,
-    everRejected: false,
+    weight: false,
+    skinIssues: false,
     feelHealthy: false,
-    ateSomething:  false,
-    haveDangerousJob: false,
-    regularlyTakeMedicine:  false,
-    takenMedicineInLast3Days:  false,
-    AspirinLast5Days: false,
-    hospitalEverOrNow: false,
-    takenToothOutInLast7Days: false,
+    bloodPressure:  false,
+    menstruation: false,
+    toothOutLast7Days:  false,
+    takenMedicineInLast7Days:  false,
+    piercingLast6Months: false,
+    operationOrTransfusionLast6Months: false,
+    tattooLast6Months: false,
   }
 
   constructor(private _bloodDonorFormService : BloodDonorFormService, private _snackBar : MatSnackBar) { }

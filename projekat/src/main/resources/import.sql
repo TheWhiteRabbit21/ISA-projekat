@@ -22,8 +22,4 @@ insert into blood_bank_center (name, address_id, description, average_rating) va
 insert into blood_bank_center (name, address_id, description, average_rating) values ('Dracula', 9, 'Stari načini vađenja krvi se vraćaju u modu.', '2.3');
 insert into blood_bank_center (name, address_id, description, average_rating) values ('Krpelj', 10, 'Divan banka krvi omeđena prostranim livadama.', '3');
 
-insert into blood_donor_info(aspirin_last5days, ate_something, blood_past, ever_rejected, feel_healthy, have_dangerous_job, hospital_ever_or_now, regularly_take_medicine, taken_medicine_in_last3days, taken_tooth_out_in_last7days) values  (true, true, true, true, true, true, true, true, true, true);
-insert into blood_donor_info(aspirin_last5days, ate_something, blood_past, ever_rejected, feel_healthy, have_dangerous_job, hospital_ever_or_now, regularly_take_medicine, taken_medicine_in_last3days, taken_tooth_out_in_last7days) values  (false, false, false, false, false, false, false, false, false, false);
-insert into blood_donor_info(aspirin_last5days, ate_something, blood_past, ever_rejected, feel_healthy, have_dangerous_job, hospital_ever_or_now, regularly_take_medicine, taken_medicine_in_last3days, taken_tooth_out_in_last7days) values  (true, false, true, true, true, false, true, true, true, false);
-insert into blood_donor_info(aspirin_last5days, ate_something, blood_past, ever_rejected, feel_healthy, have_dangerous_job, hospital_ever_or_now, regularly_take_medicine, taken_medicine_in_last3days, taken_tooth_out_in_last7days) values  (false, true, false, true, false, true, false, true, false, true);
-insert into blood_donor_info(aspirin_last5days, ate_something, blood_past, ever_rejected, feel_healthy, have_dangerous_job, hospital_ever_or_now, regularly_take_medicine, taken_medicine_in_last3days, taken_tooth_out_in_last7days) values  (true, true, true, false, true, true, true, false, true, true);
+
