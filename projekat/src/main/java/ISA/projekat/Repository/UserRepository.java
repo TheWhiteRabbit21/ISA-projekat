@@ -1,19 +1,22 @@
 package ISA.projekat.Repository;
 
 
-import ISA.projekat.Model.RegisteredUser;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
+import ISA.projekat.Model.RegisteredUser;
+import ISA.projekat.Model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<RegisteredUser, Integer> {
 
+	User findByUsername(String email);
 
     public RegisteredUser findOneById(int id);
 
