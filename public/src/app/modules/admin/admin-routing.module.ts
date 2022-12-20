@@ -4,6 +4,7 @@ import { AdminComponent } from './admin.component';
 import { RegisteredUsersListComponent } from './pages/registered-users-list/registered-users-list.component';
 import { RegisterCenterAdminComponent } from './pages/register-center-admin/register-center-admin.component';
 import { RegisterCenterComponent } from './pages/register-center/register-center.component';
+import { RegisterAdminComponent } from './pages/register-admin/register-admin.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'register-center-admin',
         component: RegisterCenterAdminComponent,
+      },
+      {
+        path: 'register-admin',
+        component: RegisterAdminComponent,
       }
     ]
   }
