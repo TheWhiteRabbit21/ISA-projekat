@@ -5,7 +5,18 @@ import { AdminAppointmentService } from './admin-appointment.service';
 export interface BloodDonorInfo{
   id : number,
   name : string,
-  surname : string
+  surname : string,
+  weight: string,
+  healthy: string,
+  skinIssues: string,
+  bloodPressure: string,
+  underMedicationLast7Days: string,
+  femalePeriod: string,
+  toothOutLast7Days: string,
+  piercingLast6Months: string,
+  operationOrTransfusionLast6Months: string,
+  tattooLast6Months: string
+
   //dodati za upitnik sta sve treba u model pa prikazati u htmlu
   //promeniti na backendu u DTO-u sta se sve salje nazad u frontend
 }
