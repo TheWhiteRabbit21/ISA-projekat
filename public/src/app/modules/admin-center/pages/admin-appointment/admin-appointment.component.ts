@@ -29,7 +29,8 @@ export interface BloodDonorInfo{
 export class AdminAppointmentComponent implements OnInit {
   
   id: number = 0;
-  displayedColumns: string[] = ['question', 'answer'];
+  displayedColumns: string[] = ['name', 'surname'];
+  displayedColumns2: string[] = ['question', 'answer'];
   dataSource: BloodDonorInfo[] = [];
 
   constructor(private _route: ActivatedRoute,
@@ -41,10 +42,14 @@ export class AdminAppointmentComponent implements OnInit {
     .subscribe((params: Params) => {
       this.id = +params['id'];
       //console.log(this.id);
-      this._BBInfoService.getById(this.id).subscribe(
-        res => (this.dataSource = res))
+      // this._BBInfoService.getById(this.id).subscribe(
+      //   res => (this.dataSource = res))
       });
   };
+
+  startAppointment(): void {
+    this._router.navigate(['/start-appointment/' + this.id]);
+  }
 
   onBack(): void {
     this._router.navigate(['/admin-center']);

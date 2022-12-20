@@ -5,13 +5,13 @@ import { AdminProfileComponent } from "./modules/pages/admin-profile/admin-profi
 import { HomeComponent } from "./modules/pages/home/home.component";
 import { UserProfileComponent } from "./modules/pages/user-profile/user-profile.component"
 import { WelcomeComponent } from "./modules/pages/welcome/welcome.component";
-import { BloodBankListService } from "./modules/pages/blood-banks-list/blood-bank-list.service";
 import { BloodBanksListComponent } from "./modules/pages/blood-banks-list/blood-banks-list.component";
 import { BloodDonorFormComponent } from "./modules/pages/blood-donor-form/blood-donor-form.component";
 import { RegisterComponent } from "./modules/pages/register/register.component";
 import { LoginComponent } from "./modules/pages/login/login.component";
 import { BloodDonorsListComponent } from "./modules/pages/blood-donors-list/blood-donors-list.component";
 import { AdminAppointmentComponent } from "./modules/admin-center/pages/admin-appointment/admin-appointment.component";
+import { StartAppointmentComponent } from "./modules/admin-center/pages/start-appointment/start-appointment.component";
 
 
 
@@ -40,6 +40,7 @@ const routes: Routes = [
   { path: 'blood-donor-form', component: BloodDonorFormComponent},
   { path: 'blood-donors-list', component: BloodDonorsListComponent},
   { path: 'admin-appointment/:id', component: AdminAppointmentComponent},
+  { path: 'start-appointment/:id', component: StartAppointmentComponent},
   { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
 
 ];
