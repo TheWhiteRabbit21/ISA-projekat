@@ -3,11 +3,11 @@ package ISA.projekat.Model;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
-
 import javax.persistence.*;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import ISA.projekat.Model.enums.Gender;
 
@@ -23,9 +23,6 @@ public class User implements Serializable, UserDetails{
 	
 	@Column(unique = true, nullable = true)
 	private String email;
-	
-	@Column(nullable = true)
-	private String username;
 	
 	@Column(nullable = true)
 	private String password;
@@ -114,12 +111,13 @@ public class User implements Serializable, UserDetails{
 		this.surname = surname;
 	}
 	
+	//mi ne koristimo username vec email
 	public String getUsername() {
-        return username;
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String email) {
+        this.email = email;
     }
     
 	public String getPassword() {
@@ -140,12 +138,6 @@ public class User implements Serializable, UserDetails{
 	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public Integer getJmbg() {
 		return jmbg;
@@ -179,16 +171,19 @@ public class User implements Serializable, UserDetails{
 		return this.roles;
 	}
 
+	@JsonIgnore
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
 
+	@JsonIgnore
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
-
+	
+	@JsonIgnore
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
