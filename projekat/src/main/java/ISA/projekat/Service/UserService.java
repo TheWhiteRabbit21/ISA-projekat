@@ -73,7 +73,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public RegisteredUser findByUsername(String username){
+    public User findByUsername(String username){
         return userRepository.findByUsername(username);
     }
 

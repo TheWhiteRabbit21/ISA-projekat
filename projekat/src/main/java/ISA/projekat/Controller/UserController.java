@@ -21,6 +21,7 @@ import ISA.projekat.DTOs.SearchUserDTO;
 import ISA.projekat.DTOs.UserDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.RegisteredUser;
+import ISA.projekat.Model.User;
 import ISA.projekat.Service.AddressService;
 import ISA.projekat.Service.UserService;
 
@@ -40,7 +41,8 @@ public class UserController {
     @PutMapping(value = "/edit")
     public ResponseEntity<RegisteredUser2DTO> saveUser(@RequestBody RegisteredUser2DTO userDTO) {
 
-        RegisteredUser user = userService.findByUsername(userDTO.getEmail());
+    	User user1 = userService.findByUsername(userDTO.getEmail());
+        RegisteredUser user = userService.findOneById(user1.getJmbg());
         Address address = _addressService.findById(userDTO.getAddress().getId());
         address.setCity(userDTO.getAddress().getCity());
         address.setCountry(userDTO.getAddress().getCountry());
