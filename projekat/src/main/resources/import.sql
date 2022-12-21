@@ -22,4 +22,15 @@ insert into blood_bank_center (name, address_id, description, average_rating) va
 insert into blood_bank_center (name, address_id, description, average_rating) values ('Dracula', 9, 'Stari načini vađenja krvi se vraćaju u modu.', '2.3');
 insert into blood_bank_center (name, address_id, description, average_rating) values ('Krpelj', 10, 'Divan banka krvi omeđena prostranim livadama.', '3');
 
+insert into blood_donor_info(weight, skin_issues, feel_healthy, blood_pressure, menstruation, tooth_out_last7days, taken_medicine_in_last7days, piercing_last6months, operation_or_transfusion_last6months, tattoo_last6months, donor_id) values (false, false, true, false, false, true, true, true, true, true, 1);
+insert into blood_donor_info(weight, skin_issues, feel_healthy, blood_pressure, menstruation, tooth_out_last7days, taken_medicine_in_last7days, piercing_last6months, operation_or_transfusion_last6months, tattoo_last6months, donor_id) values (true, true, true, true, true, true, true, true, true, true, 2);
+insert into blood_donor_info(weight, skin_issues, feel_healthy, blood_pressure, menstruation, tooth_out_last7days, taken_medicine_in_last7days, piercing_last6months, operation_or_transfusion_last6months, tattoo_last6months, donor_id) values (true, true, true, true, true, true, true, true, true, true, 3);
+
+insert into equipment(blood_quantity, needles) values (400, 10);
+
+insert into appointment_history(datum, donor_id, krvna_grupa, napomena_doktoru_medicine, bakar_sulfat, hemoglobinometar_vrednost, pluca, srce, ta, tip_kese, napomena, broj_lota_kese) values ('19-12-2022', 1, 'A+', 'Nap dok medicine 1', 'nizak', 'mala', 'losa pluca', 'slabo srce', 'nizak pritisak', 'mala', 'napomena1', 1);
+insert into appointment_history(datum, donor_id, krvna_grupa, napomena_doktoru_medicine, bakar_sulfat, hemoglobinometar_vrednost, pluca, srce, ta, tip_kese, napomena, broj_lota_kese) values ('20-12-2022', 1, 'A+', 'Nap dok medicine 2', 'visok', 'velika', 'sjajna pluca', 'jako srce', 'visok pritisak', 'srednja', 'napomena2', 2);
+insert into appointment_history(datum, donor_id, krvna_grupa, napomena_doktoru_medicine, bakar_sulfat, hemoglobinometar_vrednost, pluca, srce, ta, tip_kese, napomena, broj_lota_kese) values ('21-12-2022', 1, 'A+', 'Nap dok medicine 3', 'dobar', 'srednja', 'dobra pluca', 'dobro srce', 'normalan pritisak', 'velika', 'napomena3', 3);
+
+
 
