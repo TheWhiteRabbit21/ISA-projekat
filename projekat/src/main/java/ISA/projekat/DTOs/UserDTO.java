@@ -43,7 +43,7 @@ public class UserDTO {
 
 
     public UserDTO(User user, Address address) {
-    	this(user.getId(), user.getName(), user.getSurname(), user.getEmail(), user.getGender().toString(), Integer.toString(user.getJmbg()), address.getCountry()
+    	this(user.getId(), user.getName(), user.getSurname(), user.getUsername(), user.getGender().toString(), Integer.toString(user.getJmbg()), address.getCountry()
 				, address.getCity(), address.getStreet(), address.getNumber(), user.getPhoneNumber());
 	}
     

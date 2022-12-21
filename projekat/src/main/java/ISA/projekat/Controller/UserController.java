@@ -40,7 +40,7 @@ public class UserController {
     @PutMapping(value = "/edit")
     public ResponseEntity<RegisteredUser2DTO> saveUser(@RequestBody RegisteredUser2DTO userDTO) {
 
-        RegisteredUser user = userService.findByEmail(userDTO.getEmail());
+        RegisteredUser user = userService.findByUsername(userDTO.getEmail());
         Address address = _addressService.findById(userDTO.getAddress().getId());
         address.setCity(userDTO.getAddress().getCity());
         address.setCountry(userDTO.getAddress().getCountry());
@@ -48,7 +48,7 @@ public class UserController {
         address.setStreet(userDTO.getAddress().getStreet());
         user.setName(userDTO.getName());
         user.setSurname(userDTO.getSurname());
-        user.setEmail(userDTO.getEmail());
+        user.setUsername(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
         user.setAddress(userDTO.getAddress());
         user.setJmbg(userDTO.getJmbg());
@@ -88,7 +88,7 @@ public class UserController {
 
         for (RegisteredUser u : users) {
             Address address = _addressService.findOne(u.getAddress().getId());
-            usersDTO.add(new RegisteredUser2DTO(u.getId(), u.getEmail(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(), 
+            usersDTO.add(new RegisteredUser2DTO(u.getId(), u.getUsername(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(), 
             		u.getGender(), u.getProfession(), u.getInfoInstitution(), String.valueOf(u.getPoints()), String.valueOf(u.getUserCatagory())));
 
         }
@@ -108,7 +108,7 @@ public class UserController {
 
         }
         Address address = _addressService.findOne(u.getAddress().getId());
-        RegisteredUser2DTO  userDTO = new RegisteredUser2DTO(u.getId(), u.getEmail(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(), 
+        RegisteredUser2DTO  userDTO = new RegisteredUser2DTO(u.getId(), u.getUsername(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(), 
         		u.getGender(), u.getProfession(), u.getInfoInstitution(), String.valueOf(u.getPoints()), String.valueOf(u.getUserCatagory()));
 
 

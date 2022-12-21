@@ -36,7 +36,7 @@ public class CenterAdminController {
         for (Staff s : staffs) {
             Address address = addressService.findOne(s.getAddress().getId());
             centerAdminDTO.add(new CenterAdminDTO(s.getId(), s.getName(), s.getSurname(), address.getCity(), address.getCountry(), address.getStreet(), 
-            		address.getNumber(), s.getGender().toString(), s.getEmail(), s.getPassword(), s.getJmbg(), s.getPhoneNumber()));
+            		address.getNumber(), s.getGender().toString(), s.getUsername(), s.getPassword(), s.getJmbg(), s.getPhoneNumber()));
         }
 
         return new ResponseEntity<>(centerAdminDTO, HttpStatus.OK);

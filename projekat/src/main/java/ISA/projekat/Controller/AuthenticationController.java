@@ -66,7 +66,7 @@ public class AuthenticationController {
 	// Endpoint za registraciju novog korisnika
 	@PostMapping("/signup")
 	public ResponseEntity<RegisteredUserDTO> addUser(@RequestBody RegisteredUserDTO registeredUserDTO, UriComponentsBuilder ucBuilder) {
-		RegisteredUser existUser = this.userService.findByEmail(registeredUserDTO.getEmail());
+		RegisteredUser existUser = this.userService.findByUsername(registeredUserDTO.getEmail());
 
 		if (existUser != null) {
 			throw new ResourceConflictException(registeredUserDTO.getId(), "Username already exists");

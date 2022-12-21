@@ -23,8 +23,11 @@ public class User implements Serializable, UserDetails{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(unique = true, nullable = true)
-	private String email;
+	@Column(nullable = true)
+    private String username;
+	
+	/*@Column(unique = true, nullable = true)
+	private String email;*/
 	
 	@Column(nullable = true)
 	private String password;
@@ -64,12 +67,12 @@ public class User implements Serializable, UserDetails{
 		super();
 	}
 	
-	public User(String email, String password, String name, String surname, Gender gender, Integer jmbg,
+	public User(String username, String password, String name, String surname, Gender gender, Integer jmbg,
 
 			Address address, String phoneNumber) {
 
 		super();
-		this.email = email;
+		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
@@ -81,11 +84,11 @@ public class User implements Serializable, UserDetails{
 
 	
 	
-	public User(Integer id, String email, String password, String name, String surname, Gender gender, int jmbg,
+	public User(Integer id, String username, String password, String name, String surname, Gender gender, int jmbg,
 			Address address, String phoneNumber) {
 		super();
 		this.id = id;
-		this.email = email;
+		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
@@ -118,20 +121,20 @@ public class User implements Serializable, UserDetails{
 	
 	//mi ne koristimo username vec email
 	public String getUsername() {
-        return email;
+        return username;
     }
 
-    public void setUsername(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
     
-    public String getEmail() {
+   /*public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
+    }*/
     
 	public String getPassword() {
 		return password;
@@ -187,7 +190,7 @@ public class User implements Serializable, UserDetails{
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", surname="
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", surname="
 				+ surname + ", gender=" + gender + ", jmbg=" + jmbg + ", address=" + address + ", phoneNumber=" + phoneNumber + "]";
 	}
 

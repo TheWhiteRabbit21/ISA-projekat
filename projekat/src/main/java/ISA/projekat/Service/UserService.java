@@ -22,9 +22,9 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User findByUsername(String email) throws UsernameNotFoundException {
-		return userRepository.findByUsername(email);
-	}
+    /*public User findByUsername(String username) throws UsernameNotFoundException {
+		return userRepository.findByUsername(username);
+	}*/
     
     private List<UserDTO> parseList(List<RegisteredUser> registeredUsers){
         List<UserDTO> users = new ArrayList<UserDTO>();
@@ -73,8 +73,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public RegisteredUser findByEmail(String email){
-        return userRepository.findByEmail(email).get();
+    public RegisteredUser findByUsername(String username){
+        return userRepository.findByUsername(username);
     }
 
     public Gender parseGender(String gender){

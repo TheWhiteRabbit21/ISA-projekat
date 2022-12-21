@@ -2,7 +2,6 @@ package ISA.projekat.Repository;
 
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,12 +15,11 @@ import ISA.projekat.Model.User;
 @Repository
 public interface UserRepository extends JpaRepository<RegisteredUser, Integer> {
 
-	User findByUsername(String email);
+	//User findByUsername(String username);
 
     public RegisteredUser findOneById(int id);
 
-    Optional<RegisteredUser> findByEmail(String email);
-
+    RegisteredUser findByUsername(String username);
 
     @Query("select u from RegisteredUser u where u.surname = ?1")
     public List<RegisteredUser> findAllUsersBySurname(String surname);
