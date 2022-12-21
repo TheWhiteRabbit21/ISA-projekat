@@ -3,6 +3,8 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
 export class AppointmentInfo {
+    datum: string = '';
+    donorId: number = 0;
     krvnaGrupa: string = '';
     napomenaDoktoruMedicine: string = '';
     bakarSulfat: string = '';

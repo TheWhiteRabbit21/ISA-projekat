@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ISA.projekat.DTOs.AppointmentBloodDonorInfoDTO;
+import ISA.projekat.DTOs.AppointmentInfoDTO;
+import ISA.projekat.Model.AppointmentHistory;
 import ISA.projekat.Model.BloodDonorInfo;
 import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Service.BloodDonorInfoService;
@@ -61,6 +63,24 @@ public class BloodDonorInfoController {
 		
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
+	
+	@GetMapping(produces = "application/json", value = "findAppointmentHistoryById/{id}")
+	public ResponseEntity<List<AppointmentInfoDTO>> GetAppointmentHistory(@PathVariable("id") int id){
+		
+		List<AppointmentHistory> lah = new ArrayList<>();
+		lah = bloodDonorInfoService.findAppointmentHistoryById(id);
+		
+		List<AppointmentInfoDTO> dto = new ArrayList<AppointmentInfoDTO>();
+
+		for(AppointmentHistory ah : lah) {
+			dto.add(new AppointmentInfoDTO(ah));
+		}
+		
+		return new ResponseEntity<>(dto, HttpStatus.OK);
+		
+	}
+	
+	
 	
 	
 	

@@ -15,10 +15,22 @@ export interface BloodDonorInfo{
   piercingLast6Months: string,
   operationOrTransfusionLast6Months: string,
   tattooLast6Months: string
-
-  //dodati za upitnik sta sve treba u model pa prikazati u htmlu
-  //promeniti na backendu u DTO-u sta se sve salje nazad u frontend
 }
+
+export interface AppointmentHistoryInfo{
+  datum: string,
+  krvnaGrupa: string,
+  napomenaDoktoruMedicine: string,
+  bakarSulfat: string,
+  hemoglobinometarVrednost: string,
+  pluca: string,
+  srce: string,
+  TA: string,
+  tipKese: string,
+  napomena: string,
+  brojLotaKese: string
+}
+
 
 @Component({
   selector: 'app-admin-appointment',
@@ -30,7 +42,9 @@ export class AdminAppointmentComponent implements OnInit {
   id: number = 0;
   displayedColumns: string[] = ['name', 'surname'];
   displayedColumns2: string[] = ['question', 'answer'];
+  displayedColumns3: string[] = ['datum', 'krvnaGrupa', 'napomenaDrMedicine', 'bakarSulfat', 'hemoglobinometarVrednost', 'pluca', 'srce', 'TA', 'tipKese', 'napomena', 'brojLotaKese'];
   dataSource: BloodDonorInfo[] = [];
+  dataSource2: AppointmentHistoryInfo[] = [];
 
   constructor(private _route: ActivatedRoute,
               private _router: Router,
@@ -40,10 +54,13 @@ export class AdminAppointmentComponent implements OnInit {
     this._route.params
     .subscribe((params: Params) => {
       this.id = +params['id'];
-      //console.log(this.id);
+
       this._adminAppointmentService.getById(this.id).subscribe(
-        res => (this.dataSource = res))
-      });
+        res => (this.dataSource = res));
+      
+      this._adminAppointmentService.getAppointmentHistory(this.id).subscribe(
+        res => (this.dataSource2 = res));
+    });
   };
 
   startAppointment(): void {
@@ -59,7 +76,7 @@ export class AdminAppointmentComponent implements OnInit {
   }
 
   doesntMeetRequirements(): void {
-
+    this._router.navigate(['/admin-center']);
   }
 
 

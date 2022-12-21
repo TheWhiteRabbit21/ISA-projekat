@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,8 +13,12 @@ import { AppointmentInfo, AppointmentService } from './start-appointment.service
 export class StartAppointmentComponent implements OnInit {
 
   id: number = 0;
+  date = new Date();
+  latest_date = this.datepipe.transform(this.date, 'dd-MM-yyyy');
 
   public appointmentInfo: AppointmentInfo = {
+    datum: this.latest_date!,
+    donorId: this.id,
     krvnaGrupa: '',
     napomenaDoktoruMedicine: '',
     bakarSulfat: '',
@@ -45,12 +50,14 @@ export class StartAppointmentComponent implements OnInit {
 
   constructor( private _route: ActivatedRoute,
                 private _appointmentService : AppointmentService,
-                private _snackBar : MatSnackBar) {}
+                private _snackBar : MatSnackBar,
+                private datepipe: DatePipe) {}
 
   ngOnInit(): void {
     this._route.params
     .subscribe((params: Params) => {
       this.id = +params['id'];
+      this.appointmentInfo.donorId = +params['id'];
       //console.log(this.id);
       // this._BBInfoService.getById(this.id).subscribe(
       //   res => (this.dataSource = res))
@@ -61,7 +68,7 @@ export class StartAppointmentComponent implements OnInit {
     this._appointmentService.submit(this.appointmentInfo).subscribe(res => {
       this._snackBar.open("Appointment successfully finished.", "Ok");
       setTimeout(() => {
-        window.location.href="http://localhost:4200/admin-center"
+        window.location.href="http://localhost:4200/admin-appointment/" + this.id
       }, 
       3000);
     });

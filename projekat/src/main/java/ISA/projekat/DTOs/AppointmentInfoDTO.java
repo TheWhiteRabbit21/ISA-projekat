@@ -1,7 +1,11 @@
 package ISA.projekat.DTOs;
 
+import ISA.projekat.Model.AppointmentHistory;
+
 public class AppointmentInfoDTO {
 
+	public String datum;
+	public int donorId;
 	public String krvnaGrupa;
 	public String napomenaDoktoruMedicine;
 	public String bakarSulfat;
@@ -18,6 +22,45 @@ public class AppointmentInfoDTO {
 
 	public AppointmentInfoDTO() {
 	
+	}
+
+
+	public AppointmentInfoDTO(AppointmentHistory ah) {
+
+		this.datum = ah.getDatum();
+		this.donorId = ah.getDonorId();
+		this.krvnaGrupa = ah.getKrvnaGrupa();
+		this.napomenaDoktoruMedicine = ah.getNapomenaDoktoruMedicine();
+		this.bakarSulfat = ah.getBakarSulfat();
+		this.hemoglobinometarVrednost = ah.getHemoglobinometarVrednost();
+		this.pluca = ah.getPluca();
+		this.srce = ah.getSrce();
+		this.TA = ah.getTA();
+		this.tipKese = ah.getTipKese();
+		this.napomena = ah.getNapomena();
+		this.brojLotaKese = Integer.toString(ah.getBrojLotaKese());
+		
+	}
+
+
+	public String getDatum() {
+		return datum;
+	}
+
+
+	public void setDatum(String datum) {
+		this.datum = datum;
+	}
+
+	
+
+	public int getDonorId() {
+		return donorId;
+	}
+
+
+	public void setDonorId(int donorId) {
+		this.donorId = donorId;
 	}
 
 

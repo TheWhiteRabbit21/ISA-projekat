@@ -16,11 +16,6 @@
   
 
 
-
-
-
-
-
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-top: 30px;">
   
     <ng-container matColumnDef="question">
@@ -120,3 +115,78 @@
         Doesn't meet requirements
     </a>
 </div>
+
+
+<table mat-table [dataSource]="dataSource2" class="mat-elevation-z8" style="margin-top: 30px;">
+  
+  <ng-container matColumnDef="datum">
+    <th mat-header-cell *matHeaderCellDef> Datum </th>
+    <td mat-cell *matCellDef="let element"> {{element.datum}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="krvnaGrupa">
+    <th mat-header-cell *matHeaderCellDef> Krvna grupa </th>
+    <td mat-cell *matCellDef="let element"> {{element.krvnaGrupa}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="napomenaDrMedicine">
+    <th mat-header-cell *matHeaderCellDef> Napomena za doktora medicine </th>
+    <td mat-cell *matCellDef="let element"> {{element.napomenaDoktoruMedicine}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="bakarSulfat">
+    <th mat-header-cell *matHeaderCellDef> Bakarsulfat </th>
+    <td mat-cell *matCellDef="let element"> {{element.bakarSulfat}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="hemoglobinometarVrednost">
+    <th mat-header-cell *matHeaderCellDef> Hemoglobinometar vrednost </th>
+    <td mat-cell *matCellDef="let element"> {{element.hemoglobinometarVrednost}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="pluca">
+    <th mat-header-cell *matHeaderCellDef> Pluca </th>
+    <td mat-cell *matCellDef="let element"> {{element.pluca}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="srce">
+    <th mat-header-cell *matHeaderCellDef> Srce </th>
+    <td mat-cell *matCellDef="let element"> {{element.srce}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="TA">
+    <th mat-header-cell *matHeaderCellDef> TA </th>
+    <td mat-cell *matCellDef="let element"> {{element.TA}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="tipKese">
+    <th mat-header-cell *matHeaderCellDef> Tip kese </th>
+    <td mat-cell *matCellDef="let element"> {{element.tipKese}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="napomena">
+    <th mat-header-cell *matHeaderCellDef> Napomena </th>
+    <td mat-cell *matCellDef="let element"> {{element.napomena}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="brojLotaKese">
+    <th mat-header-cell *matHeaderCellDef> Broj lota kese </th>
+    <td mat-cell *matCellDef="let element"> {{element.brojLotaKese}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
