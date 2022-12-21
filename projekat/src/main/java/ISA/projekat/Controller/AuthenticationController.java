@@ -74,6 +74,7 @@ public class AuthenticationController {
 		
 		Address address = new Address(registeredUserDTO.getState(), registeredUserDTO.getCity(), registeredUserDTO.getStreet(), registeredUserDTO.getNumber());
     	userService.RegisterUser(registeredUserDTO, address);
+    	// treba staviti da se uzme id od ovog registrovanog usera i da mu se stavi role_user
 
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
