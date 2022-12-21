@@ -3,8 +3,6 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { BloodDonorInfo } from "./admin-appointment.component";
 
-
-
 @Injectable({
     providedIn: 'root'
 })
@@ -17,9 +15,4 @@ export class AdminAppointmentService {
     public getById(id : any) : Observable<BloodDonorInfo[]> {
         return this.http.post<BloodDonorInfo[]>(this.route + 'api/users/findBloodDonorInfo/', id, {headers: this.headers});
       }
-
-
-
-
-
 }

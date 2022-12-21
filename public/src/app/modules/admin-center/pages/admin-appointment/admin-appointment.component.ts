@@ -5,7 +5,18 @@ import { AdminAppointmentService } from './admin-appointment.service';
 export interface BloodDonorInfo{
   id : number,
   name : string,
-  surname : string
+  surname : string,
+  weight: string,
+  healthy: string,
+  skinIssues: string,
+  bloodPressure: string,
+  underMedicationLast7Days: string,
+  femalePeriod: string,
+  toothOutLast7Days: string,
+  piercingLast6Months: string,
+  operationOrTransfusionLast6Months: string,
+  tattooLast6Months: string
+
   //dodati za upitnik sta sve treba u model pa prikazati u htmlu
   //promeniti na backendu u DTO-u sta se sve salje nazad u frontend
 }
@@ -18,7 +29,8 @@ export interface BloodDonorInfo{
 export class AdminAppointmentComponent implements OnInit {
   
   id: number = 0;
-  displayedColumns: string[] = ['id', 'name', 'surname'];
+  displayedColumns: string[] = ['name', 'surname'];
+  displayedColumns2: string[] = ['question', 'answer'];
   dataSource: BloodDonorInfo[] = [];
 
   constructor(private _route: ActivatedRoute,
@@ -30,10 +42,14 @@ export class AdminAppointmentComponent implements OnInit {
     .subscribe((params: Params) => {
       this.id = +params['id'];
       //console.log(this.id);
-      this._BBInfoService.getById(this.id).subscribe(
-        res => (this.dataSource = res))
+      // this._BBInfoService.getById(this.id).subscribe(
+      //   res => (this.dataSource = res))
       });
   };
+
+  startAppointment(): void {
+    this._router.navigate(['/start-appointment/' + this.id]);
+  }
 
   onBack(): void {
     this._router.navigate(['/admin-center']);
