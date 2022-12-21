@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import ISA.projekat.Model.RegisteredUser;
-import ISA.projekat.Model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<RegisteredUser, Integer> {
