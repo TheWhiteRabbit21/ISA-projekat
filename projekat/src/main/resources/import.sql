@@ -22,4 +22,5 @@ insert into blood_bank_center (name, address_id, description, average_rating) va
 insert into blood_bank_center (name, address_id, description, average_rating) values ('Dracula', 9, 'Stari načini vađenja krvi se vraćaju u modu.', '2.3');
 insert into blood_bank_center (name, address_id, description, average_rating) values ('Krpelj', 10, 'Divan banka krvi omeđena prostranim livadama.', '3');
 
-
+insert into complaints (text, user_id) values ('UAaaaaaaa',1);
+insert into complaints (text, user_id) values ('Nevalja nista',2);

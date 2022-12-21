@@ -1,0 +1,13 @@
+<div>
+    <ul *ngFor="let complaint of complaints">
+        <mat-card class="example-card">
+            <mat-card-content>
+            <p>{{ complaint.complaint }}</p>
+            <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions>
+            <button mat-button (click)="answer(complaint)">Answer</button>
+            </mat-card-actions>
+        </mat-card>
+    </ul>
+</div>

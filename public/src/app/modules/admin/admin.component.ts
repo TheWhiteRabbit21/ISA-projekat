@@ -6,7 +6,6 @@ import { AdminService } from './admin.service';
 export interface Password {
   new: string;
   confirm: string;
-  visible: boolean;
 }
 
 @Component({
@@ -30,11 +29,10 @@ export class AdminComponent implements OnInit {
       const dialogRef = this.dialog.open(ChangePasswordDialog, {
         data: {new: this.new, password: this.confirm},
       });
-      //dialogRef.disableClose = true;
+      dialogRef.disableClose = true;
       dialogRef.afterClosed().subscribe(result => {
         this.new = result.new;
         this.confirm = result.confirm;
-        this.dialog.closeAll();
       });
     }
   }
@@ -52,8 +50,5 @@ export class ChangePasswordDialog {
     @Inject(MAT_DIALOG_DATA) public data: Password,
   ) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 }
 
