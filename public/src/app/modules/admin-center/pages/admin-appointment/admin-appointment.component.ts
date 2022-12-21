@@ -3,12 +3,11 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AdminAppointmentService } from './admin-appointment.service';
 
 export interface BloodDonorInfo{
-  id : number,
   name : string,
   surname : string,
   weight: string,
-  healthy: string,
   skinIssues: string,
+  healthy: string,
   bloodPressure: string,
   underMedicationLast7Days: string,
   femalePeriod: string,
@@ -35,15 +34,15 @@ export class AdminAppointmentComponent implements OnInit {
 
   constructor(private _route: ActivatedRoute,
               private _router: Router,
-              private _BBInfoService: AdminAppointmentService) { }
+              private _adminAppointmentService: AdminAppointmentService) { }
 
   ngOnInit(): void {
     this._route.params
     .subscribe((params: Params) => {
       this.id = +params['id'];
       //console.log(this.id);
-      // this._BBInfoService.getById(this.id).subscribe(
-      //   res => (this.dataSource = res))
+      this._adminAppointmentService.getById(this.id).subscribe(
+        res => (this.dataSource = res))
       });
   };
 

@@ -13,6 +13,6 @@ export class AdminAppointmentService {
     constructor(private http: HttpClient) { }
 
     public getById(id : any) : Observable<BloodDonorInfo[]> {
-        return this.http.post<BloodDonorInfo[]>(this.route + 'api/users/findBloodDonorInfo/', id, {headers: this.headers});
+        return this.http.get<BloodDonorInfo[]>(this.route + 'api/bloodDonorInfo/findByDonorId/' + id, {headers: this.headers});
       }
 }

@@ -22,4 +22,6 @@ insert into blood_bank_center (name, address_id, description, average_rating) va
 insert into blood_bank_center (name, address_id, description, average_rating) values ('Dracula', 9, 'Stari načini vađenja krvi se vraćaju u modu.', '2.3');
 insert into blood_bank_center (name, address_id, description, average_rating) values ('Krpelj', 10, 'Divan banka krvi omeđena prostranim livadama.', '3');
 
-
+insert into blood_donor_info(weight, skin_issues, feel_healthy, blood_pressure, menstruation, tooth_out_last7days, taken_medicine_in_last7days, piercing_last6months, operation_or_transfusion_last6months, tattoo_last6months, donor_id) values (false, false, true, false, false, true, true, true, true, true, 1);
+insert into blood_donor_info(weight, skin_issues, feel_healthy, blood_pressure, menstruation, tooth_out_last7days, taken_medicine_in_last7days, piercing_last6months, operation_or_transfusion_last6months, tattoo_last6months, donor_id) values (true, true, true, true, true, true, true, true, true, true, 2);
+insert into blood_donor_info(weight, skin_issues, feel_healthy, blood_pressure, menstruation, tooth_out_last7days, taken_medicine_in_last7days, piercing_last6months, operation_or_transfusion_last6months, tattoo_last6months, donor_id) values (true, true, true, true, true, true, true, true, true, true, 3);

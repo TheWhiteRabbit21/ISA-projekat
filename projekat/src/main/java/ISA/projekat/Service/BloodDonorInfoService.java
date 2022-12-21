@@ -21,5 +21,20 @@ public class BloodDonorInfoService {
 	 public void Create(BloodDonorInfo bloodDonorInfo){
 		 	bloodDonorInfoRepository.save(bloodDonorInfo);
 	 }
+
+	public BloodDonorInfo findByDonorId(int id) {
+		
+		List<BloodDonorInfo> bdia = bloodDonorInfoRepository.findAll();
+		
+		BloodDonorInfo temp = new BloodDonorInfo();
+		
+		for(BloodDonorInfo bdi : bdia) {
+			if(bdi.getId() == id) {
+				temp = bdi;
+			}
+		}
+		
+		return temp;
+	}
 	 
 }
