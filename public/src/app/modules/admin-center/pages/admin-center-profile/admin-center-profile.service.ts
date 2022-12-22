@@ -12,14 +12,6 @@ export class Center{
     description: string = '';
   }
 
-export class Appointment{
-  id: string = '';
-  date: string = '';
-  time: string = '';
-  durationMinutes: string = '';
-  taken: boolean = false;
-}
-
   @Injectable({
     providedIn: 'root'
   })

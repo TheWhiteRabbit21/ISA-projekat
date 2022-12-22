@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { tap } from 'rxjs';
-import { Appointment, Center, UpdateCenterService } from './admin-center-profile.service';
+import { Center, UpdateCenterService } from './admin-center-profile.service';
 
 @Component({
   selector: 'app-admin-center-profile',
@@ -18,14 +18,6 @@ export class AdminCenterProfileComponent implements OnInit {
     street : '',
     number : '',
     description : ''
-  }
-
-  public appointment : Appointment = {
-    id: '',
-    date: '',
-    time: '',
-    durationMinutes: '',
-    taken: false
   }
 
   constructor(
