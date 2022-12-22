@@ -13,8 +13,6 @@ import { BloodDonorsListComponent } from "./modules/pages/blood-donors-list/bloo
 import { AdminAppointmentComponent } from "./modules/admin-center/pages/admin-appointment/admin-appointment.component";
 import { StartAppointmentComponent } from "./modules/admin-center/pages/start-appointment/start-appointment.component";
 
-
-
 const routes: Routes = [
   {
     path: 'admin',
@@ -37,6 +35,8 @@ const routes: Routes = [
   { path: 'userProfile', component: UserProfileComponent},
   { path: 'adminprofile/:id', component: AdminProfileComponent },
   { path: 'admincenterprofile/:id', component: AdminCenterProfileComponent },
+  {path: 'blood-donor-form', component: BloodDonorFormComponent},
+  { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'blood-donor-form', component: BloodDonorFormComponent},
   { path: 'blood-donors-list', component: BloodDonorsListComponent},
   { path: 'admin-appointment/:id', component: AdminAppointmentComponent},

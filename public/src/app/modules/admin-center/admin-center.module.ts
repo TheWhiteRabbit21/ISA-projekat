@@ -10,8 +10,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
+import { DefineAppointmentComponent } from './pages/define-appointment/define-appointment.component';
 import { AdminAppointmentComponent } from './pages/admin-appointment/admin-appointment.component';
 import { StartAppointmentComponent } from './pages/start-appointment/start-appointment.component';
+
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import { StartAppointmentComponent } from './pages/start-appointment/start-appoi
     AdminCenterComponent,
     AdminCenterNavComponent,
     RegisteredUsersListComponent,
+    DefineAppointmentComponent,
     AdminAppointmentComponent,
     StartAppointmentComponent
   ],

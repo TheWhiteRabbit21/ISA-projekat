@@ -26,7 +26,10 @@ public class BloodBankCenter implements Serializable{
 	
 	@Column(nullable = true)
 	private double averageRating;
-	//private WorkingHours workingHours;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "working_hours_id", referencedColumnName = "id")
+	private WorkingHours workingHours;
 	
 	//private HashMap<String, Integer> blood;
 
@@ -95,5 +98,13 @@ public class BloodBankCenter implements Serializable{
 
 	public void setAdministrators(Set<Staff> stuff) {
 		this.staff = stuff;
+	}
+
+	public WorkingHours getWorkingHours() {
+		return workingHours;
+	}
+
+	public void setWorkingHours(WorkingHours workingHours) {
+		this.workingHours = workingHours;
 	}
 }
