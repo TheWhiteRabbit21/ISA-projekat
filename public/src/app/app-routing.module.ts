@@ -8,7 +8,6 @@ import { WelcomeComponent } from "./modules/pages/welcome/welcome.component";
 import { BloodBankListService } from "./modules/pages/blood-banks-list/blood-bank-list.service";
 import { BloodBanksListComponent } from "./modules/pages/blood-banks-list/blood-banks-list.component";
 import { BloodDonorFormComponent } from "./modules/pages/blood-donor-form/blood-donor-form.component";
-import { AdminAppointmentComponent } from "./modules/pages/admin-appointment/admin-appointment.component";
 import { RegisterComponent } from "./modules/pages/register/register.component";
 import { LoginComponent } from "./modules/pages/login/login.component";
 import { BloodDonorsListComponent } from "./modules/pages/blood-donors-list/blood-donors-list.component";
@@ -35,7 +34,6 @@ const routes: Routes = [
   { path: 'userProfile', component: UserProfileComponent},
   { path: 'adminprofile/:id', component: AdminProfileComponent },
   { path: 'admincenterprofile/:id', component: AdminCenterProfileComponent },
-  {path: 'adminAppointment', component: AdminAppointmentComponent},
   {path: 'blood-donor-form', component: BloodDonorFormComponent},
   { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'blood-donor-form', component: BloodDonorFormComponent},

@@ -1,6 +1,6 @@
 
 export interface Appointment{
-  adminId: string;
+  adminId: number;
   date: string;
   time: string;
   duration: string;

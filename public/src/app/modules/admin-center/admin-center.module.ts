@@ -10,13 +10,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
+import { DefineAppointmentComponent } from './pages/define-appointment/define-appointment.component';
 
 
 @NgModule({
   declarations: [
     AdminCenterComponent,
     AdminCenterNavComponent,
-    RegisteredUsersListComponent
+    RegisteredUsersListComponent,
+    DefineAppointmentComponent
   ],
   imports: [
     CommonModule,

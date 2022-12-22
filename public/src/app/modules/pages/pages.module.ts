@@ -13,7 +13,6 @@ import { BloodBanksListComponent } from './blood-banks-list/blood-banks-list.com
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BloodDonorFormComponent } from './blood-donor-form/blood-donor-form.component';
-import { AdminAppointmentComponent } from './admin-appointment/admin-appointment.component';
 import { LoginComponent } from './login/login.component';
 import { BloodDonorsListComponent } from './blood-donors-list/blood-donors-list.component';
 import { RegisteredUsersListComponent } from '../admin/pages/registered-users-list/registered-users-list.component';
@@ -28,7 +27,6 @@ import { RegisteredUsersListComponent } from '../admin/pages/registered-users-li
     RegisterComponent,
     BloodBanksListComponent,
     BloodDonorFormComponent,
-    AdminAppointmentComponent,
     LoginComponent,
     BloodDonorsListComponent
   ],

@@ -80,6 +80,18 @@ public class Appointment implements Serializable{
 		this.taken = taken;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public WorkCalendar getWorkCalendar() {
+		return workCalendar;
+	}
+
+	public void setWorkCalendar(WorkCalendar workCalendar) {
+		this.workCalendar = workCalendar;
+	}
+
 	@Override
 	public String toString() {
 		return "Appointment{" +

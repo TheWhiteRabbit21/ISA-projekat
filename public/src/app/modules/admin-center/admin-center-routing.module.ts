@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminCenterComponent } from './admin-center.component';
 import { RegisteredUsersListComponent } from './pages/registered-users-list/registered-users-list.component';
+import { DefineAppointmentComponent } from './pages/define-appointment/define-appointment.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
       {
         path: 'registered-users',
         component: RegisteredUsersListComponent,
+      },
+      {
+        path: 'define-appointment',
+        component: DefineAppointmentComponent,
       }
     ]
   }
