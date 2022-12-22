@@ -2,15 +2,15 @@
 <section class="form">
   <h1> Упитник за даваоца крви или компоненти крви </h1>
     <section>
-      <mat-label>1. Да ли сте до сада добровољно давали крв или компоненте крви? </mat-label>
-      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.bloodPast">
+      <mat-label>1. Да ли имате мање од 50 килограма? </mat-label>
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.weight">
         <mat-radio-button value = true  name="yes">Да </mat-radio-button>
         <mat-radio-button value = false  name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
-      <mat-label>2. Да ли сте икада били одбијени као давалац крви или компоненте крви? </mat-label>
-      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.everRejected">
+      <mat-label>2. Да ли имате икакве промјене на кожи? </mat-label>
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.skinIssues">
         <mat-radio-button value = true  name="yes">Да </mat-radio-button>
         <mat-radio-button value = false  name="no">Не</mat-radio-button>
       </mat-radio-group>
@@ -24,57 +24,57 @@
       </mat-radio-group>
     </section>
     <section>
-      <mat-label>4. Да ли сте нешто јели пре доласка на давање крви или компоненте крви?
+      <mat-label>4. Да ли вам је притисак сувише висок или сувише низак?
       </mat-label>
-      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.ateSomething">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.bloodPressure">
         <mat-radio-button value = true  name="yes">Да </mat-radio-button>
         <mat-radio-button value = false name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
-      <mat-label>5. Да ли се бавите опасним занимањем или хобијем?
+      <mat-label>5. Да ли имате менструацију тренутно?
       </mat-label>
-      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.haveDangerousJob">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.menstruation">
         <mat-radio-button value = true  name="yes">Да </mat-radio-button>
         <mat-radio-button value = false name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
-      <mat-label>6. Да ли редовно (свакодневно) узимате било какве лекове?
+      <mat-label>6. Да ли је прошло 7 дана од вађења зуба или мањих стоматолошких интервенција?
       </mat-label>
-      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.regularlyTakeMedicine">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.toothOutLast7Days">
         <mat-radio-button value = true  name="yes">Да </mat-radio-button>
         <mat-radio-button value = false  name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
-      <mat-label>7. Да ли сте последња 2-3 дана узимали било какве лекове (нпр. Бруфен, Кафетин, Аналгин...)?
+      <mat-label>7. Да ли је прошло најмање 7 дана од терапије антибиотицима?
       </mat-label>
-      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.takenMedicineInLast3Days">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.takenMedicineInLast7Days">
         <mat-radio-button value = true  name="yes">Да </mat-radio-button>
         <mat-radio-button value = false  name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
-      <mat-label>8. Да ли стално узимате Аспирин (Cardiopirin)? Да ли сте га узимали у последњих 5 дана?
+      <mat-label>8. Да ли је прошло најмање 6 мјесеци од пробадања тијела и коже (пирсинг)?
       </mat-label>
-      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.AspirinLast5Days">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.piercingLast6Months">
         <mat-radio-button value = true  name="yes">Да </mat-radio-button>
         <mat-radio-button value = false  name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
-      <mat-label>9. Да ли сте до сада испитивани или лечени у болници или сте тренутно на испитивању или боловању?
+      <mat-label>9. Да ли је прошло најмање 6 мјесеци од појединих хируршких интервенција и трансфузије крви?
       </mat-label>
-      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.hospitalEverOrNow">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.operationOrTransfusionLast6Months">
         <mat-radio-button value = true  name="yes">Да </mat-radio-button>
         <mat-radio-button value = false  name="no">Не</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
-      <mat-label>10. Да ли сте вадили зуб у протеклих 7 дана?
+      <mat-label>10. Да ли је прошло најмање 6 мјесеци од тетовирања?
       </mat-label>
-      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.takenToothOutInLast7Days">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.tattooLast6Months">
         <mat-radio-button value = true  name="yes">Да </mat-radio-button>
         <mat-radio-button value = false name="no">Не</mat-radio-button>
       </mat-radio-group>

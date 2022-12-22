@@ -14,54 +14,57 @@ public class BloodDonorInfo {
 	private int id;
 	
 	@Column(nullable = false)
-	private boolean bloodPast;
+	private boolean weight;
 	
 	@Column(nullable = false)
-	private boolean everRejected;
+	private boolean skinIssues;
 	
 	@Column(nullable = false)
 	private boolean feelHealthy;
 	
 	@Column(nullable = false)
-	private boolean ateSomething;
+	private boolean bloodPressure;
 	
 	@Column(nullable = false)
-	private boolean haveDangerousJob;
+	private boolean menstruation;
 	
 	@Column(nullable = false)
-	private boolean regularlyTakeMedicine;
+	private boolean toothOutLast7Days;
 	
 	@Column(nullable = false)
-	private boolean takenMedicineInLast3Days;
+	private boolean takenMedicineInLast7Days;
 	
 	@Column(nullable = false)
-	private boolean AspirinLast5Days;
+	private boolean piercingLast6Months;
 	
 	@Column(nullable = false)
-	private boolean hospitalEverOrNow;
+	private boolean operationOrTransfusionLast6Months;
 	
 	@Column(nullable = false)
-	private boolean takenToothOutInLast7Days;
+	private boolean tattooLast6Months;
 
+	@Column(nullable = true)
+	private int donorId;
+	
 	public BloodDonorInfo() {
 		super();
 	}
 
-	public BloodDonorInfo(int id, boolean bloodPast, boolean everRejected, boolean feelHealthy, boolean ateSomething,
-			boolean haveDangerousJob, boolean regularlyTakeMedicine, boolean takenMedicineInLast3Days,
-			boolean aspirinLast5Days, boolean hospitalEverOrNow, boolean takenToothOutInLast7Days) {
+	public BloodDonorInfo(int id, boolean weight, boolean skinIssues, boolean feelHealthy, boolean bloodPressure,
+			boolean menstruation, boolean toothOutLast7Days, boolean takenMedicineInLast7Days,
+			boolean piercingLast6Months, boolean operationOrTransfusionLast6Months, boolean tattooLast6Months) {
 		super();
 		this.id = id;
-		this.bloodPast = bloodPast;
-		this.everRejected = everRejected;
+		this.weight = weight;
+		this.skinIssues = skinIssues;
 		this.feelHealthy = feelHealthy;
-		this.ateSomething = ateSomething;
-		this.haveDangerousJob = haveDangerousJob;
-		this.regularlyTakeMedicine = regularlyTakeMedicine;
-		this.takenMedicineInLast3Days = takenMedicineInLast3Days;
-		AspirinLast5Days = aspirinLast5Days;
-		this.hospitalEverOrNow = hospitalEverOrNow;
-		this.takenToothOutInLast7Days = takenToothOutInLast7Days;
+		this.bloodPressure = bloodPressure;
+		this.menstruation = menstruation;
+		this.toothOutLast7Days = toothOutLast7Days;
+		this.takenMedicineInLast7Days = takenMedicineInLast7Days;
+		this.piercingLast6Months = piercingLast6Months;
+		this.operationOrTransfusionLast6Months = operationOrTransfusionLast6Months;
+		this.tattooLast6Months = tattooLast6Months;
 	}
 
 	public int getId() {
@@ -72,20 +75,20 @@ public class BloodDonorInfo {
 		this.id = id;
 	}
 
-	public boolean isBloodPast() {
-		return bloodPast;
+	public boolean isWeight() {
+		return weight;
 	}
 
-	public void setBloodPast(boolean bloodPast) {
-		this.bloodPast = bloodPast;
+	public void setWeight(boolean weight) {
+		this.weight = weight;
 	}
 
-	public boolean isEverRejected() {
-		return everRejected;
+	public boolean isSkinIssues() {
+		return skinIssues;
 	}
 
-	public void setEverRejected(boolean everRejected) {
-		this.everRejected = everRejected;
+	public void setSkinIssues(boolean skinIssues) {
+		this.skinIssues = skinIssues;
 	}
 
 	public boolean isFeelHealthy() {
@@ -96,62 +99,59 @@ public class BloodDonorInfo {
 		this.feelHealthy = feelHealthy;
 	}
 
-	public boolean isAteSomething() {
-		return ateSomething;
+	public boolean isBloodPressure() {
+		return bloodPressure;
 	}
 
-	public void setAteSomething(boolean ateSomething) {
-		this.ateSomething = ateSomething;
+	public void setBloodPressure(boolean bloodPressure) {
+		this.bloodPressure = bloodPressure;
 	}
 
-	public boolean isHaveDangerousJob() {
-		return haveDangerousJob;
+	public boolean isMenstruation() {
+		return menstruation;
 	}
 
-	public void setHaveDangerousJob(boolean haveDangerousJob) {
-		this.haveDangerousJob = haveDangerousJob;
+	public void setMenstruation(boolean menstruation) {
+		this.menstruation = menstruation;
 	}
 
-	public boolean isRegularlyTakeMedicine() {
-		return regularlyTakeMedicine;
+	public boolean isToothOutLast7Days() {
+		return toothOutLast7Days;
 	}
 
-	public void setRegularlyTakeMedicine(boolean regularlyTakeMedicine) {
-		this.regularlyTakeMedicine = regularlyTakeMedicine;
+	public void setToothOutLast7Days(boolean toothOutLast7Days) {
+		this.toothOutLast7Days = toothOutLast7Days;
 	}
 
-	public boolean isTakenMedicineInLast3Days() {
-		return takenMedicineInLast3Days;
+	public boolean isTakenMedicineInLast7Days() {
+		return takenMedicineInLast7Days;
 	}
 
-	public void setTakenMedicineInLast3Days(boolean takenMedicineInLast3Days) {
-		this.takenMedicineInLast3Days = takenMedicineInLast3Days;
+	public void setTakenMedicineInLast7Days(boolean takenMedicineInLast7Days) {
+		this.takenMedicineInLast7Days = takenMedicineInLast7Days;
 	}
 
-	public boolean isAspirinLast5Days() {
-		return AspirinLast5Days;
+	public boolean isPiercingLast6Months() {
+		return piercingLast6Months;
 	}
 
-	public void setAspirinLast5Days(boolean aspirinLast5Days) {
-		AspirinLast5Days = aspirinLast5Days;
+	public void setPiercingLast6Months(boolean piercingLast6Months) {
+		this.piercingLast6Months = piercingLast6Months;
 	}
 
-	public boolean isHospitalEverOrNow() {
-		return hospitalEverOrNow;
+	public boolean isOperationOrTransfusionLast6Months() {
+		return operationOrTransfusionLast6Months;
 	}
 
-	public void setHospitalEverOrNow(boolean hospitalEverOrNow) {
-		this.hospitalEverOrNow = hospitalEverOrNow;
+	public void setOperationOrTransfusionLast6Months(boolean operationOrTransfusionLast6Months) {
+		this.operationOrTransfusionLast6Months = operationOrTransfusionLast6Months;
 	}
 
-	public boolean isTakenToothOutInLast7Days() {
-		return takenToothOutInLast7Days;
+	public boolean isTattooLast6Months() {
+		return tattooLast6Months;
 	}
 
-	public void setTakenToothOutInLast7Days(boolean takenToothOutInLast7Days) {
-		this.takenToothOutInLast7Days = takenToothOutInLast7Days;
+	public void setTattooLast6Months(boolean tattooLast6Months) {
+		this.tattooLast6Months = tattooLast6Months;
 	}
-	
-	
-	
 }

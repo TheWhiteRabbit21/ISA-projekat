@@ -5,6 +5,7 @@ import ISA.projekat.Model.enums.Gender;
 
 public class RegisteredUser2DTO {
 
+	private int id;
     private String email;
     private String password;
     private String name;
@@ -23,9 +24,10 @@ public class RegisteredUser2DTO {
         super();
     }
 
-    public RegisteredUser2DTO(String email, String password, String name, String surname, Address address, String phoneNumber, Integer jmbg, Gender gender, String occupation,
+    public RegisteredUser2DTO(int id, String email, String password, String name, String surname, Address address, String phoneNumber, Integer jmbg, Gender gender, String occupation,
                              String establishmentInfo, String points,String user_catagory) {
         super();
+        this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
@@ -40,6 +42,14 @@ public class RegisteredUser2DTO {
         this.user_catagory = user_catagory;
     }
 
+    public int getId() {
+    	return id;
+    }
+    
+    public void setId(int id) {
+    	this.id = id;
+    }
+    
     public String getEmail() {
         return email;
     }
