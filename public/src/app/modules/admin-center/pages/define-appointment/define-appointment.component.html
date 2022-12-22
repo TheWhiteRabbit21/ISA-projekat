@@ -1,0 +1,21 @@
+<h1>Appointment creation</h1>
+
+
+  <div class="modal-body">
+    <form>
+        <div  class="form-group" >
+           <label for="name">DATE:</label>
+           <input type="text" [(ngModel)]="appointment.date" name="date" class="form-control" id="nameE" aria-describedby="emailHelp" placeholder="Date"> -->
+        </div>
+       <div >
+           <label >TIME:</label>
+           <input  name="time" [(ngModel)]="appointment.time"  class="form-control" id="surnameE" placeholder="Time">
+        </div>
+        <div  class="form-group">
+           <label >DURATION:</label>
+           <input type="text" [(ngModel)]="appointment.duration" name="duration" class="form-control" id="duration" placeholder="Duration">
+        </div>
+        <button type="button" class="btn btn-primary" (click)="saveButton()" data-bs-dismiss="modal" >Save appointment</button>
+
+    </form>
+  </div>

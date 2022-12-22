@@ -13,8 +13,6 @@ import { BloodDonorsListComponent } from "./modules/pages/blood-donors-list/bloo
 import { AdminAppointmentComponent } from "./modules/admin-center/pages/admin-appointment/admin-appointment.component";
 import { StartAppointmentComponent } from "./modules/admin-center/pages/start-appointment/start-appointment.component";
 
-
-
 const routes: Routes = [
   {
     path: 'admin',

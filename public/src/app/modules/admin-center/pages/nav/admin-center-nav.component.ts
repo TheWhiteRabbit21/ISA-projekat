@@ -22,6 +22,10 @@ export class AdminCenterNavComponent implements OnInit {
     {
       path: 'admincenterprofile/' + this.id,
       title: 'Admin center profile'
+    },
+    {
+      path: 'define-appointment',
+      title: 'Define Appointment'
     }
   ];
   constructor() { }

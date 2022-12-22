@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminCenterComponent } from './admin-center.component';
 import { AdminCenterProfileComponent } from './pages/admin-center-profile/admin-center-profile.component';
 import { RegisteredUsersListComponent } from './pages/registered-users-list/registered-users-list.component';
+import { DefineAppointmentComponent } from './pages/define-appointment/define-appointment.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'admincenterprofile/:id',
         component: AdminCenterProfileComponent
+      },
+      {
+        path: 'define-appointment',
+        component: DefineAppointmentComponent,
       }
     ]
   }

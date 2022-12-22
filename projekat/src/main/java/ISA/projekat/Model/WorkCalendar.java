@@ -19,4 +19,28 @@ public class WorkCalendar implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bloodBankCenter_id", referencedColumnName = "id")
     private BloodBankCenter bloodBankCenter;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
+    public BloodBankCenter getBloodBankCenter() {
+        return bloodBankCenter;
+    }
+
+    public void setBloodBankCenter(BloodBankCenter bloodBankCenter) {
+        this.bloodBankCenter = bloodBankCenter;
+    }
 }
