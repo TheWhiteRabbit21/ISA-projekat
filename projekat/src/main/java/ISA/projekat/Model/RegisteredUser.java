@@ -19,6 +19,9 @@ public class RegisteredUser extends User {
 	private Double points;
 	
 	@Column(nullable = true)
+	private int penals;
+
+	@Column(nullable = true)
 	private String userPerks;
 	
 	@Column(nullable = true)
@@ -29,7 +32,7 @@ public class RegisteredUser extends User {
 	
 	@Column(nullable = true)
 	private UserCategory userCatagory;
-
+	
 	@OneToOne(mappedBy = "user")
 	private Appointment appointment;
 	
@@ -39,14 +42,45 @@ public class RegisteredUser extends User {
 	
 	
 	
-	public RegisteredUser(String email, String password, String name, String surname, Gender gender, int jmbg,
-			Address address, String phoneNumber, Double points, String userPerks, String infoInstitution, String profession,
-			UserCategory userCatagory) {
+	public RegisteredUser(String email, String password, String name, String surname, Gender gender, int jmbg, Address address, String phoneNumber, 
+			Double points, String userPerks, String infoInstitution, String profession, UserCategory userCatagory, int penals) 
+	{
 		super(email, password, name, surname, gender, jmbg, address, phoneNumber);
 		this.points = points;
 		this.userPerks = userPerks;
 		this.infoInstitution = infoInstitution;
 		this.profession = profession;
+		this.userCatagory = userCatagory;
+		this.penals = penals;
+		}
+
+
+
+	public int getPenals() {
+		return penals;
+	}
+
+
+
+	public void setPenals(int penals) {
+		this.penals = penals;
+	}
+
+
+
+	public Appointment getAppointment() {
+		return appointment;
+	}
+
+
+
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
+	}
+
+
+
+	public void setUserCatagory(UserCategory userCatagory) {
 		this.userCatagory = userCatagory;
 	}
 

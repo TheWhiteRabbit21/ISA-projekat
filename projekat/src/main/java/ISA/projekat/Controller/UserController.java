@@ -116,12 +116,21 @@ public class UserController {
 //    	System.out.println(userDTO.getId());
 //    	System.out.println(userDTO);
     	
-    	
-    	
-    	
-    	
     	return new ResponseEntity<>(HttpStatus.OK);
     }
+    
+    @PutMapping(value = "/penaltyAddById", consumes = "application/json")
+    @ResponseBody
+    public ResponseEntity<UserDTO> addUsersPenal(@RequestBody int id){
+    	
+    	userService.IncreaseUsersPenalty(id);
+
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    
+    
+    
     @PostMapping(produces = "application/json", value = "/search")
     @ResponseBody
     public ResponseEntity<List<UserDTO>> getAllUsersByNameAndSurname(@RequestBody SearchUserDTO searchUserDTO) {

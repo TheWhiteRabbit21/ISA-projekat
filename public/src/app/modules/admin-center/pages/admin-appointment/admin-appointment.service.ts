@@ -20,6 +20,8 @@ export class AdminAppointmentService {
         return this.http.get<AppointmentHistoryInfo[]>(this.route + 'api/bloodDonorInfo/findAppointmentHistoryById/' + id, {headers: this.headers});
     }
 
-
+    public penalForDonor(id: any): Observable<any> {
+        return this.http.put<any>(this.route + 'api/users/penaltyAddById', id, {headers: this.headers});
+    }
 
 }

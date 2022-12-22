@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { AdminCenterProfileComponent } from "./modules/admin-center/pages/admin-center-profile/admin-center-profile.component";
 import { AdminProfileComponent } from "./modules/pages/admin-profile/admin-profile.component";
 import { HomeComponent } from "./modules/pages/home/home.component";
 import { UserProfileComponent } from "./modules/pages/user-profile/user-profile.component"
