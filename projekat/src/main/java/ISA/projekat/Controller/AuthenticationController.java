@@ -10,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,6 +41,9 @@ public class AuthenticationController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	// Prvi endpoint koji pogadja korisnik kada se loguje.
 	// Tada zna samo svoje korisnicko ime i lozinku i to prosledjuje na backend.
@@ -74,7 +78,8 @@ public class AuthenticationController {
 		}
 		
 		Address address = new Address(registeredUserDTO.getState(), registeredUserDTO.getCity(), registeredUserDTO.getStreet(), registeredUserDTO.getNumber());
-    	userService.RegisterUser(registeredUserDTO, address);
+    	registeredUserDTO.setPassword(passwordEncoder.encode(registeredUserDTO.getPassword()));
+		userService.RegisterUser(registeredUserDTO, address);
     	// treba staviti da se uzme id od ovog registrovanog usera i da mu se stavi role_user
 
 		return new ResponseEntity<>(HttpStatus.CREATED);
