@@ -10,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,12 +23,12 @@ import ISA.projekat.TokenUtils;
 import ISA.projekat.UserTokenState;
 import ISA.projekat.DTOs.RegisteredUserDTO;
 import ISA.projekat.Model.Address;
-import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Model.User;
 import ISA.projekat.Service.UserService;
 
 //Kontroler zaduzen za autentifikaciju korisnika
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AuthenticationController {
 

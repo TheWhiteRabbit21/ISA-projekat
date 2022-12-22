@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ISA.projekat.DTOs.RegisteredUser2DTO;
 import ISA.projekat.DTOs.SearchUserDTO;
 import ISA.projekat.DTOs.UserDTO;
+import ISA.projekat.DTOs.UserDataDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Model.User;
@@ -96,6 +97,25 @@ public class UserController {
         }
 
         return new ResponseEntity<>(usersDTO, HttpStatus.OK);
+
+    }
+    
+    @GetMapping(value = "/data")
+    public ResponseEntity<UserDataDTO> getUserData() {
+
+        
+
+        // convert users to DTOs
+        //List<RegisteredUser2DTO> usersDTO = new ArrayList<>();
+
+        /*for (RegisteredUser u : users) {
+            Address address = _addressService.findOne(u.getAddress().getId());
+            usersDTO.add(new RegisteredUser2DTO(u.getId(), u.getUsername(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(), 
+            		u.getGender(), u.getProfession(), u.getInfoInstitution(), String.valueOf(u.getPoints()), String.valueOf(u.getUserCatagory())));
+
+        }*/
+
+        return new ResponseEntity<>(/*usersDTO,*/ HttpStatus.OK);
 
     }
 

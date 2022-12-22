@@ -75,7 +75,7 @@ export class RegisterComponent implements OnInit {
     this._registerUserService.submit(this.registeringUser).subscribe(res => {
       this._snackBar.open("Registration successful.", "Ok");
       setTimeout(() => {
-        window.location.href="http://localhost:4200/home"
+        window.location.href="http://localhost:4200/login"
       }, 
       3000);
     });
