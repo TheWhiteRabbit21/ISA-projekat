@@ -15,6 +15,10 @@ export class AdminCenterNavComponent implements OnInit {
     {
       path: 'registered-users',
       title: 'Registered Users'
+    },
+    {
+      path: 'work-calendar',
+      title: 'Work Calendar'
     }
   ];
   constructor() { }

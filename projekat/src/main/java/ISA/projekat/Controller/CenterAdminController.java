@@ -1,5 +1,6 @@
 package ISA.projekat.Controller;
 
+import ISA.projekat.DTOs.AppointmentDTO;
 import ISA.projekat.DTOs.CenterAdminDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.Staff;
@@ -68,14 +69,9 @@ public class CenterAdminController {
     	
     	return new ResponseEntity<>(HttpStatus.OK);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    @GetMapping(value = "/appointments")
+    public ResponseEntity<List<AppointmentDTO>> getAllAppointments() {
+        return new ResponseEntity<>(centerAdminService.getAppointments(4), HttpStatus.OK);
+    }
 }
 

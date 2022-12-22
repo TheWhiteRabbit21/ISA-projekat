@@ -12,6 +12,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { AdminAppointmentComponent } from './pages/admin-appointment/admin-appointment.component';
 import { StartAppointmentComponent } from './pages/start-appointment/start-appointment.component';
+import { WorkCalendarComponent } from './pages/work-calendar/work-calendar.component';
+import { ScheduleAllModule } from '@syncfusion/ej2-angular-schedule';
 
 
 @NgModule({
@@ -20,10 +22,12 @@ import { StartAppointmentComponent } from './pages/start-appointment/start-appoi
     AdminCenterNavComponent,
     RegisteredUsersListComponent,
     AdminAppointmentComponent,
-    StartAppointmentComponent
+    StartAppointmentComponent,
+    WorkCalendarComponent
   ],
   imports: [
     CommonModule,
+    ScheduleAllModule,
     AdminCenterRoutingModule,
     ReactiveFormsModule,
     MaterialModule,

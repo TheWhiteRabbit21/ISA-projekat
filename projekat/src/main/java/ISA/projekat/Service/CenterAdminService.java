@@ -3,11 +3,12 @@ package ISA.projekat.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import ISA.projekat.DTOs.AppointmentDTO;
+import ISA.projekat.Model.*;
+import ISA.projekat.Repository.WorkCalendarRepository;
 import org.springframework.stereotype.Service;
 
 import ISA.projekat.DTOs.CenterAdminDTO;
-import ISA.projekat.Model.Address;
-import ISA.projekat.Model.Staff;
 import ISA.projekat.Model.enums.Gender;
 //import ISA.projekat.Repository.AddressRepository;
 import ISA.projekat.Repository.CenterAdminRepository;
@@ -16,11 +17,11 @@ import ISA.projekat.Repository.CenterAdminRepository;
 public class CenterAdminService {
 	
     private final CenterAdminRepository centerAdminRepository;
-//    private final AddressRepository addressRepository;
+    private final WorkCalendarRepository workCalendarRepository;
 
-    public CenterAdminService(CenterAdminRepository centerAdminRepository/*, AddressRepository addressRepository*/) {
+    public CenterAdminService(CenterAdminRepository centerAdminRepository, WorkCalendarRepository workCalendarRepository) {
         this.centerAdminRepository = centerAdminRepository;
-//        this.addressRepository = addressRepository;
+        this.workCalendarRepository = workCalendarRepository;
     }
 
     
@@ -35,6 +36,16 @@ public class CenterAdminService {
             admins.add(new CenterAdminDTO(admin.getId(),admin.getName(),admin.getSurname()));
         }
         return admins;
+    }
+
+    public List<AppointmentDTO> getAppointments(Integer id){
+        List<AppointmentDTO> appointments = new ArrayList<AppointmentDTO>();
+        Staff staff = centerAdminRepository.findById(id).get();
+        WorkCalendar workCalendar = workCalendarRepository.findByBloodBankCenter(staff.getBloodBankCenter());
+        for(Appointment appointment : workCalendar.getAppointments()){
+            appointments.add(toDTO(appointment));
+        }
+        return appointments;
     }
 
     public Gender parseGender(String gender){
@@ -71,5 +82,11 @@ public class CenterAdminService {
 	public List<Staff> findAll() {
 		return centerAdminRepository.findAll();
 	}
-    
+
+    private AppointmentDTO toDTO(Appointment appointment){
+        String subject = appointment.getUser().getName() + " " + appointment.getUser().getName();
+        String startDate = appointment.getDate().toString() + "T" + appointment.getTime().toString() + ":00";
+        String endDate = appointment.getDate().toString() + "T" + appointment.getTime().plusMinutes(appointment.getDuration()).toString() + ":00";
+        return new AppointmentDTO(appointment.getId(), subject, startDate, endDate);
+    }
 }
