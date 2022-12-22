@@ -32,4 +32,6 @@ public interface UserRepository extends JpaRepository<RegisteredUser, Integer> {
 
     public Page<RegisteredUser> findAll(Pageable pageable);
 
+    Optional<RegisteredUser> findById(int donorId);
+    
 }

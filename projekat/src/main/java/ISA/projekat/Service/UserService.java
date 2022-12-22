@@ -4,18 +4,15 @@ package ISA.projekat.Service;
 import ISA.projekat.DTOs.UserDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.RegisteredUser;
-//import ISA.projekat.Model.User;
 import ISA.projekat.DTOs.RegisteredUserDTO;
 import ISA.projekat.Model.enums.Gender;
 import ISA.projekat.Model.enums.UserCategory;
-//import ISA.projekat.Repository.AddressRepository;
 import ISA.projekat.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.Optional;
 
 @Service
 public class UserService {
@@ -85,5 +82,9 @@ public class UserService {
             return Gender.FEMALE;
         }
     }
+
+	public RegisteredUser findById(int id) {
+		return userRepository.findById(id).get();
+	}
 
 }
