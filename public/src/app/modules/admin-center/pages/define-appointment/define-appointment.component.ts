@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { Center } from "../../../pages/admin-center-profile/admin-center-profile.service";
+import { Center } from "../../pages/admin-center-profile/admin-center-profile.service";
 import { Admin } from "../../../pages/admin-profile/admin-profile.service";
 import { User } from "../../../pages/user-profile/user";
 import { Appointment } from "./Appointment";
