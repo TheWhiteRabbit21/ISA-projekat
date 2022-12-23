@@ -32,8 +32,10 @@ export class ComplaintsComponent implements OnInit {
     });
   }
   sendAnswer(complaint: ComplaintDTO): void{
-    this.complaintService.answer(complaint).subscribe({
-            
+    this.complaintService.answer(complaint).subscribe(_ => {
+      this.snackBar.open('Complaint Answered Successfully','Ok', {
+        duration: 3000
+      });
     });
   }
 }

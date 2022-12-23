@@ -14,5 +14,9 @@ export class AdminService {
   getIfPasswordChanged() : Observable<boolean> {
       return this.http.get<boolean>(this.route + 'api/admins/changedPassword', {headers: this.headers});
   }
+
+  changePassword(password : string) : Observable<boolean> {
+    return this.http.post<boolean>(this.route + 'api/admins/changePassword', password ,{headers: this.headers});
+  }
 }
 

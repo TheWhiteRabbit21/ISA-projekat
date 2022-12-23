@@ -1,6 +1,6 @@
 <div>
     <ul *ngFor="let complaint of complaints">
-        <mat-card class="example-card">
+        <mat-card class="example-card" *ngIf="!complaint.response">
             <mat-card-content>
             <p>{{ complaint.complaint }}</p>
             <mat-divider></mat-divider>

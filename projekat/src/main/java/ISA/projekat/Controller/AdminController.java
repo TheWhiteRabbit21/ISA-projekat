@@ -46,10 +46,16 @@ public class AdminController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping(produces = "application/json")
+    @GetMapping(value="/changedPassword",produces = "application/json")
     @ResponseBody
     public ResponseEntity CheckIfPasswordChanged(){
-        boolean flag = adminService.checkIfPasswordChanged(2);
+        boolean flag = adminService.checkIfPasswordChanged(6);
         return new ResponseEntity<>(flag, HttpStatus.OK);
+    }
+    @PostMapping(value = "/changePassword")
+    @ResponseBody
+    public ResponseEntity ChangePassword(@RequestBody String password){
+        adminService.changePassword(6, password);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

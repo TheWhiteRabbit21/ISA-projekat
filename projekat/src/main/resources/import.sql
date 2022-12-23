@@ -8,6 +8,7 @@ insert into addresses (country, city, street, number) values ('Grcka', 'Atina', 
 insert into addresses (country, city, street, number) values ('Turska', 'Istanbul', 'bulevar Kebaba', 42);
 insert into addresses (country, city, street, number) values ('Austrija', 'Bec', 'bulevar Snicala', 121);
 insert into addresses (country, city, street, number) values ('Holandija', 'Amsterdam', 'bulevar Trave', 420);
+insert into addresses (country, city, street, number) values ('Srbija', 'Subotica', 'bulevar Madjara', 1892);
 
 insert into blood_bank_center (name, address_id, description, average_rating) values ('Dunja', 6, 'Najsavremenija oprema.', '3.14');
 insert into blood_bank_center (name, address_id, description, average_rating) values ('Phizer', 7, 'Bil Gejts vas čeka.', '4');
@@ -21,6 +22,9 @@ insert into users (user_type ,email, password, name, surname, gender, jmbg, addr
 
 insert into users (user_type, email, password, name, surname, gender, jmbg, address_id, phone_number, blood_bank_center_id) values (2, 'juzer4@gmail.com','111', 'Mil', 'Mar', 0, 321124412, 4, '746352332',1);
 insert into users (user_type, email, password, name, surname, gender, jmbg, address_id, phone_number) values (2, 'juzer5@gmail.com','333', 'To', 'And', 1, 412412123, 5, '574456443');
+
+insert into users (user_type, email, password, name, surname, gender, jmbg, address_id, phone_number, password_changed) values (3, 'juzer6@gmail.com','333', 'To', 'And', 1, 112412123, 11, '57445643', false);
+
 
 insert into work_calendar (blood_bank_center_id) values (1);
 
