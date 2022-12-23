@@ -35,7 +35,10 @@ public class RegisteredUser extends User {
 	
 	@OneToOne(mappedBy = "user")
 	private Appointment appointment;
-	
+
+	@OneToOne(mappedBy = "registeredUser")
+	private Complaint complaint;
+
 	public RegisteredUser() {
 		super();
 	}

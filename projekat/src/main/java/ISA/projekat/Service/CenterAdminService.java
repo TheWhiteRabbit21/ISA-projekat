@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import ISA.projekat.DTOs.AppointmentCalendarDTO;
 import ISA.projekat.DTOs.AppointmentDTO;
 import ISA.projekat.Model.*;
 import ISA.projekat.Repository.CenterRepository;
@@ -21,10 +22,10 @@ import ISA.projekat.Repository.CenterAdminRepository;
 public class CenterAdminService {
 	
     private final CenterAdminRepository centerAdminRepository;
-//    private final AddressRepository addressRepository;
-    private final CenterRepository bloodBankCenterRepository;
     private final WorkCalendarRepository workCalendarRepository;
-    public CenterAdminService(CenterAdminRepository centerAdminRepository,/*, AddressRepository addressRepository*/CenterRepository bloodBankCenterRepository, WorkCalendarRepository workCalendarRepository) {
+
+    private final CenterRepository bloodBankCenterRepository;
+    public CenterAdminService(CenterAdminRepository centerAdminRepository, CenterRepository bloodBankCenterRepository, WorkCalendarRepository workCalendarRepository) {
         this.centerAdminRepository = centerAdminRepository;
 //        this.addressRepository = addressRepository;
         this.bloodBankCenterRepository = bloodBankCenterRepository;
@@ -43,6 +44,16 @@ public class CenterAdminService {
             admins.add(new CenterAdminDTO(admin.getId(),admin.getName(),admin.getSurname()));
         }
         return admins;
+    }
+
+    public List<AppointmentCalendarDTO> getAppointments(Integer id){
+        List<AppointmentCalendarDTO> appointments = new ArrayList<AppointmentCalendarDTO>();
+        Staff staff = centerAdminRepository.findById(id).get();
+        WorkCalendar workCalendar = workCalendarRepository.findByBloodBankCenter(staff.getBloodBankCenter());
+        for(Appointment appointment : workCalendar.getAppointments()){
+            appointments.add(toDTO(appointment));
+        }
+        return appointments;
     }
 
     public Gender parseGender(String gender){
@@ -80,6 +91,12 @@ public class CenterAdminService {
 		return centerAdminRepository.findAll();
 	}
 
+    private AppointmentCalendarDTO toDTO(Appointment appointment){
+            String subject = appointment.getUser().getName() + " " + appointment.getUser().getName();
+            String startDate = appointment.getDate().toString() + "T" + appointment.getTime().toString() + ":00";
+            String endDate = appointment.getDate().toString() + "T" + appointment.getTime().plusMinutes(appointment.getDuration()).toString() + ":00";
+            return new AppointmentCalendarDTO(appointment.getId(), subject, startDate, endDate);
+    }
     public boolean defineNewAppointment(AppointmentDTO appointmentDTO){
         Staff staff = centerAdminRepository.findStaffById(appointmentDTO.getAdminId());
         BloodBankCenter bloodBankCenter = staff.getBloodBankCenter();
@@ -106,6 +123,5 @@ public class CenterAdminService {
         } else{
             return false;
         }
-
     }
 }

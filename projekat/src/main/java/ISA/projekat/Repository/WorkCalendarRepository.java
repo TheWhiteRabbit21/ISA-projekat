@@ -5,5 +5,5 @@ import ISA.projekat.Model.WorkCalendar;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface WorkCalendarRepository extends JpaRepository<WorkCalendar, Integer> {
-    public WorkCalendar findByBloodBankCenter(BloodBankCenter bloodBankCenter);
+    WorkCalendar findByBloodBankCenter(BloodBankCenter bloodBankCenter);
 }

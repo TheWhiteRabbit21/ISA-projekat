@@ -26,7 +26,7 @@ public class Appointment implements Serializable{
 	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
 	private RegisteredUser user;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "staff_id", referencedColumnName = "id", nullable = true)
 	private Staff staff;
 

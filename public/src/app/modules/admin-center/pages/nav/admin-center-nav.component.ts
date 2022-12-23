@@ -20,6 +20,10 @@ export class AdminCenterNavComponent implements OnInit {
       title: 'Registered Users'
     },
     {
+      path: 'work-calendar',
+      title: 'Work Calendar'
+    },
+    {
       path: 'admincenterprofile/' + this.id,
       title: 'Admin center profile'
     },

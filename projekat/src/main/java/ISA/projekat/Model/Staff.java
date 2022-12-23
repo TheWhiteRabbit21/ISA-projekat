@@ -18,6 +18,9 @@ public class Staff extends User {
 	@JoinColumn(name = "bloodBankCenter_id")
 	private BloodBankCenter bloodBankCenter;
 
+	@OneToOne(mappedBy = "staff")
+	private Complaint complaint;
+
 	@OneToMany(mappedBy = "staff", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Appointment> appointments = new HashSet<Appointment>();
 

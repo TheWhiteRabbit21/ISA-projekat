@@ -39,6 +39,9 @@ public class BloodBankCenter implements Serializable{
 	@OneToOne(mappedBy = "bloodBankCenter")
 	private WorkCalendar workCalendar;
 
+	@OneToOne(mappedBy = "bloodBankCenter")
+	private Complaint complaint;
+
 	public BloodBankCenter() {
 		super();
 	}
