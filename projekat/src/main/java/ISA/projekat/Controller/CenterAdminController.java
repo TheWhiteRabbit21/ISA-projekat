@@ -1,9 +1,9 @@
 package ISA.projekat.Controller;
 
+import ISA.projekat.DTOs.AppointmentCalendarDTO;
 import ISA.projekat.DTOs.AppointmentDTO;
 import ISA.projekat.DTOs.CenterAdminDTO;
-import ISA.projekat.Model.Address;
-import ISA.projekat.Model.Staff;
+import ISA.projekat.Model.*;
 import ISA.projekat.Service.AddressService;
 import ISA.projekat.Service.CenterAdminService;
 
@@ -70,8 +70,20 @@ public class CenterAdminController {
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     @GetMapping(value = "/appointments")
-    public ResponseEntity<List<AppointmentDTO>> getAllAppointments() {
+    public ResponseEntity<List<AppointmentCalendarDTO>> getAllAppointments() {
         return new ResponseEntity<>(centerAdminService.getAppointments(4), HttpStatus.OK);
+    }
+    @PostMapping(produces = "application/json", value = "/appointment/data")
+    @ResponseBody
+    public ResponseEntity<AppointmentDTO> getBloodBankCenterByAdminId(@RequestBody AppointmentDTO appointmentDTO){
+
+        if(centerAdminService.defineNewAppointment(appointmentDTO)){
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+
     }
 }
 

@@ -1,8 +1,8 @@
 package ISA.projekat.Controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,9 +13,11 @@ import ISA.projekat.Model.AppointmentHistory;
 import ISA.projekat.Service.BloodDonorInfoService;
 import ISA.projekat.Service.EquipmentService;
 
+
 @RestController
 @RequestMapping(value = "api/appointments")
 public class AppointmentController {
+
 	
 	@Autowired
 	private EquipmentService equipmentService;
@@ -36,15 +38,5 @@ public class AppointmentController {
 		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

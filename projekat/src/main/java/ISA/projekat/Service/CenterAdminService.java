@@ -1,10 +1,15 @@
 package ISA.projekat.Service;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import ISA.projekat.DTOs.AppointmentCalendarDTO;
 import ISA.projekat.DTOs.AppointmentDTO;
 import ISA.projekat.Model.*;
+import ISA.projekat.Repository.CenterRepository;
 import ISA.projekat.Repository.WorkCalendarRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +24,11 @@ public class CenterAdminService {
     private final CenterAdminRepository centerAdminRepository;
     private final WorkCalendarRepository workCalendarRepository;
 
-    public CenterAdminService(CenterAdminRepository centerAdminRepository, WorkCalendarRepository workCalendarRepository) {
+    private final CenterRepository bloodBankCenterRepository;
+    public CenterAdminService(CenterAdminRepository centerAdminRepository, CenterRepository bloodBankCenterRepository, WorkCalendarRepository workCalendarRepository) {
         this.centerAdminRepository = centerAdminRepository;
+//        this.addressRepository = addressRepository;
+        this.bloodBankCenterRepository = bloodBankCenterRepository;
         this.workCalendarRepository = workCalendarRepository;
     }
 
@@ -38,8 +46,8 @@ public class CenterAdminService {
         return admins;
     }
 
-    public List<AppointmentDTO> getAppointments(Integer id){
-        List<AppointmentDTO> appointments = new ArrayList<AppointmentDTO>();
+    public List<AppointmentCalendarDTO> getAppointments(Integer id){
+        List<AppointmentCalendarDTO> appointments = new ArrayList<AppointmentCalendarDTO>();
         Staff staff = centerAdminRepository.findById(id).get();
         WorkCalendar workCalendar = workCalendarRepository.findByBloodBankCenter(staff.getBloodBankCenter());
         for(Appointment appointment : workCalendar.getAppointments()){
@@ -83,10 +91,37 @@ public class CenterAdminService {
 		return centerAdminRepository.findAll();
 	}
 
-    private AppointmentDTO toDTO(Appointment appointment){
-        String subject = appointment.getUser().getName() + " " + appointment.getUser().getName();
-        String startDate = appointment.getDate().toString() + "T" + appointment.getTime().toString() + ":00";
-        String endDate = appointment.getDate().toString() + "T" + appointment.getTime().plusMinutes(appointment.getDuration()).toString() + ":00";
-        return new AppointmentDTO(appointment.getId(), subject, startDate, endDate);
+    private AppointmentCalendarDTO toDTO(Appointment appointment){
+            String subject = appointment.getUser().getName() + " " + appointment.getUser().getName();
+            String startDate = appointment.getDate().toString() + "T" + appointment.getTime().toString() + ":00";
+            String endDate = appointment.getDate().toString() + "T" + appointment.getTime().plusMinutes(appointment.getDuration()).toString() + ":00";
+            return new AppointmentCalendarDTO(appointment.getId(), subject, startDate, endDate);
+    }
+    public boolean defineNewAppointment(AppointmentDTO appointmentDTO){
+        Staff staff = centerAdminRepository.findStaffById(appointmentDTO.getAdminId());
+        BloodBankCenter bloodBankCenter = staff.getBloodBankCenter();
+        WorkCalendar workCalendar = workCalendarRepository.findByBloodBankCenter(bloodBankCenter);
+        String hours = appointmentDTO.getTime().split(":")[0];
+        String minutes = appointmentDTO.getTime().split(":")[1];
+        String hours2 = bloodBankCenter.getWorkingHours().getWorkHourBeginTime().split(":")[0];
+        String minutes2 = bloodBankCenter.getWorkingHours().getWorkHourBeginTime().split(":")[1];
+        String hours3 = bloodBankCenter.getWorkingHours().getWorkHourEndTime().split(":")[0];
+        String minutes3 = bloodBankCenter.getWorkingHours().getWorkHourEndTime().split(":")[1];
+        int numHours = Integer.parseInt(hours);
+        int numMinutes = Integer.parseInt(minutes);
+        int numHours2 = Integer.parseInt(hours2);
+        int numMinutes2 = Integer.parseInt(minutes2);
+        int numHours3 = Integer.parseInt(hours3);
+        int numMinutes3 = Integer.parseInt(minutes3);
+        int duration = appointmentDTO.getDuration();
+        if(numHours2 <= numHours && (numHours + duration) <= numHours3 ){
+            Appointment appointment = appointmentDTO.toModel();
+            appointment.setWorkCalendar(workCalendar);
+            workCalendar.getAppointments().add(appointment);
+            workCalendarRepository.save(workCalendar);
+            return  true;
+        } else{
+            return false;
+        }
     }
 }

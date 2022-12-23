@@ -18,4 +18,5 @@ public interface CenterRepository extends JpaRepository<BloodBankCenter, Integer
 	@Query("select b from BloodBankCenter b where lower(b.name)  like %?1% and lower(b.address.city) like %?2%")
 	public List<BloodBankCenter> findAllByNameAndCity(String name,String city);
 
+	public BloodBankCenter findBloodBankCenterById(int id);
 }

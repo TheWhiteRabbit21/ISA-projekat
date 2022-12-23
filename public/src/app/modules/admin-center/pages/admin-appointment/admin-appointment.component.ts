@@ -60,7 +60,8 @@ export class AdminAppointmentComponent implements OnInit {
       
       this._adminAppointmentService.getAppointmentHistory(this.id).subscribe(
         res => (this.dataSource2 = res));
-    });
+
+      });
   };
 
   startAppointment(): void {
@@ -72,7 +73,8 @@ export class AdminAppointmentComponent implements OnInit {
   }
 
   didntShowUp(): void {
-
+    this._adminAppointmentService.penalForDonor(this.id).subscribe();
+    //this._router.navigate(['/admin-center']);
   }
 
   doesntMeetRequirements(): void {

@@ -25,6 +25,10 @@ public class Appointment implements Serializable{
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
 	private RegisteredUser user;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "staff_id", referencedColumnName = "id", nullable = true)
+	private Staff staff;
 
 	@Column(nullable = false)
 	private boolean taken;
@@ -77,6 +81,18 @@ public class Appointment implements Serializable{
 	}
 	public void setTaken(boolean taken) {
 		this.taken = taken;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public WorkCalendar getWorkCalendar() {
+		return workCalendar;
+	}
+
+	public void setWorkCalendar(WorkCalendar workCalendar) {
+		this.workCalendar = workCalendar;
 	}
 
 	@Override

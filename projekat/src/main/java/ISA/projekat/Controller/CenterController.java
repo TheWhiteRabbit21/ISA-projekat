@@ -72,8 +72,8 @@ public class CenterController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
     	
-    	addressService.Update(centerDTO, bbCenter);
-    	centerService.Update(centerDTO, bbCenter);
+    	address = addressService.Update(centerDTO, bbCenter);
+    	bbCenter = centerService.Update(centerDTO, bbCenter, address);    	
     	
     	return new ResponseEntity<>(HttpStatus.OK);
     }

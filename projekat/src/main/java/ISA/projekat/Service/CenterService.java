@@ -43,9 +43,10 @@ public class CenterService {
 		return centerRepository.findById(id).orElseGet(null);
 	}
 
-	public BloodBankCenter Update(CenterDTO centerDTO, BloodBankCenter bbCenter) {
+	public BloodBankCenter Update(CenterDTO centerDTO, BloodBankCenter bbCenter, Address address) {
 		
-		BloodBankCenter temp = new BloodBankCenter(bbCenter.getId(), centerDTO.getName(), bbCenter.getAddress(), centerDTO.getDescription(), bbCenter.getAverageRating());
+		BloodBankCenter temp = new BloodBankCenter(bbCenter.getId(), centerDTO.getName(), address, 
+				centerDTO.getDescription(), bbCenter.getAverageRating());
 		
 		return centerRepository.save(temp);
 	}

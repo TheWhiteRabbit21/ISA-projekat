@@ -2,6 +2,9 @@ package ISA.projekat.Model;
 
 import ISA.projekat.Model.enums.Gender;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +21,8 @@ public class Staff extends User {
 	@OneToOne(mappedBy = "staff")
 	private Complaint complaint;
 
+	@OneToMany(mappedBy = "staff", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Appointment> appointments = new HashSet<Appointment>();
 
 	public Staff(String email, String password, String name, String surname, Gender gender, int jmbg, Address address, String phoneNumber) {
 		super(email, password, name, surname, gender, jmbg, address, phoneNumber);

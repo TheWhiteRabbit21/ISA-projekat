@@ -40,7 +40,7 @@ public class UserService {
     }
     
     public void RegisterUser(RegisteredUserDTO registeredUserDTO, Address address){
-    	userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), address, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE));
+    	userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), address, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE, 0));
     }
 
 
@@ -85,6 +85,16 @@ public class UserService {
 
 	public RegisteredUser findById(int id) {
 		return userRepository.findById(id).get();
+	}
+
+	public void IncreaseUsersPenalty(int id) {
+
+		RegisteredUser u = userRepository.findById(id).get();
+		
+		int tempPenal = u.getPenals() + 1;
+		u.setPenals(tempPenal);
+		
+		userRepository.save(u);
 	}
 
 }
