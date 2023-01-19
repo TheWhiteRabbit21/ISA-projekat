@@ -16,7 +16,7 @@ public class RoleService {
   private RoleRepository roleRepository;
 
   public Role findById(Long id) {
-    Role auth = this.roleRepository.getOne(id);
+    Role auth = this.roleRepository.getReferenceById(id);
     return auth;
   }
 

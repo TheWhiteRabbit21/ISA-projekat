@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -103,19 +105,15 @@ public class UserController {
     @GetMapping(value = "/data")
     public ResponseEntity<UserDataDTO> getUserData() {
 
+    	Authentication currentUser = (Authentication) SecurityContextHolder.getContext().getAuthentication();
+    	String username = currentUser.getUsername();
+    	//User user = 
+    	
+    	//UserDataDTO userDataDTO = new UserDataDTO();
+
         
 
-        // convert users to DTOs
-        //List<RegisteredUser2DTO> usersDTO = new ArrayList<>();
-
-        /*for (RegisteredUser u : users) {
-            Address address = _addressService.findOne(u.getAddress().getId());
-            usersDTO.add(new RegisteredUser2DTO(u.getId(), u.getUsername(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(), 
-            		u.getGender(), u.getProfession(), u.getInfoInstitution(), String.valueOf(u.getPoints()), String.valueOf(u.getUserCatagory())));
-
-        }*/
-
-        return new ResponseEntity<>(/*usersDTO,*/ HttpStatus.OK);
+        return new ResponseEntity<>(/*userDataDTO,*/ HttpStatus.OK);
 
     }
 

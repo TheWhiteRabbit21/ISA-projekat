@@ -1,21 +1,25 @@
 package ISA.projekat.DTOs;
 
 public class UserDataDTO {
-	public int id;
+	public String role;
 	public String username;
 	
-	public UserDataDTO(int id, String username) {
+	public UserDataDTO() {
 		super();
-		this.id = id;
+	}
+	
+	public UserDataDTO(String role, String username) {
+		super();
+		this.role = role;
 		this.username = username;
 	}
 
-	public int getId() {
-		return id;
+	public String getRole() {
+		return role;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getUsername() {

@@ -83,7 +83,7 @@ public class WebSecurityConfig {
         // sve neautentifikovane zahteve obradi uniformno i posalji 401 gresku	
         http.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint);
     	http.authorizeRequests()
-    		.antMatchers("/api/centers/all").permitAll()	
+    		//.antMatchers("/api/centers/all").permitAll()	
     		.antMatchers("/auth/**").permitAll()		// /auth/**
 			.antMatchers("/h2-console/**").permitAll()	// /h2-console/** ako se koristi H2 baza)
 			.antMatchers("/api/foo").permitAll()		// /api/foo	
@@ -91,7 +91,7 @@ public class WebSecurityConfig {
 			// koji tip korisnika moze da pristupi odgovarajucoj ruti. Npr. ukoliko zelimo da definisemo da ruti 'admin' moze da pristupi
 			// samo korisnik koji ima rolu 'ADMIN', navodimo na sledeci nacin: 
 			// .antMatchers("/admin").hasRole("ADMIN") ili .antMatchers("/admin").hasAuthority("ROLE_ADMIN")
-			
+			//.antMatchers("/api/centers/all").hasAuthority("ROLE_USER")
 			// za svaki drugi zahtev korisnik mora biti autentifikovan
 			.anyRequest().authenticated().and()
 			// za development svrhe ukljuci konfiguraciju za CORS iz WebConfig klase

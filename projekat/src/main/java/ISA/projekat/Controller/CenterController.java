@@ -20,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/centers")
+@CrossOrigin
 public class CenterController {
 
     @Autowired
@@ -39,6 +40,7 @@ public class CenterController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping(value = "/all")
     public ResponseEntity<List<BloodCenterListDTO>> getAllBloodCenters() {
 
