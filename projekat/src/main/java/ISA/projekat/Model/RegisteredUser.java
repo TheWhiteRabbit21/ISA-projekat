@@ -44,11 +44,10 @@ public class RegisteredUser extends User {
 	}
 	
 	
-	
-	public RegisteredUser(String email, String password, String name, String surname, Gender gender, int jmbg, Address address, String phoneNumber, 
-			Double points, String userPerks, String infoInstitution, String profession, UserCategory userCatagory, int penals) 
-	{
-		super(email, password, name, surname, gender, jmbg, address, phoneNumber);
+	public RegisteredUser(String username, String password, String name, String surname, Gender gender, int jmbg,
+			Address address, String phoneNumber, Double points, String userPerks, String infoInstitution, String profession,
+			UserCategory userCatagory, int penals) {
+		super(username, password, name, surname, gender, jmbg, address, phoneNumber);
 		this.points = points;
 		this.userPerks = userPerks;
 		this.infoInstitution = infoInstitution;
