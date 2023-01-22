@@ -20,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/centers")
+@CrossOrigin
 public class CenterController {
 
     @Autowired
@@ -39,7 +40,9 @@ public class CenterController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    
     @GetMapping(value = "/all")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<BloodCenterListDTO>> getAllBloodCenters() {
 
         List<BloodBankCenter> bloodBankCenters = centerService.findAll();

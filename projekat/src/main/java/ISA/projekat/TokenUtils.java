@@ -55,10 +55,11 @@ public class TokenUtils {
 	 * @param username Korisničko ime korisnika kojem se token izdaje
 	 * @return JWT token
 	 */
-	public String generateToken(String username) {
+	public String generateToken(String username, String role) {
 		return Jwts.builder()
 				.setIssuer(APP_NAME)
 				.setSubject(username)
+				.claim("role", role)
 				.setAudience(generateAudience())
 				.setIssuedAt(new Date())
 				.setExpiration(generateExpirationDate())
@@ -113,7 +114,7 @@ public class TokenUtils {
 
 		// JWT se prosledjuje kroz header 'Authorization' u formatu:
 		// Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
-		
+		System.out.println(authHeader);
 		if (authHeader != null && authHeader.startsWith("Bearer ")) {
 			return authHeader.substring(7); // preuzimamo samo token (vrednost tokena je nakon "Bearer " prefiksa)
 		}
@@ -274,6 +275,7 @@ public class TokenUtils {
 	 * @return Sadrzaj iz AUTH_HEADER-a.
 	 */
 	public String getAuthHeaderFromHeader(HttpServletRequest request) {
+		System.out.println(request.getHeader(AUTH_HEADER));
 		return request.getHeader(AUTH_HEADER);
 	}
 	

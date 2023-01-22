@@ -25,6 +25,7 @@ import ISA.projekat.UserTokenState;
 import ISA.projekat.DTOs.RegisteredUserDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.User;
+import ISA.projekat.Service.RegisteredUserService;
 import ISA.projekat.Service.UserService;
 
 //Kontroler zaduzen za autentifikaciju korisnika
@@ -61,7 +62,7 @@ public class AuthenticationController {
 
 		// Kreiraj token za tog korisnika
 		User user = (User) authentication.getPrincipal();
-		String jwt = tokenUtils.generateToken(user.getUsername());
+		String jwt = tokenUtils.generateToken(user.getUsername(), "ROLE_USER");
 		int expiresIn = tokenUtils.getExpiredIn();
 
 		// Vrati token kao odgovor na uspesnu autentifikaciju
@@ -69,7 +70,7 @@ public class AuthenticationController {
 	}
 
 	// Endpoint za registraciju novog korisnika
-	@PostMapping("/signup")
+	/*@PostMapping("/signup")
 	public ResponseEntity<RegisteredUserDTO> addUser(@RequestBody RegisteredUserDTO registeredUserDTO, UriComponentsBuilder ucBuilder) {
 		User existUser = this.userService.findByUsername(registeredUserDTO.getEmail());
 
@@ -83,5 +84,5 @@ public class AuthenticationController {
     	// treba staviti da se uzme id od ovog registrovanog usera i da mu se stavi role_user
 
 		return new ResponseEntity<>(HttpStatus.CREATED);
-	}
+	}*/
 }

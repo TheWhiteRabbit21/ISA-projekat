@@ -26,7 +26,7 @@ import ISA.projekat.Model.Address;
 import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Model.User;
 import ISA.projekat.Service.AddressService;
-import ISA.projekat.Service.UserService;
+import ISA.projekat.Service.RegisteredUserService;
 
 
 @RestController
@@ -35,7 +35,7 @@ import ISA.projekat.Service.UserService;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private RegisteredUserService userService;
 
     @Autowired
     private AddressService _addressService;
