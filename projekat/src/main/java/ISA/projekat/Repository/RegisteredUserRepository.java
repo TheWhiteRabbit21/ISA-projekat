@@ -2,6 +2,7 @@ package ISA.projekat.Repository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,5 +32,7 @@ public interface RegisteredUserRepository extends JpaRepository<RegisteredUser, 
     public List<RegisteredUser> findAllByNameAndSurnameIgnoreCase(String name, String surname);
 
     public Page<RegisteredUser> findAll(Pageable pageable);
+    
+    Optional<RegisteredUser> findById(int donorId);
 
 }

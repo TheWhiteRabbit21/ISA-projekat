@@ -9,6 +9,7 @@ import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from "./modules/pages/login/log-auth-interceptor.service";
+import { DatePipe } from "@angular/common";
 
 @NgModule({
   declarations: [

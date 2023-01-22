@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ISA.projekat.DTOs.RegisteredUserDTO;
@@ -43,7 +44,7 @@ public class RegisteredUserService {
     }
     
     public void RegisterUser(RegisteredUserDTO registeredUserDTO, Address address){
-    	userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), address, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE));
+    	userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), address, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE, 0));
     }
 
     public RegisteredUser findOneById(int jmbg) {
@@ -76,7 +77,21 @@ public class RegisteredUserService {
    public RegisteredUser findByUsername(String username){
         return userRepository.findByUsername(username);
     }
+	public RegisteredUser findById(Integer id) throws AccessDeniedException {
+		return userRepository.findById(id).orElseGet(null);
+	}
 
+   
+	public void IncreaseUsersPenalty(int id) {
+
+		RegisteredUser u = userRepository.findById(id).get();
+		
+		int tempPenal = u.getPenals() + 1;
+		u.setPenals(tempPenal);
+		
+		userRepository.save(u);
+	}
+	
     public Gender parseGender(String gender){
         if(gender.equals("Male")){
             return Gender.MALE;

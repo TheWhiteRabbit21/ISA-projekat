@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import ISA.projekat.Model.User;
 import ISA.projekat.Repository.UserRepository;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -49,5 +51,7 @@ public class UserService {
 		
 		return this.userRepository.save(u);
 	}*/
+
+
 
 }

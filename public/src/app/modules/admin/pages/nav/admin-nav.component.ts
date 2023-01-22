@@ -23,6 +23,14 @@ export class AdminNavComponent implements OnInit {
     {
       path: 'register-center-admin',
       title: 'Register Center Admin'
+    },
+    {
+      path: 'register-admin',
+      title: 'Register Admin'
+    },
+    {
+      path: 'complaints',
+      title: 'Complaints'
     }
   ];
   constructor() { }

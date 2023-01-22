@@ -12,7 +12,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
-
+import { RegisterAdminComponent } from './pages/register-admin/register-admin.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ChangePasswordDialog } from './admin.component';
+import { ComplaintsComponent } from './pages/complaints/complaints.component';
+import { AnswerDialog } from './pages/complaints/complaints.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,11 @@ import { MatTableModule } from '@angular/material/table';
     RegisteredUsersListComponent,
     RegisterCenterAdminComponent,
     RegisterCenterComponent,
-    AdminNavComponent
+    AdminNavComponent,
+    AnswerDialog,
+    ChangePasswordDialog,
+    RegisterAdminComponent,
+    ComplaintsComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +38,9 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     MaterialModule,
     MatListModule,
+    MatDialogModule,
+    MatOptionModule,
+    MatSelectModule,
     MatToolbarModule,
     MatSidenavModule,
     MatTableModule,

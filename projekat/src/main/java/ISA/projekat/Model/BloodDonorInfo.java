@@ -43,6 +43,9 @@ public class BloodDonorInfo {
 	@Column(nullable = false)
 	private boolean tattooLast6Months;
 
+	@Column(nullable = true)
+	private int donorId;
+	
 	public BloodDonorInfo() {
 		super();
 	}
