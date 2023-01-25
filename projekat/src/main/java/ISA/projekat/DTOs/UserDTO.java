@@ -14,6 +14,7 @@ public class UserDTO {
 	public String email;
 	public String gender;
 	public String jmbg;
+	public int role;
 	public String state;
 	public String city;
 	public String street;

@@ -3,6 +3,9 @@ package ISA.projekat.Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import ISA.projekat.Service.AdminService;
+import ISA.projekat.Service.CenterAdminService;
+import ISA.projekat.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.http.HttpStatus;
@@ -28,6 +31,10 @@ import ISA.projekat.Model.User;
 import ISA.projekat.Service.AddressService;
 import ISA.projekat.Service.RegisteredUserService;
 
+import javax.servlet.http.HttpServletRequest;
+
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+
 
 @RestController
 @RequestMapping(value = "api/users")
@@ -35,7 +42,15 @@ import ISA.projekat.Service.RegisteredUserService;
 public class UserController {
 
     @Autowired
+    private TokenUtils tokenUtils;
+    @Autowired
     private RegisteredUserService userService;
+
+    @Autowired
+    private AdminService adminService;
+
+    @Autowired
+    private CenterAdminService centerAdminService;
 
     @Autowired
     private AddressService _addressService;
@@ -103,18 +118,32 @@ public class UserController {
     }
     
     @GetMapping(value = "/data")
-    public ResponseEntity<UserDataDTO> getUserData() {
+    public ResponseEntity<UserDTO> getUserData(HttpServletRequest request) {
 
-    	Authentication currentUser = (Authentication) SecurityContextHolder.getContext().getAuthentication();
-    	String username = currentUser.getUsername();
-    	//User user = 
-    	
-    	//UserDataDTO userDataDTO = new UserDataDTO();
-
-        
-
-        return new ResponseEntity<>(/*userDataDTO,*/ HttpStatus.OK);
-
+        String username = tokenUtils.getUsernameFromToken(tokenUtils.getToken(request));
+        int id = userService.findIdByUsername(username);
+        if(id != 0){
+            UserDTO userDataDTO = new UserDTO();
+            userDataDTO.id = id;
+            userDataDTO.role = 2;
+            return new ResponseEntity<>(userDataDTO, HttpStatus.OK);
+        }
+        id = adminService.findIdByUsername(username);
+        if(id != 0){
+            UserDTO userDataDTO = new UserDTO();
+            userDataDTO.id = id;
+            userDataDTO.role = 3;
+            return new ResponseEntity<>(userDataDTO, HttpStatus.OK);
+        }
+        id = centerAdminService.findIdByUsername(username);
+        if(id != 0){
+            UserDTO userDataDTO = new UserDTO();
+            userDataDTO.id = id;
+            userDataDTO.role = 1;
+            return new ResponseEntity<>(userDataDTO, HttpStatus.OK);
+        }
+        UserDTO userDataDTO = new UserDTO();
+        return new ResponseEntity<>(userDataDTO, HttpStatus.OK);
     }
 
     @GetMapping(value = "/find/{id}")
@@ -164,4 +193,17 @@ public class UserController {
     public ResponseEntity<List<UserDTO>> getAllUsersByNameAndSurname(@RequestBody SearchUserDTO searchUserDTO) {
         return new ResponseEntity<>(userService.findByNameAndSurnameAllIgnoringCase(searchUserDTO.getName().toLowerCase(), searchUserDTO.getSurname().toLowerCase()),HttpStatus.OK);
     }
+    /*public static String getEmailFromRequest(HttpServletRequest req) {
+        String authorizationHeader = req.getHeader(AUTHORIZATION);
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+            try {
+                String token = authorizationHeader.substring("Bearer ".length());
+                DecodedJWT decodedJWT = getVerifier().verify(token);
+                return decodedJWT.getSubject();
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        return null;
+    }*/
 }

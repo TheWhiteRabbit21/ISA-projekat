@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
 export interface User {
-  UserId: number;
-  Username: string;
+  id: number;
+  role: number;
 }
 
 @Injectable({
@@ -24,18 +24,16 @@ export class UserDataService{
   }
 
   set setToken(token: null | string){
-    console.log("Usao sam.")
     if(token){
       this.m_TokenSubject.next(token);
       localStorage.setItem('token', token);
-      console.log("Usao sam i setovao.")
     }else{
       this.m_TokenSubject.next(null);
       localStorage.removeItem('token');
-      console.log("Usao sam i obrisao.")
     }
   }
   set setUserData(userData: null | User){
+    console.log(userData);
     this.m_UserDataSubject.next(userData);
   }
 }

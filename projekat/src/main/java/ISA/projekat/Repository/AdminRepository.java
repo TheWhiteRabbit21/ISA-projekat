@@ -11,4 +11,5 @@ public interface AdminRepository extends JpaRepository<Administrator, Integer> {
     @Query("select a.passwordChanged from Administrator a where a.id = ?1")
     public boolean checkIfPasswordChanged(int id);
 
+    Administrator findByUsername(String username);
 }
