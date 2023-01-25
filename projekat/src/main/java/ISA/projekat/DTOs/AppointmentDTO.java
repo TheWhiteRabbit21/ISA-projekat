@@ -1,5 +1,4 @@
 package ISA.projekat.DTOs;
-
 import ISA.projekat.Model.Appointment;
 
 import java.time.LocalDate;

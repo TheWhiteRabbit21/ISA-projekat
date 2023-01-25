@@ -20,4 +20,11 @@ public class AdminService {
     public boolean checkIfPasswordChanged(int id){
         return adminRepository.checkIfPasswordChanged(id);
     }
+
+    public void changePassword(int id, String password){
+        Administrator administrator = adminRepository.findById(id).get();
+        administrator.setPassword(password);
+        administrator.setPasswordChanged(true);
+        adminRepository.save(administrator);
+    }
 }

@@ -1,4 +1,4 @@
-<div style="margin-top: 20px;">
+<div style="margin-top: 20px; margin-left: 20px;">
   <mat-form-field class="example-form-field">
     <mat-label>Name</mat-label>
     <input matInput type="text" [(ngModel)]="search.name">
@@ -11,7 +11,7 @@
     <mat-icon>search</mat-icon>
   </button>
   </div>
-<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
+<table style="margin-left: 20px; width: 95%;" mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
  
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name"> Name </th>

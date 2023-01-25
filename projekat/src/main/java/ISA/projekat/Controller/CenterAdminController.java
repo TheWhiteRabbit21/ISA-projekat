@@ -1,16 +1,17 @@
 package ISA.projekat.Controller;
 
+import ISA.projekat.DTOs.AppointmentCalendarDTO;
 import ISA.projekat.DTOs.AppointmentDTO;
 import ISA.projekat.DTOs.CenterAdminDTO;
 import ISA.projekat.DTOs.CenterDTO;
 import ISA.projekat.DTOs.ReservationDTO;
 import ISA.projekat.Model.*;
 import ISA.projekat.Service.AddressService;
-import ISA.projekat.Service.CenterAdminService;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ISA.projekat.Service.CenterAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +39,7 @@ public class CenterAdminController {
         for (Staff s : staffs) {
             Address address = addressService.findOne(s.getAddress().getId());
             centerAdminDTO.add(new CenterAdminDTO(s.getId(), s.getName(), s.getSurname(), address.getCity(), address.getCountry(), address.getStreet(), 
-            		address.getNumber(), s.getGender().toString(), s.getEmail(), s.getPassword(), s.getJmbg(), s.getPhoneNumber()));
+            		address.getNumber(), s.getGender().toString(), s.getUsername(), s.getPassword(), s.getJmbg(), s.getPhoneNumber()));
         }
 
         return new ResponseEntity<>(centerAdminDTO, HttpStatus.OK);
@@ -70,7 +71,10 @@ public class CenterAdminController {
     	
     	return new ResponseEntity<>(HttpStatus.OK);
     }
-    
+    @GetMapping(value = "/appointments")
+    public ResponseEntity<List<AppointmentCalendarDTO>> getAllAppointments() {
+        return new ResponseEntity<>(centerAdminService.getAppointments(4), HttpStatus.OK);
+    }
     @PostMapping(produces = "application/json", value = "/appointment/data")
     @ResponseBody
     public ResponseEntity<AppointmentDTO> defineAppointment(@RequestBody AppointmentDTO appointmentDTO){
@@ -80,10 +84,7 @@ public class CenterAdminController {
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
-
     }
-    
     @PostMapping(produces = "application/json", value="/appointment/reserve")
     @ResponseBody
     public ResponseEntity<List<CenterDTO>> getNeededBloodCenters(@RequestBody ReservationDTO reservationDTO){
@@ -96,7 +97,5 @@ public class CenterAdminController {
         centerAdminService.reserveAppointment(reservationDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    
-    
 }
 

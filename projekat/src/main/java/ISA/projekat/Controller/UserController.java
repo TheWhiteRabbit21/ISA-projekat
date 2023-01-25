@@ -1,29 +1,41 @@
 package ISA.projekat.Controller;
 
-import ISA.projekat.DTOs.SearchUserDTO;
-import ISA.projekat.DTOs.RegisteredUser2DTO;
-import ISA.projekat.DTOs.RegisteredUserDTO;
-import ISA.projekat.DTOs.UserDTO;
-import ISA.projekat.Model.Address;
-import ISA.projekat.Model.RegisteredUser;
-import ISA.projekat.Service.AddressService;
-import ISA.projekat.Service.UserService;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
-//import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import ISA.projekat.DTOs.RegisteredUser2DTO;
+import ISA.projekat.DTOs.SearchUserDTO;
+import ISA.projekat.DTOs.UserDTO;
+import ISA.projekat.DTOs.UserDataDTO;
+import ISA.projekat.Model.Address;
+import ISA.projekat.Model.RegisteredUser;
+import ISA.projekat.Model.User;
+import ISA.projekat.Service.AddressService;
+import ISA.projekat.Service.RegisteredUserService;
 
 
 @RestController
 @RequestMapping(value = "api/users")
+@CrossOrigin
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private RegisteredUserService userService;
 
     @Autowired
     private AddressService _addressService;
@@ -32,7 +44,8 @@ public class UserController {
     @PutMapping(value = "/edit")
     public ResponseEntity<RegisteredUser2DTO> saveUser(@RequestBody RegisteredUser2DTO userDTO) {
 
-        RegisteredUser user = userService.findByEmail(userDTO.getEmail());
+    	User user1 = userService.findByUsername(userDTO.getEmail());
+        RegisteredUser user = userService.findOneById(user1.getJmbg());
         Address address = _addressService.findById(userDTO.getAddress().getId());
         address.setCity(userDTO.getAddress().getCity());
         address.setCountry(userDTO.getAddress().getCountry());
@@ -40,7 +53,7 @@ public class UserController {
         address.setStreet(userDTO.getAddress().getStreet());
         user.setName(userDTO.getName());
         user.setSurname(userDTO.getSurname());
-        user.setEmail(userDTO.getEmail());
+        user.setUsername(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
         user.setAddress(userDTO.getAddress());
         user.setJmbg(userDTO.getJmbg());
@@ -60,7 +73,7 @@ public class UserController {
 
     }
     
-    @PostMapping(produces = "application/json", value = "add")
+   /* @PostMapping(produces = "application/json", value = "add")
     @ResponseBody
     public ResponseEntity<RegisteredUserDTO> RegisterUser(@RequestBody RegisteredUserDTO registeredUserDTO){
         
@@ -68,7 +81,7 @@ public class UserController {
     	userService.RegisterUser(registeredUserDTO, address);
     	
         return new ResponseEntity<>(HttpStatus.OK);
-    }
+    }*/
 
     @GetMapping(value = "/all")
     public ResponseEntity<List<RegisteredUser2DTO>> getAllUsers() {
@@ -80,12 +93,27 @@ public class UserController {
 
         for (RegisteredUser u : users) {
             Address address = _addressService.findOne(u.getAddress().getId());
-            usersDTO.add(new RegisteredUser2DTO(u.getId(), u.getEmail(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(), 
+            usersDTO.add(new RegisteredUser2DTO(u.getId(), u.getUsername(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(), 
             		u.getGender(), u.getProfession(), u.getInfoInstitution(), String.valueOf(u.getPoints()), String.valueOf(u.getUserCatagory())));
 
         }
 
         return new ResponseEntity<>(usersDTO, HttpStatus.OK);
+
+    }
+    
+    @GetMapping(value = "/data")
+    public ResponseEntity<UserDataDTO> getUserData() {
+
+    	Authentication currentUser = (Authentication) SecurityContextHolder.getContext().getAuthentication();
+    	String username = currentUser.getUsername();
+    	//User user = 
+    	
+    	//UserDataDTO userDataDTO = new UserDataDTO();
+
+        
+
+        return new ResponseEntity<>(/*userDataDTO,*/ HttpStatus.OK);
 
     }
 
@@ -100,7 +128,7 @@ public class UserController {
 
         }
         Address address = _addressService.findOne(u.getAddress().getId());
-        RegisteredUser2DTO  userDTO = new RegisteredUser2DTO(u.getId(), u.getEmail(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(), 
+        RegisteredUser2DTO  userDTO = new RegisteredUser2DTO(u.getId(), u.getUsername(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(), 
         		u.getGender(), u.getProfession(), u.getInfoInstitution(), String.valueOf(u.getPoints()), String.valueOf(u.getUserCatagory()));
 
 
@@ -116,12 +144,21 @@ public class UserController {
 //    	System.out.println(userDTO.getId());
 //    	System.out.println(userDTO);
     	
-    	
-    	
-    	
-    	
     	return new ResponseEntity<>(HttpStatus.OK);
     }
+    
+    @PutMapping(value = "/penaltyAddById", consumes = "application/json")
+    @ResponseBody
+    public ResponseEntity<UserDTO> addUsersPenal(@RequestBody int id){
+    	
+    	userService.IncreaseUsersPenalty(id);
+
+    	return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    
+    
+    
     @PostMapping(produces = "application/json", value = "/search")
     @ResponseBody
     public ResponseEntity<List<UserDTO>> getAllUsersByNameAndSurname(@RequestBody SearchUserDTO searchUserDTO) {

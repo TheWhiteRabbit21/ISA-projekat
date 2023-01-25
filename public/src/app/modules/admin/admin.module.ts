@@ -17,6 +17,8 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ChangePasswordDialog } from './admin.component';
+import { ComplaintsComponent } from './pages/complaints/complaints.component';
+import { AnswerDialog } from './pages/complaints/complaints.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +27,10 @@ import { ChangePasswordDialog } from './admin.component';
     RegisterCenterAdminComponent,
     RegisterCenterComponent,
     AdminNavComponent,
+    AnswerDialog,
     ChangePasswordDialog,
-    RegisterAdminComponent
+    RegisterAdminComponent,
+    ComplaintsComponent
   ],
   imports: [
     CommonModule,

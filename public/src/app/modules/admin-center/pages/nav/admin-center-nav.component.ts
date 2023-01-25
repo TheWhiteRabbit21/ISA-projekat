@@ -11,10 +11,21 @@ export interface NavRoute {
   styleUrls: ['./admin-center-nav.component.scss']
 })
 export class AdminCenterNavComponent implements OnInit {
+
+  id: number = 4; //kad bude login namestiti da ne bude hardkodovano
+
   m_Routes: NavRoute[] = [
     {
       path: 'registered-users',
       title: 'Registered Users'
+    },
+    {
+      path: 'work-calendar',
+      title: 'Work Calendar'
+    },
+    {
+      path: 'admincenterprofile/' + this.id,
+      title: 'Admin center profile'
     },
     {
       path: 'define-appointment',

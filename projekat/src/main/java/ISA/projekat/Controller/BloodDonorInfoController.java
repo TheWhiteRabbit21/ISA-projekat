@@ -20,7 +20,7 @@ import ISA.projekat.Model.AppointmentHistory;
 import ISA.projekat.Model.BloodDonorInfo;
 import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Service.BloodDonorInfoService;
-import ISA.projekat.Service.UserService;
+import ISA.projekat.Service.RegisteredUserService;
 
 @RestController
 @RequestMapping(value = "api/bloodDonorInfo")
@@ -29,7 +29,7 @@ public class BloodDonorInfoController {
 	@Autowired
     private BloodDonorInfoService bloodDonorInfoService;
 	@Autowired
-	private UserService userService;
+	private RegisteredUserService userService;
 	
 	 @GetMapping(value = "/all")
 	    public ResponseEntity<List<BloodDonorInfo>> getBloodDonorInfo() {

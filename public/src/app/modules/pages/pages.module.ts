@@ -4,7 +4,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
-import { AdminCenterProfileComponent } from './admin-center-profile/admin-center-profile.component';
+import { AdminCenterProfileComponent } from '../admin-center/pages/admin-center-profile/admin-center-profile.component';
 import { MatTableModule } from '@angular/material/table';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MaterialModule } from 'src/app/material/material.module';

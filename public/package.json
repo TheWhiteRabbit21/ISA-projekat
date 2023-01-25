@@ -20,6 +20,8 @@
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
+    "@syncfusion/ej2-angular-schedule": "^20.4.38",
+    "@syncfusion/ej2-material-theme": "^20.4.38",
     "angular-material": "^0.8.0",
     "bootstrap": "^5.2.2",
     "font-awesome": "^4.7.0",
