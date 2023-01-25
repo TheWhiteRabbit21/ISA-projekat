@@ -20,7 +20,6 @@ export class DefineAppointmentComponent implements OnInit {
   constructor(private http: HttpClient,private router: Router) { }
 
   ngOnInit(): void {
-    //dobaviti podatke s bekenda
   }
 
   public saveButton(): void {

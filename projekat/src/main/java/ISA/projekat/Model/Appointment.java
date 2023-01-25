@@ -79,6 +79,7 @@ public class Appointment implements Serializable{
 		this.taken = taken;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}

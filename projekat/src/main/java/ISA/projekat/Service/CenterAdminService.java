@@ -1,13 +1,16 @@
 package ISA.projekat.Service;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import ISA.projekat.DTOs.AppointmentDTO;
+import ISA.projekat.DTOs.CenterDTO;
+import ISA.projekat.DTOs.ReservationDTO;
 import ISA.projekat.Model.*;
+import ISA.projekat.Repository.AppointmentRepository;
 import ISA.projekat.Repository.CenterRepository;
 import ISA.projekat.Repository.WorkCalendarRepository;
 import org.springframework.stereotype.Service;
@@ -23,11 +26,13 @@ public class CenterAdminService {
     private final CenterAdminRepository centerAdminRepository;
 //    private final AddressRepository addressRepository;
     private final CenterRepository bloodBankCenterRepository;
+    private final AppointmentRepository appointmentRepository;
     private final WorkCalendarRepository workCalendarRepository;
-    public CenterAdminService(CenterAdminRepository centerAdminRepository,/*, AddressRepository addressRepository*/CenterRepository bloodBankCenterRepository, WorkCalendarRepository workCalendarRepository) {
+    public CenterAdminService(CenterAdminRepository centerAdminRepository,/*, AddressRepository addressRepository*/CenterRepository bloodBankCenterRepository, AppointmentRepository appointmentRepository, WorkCalendarRepository workCalendarRepository) {
         this.centerAdminRepository = centerAdminRepository;
 //        this.addressRepository = addressRepository;
         this.bloodBankCenterRepository = bloodBankCenterRepository;
+        this.appointmentRepository = appointmentRepository;
         this.workCalendarRepository = workCalendarRepository;
     }
 
@@ -107,5 +112,52 @@ public class CenterAdminService {
             return false;
         }
 
+    }
+
+    public List<CenterDTO> findAllCentersByAppointments(ReservationDTO reservationDTO){
+        List<CenterDTO> centers = new ArrayList<CenterDTO>();
+        for(WorkCalendar workCalendar : workCalendarRepository.findAll()){
+            for(Appointment appointment: workCalendar.getAppointments()){
+                String myDate = reservationDTO.getDate().toString();
+                String myDay = myDate.split("/")[0];
+                String myMonth = myDate.split("/")[1];
+                String myYear = myDate.split("/")[2];
+                String theirDate = appointment.getDate().toString();
+                String theirYear = theirDate.split("-")[0];
+                String theirMonth = theirDate.split("-")[1];
+                String theirDay = theirDate.split("-")[2];
+                if(appointment.isTaken() == false) {
+                    if (myDay.equals(theirDay) && myMonth.equals(theirMonth) && myYear.equals(theirYear) && appointment.getTime() == LocalTime.parse(reservationDTO.getTime())) {
+                        BloodBankCenter bloodBankCenter = workCalendar.getBloodBankCenter();
+                        CenterDTO center = new CenterDTO();
+                        center.setId(String.valueOf(bloodBankCenter.getId()));
+                        center.setName(bloodBankCenter.getName());
+                        center.setCity(bloodBankCenter.getAddress().getCity());
+                        center.setAverageRating(bloodBankCenter.getAverageRating());
+                        centers.add(center);
+                    }
+                }
+            }
+        }
+        return centers;
+    }
+    public void reserveAppointment(ReservationDTO reservationDTO){
+        BloodBankCenter center = bloodBankCenterRepository.findById(reservationDTO.getBloodBankId()).get();
+        WorkCalendar calendar = workCalendarRepository.findByBloodBankCenter(center);
+        for(Appointment appointment: calendar.getAppointments()){
+            String myDate = reservationDTO.getDate().toString();
+            String myDay = myDate.split("/")[0];
+            String myMonth = myDate.split("/")[1];
+            String myYear = myDate.split("/")[2];
+            String theirDate = appointment.getDate().toString();
+            String theirYear = theirDate.split("-")[0];
+            String theirMonth = theirDate.split("-")[1];
+            String theirDay = theirDate.split("-")[2];
+                if (myDay.equals(theirDay) && myMonth.equals(theirMonth) && myYear.equals(theirYear) && appointment.getTime() == LocalTime.parse(reservationDTO.getTime())) {
+                    appointment.setTaken(true);
+                    workCalendarRepository.save(calendar);
+                    return;
+                }
+        }
     }
 }

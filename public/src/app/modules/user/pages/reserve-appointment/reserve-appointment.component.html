@@ -1,0 +1,34 @@
+
+<div class="header">
+  <h1>Appointment reservation</h1>
+</div>
+
+  <div  >
+    <form>
+        <div >
+           <label class="center" for="name">DATE</label>
+           <input type="text"  name="date" [(ngModel)]="reservation.date" class="form-control" id="nameE" aria-describedby="emailHelp" placeholder="format: dd/MM/yyyy">
+        </div>
+       <div >
+           <label  class="center">TIME</label>
+           <input type="text" name="time" [(ngModel)]="reservation.time"  class="form-control" id="surnameE" placeholder="format: HH:mm">
+        </div>
+        <button type="button" class="btn btn-primary" style="position: relative;left: 10%;" (click)="reserveButton()" data-bs-dismiss="modal" >Reserve appointment</button>
+    </form>
+  </div>
+  <div>
+    <table >
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Average rating</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let center of bloodbanks">
+        <td>{{center.name}}</td>
+        <td>{{center.city}}</td>
+        <td>{{center.averageRating}}</td>
+        <td><button style="width: auto;" type="button" (click)="reserveAppointment(center)">Reserve</button></td>
+      </tr>
+    </table>
+  </div>
