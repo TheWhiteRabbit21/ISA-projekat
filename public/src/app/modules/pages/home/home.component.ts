@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../login/log-auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   bloodbanks: boolean = false;
-  constructor() { }
+  constructor(private m_AuthService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +24,11 @@ export class HomeComponent implements OnInit {
 
   public bloodDonorForm(){
     window.location.href="http://localhost:4200/blood-donor-form"
+  }
+
+  public logout(){
+    this.m_AuthService.logout();
+    window.location.href="http://localhost:4200/"
   }
 
 }

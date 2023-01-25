@@ -28,6 +28,6 @@ headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 constructor(private http: HttpClient) { }
 
 submit(registeringUser: any): Observable<any> {
-  return this.http.post<any>(this.route + 'api/users/add', registeringUser, {headers: this.headers});
+  return this.http.post<any>(this.route + 'auth/signup', registeringUser, {headers: this.headers});
 }
 }

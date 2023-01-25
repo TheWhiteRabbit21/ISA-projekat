@@ -1,100 +1,57 @@
 package ISA.projekat.Service;
 
+import java.util.List;
 
-import ISA.projekat.DTOs.UserDTO;
-import ISA.projekat.Model.Address;
-import ISA.projekat.Model.RegisteredUser;
-import ISA.projekat.DTOs.RegisteredUserDTO;
-import ISA.projekat.Model.enums.Gender;
-import ISA.projekat.Model.enums.UserCategory;
-import ISA.projekat.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import ISA.projekat.Model.User;
+import ISA.projekat.Repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
-//    @Autowired
-//    private AddressRepository addressRepository;
+	@Autowired
+	private UserRepository userRepository;
 
-
-    private List<UserDTO> parseList(List<RegisteredUser> registeredUsers){
-        List<UserDTO> users = new ArrayList<UserDTO>();
-        for(RegisteredUser user : registeredUsers){
-            users.add(new UserDTO(user, user.getAddress()));
-        }
-        return users;
-    }
-
-    public List<RegisteredUser> findByLastName(String surname) {
-        return userRepository.findAllUsersBySurname(surname);
-    }
-
-    public List<RegisteredUser> findAllUsersBySurname(String surname) {
-        return userRepository.findAllUsersBySurname(surname);
-    }
-    
-    public void RegisterUser(RegisteredUserDTO registeredUserDTO, Address address){
-    	userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), address, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE, 0));
-    }
-
-
-    public RegisteredUser findOneById(int jmbg) {
-        return userRepository.findOneById(jmbg);
-
-    }
-
-    public RegisteredUser findByPassword(String password) {
-        return userRepository.findByPassword(password);
-    }
-
-    public List<UserDTO> findByNameAndSurnameAllIgnoringCase(String name, String surname) {
-        return parseList(userRepository.findAllByNameAndSurnameIgnoreCase(name, surname));
-
-    }
-
-    public List<RegisteredUser> findAllUsersByName(String name) {
-        return userRepository.findAllUsersByName(name);
-    }
-
-    public RegisteredUser save(RegisteredUser user) {
-        return userRepository.save(user);
-    }
-
-
-    public List<RegisteredUser> findAll() {
-        return userRepository.findAll();
-    }
-
-    public RegisteredUser findByEmail(String email){
-        return userRepository.findByEmail(email).get();
-    }
-
-    public Gender parseGender(String gender){
-        if(gender.equals("Male")){
-            return Gender.MALE;
-        }else{
-            return Gender.FEMALE;
-        }
-    }
-
-	public RegisteredUser findById(int id) {
-		return userRepository.findById(id).get();
+	public User findByUsername(String username) throws UsernameNotFoundException {
+		return userRepository.findByUsername(username);
 	}
 
-	public void IncreaseUsersPenalty(int id) {
-
-		RegisteredUser u = userRepository.findById(id).get();
-		
-		int tempPenal = u.getPenals() + 1;
-		u.setPenals(tempPenal);
-		
-		userRepository.save(u);
+	public User findById(Integer id) throws AccessDeniedException {
+		return userRepository.findById(id).orElseGet(null);
 	}
+
+	public List<User> findAll() throws AccessDeniedException {
+		return userRepository.findAll();
+	}
+
+	/*@Override
+	public User save(UserRequest userRequest) {
+		User u = new User();
+		u.setUsername(userRequest.getUsername());
+		
+		// pre nego sto postavimo lozinku u atribut hesiramo je kako bi se u bazi nalazila hesirana lozinka
+		// treba voditi racuna da se koristi isi password encoder bean koji je postavljen u AUthenticationManager-u kako bi koristili isti algoritam
+		u.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+		
+		u.setFirstName(userRequest.getFirstname());
+		u.setLastName(userRequest.getLastname());
+		u.setEnabled(true);
+		u.setEmail(userRequest.getEmail());
+
+		// u primeru se registruju samo obicni korisnici i u skladu sa tim im se i dodeljuje samo rola USER
+		List<Role> roles = roleService.findByName("ROLE_USER");
+		u.setRoles(roles);
+		
+		return this.userRepository.save(u);
+	}*/
+
+
 
 }

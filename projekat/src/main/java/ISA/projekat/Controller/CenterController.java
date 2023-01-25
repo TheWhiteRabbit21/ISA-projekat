@@ -12,6 +12,7 @@ import ISA.projekat.Service.CenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/centers")
+@CrossOrigin
 public class CenterController {
 
     @Autowired
@@ -38,7 +40,9 @@ public class CenterController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    
     @GetMapping(value = "/all")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<List<BloodCenterListDTO>> getAllBloodCenters() {
 
         List<BloodBankCenter> bloodBankCenters = centerService.findAll();
