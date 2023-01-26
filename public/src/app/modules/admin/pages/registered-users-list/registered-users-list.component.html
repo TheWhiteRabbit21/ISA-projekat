@@ -39,4 +39,10 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <mat-paginator [length]="this.length"
+              [pageSize]="this.page.pageSize"
+              [pageSizeOptions]="this.pageSizeOptions"
+              [pageIndex]="this.page.pageIndex"
+              aria-label="Select page" (page)="handlePageEvent($event)">
+</mat-paginator>
 </section>

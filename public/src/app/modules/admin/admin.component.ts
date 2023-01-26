@@ -5,7 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { map, Observable, switchMap, tap } from 'rxjs';
 import { AuthService } from '../pages/login/log-auth.service';
-import { AdminService } from './admin.service';
+import { UserDataService } from '../pages/login/log-user-data.service';
+import { AdminService, PasswordDTO } from './admin.service';
 
 export interface Password {
   new: string;
@@ -22,17 +23,27 @@ export class AdminComponent implements OnInit {
   new: string = '';
   confirm: string = '';
   visible: boolean = true;
+  password: PasswordDTO = {
+    password : '',
+    id : 0
+  }
 
   constructor(public dialog: MatDialog, private snackBar: MatSnackBar, private adminService: AdminService, private m_AuthService : AuthService
-    ,private m_Router : Router) { }
+    ,private m_Router : Router, private m_UserDataService : UserDataService) { }
 
   ngOnInit(): void {
-    this.adminService.getIfPasswordChanged().pipe(tap(res =>{
+    this.m_UserDataService.m_UserData$.pipe(tap(user_data => {
+      if(user_data)this.password.id = user_data.id;
+      console.log(this.password.id);
+    }),switchMap(_ => this.getIfChanged())).subscribe();
+  }
+  getIfChanged():Observable<any> {
+    return this.adminService.getIfPasswordChanged(this.password.id).pipe(tap(res =>{
       this.visible = !res;
-    }),switchMap(_ => this.initate())).subscribe();
+    }),switchMap(_ => this.initate()));    
   }
   initate(): Observable<any>{
-    if(!this.visible){
+    if(this.visible){
       const dialogRef = this.dialog.open(ChangePasswordDialog, {
         data: {new: this.new, password: this.confirm},
       });
@@ -40,12 +51,13 @@ export class AdminComponent implements OnInit {
       return dialogRef.afterClosed().pipe(map(result  => {
         this.new = result.new;
         this.confirm = result.confirm;
+        this.password.password = result.new;
       }),switchMap(_ => this.changePassword()));
     }
     return new Observable<any>;
   }
   changePassword(): Observable<any>{
-    return this.adminService.changePassword(this.new).pipe(tap(_ => {
+    return this.adminService.changePassword(this.password).pipe(tap(_ => {
       this.snackBar.open('Password Successfully Changed','Ok', {
         duration: 3000
       })

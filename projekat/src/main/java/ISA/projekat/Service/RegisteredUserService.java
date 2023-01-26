@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -73,8 +76,9 @@ public class RegisteredUserService {
     }
 
 
-    public List<RegisteredUser> findAll() {
-        return userRepository.findAll();
+    public List<RegisteredUser> findAll(int pageIndex, int pageSize) {
+        Pageable pageable = PageRequest.of(pageIndex*pageSize, (pageIndex+1)*pageSize);
+        return userRepository.findAll(pageable).toList();
     }
 
    public RegisteredUser findByUsername(String username){

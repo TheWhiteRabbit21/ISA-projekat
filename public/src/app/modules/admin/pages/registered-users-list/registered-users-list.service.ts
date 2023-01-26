@@ -12,6 +12,10 @@ export interface Search{
   name: string,
   surname: string
 }
+export class Page{
+  pageSize: number = 0;
+  pageIndex: number = 0;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -21,8 +25,8 @@ export class RegisteredUsersListService {
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient) { }
 
-  getAllUsers() : Observable<User[]> {
-      return this.http.get<User[]>(this.route + 'api/users/all', {headers: this.headers});
+  getAllUsers(page : Page) : Observable<User[]> {
+      return this.http.post<User[]>(this.route + 'api/users/all', page, {headers: this.headers});
   }
   search(search : any) : Observable<User[]> {
     return this.http.post<User[]>(this.route + 'api/users/search/', search, {headers: this.headers});

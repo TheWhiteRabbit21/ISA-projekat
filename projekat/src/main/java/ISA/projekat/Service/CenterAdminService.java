@@ -6,7 +6,11 @@ import ISA.projekat.Model.enums.Gender;
 import ISA.projekat.Repository.AppointmentRepository;
 import ISA.projekat.Repository.CenterAdminRepository;
 import ISA.projekat.Repository.CenterRepository;
+import ISA.projekat.Repository.RoleRepository;
 import ISA.projekat.Repository.WorkCalendarRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
@@ -20,25 +24,36 @@ public class CenterAdminService {
     private final CenterRepository bloodBankCenterRepository;
     private final AppointmentRepository appointmentRepository;
     private final WorkCalendarRepository workCalendarRepository;
-    public CenterAdminService(CenterAdminRepository centerAdminRepository, CenterRepository bloodBankCenterRepository, AppointmentRepository appointmentRepository, WorkCalendarRepository workCalendarRepository) {
-            this.centerAdminRepository = centerAdminRepository;
-            this.bloodBankCenterRepository = bloodBankCenterRepository;
-            this.appointmentRepository = appointmentRepository;
-            this.workCalendarRepository = workCalendarRepository;
-        }
+    private final RoleRepository roleRepository;
+    private PasswordEncoder passwordEncoder;
 
-        public void CreateCenterAdmin(CenterAdminDTO centerAdminDTO){
-            Address address = new Address(centerAdminDTO.country, centerAdminDTO.city, centerAdminDTO.street, centerAdminDTO.number);
-            centerAdminRepository.save(new Staff(centerAdminDTO.email,centerAdminDTO.password,centerAdminDTO.name,
-                    centerAdminDTO.surname, parseGender(centerAdminDTO.gender), centerAdminDTO.jmbg, address,centerAdminDTO.phoneNumber));
-        }
-        public List<CenterAdminDTO> GetAvailableAdmins(){
-            List<CenterAdminDTO> admins = new ArrayList<CenterAdminDTO>();
-            for(Staff admin : centerAdminRepository.findAllByBloodBankCenterIsNull()){
-                admins.add(new CenterAdminDTO(admin.getId(),admin.getName(),admin.getSurname()));
-            }
+    public CenterAdminService(RoleRepository roleRepository, CenterAdminRepository centerAdminRepository, CenterRepository bloodBankCenterRepository, WorkCalendarRepository workCalendarRepository, AppointmentRepository appointmentRepository) {
+        this.centerAdminRepository = centerAdminRepository;
+        this.appointmentRepository = appointmentRepository;
+        this.bloodBankCenterRepository = bloodBankCenterRepository;
+        this.workCalendarRepository = workCalendarRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
+        this.roleRepository = roleRepository;
+    }
+
+    
+    public void CreateCenterAdmin(CenterAdminDTO centerAdminDTO){
+        Address address = new Address(centerAdminDTO.country, centerAdminDTO.city, centerAdminDTO.street, centerAdminDTO.number);
+        Staff staff = new Staff(centerAdminDTO.email,centerAdminDTO.password,centerAdminDTO.name,
+                centerAdminDTO.surname, parseGender(centerAdminDTO.gender), centerAdminDTO.jmbg, address,centerAdminDTO.phoneNumber);
+        staff.setEnabled(true);
+        staff.setPassword(passwordEncoder.encode(centerAdminDTO.password));
+        staff.setRoles(roleRepository.findByName("ROLE_ADMIN_CENTER"));
+        centerAdminRepository.save(staff);
+    }
+    public List<CenterAdminDTO> GetAvailableAdmins() {
+        List<CenterAdminDTO> admins = new ArrayList<CenterAdminDTO>();
+        for (Staff admin : centerAdminRepository.findAllByBloodBankCenterIsNull()) {
+            admins.add(new CenterAdminDTO(admin.getId(), admin.getName(), admin.getSurname()));
             return admins;
         }
+        return admins;
+    }
         public int findIdByUsername(String username){
             if(centerAdminRepository.findByUsername(username) != null){
                 return centerAdminRepository.findByUsername(username).getId();

@@ -3,6 +3,7 @@ package ISA.projekat.Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import ISA.projekat.DTOs.*;
 import ISA.projekat.Service.AdminService;
 import ISA.projekat.Service.CenterAdminService;
 import ISA.projekat.TokenUtils;
@@ -21,10 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ISA.projekat.DTOs.RegisteredUser2DTO;
-import ISA.projekat.DTOs.SearchUserDTO;
-import ISA.projekat.DTOs.UserDTO;
-import ISA.projekat.DTOs.UserDataDTO;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.RegisteredUser;
 import ISA.projekat.Model.User;
@@ -98,10 +95,10 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }*/
 
-    @GetMapping(value = "/all")
-    public ResponseEntity<List<RegisteredUser2DTO>> getAllUsers() {
+    @PostMapping(value = "/all")
+    public ResponseEntity<List<RegisteredUser2DTO>> getAllUsers(@RequestBody PageDTO pageDTO) {
 
-        List<RegisteredUser> users = userService.findAll();
+        List<RegisteredUser> users = userService.findAll(pageDTO.pageIndex, pageDTO.pageSize);
 
         // convert users to DTOs
         List<RegisteredUser2DTO> usersDTO = new ArrayList<>();

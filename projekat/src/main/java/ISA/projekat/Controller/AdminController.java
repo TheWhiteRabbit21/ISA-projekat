@@ -2,6 +2,7 @@ package ISA.projekat.Controller;
 
 import ISA.projekat.DTOs.AdminDTO;
 import ISA.projekat.DTOs.ComplaintDTO;
+import ISA.projekat.DTOs.PasswordDTO;
 import ISA.projekat.Model.Complaint;
 import ISA.projekat.Service.AdminService;
 import ISA.projekat.Service.ComplaintService;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,16 +48,16 @@ public class AdminController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping(value="/changedPassword",produces = "application/json")
+    @PostMapping(value="/changedPassword",produces = "application/json")
     @ResponseBody
-    public ResponseEntity CheckIfPasswordChanged(){
-        boolean flag = adminService.checkIfPasswordChanged(6);
+    public ResponseEntity CheckIfPasswordChanged(@RequestBody int id){
+        boolean flag = adminService.checkIfPasswordChanged(id);
         return new ResponseEntity<>(flag, HttpStatus.OK);
     }
     @PostMapping(value = "/changePassword")
     @ResponseBody
-    public ResponseEntity ChangePassword(@RequestBody String password){
-        adminService.changePassword(6, password);
+    public ResponseEntity ChangePassword(@RequestBody PasswordDTO passwordDTO){
+        adminService.changePassword(passwordDTO.id, passwordDTO.password);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
