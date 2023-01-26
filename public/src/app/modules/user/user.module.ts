@@ -9,12 +9,14 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
+import { ReserveAppointmentComponent } from './pages/reserve-appointment/reserve-appointment.component';
 
 
 @NgModule({
   declarations: [
     UserComponent,
-    UserNavComponent
+    UserNavComponent,
+    ReserveAppointmentComponent
   ],
   imports: [
     CommonModule,

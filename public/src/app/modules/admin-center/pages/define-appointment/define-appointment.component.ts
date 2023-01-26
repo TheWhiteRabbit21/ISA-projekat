@@ -5,6 +5,8 @@ import { Center } from "../../pages/admin-center-profile/admin-center-profile.se
 import { Admin } from "../../../pages/admin-profile/admin-profile.service";
 import { User } from "../../../pages/user-profile/user";
 import { Appointment } from "./Appointment";
+import { Observable, tap, switchMap } from "rxjs";
+import { UserDataService } from "src/app/modules/pages/login/log-user-data.service";
 
 @Component({
   selector: 'app-define-appointment',
@@ -17,16 +19,14 @@ export class DefineAppointmentComponent implements OnInit {
   public center: any = {} as Center;
   public appointment: any = {} as Appointment;
 
-  constructor(private http: HttpClient,private router: Router) { }
+  constructor(private http: HttpClient,private router: Router, private m_UserDataService : UserDataService) { }
 
   ngOnInit(): void {
-    //dobaviti podatke s bekenda
+    this.getId().subscribe();
   }
 
   public saveButton(): void {
     this.appointment = Object.assign({}, this.appointment);
-    this.appointment.adminId = 1;
-
     console.log(this.appointment);
     var headers = new HttpHeaders({
     'Content-Type': 'application/json'
@@ -36,5 +36,11 @@ export class DefineAppointmentComponent implements OnInit {
       this.router.navigate(['/admin-center'])
     });
 
+
+  }
+  getId() : Observable<any>{
+    return this.m_UserDataService.m_UserData$.pipe(tap(user_data=> {
+      if(user_data) this.appointment.adminId = user_data.id;
+    }));
   }
 }

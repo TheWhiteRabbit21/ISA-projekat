@@ -1,75 +1,76 @@
-<section class="form">
+<div style="margin-left: 450px;">
+    <section class="form">
     <h1 style="margin-left: 15px; margin-top: 15px;">Appointment</h1>
     <form [formGroup]="appointmentForm" style="margin-left: 15px;">
         
         <div>
-        <mat-form-field appearance="fill">
+        <mat-form-field style="width: 1000px;" appearance="fill">
             <mat-label>Krvna grupa</mat-label>
             <input required [(ngModel)]="appointmentInfo.krvnaGrupa" formControlName="krvnaGrupa" matInput>
         </mat-form-field>
         </div>
         <div>
-        <mat-form-field appearance="fill">
+        <mat-form-field style="width: 1000px;" appearance="fill">
             <mat-label>Napomena Doktoru Medicine</mat-label>
             <input required [(ngModel)]="appointmentInfo.napomenaDoktoruMedicine" formControlName="napomenaDoktoruMedicine" matInput>
         </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field style="width: 1000px;" appearance="fill">
                 <mat-label>BakarSulfat</mat-label>
                 <input required [(ngModel)]="appointmentInfo.bakarSulfat" formControlName="bakarSulfat" matInput>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field style="width: 1000px;" appearance="fill">
                 <mat-label>Hemoglobinometar Vrednost</mat-label>
                 <input required [(ngModel)]="appointmentInfo.hemoglobinometarVrednost" formControlName="hemoglobinometarVrednost" matInput>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field style="width: 1000px;" appearance="fill">
                 <mat-label>Pluca</mat-label>
                 <input required [(ngModel)]="appointmentInfo.pluca" formControlName="pluca" matInput>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field style="width: 1000px;" appearance="fill">
                 <mat-label>Srce</mat-label>
                 <input required [(ngModel)]="appointmentInfo.srce" formControlName="srce" matInput>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field style="width: 1000px;" appearance="fill">
                 <mat-label>TA</mat-label>
                 <input required [(ngModel)]="appointmentInfo.TA" formControlName="TA" matInput>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field style="width: 1000px;" appearance="fill">
                 <mat-label>Tip Kese</mat-label>
                 <input required [(ngModel)]="appointmentInfo.tipKese" formControlName="tipKese" matInput>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field style="width: 1000px;" appearance="fill">
                 <mat-label>Napomena</mat-label>
                 <input required [(ngModel)]="appointmentInfo.napomena" formControlName="napomena" matInput>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field style="width: 1000px;" appearance="fill">
                 <mat-label>Broj Lota Kese</mat-label>
                 <input required [(ngModel)]="appointmentInfo.brojLotaKese" formControlName="brojLotaKese" matInput>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field style="width: 1000px;" appearance="fill">
                 <mat-label>Kolicina krvi data ml</mat-label>
                 <input required [(ngModel)]="appointmentInfo.kolicinaKrviDataML" formControlName="kolicinaKrviDataML" matInput>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field style="width: 1000px;" appearance="fill">
                 <mat-label>Broj igala iskoriscen</mat-label>
                 <input required [(ngModel)]="appointmentInfo.brojIgala" formControlName="brojIgala" matInput>
             </mat-form-field>
@@ -78,3 +79,4 @@
         <button mat-raised-button [disabled]="!appointmentForm.valid" (click)="submit()">Finish Appointment</button>
     </form>
 </section>
+</div>

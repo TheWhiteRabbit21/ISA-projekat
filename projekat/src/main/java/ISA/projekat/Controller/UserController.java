@@ -57,7 +57,7 @@ public class UserController {
     public ResponseEntity<RegisteredUser2DTO> saveUser(@RequestBody RegisteredUser2DTO userDTO) {
 
     	User user1 = userService.findByUsername(userDTO.getEmail());
-        RegisteredUser user = userService.findOneById(user1.getJmbg());
+        RegisteredUser user = userService.findByJmbg(user1.getJmbg());
         Address address = _addressService.findById(userDTO.getAddress().getId());
         address.setCity(userDTO.getAddress().getCity());
         address.setCountry(userDTO.getAddress().getCountry());
@@ -146,7 +146,7 @@ public class UserController {
     @GetMapping(value = "/find/{id}")
     public ResponseEntity<RegisteredUser2DTO> getUserById(@PathVariable("id") int id) {
 
-        RegisteredUser u = userService.findOneById(id);
+        RegisteredUser u = userService.findById(id);
 
         // user must exist
         if (u == null) {

@@ -42,7 +42,7 @@ public class CenterController {
 
     
     @GetMapping(value = "/all")
-    @PreAuthorize("hasRole('USER')")
+    //@PreAuthorize("hasRole('USER')")
     public ResponseEntity<List<BloodCenterListDTO>> getAllBloodCenters() {
 
         List<BloodBankCenter> bloodBankCenters = centerService.findAll();

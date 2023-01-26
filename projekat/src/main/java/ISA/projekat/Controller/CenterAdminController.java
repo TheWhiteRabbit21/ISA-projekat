@@ -3,13 +3,15 @@ package ISA.projekat.Controller;
 import ISA.projekat.DTOs.AppointmentCalendarDTO;
 import ISA.projekat.DTOs.AppointmentDTO;
 import ISA.projekat.DTOs.CenterAdminDTO;
+import ISA.projekat.DTOs.CenterDTO;
+import ISA.projekat.DTOs.ReservationDTO;
 import ISA.projekat.Model.*;
 import ISA.projekat.Service.AddressService;
-import ISA.projekat.Service.CenterAdminService;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ISA.projekat.Service.CenterAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -75,15 +77,25 @@ public class CenterAdminController {
     }
     @PostMapping(produces = "application/json", value = "/appointment/data")
     @ResponseBody
-    public ResponseEntity<AppointmentDTO> getBloodBankCenterByAdminId(@RequestBody AppointmentDTO appointmentDTO){
+    public ResponseEntity<AppointmentDTO> defineAppointment(@RequestBody AppointmentDTO appointmentDTO){
 
         if(centerAdminService.defineNewAppointment(appointmentDTO)){
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
-
+    }
+    @PostMapping(produces = "application/json", value="/appointment/reserve")
+    @ResponseBody
+    public ResponseEntity<List<CenterDTO>> getNeededBloodCenters(@RequestBody ReservationDTO reservationDTO){
+        return new ResponseEntity<List<CenterDTO>>(centerAdminService.findAllCentersByAppointments(reservationDTO),HttpStatus.OK);
+    }
+    
+    @PostMapping(produces = "application/json", value = "/appointment/take")
+    @ResponseBody
+    public ResponseEntity reserveAppointment(@RequestBody ReservationDTO reservationDTO){
+        centerAdminService.reserveAppointment(reservationDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
 

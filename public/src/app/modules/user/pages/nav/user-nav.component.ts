@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReserveAppointmentComponent } from '../reserve-appointment/reserve-appointment.component';
 
 export interface NavRoute {
   path: string;
@@ -12,7 +13,10 @@ export interface NavRoute {
 })
 export class UserNavComponent implements OnInit {
   m_Routes: NavRoute[] = [
-
+    {
+      path: 'reserve-appointment',
+      title: 'Reserve Appointment'
+    }
   ];
   constructor() { }
 
