@@ -42,8 +42,8 @@ const routes: Routes = [
   { path: 'blood-donors-list', component: BloodDonorsListComponent},
   { path: 'admin-appointment/:id', component: AdminAppointmentComponent},
   { path: 'start-appointment/:id', component: StartAppointmentComponent},
-  { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
-  { path: 'reserve-appointment', component: ReserveAppointmentComponent}
+  { path: 'reserve-appointment', component: ReserveAppointmentComponent},
+  { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
 
 ];
 

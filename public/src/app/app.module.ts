@@ -25,7 +25,9 @@ import { DatePipe } from "@angular/common";
     HospitalModule,
     FormsModule
   ],
-  providers: [    {
+  providers: [    
+    DatePipe,
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi : true
