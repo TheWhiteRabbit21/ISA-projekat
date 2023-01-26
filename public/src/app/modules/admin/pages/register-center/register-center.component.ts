@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UpdateAdminService } from 'src/app/modules/pages/admin-profile/admin-profile.service';
 import { Admin, Center, RegisterCenterService } from './register-center.service';
@@ -6,7 +9,7 @@ import { Admin, Center, RegisterCenterService } from './register-center.service'
 @Component({
   selector: 'app-register-center',
   templateUrl: './register-center.component.html',
-  styleUrls: ['./register-center.component.css']
+  styleUrls: ['./register-center.component.scss']
 })
 export class RegisterCenterComponent implements OnInit {
 
@@ -21,33 +24,34 @@ export class RegisterCenterComponent implements OnInit {
     admins: []
   }
 
-  constructor(private registerCenterService : RegisterCenterService) { }
-  
   public centerAdmins : Admin[] = []
-  public pom : Admin[] = []
 
+  registerForm = new UntypedFormGroup({
+    name: new UntypedFormControl(null, [Validators.required]),
+    admins: new UntypedFormControl(null, [Validators.required]),
+    description: new UntypedFormControl(null, [Validators.required]),
+    country: new UntypedFormControl(null, [Validators.required]),
+    city: new UntypedFormControl(null, [Validators.required]),
+    street: new UntypedFormControl(null, [Validators.required]),
+    number: new UntypedFormControl(null, [Validators.required])
+  })
+  constructor(private registerCenterService: RegisterCenterService, private router: Router, private snackBar: MatSnackBar) { }
   ngOnInit(): void {
     this.registerCenterService.getAdmins().subscribe(res => {
       this.centerAdmins = res;
     });
-  }
-  add(admin : Admin) : void {
-    const index = this.centerAdmins.indexOf(admin);
-    this.centerAdmins.splice(index, 1);
-    this.pom.push(admin);
-    this.center.admins.push(admin.id);
-  }
-  remove(admin : Admin) : void {
-    const index = this.pom.indexOf(admin);
-    this.pom.splice(index, 1);
-    this.centerAdmins.push(admin);
-    const ind = this.center.admins.indexOf(admin.id);
-    this.center.admins.splice(ind, 1);
-  }
-  submit() : void{
-    this.registerCenterService.submit(this.center).subscribe(res => {
-      window.location.href="http://localhost:4200/admin-dashboard"
-    });
+
   }
 
+  register(): void {
+    const dto: Center = this.registerForm.getRawValue();
+    if (!this.registerForm.valid) return;
+    this.registerCenterService.submit(dto).subscribe(res => {
+      this.snackBar.open('Admin Created','Ok', {
+        duration: 3000
+      });
+      
+      this.router.navigate(['/admin']);
+    });
+  }
 }

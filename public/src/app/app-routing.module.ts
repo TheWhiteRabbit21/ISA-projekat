@@ -12,19 +12,23 @@ import { BloodDonorsListComponent } from "./modules/pages/blood-donors-list/bloo
 import { AdminAppointmentComponent } from "./modules/admin-center/pages/admin-appointment/admin-appointment.component";
 import { StartAppointmentComponent } from "./modules/admin-center/pages/start-appointment/start-appointment.component";
 import { ReserveAppointmentComponent } from "./modules/user/pages/reserve-appointment/reserve-appointment.component";
+import { AuthGuard } from "./modules/pages/login/log-auth.guard";
 
 const routes: Routes = [
   {
     path: 'admin',
-    loadChildren: () => import('./modules/admin/admin.module').then(a => a.AdminModule)
+    loadChildren: () => import('./modules/admin/admin.module').then(a => a.AdminModule),
+    canActivate : [AuthGuard]
   },
   {
     path: 'admin-center',
-    loadChildren: () => import('./modules/admin-center/admin-center.module').then(ac => ac.AdminCenterModule)
+    loadChildren: () => import('./modules/admin-center/admin-center.module').then(ac => ac.AdminCenterModule),
+    canActivate : [AuthGuard]
   },
   {
     path: 'user',
-    loadChildren: () => import('./modules/user/user.module').then(ac => ac.UserModule)
+    loadChildren: () => import('./modules/user/user.module').then(ac => ac.UserModule),
+    canActivate : [AuthGuard]
   },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'centers', component: BloodBanksListComponent},

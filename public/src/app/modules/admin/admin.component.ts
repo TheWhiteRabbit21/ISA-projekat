@@ -2,7 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { map, Observable, switchMap, tap } from 'rxjs';
+import { AuthService } from '../pages/login/log-auth.service';
 import { AdminService } from './admin.service';
 
 export interface Password {
@@ -21,7 +23,8 @@ export class AdminComponent implements OnInit {
   confirm: string = '';
   visible: boolean = true;
 
-  constructor(public dialog: MatDialog, private snackBar: MatSnackBar, private adminService: AdminService) { }
+  constructor(public dialog: MatDialog, private snackBar: MatSnackBar, private adminService: AdminService, private m_AuthService : AuthService
+    ,private m_Router : Router) { }
 
   ngOnInit(): void {
     this.adminService.getIfPasswordChanged().pipe(tap(res =>{
@@ -50,6 +53,8 @@ export class AdminComponent implements OnInit {
 
   }
   logout(): void {
+    this.m_AuthService.logout();
+    this.m_Router.navigate(['/login']);
   }
 }
 @Component({

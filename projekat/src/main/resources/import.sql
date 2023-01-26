@@ -20,6 +20,7 @@ insert into blood_bank_center (name, address_id, description, average_rating) va
 
 
 insert into roles (name) values ('ROLE_USER');
+insert into roles (name) values ('ROLE_ADMIN_CENTER');
 insert into roles (name) values ('ROLE_ADMIN');
 
 -- Lozinka za sve user-e je 123
@@ -34,7 +35,10 @@ insert into users (user_type, username, password, name, surname, gender, jmbg, a
 
 INSERT INTO USER_ROLE (user_id, role_id) values (1, 1); 
 INSERT INTO USER_ROLE (user_id, role_id) values (2, 1); 
-INSERT INTO USER_ROLE (user_id, role_id) values (3, 2); 
+INSERT INTO USER_ROLE (user_id, role_id) values (3, 1);
+INSERT INTO USER_ROLE (user_id, role_id) values (4, 2);
+INSERT INTO USER_ROLE (user_id, role_id) values (5, 2);
+INSERT INTO USER_ROLE (user_id, role_id) values (6, 3);
 
 insert into work_calendar (blood_bank_center_id) values (1);
 

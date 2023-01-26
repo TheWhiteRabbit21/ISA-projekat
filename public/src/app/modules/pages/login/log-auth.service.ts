@@ -17,7 +17,7 @@ export class AuthService {
     this.m_UserDataService.m_Token$.pipe(
       take(1),
       switchMap(token => {
-        //if (token) return this.getUserData();
+        if (token) return this.getUserData();
         return EMPTY;
       })
     ).subscribe();
@@ -30,7 +30,7 @@ export class AuthService {
         console.log(res['accessToken']);
         console.log(res);
       }),
-      //switchMap(_ => this.getUserData())
+      switchMap(_ => this.getUserData())
     );
   }
 

@@ -39,6 +39,12 @@ public class CenterAdminService {
             }
             return admins;
         }
+        public int findIdByUsername(String username){
+            if(centerAdminRepository.findByUsername(username) != null){
+                return centerAdminRepository.findByUsername(username).getId();
+            }
+            return 0;
+        }
 
         public List<AppointmentCalendarDTO> getAppointments(Integer id){
             List<AppointmentCalendarDTO> appointments = new ArrayList<AppointmentCalendarDTO>();

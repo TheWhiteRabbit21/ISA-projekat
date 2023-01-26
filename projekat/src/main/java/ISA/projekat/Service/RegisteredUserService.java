@@ -23,9 +23,12 @@ public class RegisteredUserService {
     @Autowired
     private RegisteredUserRepository userRepository;
 
-    /*public User findByUsername(String username) throws UsernameNotFoundException {
-		return userRepository.findByUsername(username);
-	}*/
+    public int findIdByUsername(String username){
+		if(userRepository.findByUsername(username) != null){
+            return userRepository.findByUsername(username).getId();
+        }
+        return 0;
+	}
     
     private List<UserDTO> parseList(List<RegisteredUser> registeredUsers){
         List<UserDTO> users = new ArrayList<UserDTO>();

@@ -62,7 +62,8 @@ public class AuthenticationController {
 
 		// Kreiraj token za tog korisnika
 		User user = (User) authentication.getPrincipal();
-		String jwt = tokenUtils.generateToken(user.getUsername(), "ROLE_USER");
+
+		String jwt = tokenUtils.generateToken(user.getUsername(), String.valueOf(user.getRoles().get(0)));
 		int expiresIn = tokenUtils.getExpiredIn();
 
 		// Vrati token kao odgovor na uspesnu autentifikaciju
