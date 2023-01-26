@@ -21,6 +21,12 @@ public class AdminService {
         return adminRepository.checkIfPasswordChanged(id);
     }
 
+    public int findIdByUsername(String username){
+        if(adminRepository.findByUsername(username) != null){
+            return adminRepository.findByUsername(username).getId();
+        }
+        return 0;
+    }
     public void changePassword(int id, String password){
         Administrator administrator = adminRepository.findById(id).get();
         administrator.setPassword(password);

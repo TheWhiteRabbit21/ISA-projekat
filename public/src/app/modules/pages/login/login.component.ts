@@ -25,8 +25,12 @@ export class LoginComponent implements OnInit {
     if (!this.m_Form.valid) return;
 
     this.m_AuthService.login(dto)
-      .subscribe(_ => {
-        this.m_Router.navigate(['/home']);
+      .subscribe(data => {
+        if(data){
+          if(data.role == 2)this.m_Router.navigate(['/user']);
+          if(data.role == 1)this.m_Router.navigate(['/admin-center']);    
+          if(data.role == 3)this.m_Router.navigate(['/admin']);               
+        }
       });
   }
 

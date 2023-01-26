@@ -55,7 +55,12 @@ public class CenterAdminService {
         }
         return appointments;
     }
-
+    public int findIdByUsername(String username){
+        if(centerAdminRepository.findByUsername(username) != null){
+            return centerAdminRepository.findByUsername(username).getId();
+        }
+        return 0;
+    }
     public Gender parseGender(String gender){
         if(gender.equals("Male")){
             return Gender.MALE;

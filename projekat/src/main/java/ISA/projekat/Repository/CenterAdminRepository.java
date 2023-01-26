@@ -14,6 +14,6 @@ import java.util.List;
 public interface CenterAdminRepository extends JpaRepository<Staff, Integer> {
     public List<Staff> findAllByBloodBankCenterIsNull();
 
-
+    Staff findByUsername(String username);
     public Staff findStaffById(int id);
 }
