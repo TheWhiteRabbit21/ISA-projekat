@@ -1,11 +1,13 @@
 package ISA.projekat.Repository;
 
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import ISA.projekat.Model.User;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -31,8 +33,8 @@ public interface RegisteredUserRepository extends JpaRepository<RegisteredUser, 
     @Query("select u from RegisteredUser u where lower(u.name) like %?1% and lower(u.surname) like %?2% ")
     public List<RegisteredUser> findAllByNameAndSurnameIgnoreCase(String name, String surname);
 
-    public Page<RegisteredUser> findAll(Pageable pageable);
-    
+    Page<RegisteredUser> findAll(Pageable pageable);
+
     Optional<RegisteredUser> findById(int donorId);
 
 }

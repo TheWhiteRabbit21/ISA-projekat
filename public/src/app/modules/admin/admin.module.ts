@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ChangePasswordDialog } from './admin.component';
 import { ComplaintsComponent } from './pages/complaints/complaints.component';
 import { AnswerDialog } from './pages/complaints/complaints.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AnswerDialog } from './pages/complaints/complaints.component';
     AdminRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
+    MatPaginatorModule,
     MatListModule,
     MatDialogModule,
     MatOptionModule,

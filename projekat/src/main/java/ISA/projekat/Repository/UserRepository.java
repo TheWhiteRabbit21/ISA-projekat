@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import ISA.projekat.Model.User;
 
+import java.awt.print.Pageable;
+import java.util.List;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 

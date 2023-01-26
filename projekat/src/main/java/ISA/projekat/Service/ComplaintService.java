@@ -18,8 +18,10 @@ public class ComplaintService {
 
     public void setResponse(String response, Integer id){
         Complaint complaint = complaintRepository.findById(id).get();
-        complaint.setResponse(response);
-        complaintRepository.save(complaint);
+        if(complaint.getResponse().equals("")){
+            complaint.setResponse(response);
+            complaintRepository.save(complaint);
+        }
     }
     public Collection<Complaint> getAllUnanswered(){
         return complaintRepository.findByResponseIsNull();

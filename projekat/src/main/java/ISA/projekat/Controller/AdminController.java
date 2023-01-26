@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,7 @@ public class AdminController {
     }
     @PostMapping(value = "/answer")
     @ResponseBody
+    @Transactional
     public ResponseEntity Answer(@RequestBody ComplaintDTO complaintDTO){
         complaintService.setResponse(complaintDTO.response, complaintDTO.id);
         return new ResponseEntity<>(HttpStatus.OK);

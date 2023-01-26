@@ -32,7 +32,7 @@ export class AdminComponent implements OnInit {
     }),switchMap(_ => this.initate())).subscribe();
   }
   initate(): Observable<any>{
-    if(this.visible){
+    if(!this.visible){
       const dialogRef = this.dialog.open(ChangePasswordDialog, {
         data: {new: this.new, password: this.confirm},
       });
