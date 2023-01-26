@@ -10,7 +10,11 @@ import ISA.projekat.DTOs.AppointmentCalendarDTO;
 import ISA.projekat.DTOs.AppointmentDTO;
 import ISA.projekat.Model.*;
 import ISA.projekat.Repository.CenterRepository;
+import ISA.projekat.Repository.RoleRepository;
 import ISA.projekat.Repository.WorkCalendarRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ISA.projekat.DTOs.CenterAdminDTO;
@@ -23,20 +27,28 @@ public class CenterAdminService {
 	
     private final CenterAdminRepository centerAdminRepository;
     private final WorkCalendarRepository workCalendarRepository;
+    private final RoleRepository roleRepository;
+    private PasswordEncoder passwordEncoder;
 
     private final CenterRepository bloodBankCenterRepository;
-    public CenterAdminService(CenterAdminRepository centerAdminRepository, CenterRepository bloodBankCenterRepository, WorkCalendarRepository workCalendarRepository) {
+    public CenterAdminService(RoleRepository roleRepository, CenterAdminRepository centerAdminRepository, CenterRepository bloodBankCenterRepository, WorkCalendarRepository workCalendarRepository) {
         this.centerAdminRepository = centerAdminRepository;
 //        this.addressRepository = addressRepository;
         this.bloodBankCenterRepository = bloodBankCenterRepository;
         this.workCalendarRepository = workCalendarRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
+        this.roleRepository = roleRepository;
     }
 
     
     public void CreateCenterAdmin(CenterAdminDTO centerAdminDTO){
         Address address = new Address(centerAdminDTO.country, centerAdminDTO.city, centerAdminDTO.street, centerAdminDTO.number);
-        centerAdminRepository.save(new Staff(centerAdminDTO.email,centerAdminDTO.password,centerAdminDTO.name,
-                centerAdminDTO.surname, parseGender(centerAdminDTO.gender), centerAdminDTO.jmbg, address,centerAdminDTO.phoneNumber));
+        Staff staff = new Staff(centerAdminDTO.email,centerAdminDTO.password,centerAdminDTO.name,
+                centerAdminDTO.surname, parseGender(centerAdminDTO.gender), centerAdminDTO.jmbg, address,centerAdminDTO.phoneNumber);
+        staff.setEnabled(true);
+        staff.setPassword(passwordEncoder.encode(centerAdminDTO.password));
+        staff.setRoles(roleRepository.findByName("ROLE_ADMIN_CENTER"));
+        centerAdminRepository.save(staff);
     }
     public List<CenterAdminDTO> GetAvailableAdmins(){
         List<CenterAdminDTO> admins = new ArrayList<CenterAdminDTO>();

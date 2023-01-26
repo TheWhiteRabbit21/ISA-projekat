@@ -18,8 +18,11 @@ public class Complaint implements Serializable {
     @Column()
     private String response;
 
+    @Version
+    private Integer version;
+
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
     private RegisteredUser registeredUser;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -85,6 +88,14 @@ public class Complaint implements Serializable {
 
     public void setResponse(String response) {
         this.response = response;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     @Override
