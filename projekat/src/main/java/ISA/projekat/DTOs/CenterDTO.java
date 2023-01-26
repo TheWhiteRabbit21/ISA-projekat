@@ -10,6 +10,7 @@ public class CenterDTO {
     public String country;
     public String street;
     public String number;
+	public double averageRating;
     public String description;
     public Set<Integer> admins = new HashSet<Integer>();
     
@@ -70,8 +71,12 @@ public class CenterDTO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-    
-    
-    
-    
+
+	public double getAverageRating() {
+		return averageRating;
+	}
+
+	public void setAverageRating(double averageRating) {
+		this.averageRating = averageRating;
+	}
 }

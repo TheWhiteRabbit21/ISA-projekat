@@ -50,8 +50,8 @@ public class RegisteredUserService {
     	userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), address, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE, 0));
     }
 
-    public RegisteredUser findOneById(int jmbg) {
-        return userRepository.findOneById(jmbg);
+    public RegisteredUser findByJmbg(int jmbg) {
+        return userRepository.findByJmbg(jmbg);
 
     }
 

@@ -1,6 +1,8 @@
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { map, Observable, switchMap, tap } from 'rxjs';
+import { UserDataService } from 'src/app/modules/pages/login/log-user-data.service';
 import { User } from './user';
 
 @Component({
@@ -9,26 +11,35 @@ import { User } from './user';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-
+  public id : number = 1;
   public user: any  = {} as User;
   editedUser: any = {} as User;
   closeModalEvent: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private m_UserDataService : UserDataService) { }
 
   ngOnInit(): void {
     //ovde dobavis podatke iz bekenda
-
-
-    this.http.get("http://localhost:8084/api/users/find/1").subscribe(res => {
+    this.getId().subscribe(res => {
+      console.log('Usao')
+    });
+  }
+  getId() : Observable<any>{
+    return this.m_UserDataService.m_UserData$.pipe(tap(user_data=> {
+      if(user_data) this.id = user_data.id;
+    }),switchMap(_ => this.getUser()));
+  }
+  getUser() : Observable<any>{
+    console.log('Usao');
+    return  this.getLoggedUser().pipe(tap(res => {
       this.user = res;
       this.editedUser = Object.assign({}, this.user);
-      console.log(this.user);
-    });
-
+      //this.user;
+    }));
   }
-
-
+  getLoggedUser() : Observable<User>{
+    return this.http.get<User>("http://localhost:8084/api/users/find/"+this.id);
+  }
 
   public onOpenModal( mode: string): void {
 

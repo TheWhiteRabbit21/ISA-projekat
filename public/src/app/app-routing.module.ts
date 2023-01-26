@@ -11,6 +11,7 @@ import { LoginComponent } from "./modules/pages/login/login.component";
 import { BloodDonorsListComponent } from "./modules/pages/blood-donors-list/blood-donors-list.component";
 import { AdminAppointmentComponent } from "./modules/admin-center/pages/admin-appointment/admin-appointment.component";
 import { StartAppointmentComponent } from "./modules/admin-center/pages/start-appointment/start-appointment.component";
+import { ReserveAppointmentComponent } from "./modules/user/pages/reserve-appointment/reserve-appointment.component";
 import { AuthGuard } from "./modules/pages/login/log-auth.guard";
 
 const routes: Routes = [
@@ -41,7 +42,8 @@ const routes: Routes = [
   { path: 'blood-donors-list', component: BloodDonorsListComponent},
   { path: 'admin-appointment/:id', component: AdminAppointmentComponent},
   { path: 'start-appointment/:id', component: StartAppointmentComponent},
-  { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+  { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
+  { path: 'reserve-appointment', component: ReserveAppointmentComponent}
 
 ];
 
