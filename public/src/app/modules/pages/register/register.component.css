@@ -55,6 +55,7 @@ input[type=text], select, textarea {
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
+  float: right;
 }
 
 input[type=password] {
@@ -62,13 +63,18 @@ input[type=password] {
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
+  float: right;
 }
 
 input[type=radio] {
-  margin: 8px;
+  margin: 0px 29px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
+}
+
+.radios {
+  float: right;
 }
 
 .column {
@@ -100,6 +106,10 @@ input[type=radio] {
 }
 
 .warning{
-  color: #aa0404;
+  color: #ff0000;
   margin-left: 190px;
+}
+
+.loginLink{
+  padding: 5px;
 }

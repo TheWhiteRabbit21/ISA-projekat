@@ -1,92 +1,103 @@
 <div class="bgimage">
   <div class="row">
     <form [formGroup]="registerUserForm">
-
       <div class="column">
 
         <div class="field">
           <label>Email:</label>
-          <input type="text" required placeholder="example@email.com" formControlName="email">
+          <input type="text" name="email" placeholder="example@email.com" formControlName="email">
         </div>
-        
+        <span class="warning" *ngIf="email && email.invalid && email.touched"> This email is invalid! </span>
+
         <div class="field">
           <label>Password:</label>
           <input required type="password" formControlName="password">
         </div>
+        <span class="warning" *ngIf="password && password.invalid && password.touched"> This password is invalid! </span>
         
         <div class="field">
           <label>Confirm password:</label>
           <input required type="password" formControlName="confirmPassword">
         </div>
-
-        <div *ngIf="passwordMatchError" class="warning">
-          Password does not match!
-        </div>
+        <div *ngIf="passwordMatchError" class="warning"> Password does not match! </div>
         
         <div class="field">
           <label>Name:</label>
           <input type="text" required formControlName="name">
         </div>
-        
+        <span class="warning" *ngIf="name && name.invalid && name.touched"> This name is invalid! </span>
+
         <div class="field"> 
           <label>Surname:</label>
           <input type="text" required formControlName="surname">
         </div>
-        
+        <span class="warning" *ngIf="surname && surname.invalid && surname.touched"> This surname is invalid! </span>
+
         <div class="field"> 
           <label>Street name:</label>
           <input type="text" required formControlName="street">
         </div>
+        <span class="warning" *ngIf="street && street.invalid && street.touched"> This name is invalid! </span>
         
         <div class="field">
           <label>Street number:</label>
           <input type="text" required formControlName="number">
         </div>
+        <span class="warning" *ngIf="number && number.invalid && number.touched"> This number is invalid! </span>
 
       </div>
 
       <div class="column">
-      
+
         <div class="field">
           <label>City:</label>
           <input type="text" required formControlName="city" >
         </div>
-            
+        <span class="warning" *ngIf="city && city.invalid && city.touched"> This name is invalid! </span>
+
         <div class="field">
           <label>Country:</label>
-          <input type="text" required formControlName="state" >
+          <input type="text" required formControlName="country" >
         </div>
-          
+        <span class="warning" *ngIf="country && country.invalid && country.touched"> This name is invalid! </span>
+
         <div class="field">
           <label>Phone number:</label>
           <input type="text" required placeholder="xxxxxxxxxx" formControlName="phoneNumber">
         </div>
-              
+        <span class="warning" *ngIf="phoneNumber && phoneNumber.invalid && phoneNumber.touched"> This number is invalid! </span>
+
         <div class="field">
           <label>JMBG:</label>
           <input type="text" required placeholder="xxxxxxxxxxxxx" formControlName="jmbg">
         </div>
-               
+        <span class="warning" *ngIf="jmbg && jmbg.invalid && jmbg.touched"> This jmbg is invalid! </span>
+
         <div class="field">
           <label>Gender:  </label>
-          <input required type="radio" id="male" name="gender" value="male">
-          <label for="male">Male</label>
-          <input required type="radio" id="female" name="gender" value="female">
-          <label for="female">Female</label>
+          <div class="radios">
+            <input type="radio" id="male" name="gender" formControlName="gender" value="male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" formControlName="gender" value="female">
+            <label for="female">Female</label>
+          </div>
         </div>
             
         <div class="field">
           <label>Occupation:</label>
           <input type="text" required formControlName="occupation">
         </div>
-         
+        <span class="warning" *ngIf="occupation && occupation.invalid && occupation.touched"> Required! </span>
+
         <div class="field">
-          <label>Establishment information:</label>
+          <label>Institution info:</label>
           <input type="text" required formControlName="establishmentInfo">
         </div>
-         
-        <div><button class="regbutton" [disabled]="!registerUserForm.valid" (click)="submit()">Register</button></div>
+        <span class="warning" *ngIf="establishmentInfo && establishmentInfo.invalid && establishmentInfo.touched"> Required! </span>
       </div>
+      <div><button class="regbutton" [disabled]="!registerUserForm.valid">Register</button></div>
+      <div>Already have an account? Login here.</div>
+      
 
     </form>
   </div>
