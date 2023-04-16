@@ -15,6 +15,25 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.regbutton {
+  background-color: #aa0404;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.regbutton:hover{
+  background-color: #cf3535;
+}
+
+.regbutton:disabled{
+  background-color: #aaa7a7;
 }
 
 .form {
@@ -26,25 +45,61 @@
     background-color: rgb(233, 229, 229);
 }
 
+label {
+  padding: 8px 8px 8px 0;
+  display: inline-block;
+}
+
+input[type=text], select, textarea {
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=password] {
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=radio] {
+  margin: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
 .column {
     float: left;
     width: 50%;
     padding: 10px;
 }
   
-  .row{
+.row{
     max-width: 100%;
     max-height: 100%;
-    background: rgb(255, 255, 255);
-    border-radius: 10%;
+    background: rgba(255, 255, 255, 0.904);
+    border-radius: 50px;
     margin: 20px auto;
     padding: 30px;
     margin: auto;
-  }
+    font-size: 16px;
+}
   
   /* Clear floats after the columns */
-  .row:after {
+.row:after {
     content: "";
     display: table;
     clear: both;
-  }
+}
+
+.field {
+    padding: 10px;
+}
+
+.warning{
+  color: #aa0404;
+  margin-left: 190px;
+}

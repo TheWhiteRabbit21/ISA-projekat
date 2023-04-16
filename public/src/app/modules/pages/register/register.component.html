@@ -3,88 +3,89 @@
     <form [formGroup]="registerUserForm">
 
       <div class="column">
-        <div>
-          <label for="email">Email:</label>
-          <input required placeholder="example@email.com" formControlName="email">
+
+        <div class="field">
+          <label>Email:</label>
+          <input type="text" required placeholder="example@email.com" formControlName="email">
         </div>
         
-        <div>
+        <div class="field">
           <label>Password:</label>
           <input required type="password" formControlName="password">
         </div>
         
-        <div>
+        <div class="field">
           <label>Confirm password:</label>
           <input required type="password" formControlName="confirmPassword">
         </div>
 
-        <div *ngIf="passwordMatchError">
-          Password does not match
+        <div *ngIf="passwordMatchError" class="warning">
+          Password does not match!
         </div>
         
-        <div>
+        <div class="field">
           <label>Name:</label>
-          <input required formControlName="name">
+          <input type="text" required formControlName="name">
         </div>
         
-        <div> 
+        <div class="field"> 
           <label>Surname:</label>
-          <input required formControlName="surname">
+          <input type="text" required formControlName="surname">
         </div>
         
-        <div> 
+        <div class="field"> 
           <label>Street name:</label>
-          <input required formControlName="street">
+          <input type="text" required formControlName="street">
         </div>
         
-        <div>
+        <div class="field">
           <label>Street number:</label>
-          <input required formControlName="number">
+          <input type="text" required formControlName="number">
         </div>
 
       </div>
 
       <div class="column">
       
-        <div>
+        <div class="field">
           <label>City:</label>
-          <input required formControlName="city" >
+          <input type="text" required formControlName="city" >
         </div>
             
-        <div>
+        <div class="field">
           <label>Country:</label>
-          <input required formControlName="state" >
+          <input type="text" required formControlName="state" >
         </div>
           
-        <div>
+        <div class="field">
           <label>Phone number:</label>
-          <input required placeholder="ex: 065123456" formControlName="phoneNumber">
+          <input type="text" required placeholder="xxxxxxxxxx" formControlName="phoneNumber">
         </div>
               
-        <div>
+        <div class="field">
           <label>JMBG:</label>
-          <input required formControlName="jmbg">
+          <input type="text" required placeholder="xxxxxxxxxxxxx" formControlName="jmbg">
         </div>
                
-        <div>
+        <div class="field">
           <label>Gender:  </label>
-          <input type="radio" id="male" value="male">
+          <input required type="radio" id="male" name="gender" value="male">
           <label for="male">Male</label>
-          <input type="radio" id="female" value="female">
+          <input required type="radio" id="female" name="gender" value="female">
           <label for="female">Female</label>
         </div>
             
-        <div>
+        <div class="field">
           <label>Occupation:</label>
-          <input required formControlName="occupation">
+          <input type="text" required formControlName="occupation">
         </div>
          
-        <div>
-          <label>Company/Univeristy/School information:</label>
-          <input required formControlName="establishmentInfo">
+        <div class="field">
+          <label>Establishment information:</label>
+          <input type="text" required formControlName="establishmentInfo">
         </div>
          
-        <div><button [disabled]="!registerUserForm.valid" (click)="submit()">Register</button></div>
+        <div><button class="regbutton" [disabled]="!registerUserForm.valid" (click)="submit()">Register</button></div>
       </div>
 
     </form>
