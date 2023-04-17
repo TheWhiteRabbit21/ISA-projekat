@@ -63,7 +63,7 @@
 
         <div class="field">
           <label>Phone number:</label>
-          <input type="text" required placeholder="xxxxxxxxxx" formControlName="phoneNumber">
+          <input type="text" required formControlName="phoneNumber">
         </div>
         <span class="warning" *ngIf="phoneNumber && phoneNumber.invalid && phoneNumber.touched"> This number is invalid! </span>
 
@@ -96,9 +96,8 @@
         <span class="warning" *ngIf="establishmentInfo && establishmentInfo.invalid && establishmentInfo.touched"> Required! </span>
       </div>
       <div><button class="regbutton" [disabled]="!registerUserForm.valid">Register</button></div>
-      <div>Already have an account? Login here.</div>
+      <div class="loginLink">Already have an account? <a href="http://localhost:4200/login"> Login here. </a></div>
       
-
     </form>
   </div>
 </div>   

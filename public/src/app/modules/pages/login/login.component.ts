@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  m_Form: UntypedFormGroup = this.formInstance;
+  loginForm: UntypedFormGroup = this.formInstance;
   m_Errors: string[] = [];
 
   constructor(private m_AuthService: AuthService, private m_SnackBar: MatSnackBar, private m_Router: Router) { }
@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.m_Errors.length = 0;
-    const dto: LoginDTO = this.m_Form.getRawValue();
-    if (!this.m_Form.valid) return;
+    const dto: LoginDTO = this.loginForm.getRawValue();
+    if (!this.loginForm.valid) return;
 
     this.m_AuthService.login(dto)
       .subscribe(data => {
@@ -36,8 +36,16 @@ export class LoginComponent implements OnInit {
 
   get formInstance(): UntypedFormGroup {
     return new UntypedFormGroup({
-      'username': new UntypedFormControl(null, [Validators.required]),
+      'email': new UntypedFormControl(null, [Validators.required]),
       'password': new UntypedFormControl(null, [Validators.required])
     });
+  }
+
+  get email(){
+    return this.loginForm.get('email');
+  }
+
+  get password(){
+    return this.loginForm.get('password');
   }
 }
