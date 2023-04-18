@@ -104,8 +104,10 @@
           <input type="text" required formControlName="establishmentInfo">
         </div>
         <span class="warning" *ngIf="establishmentInfo && establishmentInfo.invalid && establishmentInfo.touched"> Required! </span>
+        
+        <div class="field"><button class="regbutton" [disabled]="!registerUserForm.valid">Register</button></div>
       </div>
-      <div><button class="regbutton" [disabled]="!registerUserForm.valid">Register</button></div>
+      
       
     </form>
   </div>

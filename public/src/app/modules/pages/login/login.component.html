@@ -1,12 +1,13 @@
-
-<nav class="navbar navbar-dark bg-dark  static-top">
-  <div class="container">
-      <a class="navbar-brand" href="#!">Blood Donations Clinic</a>
-      <a class="logbutton" href="register">Sign Up</a>
-      <a class="logbutton" href="login">Sign in</a>
-  </div>
-</nav>
 <div class="bgimage">
+  
+  <nav class="navbar navbar-dark bg-dark  static-top">
+    <div class="container">
+        <a class="navbar-brand" href="#!">Blood Donations Clinic</a>
+        <a class="logbutton" href="register">Sign Up</a>
+        <a class="logbutton" href="login">Sign in</a>
+    </div>
+  </nav>
+
   <div class="form">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         
@@ -20,10 +21,10 @@
             <input type="password"  formControlName="password">
           </div>
           
-      </form>
-
-      <div class="buttons">
-        <button class="logbutton" [disabled]="!loginForm.valid">Login</button>
-      </div>
+          <div class="field">
+            <button class="logbutton" [disabled]="!loginForm.valid">Login</button>
+          </div>
+        </form>
     </div>
+
 </div>
