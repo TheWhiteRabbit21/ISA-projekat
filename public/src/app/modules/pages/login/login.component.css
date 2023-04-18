@@ -37,13 +37,14 @@ input[type=password] {
   max-height: 100%;
   border-radius: 35px;
   padding: 35px;
-  background: rgba(255, 255, 255, 0.904);
   margin: auto;
+  font-size: 16px;
+  background-color: rgba(32, 31, 31, 0.911);
+  color: white;
 }
 
 *{
   font-family: "Monaco", monospace;
-  font-size: 16px;
 }
 
 .logbutton {

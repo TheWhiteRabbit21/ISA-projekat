@@ -1,3 +1,11 @@
+<nav class="navbar navbar-dark bg-dark  static-top">
+  <div class="container">
+      <a class="navbar-brand" href="#!">Blood Donations Clinic</a>
+      <a class="regbutton" href="register">Sign Up</a>
+      <a class="regbutton" href="login">Sign in</a>
+  </div>
+</nav>
+
 <div class="bgimage">
   <div class="row">
     <form [formGroup]="registerUserForm">
@@ -96,7 +104,6 @@
         <span class="warning" *ngIf="establishmentInfo && establishmentInfo.invalid && establishmentInfo.touched"> Required! </span>
       </div>
       <div><button class="regbutton" [disabled]="!registerUserForm.valid">Register</button></div>
-      <div class="loginLink">Already have an account? <a href="http://localhost:4200/login"> Login here. </a></div>
       
     </form>
   </div>

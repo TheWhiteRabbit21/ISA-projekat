@@ -1,3 +1,11 @@
+
+<nav class="navbar navbar-dark bg-dark  static-top">
+  <div class="container">
+      <a class="navbar-brand" href="#!">Blood Donations Clinic</a>
+      <a class="logbutton" href="register">Sign Up</a>
+      <a class="logbutton" href="login">Sign in</a>
+  </div>
+</nav>
 <div class="bgimage">
   <div class="form">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -16,8 +24,6 @@
 
       <div class="buttons">
         <button class="logbutton" [disabled]="!loginForm.valid">Login</button>
-        <div class="registerLink"> Don't have an account? </div>
-        <div class="registerLink"><a href="http://localhost:4200/register"> Register here. </a></div>
       </div>
     </div>
 </div>
