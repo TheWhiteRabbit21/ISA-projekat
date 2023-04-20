@@ -42,7 +42,7 @@ public class User implements Serializable, UserDetails{
 	private Gender gender;
 	
 	@Column(nullable = true)
-	private Integer jmbg;
+	private String jmbg;
 	
 	@Column(nullable = true)
     private boolean enabled;
@@ -67,7 +67,7 @@ public class User implements Serializable, UserDetails{
 		super();
 	}
 	
-	public User(String username, String password, String name, String surname, Gender gender, Integer jmbg,
+	public User(String username, String password, String name, String surname, Gender gender, String jmbg,
 
 			Address address, String phoneNumber) {
 
@@ -84,7 +84,7 @@ public class User implements Serializable, UserDetails{
 
 	
 	
-	public User(Integer id, String username, String password, String name, String surname, Gender gender, int jmbg,
+	public User(Integer id, String username, String password, String name, String surname, Gender gender, String jmbg,
 			Address address, String phoneNumber) {
 		super();
 		this.id = id;
@@ -167,10 +167,10 @@ public class User implements Serializable, UserDetails{
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public Integer getJmbg() {
+	public String getJmbg() {
 		return jmbg;
 	}
-	public void setJmbg(int jmbg) {
+	public void setJmbg(String jmbg) {
 		this.jmbg = jmbg;
 	}
 	public Gender getGender() {

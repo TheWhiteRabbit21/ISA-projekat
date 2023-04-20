@@ -13,7 +13,7 @@ public class RegisteredUser2DTO {
 
     private Address address;
     private String phoneNumber;
-    private Integer jmbg;
+    private String jmbg;
     private Gender gender;
     private String occupation;
     private String establishmentInfo;
@@ -24,7 +24,7 @@ public class RegisteredUser2DTO {
         super();
     }
 
-    public RegisteredUser2DTO(int id, String email, String password, String name, String surname, Address address, String phoneNumber, Integer jmbg, Gender gender, String occupation,
+    public RegisteredUser2DTO(int id, String email, String password, String name, String surname, Address address, String phoneNumber, String jmbg, Gender gender, String occupation,
                              String establishmentInfo, String points,String user_catagory) {
         super();
         this.id = id;
@@ -98,11 +98,11 @@ public class RegisteredUser2DTO {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getJmbg() {
+    public String getJmbg() {
         return jmbg;
     }
 
-    public void setJmbg(Integer jmbg) {
+    public void setJmbg(String jmbg) {
         this.jmbg = jmbg;
     }
 

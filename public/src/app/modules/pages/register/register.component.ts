@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { RegisteringUser, RegisterUserService } from './register-user.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { RegisterUserService } from './register-user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserDTO } from './userDTO';
 
 export class CustomValidators {
   static MatchValidator(source: string, target: string): ValidatorFn {
@@ -24,15 +25,15 @@ export class CustomValidators {
 export class RegisterComponent implements OnInit {
 
   registerUserForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    username: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
     confirmPassword: new FormControl('', Validators.required),
     name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
     surname: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
     street: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]+$')]),
     number: new FormControl('', [Validators.required, Validators.pattern('[A-Z0-9]+$')]),
-    city: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-    country: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+    city: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]+$')]),
+    country: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]+$')]),
     phoneNumber: new FormControl('', [Validators.required, Validators.pattern('[0-9]+$')]),
     jmbg: new FormControl('', [Validators.required, Validators.pattern('[0-9]{13}$')]),
     gender: new FormControl('', Validators.required),
@@ -44,6 +45,47 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  register() : void{
+
+    let username = this.registerUserForm.get("username")?.value
+    let password = this.registerUserForm.get("password")?.value
+    let name = this.registerUserForm.get("name")?.value
+    let surname = this.registerUserForm.get("surname")?.value
+    let street = this.registerUserForm.get("street")?.value
+    let numberstr = this.registerUserForm.get("number")?.value
+    let city = this.registerUserForm.get("city")?.value
+    let country = this.registerUserForm.get("country")?.value
+    let phoneNumber = this.registerUserForm.get("phoneNumber")?.value
+    let jmbg = this.registerUserForm.get("jmbg")?.value
+    let gender = this.registerUserForm.get("gender")?.value
+    let occupation = this.registerUserForm.get("occupation")?.value
+    let establishmentInfo = this.registerUserForm.get("establishmentInfo")?.value
+    let user: UserDTO = {
+      username: username ? username : '',
+      password: password ? password : '',
+      name: name ? name : '',
+      surname: surname ? surname : '',
+      street: street ? street : '',
+      number: numberstr ? numberstr : '',
+      city: city ? city : '',
+      country: country ? country : '',
+      phoneNumber: phoneNumber ? phoneNumber : '',
+      jmbg: jmbg ? jmbg : '',
+      gender: Number(gender),
+      occupation: occupation ? occupation : '',
+      establishmentInfo: establishmentInfo ? establishmentInfo : '',
+    }
+    console.log(user)
+    this._registerUserService.submit(user).subscribe(res => {
+      if (res === true) {
+        this._snackBar.open("Registration successful. Verify email so you can log into your account.", "Ok");
+        this.registerUserForm.reset( { } );
+        } else {
+          this._snackBar.open("Email already in use, try another.", "Ok");
+        }
+    });
+  };
 
   get email(){
     return this.registerUserForm.get('email');
@@ -103,15 +145,5 @@ export class RegisterComponent implements OnInit {
       this.registerUserForm.get('confirmPassword')?.touched
     );
   }
-
- /* submit() : void{
-    this._registerUserService.submit(this.registeringUser).subscribe(res => {
-      this._snackBar.open("Registration successful.", "Ok");
-      setTimeout(() => {
-        window.location.href="http://localhost:4200/login"
-      }, 
-      3000);
-    });
-  }*/
 
 }

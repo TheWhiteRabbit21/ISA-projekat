@@ -15,10 +15,10 @@ public class AdminDTO {
     public String gender;
     public String email;
     public String password;
-    public Integer jmbg;
+    public String jmbg;
     public String phoneNumber;
 
-    public AdminDTO(String name, String surname, String city, String country, String street, String number, String gender, String email, String password, Integer jmbg, String phoneNumber) {
+    public AdminDTO(String name, String surname, String city, String country, String street, String number, String gender, String email, String password, String jmbg, String phoneNumber) {
         this.name = name;
         this.surname = surname;
         this.city = city;

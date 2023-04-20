@@ -24,7 +24,7 @@ public class Staff extends User {
 	@OneToMany(mappedBy = "staff", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Appointment> appointments = new HashSet<Appointment>();
 
-	public Staff(String email, String password, String name, String surname, Gender gender, int jmbg, Address address, String phoneNumber) {
+	public Staff(String email, String password, String name, String surname, Gender gender, String jmbg, Address address, String phoneNumber) {
 		super(email, password, name, surname, gender, jmbg, address, phoneNumber);
 	}
 
@@ -40,7 +40,7 @@ public class Staff extends User {
 		this.bloodBankCenter = bloodBankCenter;
 	}
 
-	public Staff(int id, String email, String password, String name, String surname, Gender gender, int jmbg,
+	public Staff(int id, String email, String password, String name, String surname, Gender gender, String jmbg,
 			Address address, String phoneNumber) {
 		super(id, email, password, name, surname, gender, jmbg, address, phoneNumber);
 

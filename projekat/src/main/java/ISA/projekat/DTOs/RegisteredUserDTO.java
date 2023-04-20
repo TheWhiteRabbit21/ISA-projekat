@@ -4,7 +4,7 @@ import ISA.projekat.Model.enums.Gender;
 
 public class RegisteredUserDTO {
 		private Long id;
-		private String email;
+		private String username;
 		private String password;
 	    private String name;
 	    private String surname;
@@ -13,7 +13,7 @@ public class RegisteredUserDTO {
 	    private String city;
 	    private String state;
 	    private String phoneNumber;
-	    private Integer jmbg;
+	    private String jmbg;
 	    private Gender gender;
 	    private String occupation;
 	    private String establishmentInfo;
@@ -22,11 +22,11 @@ public class RegisteredUserDTO {
 			super();
 		}
 
-		public RegisteredUserDTO(String email, String password, String name, String surname, String street, String number,
-				String city, String state, String phoneNumber, Integer jmbg, Gender gender, String occupation,
+		public RegisteredUserDTO(String username, String password, String name, String surname, String street, String number,
+				String city, String state, String phoneNumber, String jmbg, Gender gender, String occupation,
 				String establishmentInfo) {
 			super();
-			this.email = email;
+			this.username = username;
 			this.password = password;
 			this.name = name;
 			this.surname = surname;
@@ -41,12 +41,12 @@ public class RegisteredUserDTO {
 			this.establishmentInfo = establishmentInfo;
 		}
 
-		public String getEmail() {
-			return email;
+		public String getUsername() {
+			return username;
 		}
 
-		public void setEmail(String email) {
-			this.email = email;
+		public void setUsername(String username) {
+			this.username = username;
 		}
 
 		public String getPassword() {
@@ -113,11 +113,11 @@ public class RegisteredUserDTO {
 			this.phoneNumber = phoneNumber;
 		}
 
-		public Integer getJmbg() {
+		public String getJmbg() {
 			return jmbg;
 		}
 
-		public void setJmbg(Integer jmbg) {
+		public void setJmbg(String jmbg) {
 			this.jmbg = jmbg;
 		}
 

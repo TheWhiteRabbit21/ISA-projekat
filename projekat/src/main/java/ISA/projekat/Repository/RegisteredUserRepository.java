@@ -19,7 +19,7 @@ public interface RegisteredUserRepository extends JpaRepository<RegisteredUser, 
 
 	// User findByUsername(String username);
 
-    public RegisteredUser findByJmbg(int jmbg);
+    public RegisteredUser findByJmbg(String jmbg);
 
     RegisteredUser findByUsername(String username);
 

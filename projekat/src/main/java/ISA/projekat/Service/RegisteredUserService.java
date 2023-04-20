@@ -50,10 +50,10 @@ public class RegisteredUserService {
     }
     
     public void RegisterUser(RegisteredUserDTO registeredUserDTO, Address address){
-    	userRepository.save(new RegisteredUser(registeredUserDTO.getEmail(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), address, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE, 0));
+    	userRepository.save(new RegisteredUser(registeredUserDTO.getUsername(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), address, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE, 0));
     }
 
-    public RegisteredUser findByJmbg(int jmbg) {
+    public RegisteredUser findByJmbg(String jmbg) {
         return userRepository.findByJmbg(jmbg);
 
     }

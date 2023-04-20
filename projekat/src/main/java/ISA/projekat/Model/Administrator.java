@@ -17,7 +17,7 @@ public class Administrator extends User{
 		this.passwordChanged = false;
 	}
 
-	public Administrator(String email, String password, String name, String surname, Gender gender, Integer jmbg, Address address, String phoneNumber, boolean passwordChanged) {
+	public Administrator(String email, String password, String name, String surname, Gender gender, String jmbg, Address address, String phoneNumber, boolean passwordChanged) {
 		super(email, password, name, surname, gender, jmbg, address, phoneNumber);
 		this.passwordChanged = passwordChanged;
 	}

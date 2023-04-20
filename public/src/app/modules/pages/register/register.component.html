@@ -15,7 +15,7 @@
 
         <div class="field">
           <label>Email:</label>
-          <input type="text" name="email" placeholder="example@email.com" formControlName="email">
+          <input type="text" name="email" placeholder="example@email.com" formControlName="username">
         </div>
         <span class="warning" *ngIf="email && email.invalid && email.touched"> This email is invalid! </span>
 
@@ -86,9 +86,9 @@
         <div class="field">
           <label>Gender:  </label>
           <div class="radios">
-            <input type="radio" id="male" name="gender" formControlName="gender" value="male" required>
+            <input type="radio" id="male" name="gender" formControlName="gender" value="0" required>
             <label for="male">Male</label>
-            <input type="radio" id="female" name="gender" formControlName="gender" value="female">
+            <input type="radio" id="female" name="gender" formControlName="gender" value="1">
             <label for="female">Female</label>
           </div>
         </div>
@@ -105,7 +105,7 @@
         </div>
         <span class="warning" *ngIf="establishmentInfo && establishmentInfo.invalid && establishmentInfo.touched"> Required! </span>
         
-        <div class="field"><button class="regbutton" [disabled]="!registerUserForm.valid">Register</button></div>
+        <div class="field"><button class="regbutton" [disabled]="!registerUserForm.valid" (click)="register()">Register</button></div>
       </div>
       
       

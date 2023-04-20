@@ -44,7 +44,7 @@ public class RegisteredUser extends User {
 	}
 	
 	
-	public RegisteredUser(String username, String password, String name, String surname, Gender gender, int jmbg,
+	public RegisteredUser(String username, String password, String name, String surname, Gender gender, String jmbg,
 			Address address, String phoneNumber, Double points, String userPerks, String infoInstitution, String profession,
 			UserCategory userCatagory, int penals) {
 		super(username, password, name, surname, gender, jmbg, address, phoneNumber);

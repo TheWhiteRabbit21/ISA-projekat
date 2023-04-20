@@ -12,10 +12,10 @@ public class CenterAdminDTO {
     public String gender;
     public String email;
     public String password;
-    public int jmbg;
+    public String jmbg;
     public String phoneNumber;
 
-    public CenterAdminDTO(String name, String surname, String city, String country, String street, String number, String gender, String email, String password, int jmbg, String phoneNumber) {
+    public CenterAdminDTO(String name, String surname, String city, String country, String street, String number, String gender, String email, String password, String jmbg, String phoneNumber) {
         this.name = name;
         this.surname = surname;
         this.city = city;
@@ -36,7 +36,7 @@ public class CenterAdminDTO {
     }
 
  	public CenterAdminDTO(int id, String name, String surname, String city, String country, String street,
-			String number, String gender, String email, String password, int jmbg, String phoneNumber) {
+			String number, String gender, String email, String password, String jmbg, String phoneNumber) {
 		super();
 		this.id = id;
 		this.name = name;

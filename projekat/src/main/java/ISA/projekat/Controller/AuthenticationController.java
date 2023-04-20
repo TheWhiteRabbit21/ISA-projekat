@@ -42,6 +42,9 @@ public class AuthenticationController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private RegisteredUserService registeredUserService;
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -71,19 +74,17 @@ public class AuthenticationController {
 	}
 
 	// Endpoint za registraciju novog korisnika
-	/*@PostMapping("/signup")
-	public ResponseEntity<RegisteredUserDTO> addUser(@RequestBody RegisteredUserDTO registeredUserDTO, UriComponentsBuilder ucBuilder) {
-		User existUser = this.userService.findByUsername(registeredUserDTO.getEmail());
-
-		if (existUser != null) {
-			throw new ResourceConflictException(registeredUserDTO.getId(), "Email already in use");
+	@PostMapping("/signup")
+	public Boolean signup(@RequestBody RegisteredUserDTO registeredUserDTO) {
+		Boolean created = false;
+		User existUser = userService.findByUsername(registeredUserDTO.getUsername());
+		if (existUser == null) {
+			Address address = new Address(registeredUserDTO.getState(), registeredUserDTO.getCity(), registeredUserDTO.getStreet(), registeredUserDTO.getNumber());
+			registeredUserDTO.setPassword(passwordEncoder.encode(registeredUserDTO.getPassword()));
+			// treba staviti da se uzme id od ovog registrovanog usera i da mu se stavi role_user
+			registeredUserService.RegisterUser(registeredUserDTO, address);
+			created = true;
 		}
-		
-		Address address = new Address(registeredUserDTO.getState(), registeredUserDTO.getCity(), registeredUserDTO.getStreet(), registeredUserDTO.getNumber());
-    	registeredUserDTO.setPassword(passwordEncoder.encode(registeredUserDTO.getPassword()));
-		userService.RegisterUser(registeredUserDTO, address);
-    	// treba staviti da se uzme id od ovog registrovanog usera i da mu se stavi role_user
-
-		return new ResponseEntity<>(HttpStatus.CREATED);
-	}*/
+		return created;
+	}
 }
