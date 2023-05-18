@@ -35,7 +35,6 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @RestController
 @RequestMapping(value = "api/users")
-@CrossOrigin
 public class UserController {
 
     @Autowired

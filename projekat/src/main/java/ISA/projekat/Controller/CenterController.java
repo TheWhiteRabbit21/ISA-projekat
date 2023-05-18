@@ -20,7 +20,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/centers")
-@CrossOrigin
 public class CenterController {
 
     @Autowired
