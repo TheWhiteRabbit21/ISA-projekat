@@ -88,7 +88,7 @@ export class RegisterComponent implements OnInit {
   };
 
   get email(){
-    return this.registerUserForm.get('email');
+    return this.registerUserForm.get('username');
   }
 
   get password(){
