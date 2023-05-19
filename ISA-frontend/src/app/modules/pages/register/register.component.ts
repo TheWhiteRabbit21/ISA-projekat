@@ -146,4 +146,8 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  public login(){
+    window.location.href="http://localhost:4200/login"
+  }
+
 }

@@ -13,4 +13,10 @@ export class WelcomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  public register(){
+    window.location.href="http://localhost:4200/register"
+  }
+  public login(){
+    window.location.href="http://localhost:4200/login"
+  }
 }

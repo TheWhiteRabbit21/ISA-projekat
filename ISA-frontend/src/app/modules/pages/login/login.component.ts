@@ -48,4 +48,9 @@ export class LoginComponent implements OnInit {
   get password(){
     return this.loginForm.get('password');
   }
+
+  public register(){
+    window.location.href="http://localhost:4200/register"
+  }
+
 }
