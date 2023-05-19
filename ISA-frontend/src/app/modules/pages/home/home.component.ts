@@ -31,4 +31,8 @@ export class HomeComponent implements OnInit {
     window.location.href="http://localhost:4200/"
   }
 
+  public userProfile(){
+    window.location.href="http://localhost:4200/userProfile"
+  }
+
 }
