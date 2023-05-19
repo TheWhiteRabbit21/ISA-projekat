@@ -1,0 +1,29 @@
+<div class="bgimage">
+  
+  <nav class="navbar navbar-dark bg-dark  static-top">
+    <div class="container">
+        <a class="navbar-brand" href="#!">Blood Donations Clinic</a>
+        <button class="logbutton" (click)="register()">Sign Up</button>
+    </div>
+  </nav>
+
+  <div class="form">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        
+          <div class="field">
+            <label>Email: </label>
+            <input type="text"  formControlName="email">
+          </div>
+          
+          <div class="field">
+            <label>Password: </label>
+            <input type="password"  formControlName="password">
+          </div>
+          
+          <div class="field">
+            <button class="logbutton" [disabled]="!loginForm.valid">Login</button>
+          </div>
+        </form>
+    </div>
+
+</div>

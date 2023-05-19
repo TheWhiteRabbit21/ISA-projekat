@@ -1,0 +1,38 @@
+table {
+    width: 100%;
+    background-color: rgba(32, 31, 31, 0.596);
+  }
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+th{
+  color: white;
+}
+
+td{
+  color: white;
+}
+
+input[type=text], select, textarea {
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  margin: 5px;
+}
+
+.searchb {
+  background-color: #aa0404;
+  color: white;
+  padding: 12px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.searchb:hover{
+  background-color: #cf3535;
+}
