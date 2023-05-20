@@ -4,6 +4,7 @@ import { AuthService, LoginDTO } from 'src/app/modules/pages/login/log-auth.serv
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { catchError, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Component({
   selector: 'app-login',
@@ -20,29 +21,52 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.m_Errors.length = 0;
+    /*this.m_Errors.length = 0;
     const dto: LoginDTO = this.loginForm.getRawValue();
     if (!this.loginForm.valid) return;
 
     this.m_AuthService.login(dto)
       .subscribe(data => {
         if(data){
-          if(data.role == 2)this.m_Router.navigate(['/user']);
-          if(data.role == 1)this.m_Router.navigate(['/admin-center']);    
+          if(data.role == 1)this.m_Router.navigate(['/admin-center']);  
+          if(data.role == 2)this.m_Router.navigate(['/user']);  
           if(data.role == 3)this.m_Router.navigate(['/admin']);               
+        }
+      });*/
+
+      const dto: LoginDTO = this.loginForm.getRawValue();
+
+      this.m_AuthService.login2(dto).subscribe((result) => {
+        alert("Successful login!");
+  
+        const token = result;
+        localStorage.setItem("token", token);
+  
+        const jwt: JwtHelperService = new JwtHelperService();
+        const info = jwt.decodeToken(token.accessToken);
+        const role = info.role;
+
+        if (role === "USER") {
+          this.m_Router.navigate(["/user"]);
+        }
+        else if (role === "ADMIN_CENTER") {
+          this.m_Router.navigate(["/admin-center"]);
+        }
+        else if (role === "ADMIN") {
+          this.m_Router.navigate(["/admin"]);
         }
       });
   }
 
   get formInstance(): UntypedFormGroup {
     return new UntypedFormGroup({
-      'email': new UntypedFormControl(null, [Validators.required]),
+      'username': new UntypedFormControl(null, [Validators.required]),
       'password': new UntypedFormControl(null, [Validators.required])
     });
   }
 
   get email(){
-    return this.loginForm.get('email');
+    return this.loginForm.get('username');
   }
 
   get password(){

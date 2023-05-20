@@ -34,6 +34,11 @@ export class AuthService {
     );
   }
 
+  login2(loginDTO: LoginDTO): Observable<any> {
+    console.log(loginDTO)
+    return this.m_Http.post(`${environment.hospitalApiUrl}/auth/login`, loginDTO);
+  }
+
   logout(): void {
     this.m_UserDataService.setToken = null;
     this.m_UserDataService.setUserData = null;

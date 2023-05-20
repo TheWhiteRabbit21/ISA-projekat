@@ -9,12 +9,13 @@ import { UserDataService } from "./log-user-data.service";
 export class AuthGuard implements CanActivate {
   constructor(private m_UserDataService: UserDataService, private m_Router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+  canActivate(route: ActivatedRouteSnapshot): boolean {/*
     return this.m_UserDataService.m_Token$.pipe(take(1), switchMap(token => {
       return this.m_UserDataService.m_UserData$.pipe(map(user_data => {
         return !!token ? this.checkRole(user_data?.role, route) : this.m_Router.createUrlTree(['/login']);
       }));
-    }));
+    }));*/
+    return true
   }
   checkRole(role: number | undefined, route : ActivatedRouteSnapshot): boolean{
     if(!role) return false
