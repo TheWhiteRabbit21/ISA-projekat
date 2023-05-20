@@ -47,8 +47,7 @@ export class AuthGuard implements CanActivate {
     const roles: string[] = expectedRoles.split("|");
 
     if (roles.indexOf(info.role) === -1) {
-      //this.router.navigate(["/wine/list"]); oni su stavili redirect mi cemo samo ostati na stranici ako
-      // nije validan role
+      window.location.href="http://localhost:4200/welcome"
       return false;
     }
     return true;

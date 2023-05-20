@@ -34,7 +34,6 @@ const routes: Routes = [
     canActivate : [AuthGuard],
     data: { expectedRoles: "USER" }
   },
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'centers', component: BloodBanksListComponent},
   { path: 'welcome', component: WelcomeComponent },
   { path: 'home', component: HomeComponent },
@@ -48,6 +47,7 @@ const routes: Routes = [
   { path: 'admin-appointment/:id', component: AdminAppointmentComponent},
   { path: 'start-appointment/:id', component: StartAppointmentComponent},
   { path: 'reserve-appointment', component: ReserveAppointmentComponent},
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
 
 ];

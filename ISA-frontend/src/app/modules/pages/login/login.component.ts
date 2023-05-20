@@ -21,19 +21,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    /*this.m_Errors.length = 0;
-    const dto: LoginDTO = this.loginForm.getRawValue();
-    if (!this.loginForm.valid) return;
-
-    this.m_AuthService.login(dto)
-      .subscribe(data => {
-        if(data){
-          if(data.role == 1)this.m_Router.navigate(['/admin-center']);  
-          if(data.role == 2)this.m_Router.navigate(['/user']);  
-          if(data.role == 3)this.m_Router.navigate(['/admin']);               
-        }
-      });*/
-
       const dto: LoginDTO = this.loginForm.getRawValue();
 
       this.m_AuthService.login2(dto).subscribe((result) => {
