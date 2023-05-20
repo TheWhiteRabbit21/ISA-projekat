@@ -9,7 +9,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private m_UserDataService: UserDataService){}
   
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return this.m_UserDataService.m_Token$.pipe(
+    /*return this.m_UserDataService.m_Token$.pipe(
       take(1),
       exhaustMap(token => {
         if(token != null && req.url.indexOf(environment.hospitalApiUrl) != -1 && req.url.indexOf('login') == -1){
@@ -20,6 +20,16 @@ export class AuthInterceptor implements HttpInterceptor {
         }
         return next.handle(req);
       })
-    );
+    );*/
+      const token = localStorage.getItem("token");
+      if (token) {
+        const cloned = req.clone({
+          headers: req.headers.set('Authorization', 'Bearer ' + token),
+        });
+  
+        return next.handle(cloned);
+      } else {
+        return next.handle(req);
+      }
   }
 }

@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
         alert("Successful login!");
   
         const token = result;
-        localStorage.setItem("token", token);
+        localStorage.setItem("token", token.accessToken);
+        localStorage.setItem("expiresIn", token.expiresIn);
   
         const jwt: JwtHelperService = new JwtHelperService();
         const info = jwt.decodeToken(token.accessToken);
