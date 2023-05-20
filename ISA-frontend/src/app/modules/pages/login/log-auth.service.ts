@@ -42,6 +42,7 @@ export class AuthService {
   logout(): void {
     this.m_UserDataService.setToken = null;
     this.m_UserDataService.setUserData = null;
+    localStorage.removeItem('expiresIn');
   }
 
   getUserData(): Observable<any> {

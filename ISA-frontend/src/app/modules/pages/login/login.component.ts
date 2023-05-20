@@ -55,7 +55,12 @@ export class LoginComponent implements OnInit {
         }
         else if (role === "ADMIN") {
           this.m_Router.navigate(["/admin"]);
+        } else {
+          alert("Bad credentials! Try again.")
         }
+      },
+      error => {
+        alert("Bad credentials! Try again.")
       });
   }
 

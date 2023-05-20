@@ -19,17 +19,20 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./modules/admin/admin.module').then(a => a.AdminModule),
-    canActivate : [AuthGuard]
+    canActivate : [AuthGuard],
+    data: { expectedRoles: "ADMIN" }
   },
   {
     path: 'admin-center',
     loadChildren: () => import('./modules/admin-center/admin-center.module').then(ac => ac.AdminCenterModule),
-    canActivate : [AuthGuard]
+    canActivate : [AuthGuard],
+    data: { expectedRoles: "ADMIN_CENTER" }
   },
   {
     path: 'user',
     loadChildren: () => import('./modules/user/user.module').then(ac => ac.UserModule),
-    canActivate : [AuthGuard]
+    canActivate : [AuthGuard],
+    data: { expectedRoles: "USER" }
   },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'centers', component: BloodBanksListComponent},
