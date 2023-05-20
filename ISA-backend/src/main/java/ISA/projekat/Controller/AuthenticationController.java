@@ -2,6 +2,8 @@ package ISA.projekat.Controller;
 
 import javax.servlet.http.HttpServletResponse;
 
+import ISA.projekat.Model.RegisteredUser;
+import ISA.projekat.Service.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -11,11 +13,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import ISA.projekat.JwtAuthenticationRequest;
@@ -47,6 +45,9 @@ public class AuthenticationController {
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+
+	@Autowired
+	private EmailSenderService emailSenderService;
 	
 	// Prvi endpoint koji pogadja korisnik kada se loguje.
 	// Tada zna samo svoje korisnicko ime i lozinku i to prosledjuje na backend.
@@ -83,7 +84,22 @@ public class AuthenticationController {
 			// treba staviti da se uzme id od ovog registrovanog usera i da mu se stavi role_user
 			registeredUserService.RegisterUser(registeredUserDTO, address);
 			created = true;
+
+			emailSenderService.sendSimpleEmail(registeredUserDTO.getUsername(),
+					"Verifikacija naloga",
+					"Molimo Vas kliknite na link da biste izvršili verifikaciju vašeg naloga: http://localhost:4200/email-verified/" + registeredUserDTO.getUsername());
 		}
 		return created;
+	}
+
+	@GetMapping("/verify-email/{email}")
+	public Boolean verifyEmail(@PathVariable String email){
+		RegisteredUser user = registeredUserService.findByUsername(email);
+		if (user == null) {
+			return false;
+		}
+		user.setEnabled(true);
+		registeredUserService.save(user);
+		return true;
 	}
 }

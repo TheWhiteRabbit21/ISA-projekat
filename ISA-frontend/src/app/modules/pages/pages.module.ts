@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { BloodDonorsListComponent } from './blood-donors-list/blood-donors-list.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RegisteredUsersListComponent } from '../admin/pages/registered-users-list/registered-users-list.component';
+import { EmailVerifiedComponent } from './email-verified/email-verified.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RegisteredUsersListComponent } from '../admin/pages/registered-users-li
     BloodBanksListComponent,
     BloodDonorFormComponent,
     LoginComponent,
-    BloodDonorsListComponent
+    BloodDonorsListComponent,
+    EmailVerifiedComponent
   ],
   imports: [
     FormsModule,

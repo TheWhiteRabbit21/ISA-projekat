@@ -13,6 +13,7 @@ import { AdminAppointmentComponent } from "./modules/admin-center/pages/admin-ap
 import { StartAppointmentComponent } from "./modules/admin-center/pages/start-appointment/start-appointment.component";
 import { ReserveAppointmentComponent } from "./modules/user/pages/reserve-appointment/reserve-appointment.component";
 import { AuthGuard } from "./modules/pages/login/log-auth.guard";
+import { EmailVerifiedComponent } from "./modules/pages/email-verified/email-verified.component";
 
 const routes: Routes = [
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'email-verified/:id', component: EmailVerifiedComponent },
   { path: 'login', component: LoginComponent },
   { path: 'userProfile', component: UserProfileComponent},
   { path: 'adminprofile/:id', component: AdminProfileComponent },
