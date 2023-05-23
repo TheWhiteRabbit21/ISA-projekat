@@ -17,6 +17,7 @@ import { BloodDonorsListComponent } from './blood-donors-list/blood-donors-list.
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RegisteredUsersListComponent } from '../admin/pages/registered-users-list/registered-users-list.component';
 import { EmailVerifiedComponent } from './email-verified/email-verified.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EmailVerifiedComponent } from './email-verified/email-verified.componen
     FormsModule,
     MatTableModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule
   ]
 })
 export class PagesModule { }
