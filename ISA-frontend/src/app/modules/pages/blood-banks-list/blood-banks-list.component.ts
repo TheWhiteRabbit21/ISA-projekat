@@ -36,10 +36,10 @@ export class BloodBanksListComponent implements AfterViewInit, OnInit {
   public searchCenter: SearchCenter = {name : '', city : ''}
 
   public length : number = 100;
-  public pageSizeOptions : number[] = [10,25,50]
+  public pageSizeOptions : number[] = [5,10,25]
   public page : Page = {
     pageIndex : 0,
-    pageSize : 10
+    pageSize : 5
   };
   constructor(private _liveAnnouncer: LiveAnnouncer, private _bloodBankService: BloodBankListService, private http:HttpClient) {}
 

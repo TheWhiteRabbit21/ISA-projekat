@@ -8,6 +8,7 @@ import ISA.projekat.Model.Staff;
 import ISA.projekat.Repository.AddressRepository;
 import ISA.projekat.Repository.CenterAdminRepository;
 import ISA.projekat.Repository.CenterRepository;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -37,9 +38,9 @@ public class CenterService {
         }
     }
     
-    public List<BloodBankCenter> findAll(int pageIndex, int pageSize){
-        Pageable pageable = PageRequest.of(pageIndex*pageSize, (pageIndex+1)*pageSize);
-        return centerRepository.findAll(pageable).toList();
+    public Page<BloodBankCenter> findAll(int pageIndex, int pageSize){
+        Page<BloodBankCenter> centers = centerRepository.findAll(PageRequest.of(pageIndex, pageSize));
+        return centers;
     }
 
     public List<BloodBankCenter> findAll(){
