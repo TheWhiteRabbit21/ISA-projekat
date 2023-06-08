@@ -16,6 +16,10 @@ export class UserNavComponent implements OnInit {
     {
       path: 'reserve-appointment',
       title: 'Reserve Appointment'
+    },
+    {
+      path: 'reserve-predefined-appointment',
+      title: 'Reserve Predefined Appointment'
     }
   ];
   constructor() { }
