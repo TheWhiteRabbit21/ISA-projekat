@@ -23,6 +23,17 @@ insert into blood_bank_center (name, address_id, description, average_rating) va
 insert into blood_bank_center (name, address_id, description, average_rating) values ('Divna', 9, 'Samo ime kaze.', '4.3');
 insert into blood_bank_center (name, address_id, description, average_rating) values ('Benu', 10, 'Savrseni.', '5.0');
 
+insert into blood_bank_center (name, address_id, description, average_rating, working_hours_id) values ('Dinja', 6, 'Najsavremenija oprema.', '3.14',1);
+insert into blood_bank_center (name, address_id, description, average_rating) values ('Miloja', 7, 'Bil Gejts vas čeka.', '4');
+insert into blood_bank_center (name, address_id, description, average_rating) values ('Prenk', 8, 'Najprijatniji radnici.', '4.99');
+insert into blood_bank_center (name, address_id, description, average_rating) values ('Betmen', 9, 'Stari načini vađenja krvi se vraćaju u modu.', '2.3');
+insert into blood_bank_center (name, address_id, description, average_rating) values ('Drvo', 10, 'Divna banka krvi omeđena prostranim livadama.', '3');
+insert into blood_bank_center (name, address_id, description, average_rating) values ('Elite', 6, 'Predobri.', '3.4');
+insert into blood_bank_center (name, address_id, description, average_rating) values ('Kod Brke', 7, 'Prosjecni.', '3.1');
+insert into blood_bank_center (name, address_id, description, average_rating) values ('Laboratorija+', 8, 'Grozni.', '1.3');
+insert into blood_bank_center (name, address_id, description, average_rating) values ('Ekavica', 9, 'Samo ime kaze.', '4.3');
+insert into blood_bank_center (name, address_id, description, average_rating) values ('Jankovic', 10, 'Savrseni.', '5.0');
+
 
 insert into roles (name) values ('ROLE_USER');
 insert into roles (name) values ('ROLE_ADMIN_CENTER');

@@ -4,7 +4,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { BloodBankListService } from './blood-bank-list.service';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Page } from '../../admin/pages/registered-users-list/registered-users-list.service';
 
 export interface BloodBank {
@@ -47,11 +47,12 @@ export class BloodBanksListComponent implements AfterViewInit, OnInit {
     this.getBloodCenters();
   }
 
-  handlePageEvent(e: PageEvent) {
-    this.length = e.length;
-    this.page.pageSize = e.pageSize;
-    this.page.pageIndex = e.pageIndex;
-    this.getBloodCenters();
+  handlePageEvent(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    this.length = event.length;
+    this.page.pageSize = event.pageSize;
+    this.page.pageIndex = event.pageIndex;
+    this.getBloodCenters()
   }
 
   public getBloodCenters(){
@@ -70,6 +71,7 @@ export class BloodBanksListComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator;
   }
 
   announceSortChange(sortState: Sort) {

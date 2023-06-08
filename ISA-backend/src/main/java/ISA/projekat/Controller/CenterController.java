@@ -1,9 +1,6 @@
 package ISA.projekat.Controller;
 
-import ISA.projekat.DTOs.BloodCenterListDTO;
-import ISA.projekat.DTOs.CenterAdminDTO;
-import ISA.projekat.DTOs.CenterDTO;
-import ISA.projekat.DTOs.SearchCenterDTO;
+import ISA.projekat.DTOs.*;
 import ISA.projekat.Model.Address;
 import ISA.projekat.Model.BloodBankCenter;
 import ISA.projekat.Service.AddressService;
@@ -40,14 +37,14 @@ public class CenterController {
     }
 
     
-    @GetMapping(value = "/all")
-    //@PreAuthorize("hasRole('USER')")
-    public ResponseEntity<List<BloodCenterListDTO>> getAllBloodCenters() {
+    @PostMapping(value = "/all")
+    public ResponseEntity<List<BloodCenterListDTO>> getAllBloodCenters(@RequestBody PageDTO pageDTO) {
 
-        List<BloodBankCenter> bloodBankCenters = centerService.findAll();
+        List<BloodBankCenter> bloodBankCenters = centerService.findAll(pageDTO.pageIndex, pageDTO.pageSize);
 
         // convert users to DTOs
         List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
+
         for (BloodBankCenter c : bloodBankCenters) {
             Address address = addressService.findOne(c.getAddress().getId());
         	bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
