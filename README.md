@@ -1,6 +1,6 @@
 # Projektni zadatak iz predmeta Internet softverske arhitekture
-Tim:
-  - Student 1:
+## Članovi tima:
+  - Student 1: [Miloš Marjanović](https://github.com/marjanovic-ra172-2019)
   - Student 2:
   - Student 3:
   - Student 4:
