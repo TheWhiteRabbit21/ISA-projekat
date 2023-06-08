@@ -7,6 +7,7 @@ import ISA.projekat.Service.AddressService;
 import ISA.projekat.Service.CenterAdminService;
 import ISA.projekat.Service.CenterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -40,7 +41,7 @@ public class CenterController {
     @PostMapping(value = "/all")
     public ResponseEntity<List<BloodCenterListDTO>> getAllBloodCenters(@RequestBody PageDTO pageDTO) {
 
-        List<BloodBankCenter> bloodBankCenters = centerService.findAll(pageDTO.pageIndex, pageDTO.pageSize);
+        Page<BloodBankCenter> bloodBankCenters = centerService.findAll(pageDTO.pageIndex, pageDTO.pageSize);
 
         // convert users to DTOs
         List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
