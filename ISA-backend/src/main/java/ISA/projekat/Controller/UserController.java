@@ -2,9 +2,12 @@ package ISA.projekat.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import ISA.projekat.DTOs.*;
 import ISA.projekat.Model.*;
+import ISA.projekat.Model.enums.Availability;
+import ISA.projekat.Repository.PredefinedAppointmentsRepository;
 import ISA.projekat.Service.AdminService;
 import ISA.projekat.Service.CenterAdminService;
 import ISA.projekat.TokenUtils;
@@ -13,15 +16,7 @@ import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authenticati
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import ISA.projekat.Service.AddressService;
 import ISA.projekat.Service.RegisteredUserService;
@@ -30,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping(value = "api/users")
 public class UserController {
@@ -48,6 +43,8 @@ public class UserController {
 
     @Autowired
     private AddressService _addressService;
+    @Autowired
+    private PredefinedAppointmentsRepository predefinedAppointmentsRepository;
 
 
     @PutMapping(value = "/edit")
@@ -119,6 +116,17 @@ public class UserController {
                 .toList();
 
         return new ResponseEntity<>(predefinedAppointments, HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/reserve-predefined-appointment/{id}")
+    public ResponseEntity<Boolean> reservePredefinedAppointment(@PathVariable("id") int id, @RequestHeader("Authorization") String header) {
+
+        Optional<PredefinedAppointments> predefinedAppointments = predefinedAppointmentsRepository.findById(id);
+        predefinedAppointments.get().setAvailability(Availability.RESERVED);
+        predefinedAppointments.get().setUsername(tokenUtils.getUsernameFromToken(header.substring(7)));
+        predefinedAppointmentsRepository.save(predefinedAppointments.get());
+
+        return new ResponseEntity(true, HttpStatus.OK);
     }
     
     @GetMapping(value = "/data")

@@ -38,4 +38,11 @@ export class PredefinedAppointmentsCenterComponent implements OnInit {
    })
   }
 
+  public reserve(appointmentId: number){
+    this._predefinedAppointmentsCenterService.reserve(appointmentId).subscribe(res =>
+      {
+        alert("Succesfully reserved your appointment.");
+      });
+  }
+
 }

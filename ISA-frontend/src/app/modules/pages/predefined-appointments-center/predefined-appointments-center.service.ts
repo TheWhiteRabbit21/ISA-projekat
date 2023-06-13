@@ -15,4 +15,8 @@ getPredefinedAppointmentsForCenter(id: number): Observable<any>{
   return this.http.get<any>(this.route + 'api/users/all-predefined-appointments/' + id, {headers: this.headers});
 }
 
+reserve(id: number): Observable<any>{
+  return this.http.put<any>(this.route + 'api/users/reserve-predefined-appointment/' + id, {headers: this.headers});
+}
+
 }
