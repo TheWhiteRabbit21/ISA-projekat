@@ -7,6 +7,7 @@ import java.util.Optional;
 import ISA.projekat.DTOs.*;
 import ISA.projekat.Model.*;
 import ISA.projekat.Model.enums.Availability;
+import ISA.projekat.Repository.BloodDonorInfoRepository;
 import ISA.projekat.Repository.PredefinedAppointmentsRepository;
 import ISA.projekat.Service.AdminService;
 import ISA.projekat.Service.CenterAdminService;
@@ -45,6 +46,9 @@ public class UserController {
     private AddressService _addressService;
     @Autowired
     private PredefinedAppointmentsRepository predefinedAppointmentsRepository;
+    @Autowired
+    private BloodDonorInfoRepository bloodDonorInfoRepository;
+
 
 
     @PutMapping(value = "/edit")
@@ -78,14 +82,14 @@ public class UserController {
 
 
     }
-    
+
    /* @PostMapping(produces = "application/json", value = "add")
     @ResponseBody
     public ResponseEntity<RegisteredUserDTO> RegisterUser(@RequestBody RegisteredUserDTO registeredUserDTO){
-        
+
     	Address address = new Address(registeredUserDTO.getState(), registeredUserDTO.getCity(), registeredUserDTO.getStreet(), registeredUserDTO.getNumber());
     	userService.RegisterUser(registeredUserDTO, address);
-    	
+
         return new ResponseEntity<>(HttpStatus.OK);
     }*/
 
@@ -99,7 +103,7 @@ public class UserController {
 
         for (RegisteredUser u : users) {
             Address address = _addressService.findOne(u.getAddress().getId());
-            usersDTO.add(new RegisteredUser2DTO(u.getId(), u.getUsername(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(), 
+            usersDTO.add(new RegisteredUser2DTO(u.getId(), u.getUsername(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(),
             		u.getGender(), u.getProfession(), u.getInfoInstitution(), String.valueOf(u.getPoints()), String.valueOf(u.getUserCatagory())));
 
         }
@@ -113,6 +117,7 @@ public class UserController {
 
         List<PredefinedAppointments> predefinedAppointments = userService.getAllPredefinedAppointments().stream()
                 .filter(appointments -> appointments.getCenterId() == id)
+                .filter(appointments -> appointments.getAvailability() == Availability.FREE)
                 .toList();
 
         return new ResponseEntity<>(predefinedAppointments, HttpStatus.OK);
@@ -120,15 +125,20 @@ public class UserController {
 
     @PutMapping(value = "/reserve-predefined-appointment/{id}")
     public ResponseEntity<Boolean> reservePredefinedAppointment(@PathVariable("id") int id, @RequestHeader("Authorization") String header) {
-
+        Boolean reserved;
         Optional<PredefinedAppointments> predefinedAppointments = predefinedAppointmentsRepository.findById(id);
-        predefinedAppointments.get().setAvailability(Availability.RESERVED);
-        predefinedAppointments.get().setUsername(tokenUtils.getUsernameFromToken(header.substring(7)));
-        predefinedAppointmentsRepository.save(predefinedAppointments.get());
-
-        return new ResponseEntity(true, HttpStatus.OK);
+        BloodDonorInfo bloodDonorInfo = bloodDonorInfoRepository.findByUsername(tokenUtils.getUsernameFromToken(header.substring(7)));
+        if(bloodDonorInfo != null && bloodDonorInfo.isGaveBlood6Months() == false) {
+            predefinedAppointments.get().setAvailability(Availability.RESERVED);
+            predefinedAppointments.get().setUsername(tokenUtils.getUsernameFromToken(header.substring(7)));
+            predefinedAppointmentsRepository.save(predefinedAppointments.get());
+            reserved = true;
+        }else{
+            reserved = false;
+        }
+        return new ResponseEntity(reserved, HttpStatus.OK);
     }
-    
+
     @GetMapping(value = "/data")
     public ResponseEntity<UserDTO> getUserData(HttpServletRequest request) {
 
@@ -169,7 +179,7 @@ public class UserController {
 
         }
         Address address = _addressService.findOne(u.getAddress().getId());
-        RegisteredUser2DTO  userDTO = new RegisteredUser2DTO(u.getId(), u.getUsername(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(), 
+        RegisteredUser2DTO  userDTO = new RegisteredUser2DTO(u.getId(), u.getUsername(), u.getPassword(), u.getName(), u.getSurname(), address, u.getPhoneNumber(), u.getJmbg(),
         		u.getGender(), u.getProfession(), u.getInfoInstitution(), String.valueOf(u.getPoints()), String.valueOf(u.getUserCatagory()));
 
 
@@ -179,27 +189,27 @@ public class UserController {
     @PutMapping(value = "/update", consumes = "application/json")
     @ResponseBody
     public ResponseEntity<UserDTO> updateCenter(@RequestBody UserDTO userDTO){
-    	
+
     	//TODO
 //    	System.out.println(userDTO.getName());
 //    	System.out.println(userDTO.getId());
 //    	System.out.println(userDTO);
-    	
+
     	return new ResponseEntity<>(HttpStatus.OK);
     }
-    
+
     @PutMapping(value = "/penaltyAddById", consumes = "application/json")
     @ResponseBody
     public ResponseEntity<UserDTO> addUsersPenal(@RequestBody int id){
-    	
+
     	userService.IncreaseUsersPenalty(id);
 
     	return new ResponseEntity<>(HttpStatus.OK);
     }
-    
-    
-    
-    
+
+
+
+
     @PostMapping(produces = "application/json", value = "/search")
     @ResponseBody
     public ResponseEntity<List<UserDTO>> getAllUsersByNameAndSurname(@RequestBody SearchUserDTO searchUserDTO) {

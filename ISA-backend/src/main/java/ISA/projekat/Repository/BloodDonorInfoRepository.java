@@ -8,4 +8,5 @@ import ISA.projekat.Model.BloodDonorInfo;
 @Repository
 public interface BloodDonorInfoRepository extends JpaRepository<BloodDonorInfo, Integer> {
 
+    BloodDonorInfo findByUsername(String username);
 }

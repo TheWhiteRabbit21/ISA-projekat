@@ -93,6 +93,14 @@ public class BloodDonorInfo {
 		this.gaveBlood6Months = gaveBlood6Months;
 	}
 
+	public boolean isGaveBlood6Months() {
+		return gaveBlood6Months;
+	}
+
+	public void setGaveBlood6Months(boolean gaveBlood6Months) {
+		this.gaveBlood6Months = gaveBlood6Months;
+	}
+
 	public String getUsername() {
 		return username;
 	}

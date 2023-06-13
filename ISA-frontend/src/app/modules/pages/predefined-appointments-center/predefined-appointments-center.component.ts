@@ -39,9 +39,12 @@ export class PredefinedAppointmentsCenterComponent implements OnInit {
   }
 
   public reserve(appointmentId: number){
-    this._predefinedAppointmentsCenterService.reserve(appointmentId).subscribe(res =>
-      {
+    this._predefinedAppointmentsCenterService.reserve(appointmentId).subscribe(res =>{
+      if(res === true){
         alert("Succesfully reserved your appointment.");
+      }else{
+        alert("You have to fill out your blood donor info form or you have given blood in the last 6 months. Your reservation is declined.")
+      }
       });
   }
 
