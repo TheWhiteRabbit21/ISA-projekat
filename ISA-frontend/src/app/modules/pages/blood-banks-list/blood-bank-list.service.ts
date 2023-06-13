@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { BloodBank } from "./blood-banks-list.component";
 import { Page } from "../../admin/pages/registered-users-list/registered-users-list.service";
+import { BloodBankk } from "../../user/pages/reserve-predefined-appointment/reserve-predefined-appointment.component";
 
 @Injectable({
     providedIn: 'any',
@@ -17,7 +18,7 @@ export class BloodBankListService {
         return this.http.post<BloodBank[]>(this.route + 'api/centers/all', page, {headers: this.headers});
     }
 
-    getAllBloodCenterss() : Observable<BloodBank[]> {
-        return this.http.get<BloodBank[]>(this.route + 'api/centers/all', {headers: this.headers});
+    getAllBloodCenterss() : Observable<BloodBankk[]> {
+        return this.http.get<BloodBankk[]>(this.route + 'api/centers/all', {headers: this.headers});
     }
 }

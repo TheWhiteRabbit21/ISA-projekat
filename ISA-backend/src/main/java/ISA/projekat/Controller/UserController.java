@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ISA.projekat.DTOs.*;
+import ISA.projekat.Model.*;
 import ISA.projekat.Service.AdminService;
 import ISA.projekat.Service.CenterAdminService;
 import ISA.projekat.TokenUtils;
@@ -22,9 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ISA.projekat.Model.Address;
-import ISA.projekat.Model.RegisteredUser;
-import ISA.projekat.Model.User;
 import ISA.projekat.Service.AddressService;
 import ISA.projekat.Service.RegisteredUserService;
 
@@ -111,6 +109,16 @@ public class UserController {
 
         return new ResponseEntity<>(usersDTO, HttpStatus.OK);
 
+    }
+
+    @GetMapping(value = "/all-predefined-appointments/{id}")
+    public ResponseEntity<List<PredefinedAppointments>> getPredefinedAppointments(@PathVariable("id") int id) {
+
+        List<PredefinedAppointments> predefinedAppointments = userService.getAllPredefinedAppointments().stream()
+                .filter(appointments -> appointments.getCenterId() == id)
+                .toList();
+
+        return new ResponseEntity<>(predefinedAppointments, HttpStatus.OK);
     }
     
     @GetMapping(value = "/data")

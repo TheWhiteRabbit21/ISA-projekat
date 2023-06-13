@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { BloodBankListService } from 'src/app/modules/pages/blood-banks-list/blood-bank-list.service';
 
-export interface BloodBank {
+export interface BloodBankk {
+  id: number;
   name: string;
   averagePoints: number;
   city: string;
@@ -17,11 +19,12 @@ export interface BloodBank {
 })
 export class ReservePredefinedAppointmentComponent implements OnInit {
 
-  public bloodbanks: BloodBank[] = [];
+  public bloodbanks: BloodBankk[] = [];
   displayedColumns: string[] = ['name', 'averagePoints', 'city', 'country', 'description', 'predefinedAppointments'];
   public dataSource = new MatTableDataSource(this.bloodbanks);
+  ruta: string = "";
   
-  constructor(private _bloodBankService: BloodBankListService) { }
+  constructor(private router: Router, private _bloodBankService: BloodBankListService) { }
 
   ngOnInit() {
     this.getBloodCenters();
@@ -32,6 +35,12 @@ export class ReservePredefinedAppointmentComponent implements OnInit {
       this.bloodbanks = res;
       this.dataSource = new MatTableDataSource(this.bloodbanks);
     })
+  }
+
+  public predefined(centerId: number){
+    this.ruta = "http://localhost:4200/predefined-appointments/" + centerId;
+    window.location.href = this.ruta;
+    console.log(this.ruta);
   }
 
 }

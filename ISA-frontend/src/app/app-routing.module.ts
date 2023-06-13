@@ -14,6 +14,7 @@ import { StartAppointmentComponent } from "./modules/admin-center/pages/start-ap
 import { ReserveAppointmentComponent } from "./modules/user/pages/reserve-appointment/reserve-appointment.component";
 import { AuthGuard } from "./modules/pages/login/log-auth.guard";
 import { EmailVerifiedComponent } from "./modules/pages/email-verified/email-verified.component";
+import { PredefinedAppointmentsCenterComponent } from "./modules/pages/predefined-appointments-center/predefined-appointments-center.component";
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
     canActivate : [AuthGuard],
     data: { expectedRoles: "USER" }
   },
+  { path: 'predefined-appointments/:id', component: PredefinedAppointmentsCenterComponent},
   { path: 'centers', component: BloodBanksListComponent},
   { path: 'welcome', component: WelcomeComponent },
   { path: 'home', component: HomeComponent },

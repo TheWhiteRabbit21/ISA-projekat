@@ -18,6 +18,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RegisteredUsersListComponent } from '../admin/pages/registered-users-list/registered-users-list.component';
 import { EmailVerifiedComponent } from './email-verified/email-verified.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PredefinedAppointmentsCenterComponent } from './predefined-appointments-center/predefined-appointments-center.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     BloodDonorFormComponent,
     LoginComponent,
     BloodDonorsListComponent,
-    EmailVerifiedComponent
+    EmailVerifiedComponent,
+    PredefinedAppointmentsCenterComponent
   ],
   imports: [
     FormsModule,

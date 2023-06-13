@@ -54,15 +54,15 @@ public class CenterController {
         return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);
     }
     @GetMapping(value = "/all")
-    public ResponseEntity<List<BloodCenterListDTO>> getAllBloodCenters() {
+    public ResponseEntity<List<BloodCenterListtDTO>> getAllBloodCenters() {
 
         List<BloodBankCenter> bloodBankCenters = centerService.findAll();
 
         // convert users to DTOs
-        List<BloodCenterListDTO> bloodBankcentersDTO = new ArrayList<>();
+        List<BloodCenterListtDTO> bloodBankcentersDTO = new ArrayList<>();
         for (BloodBankCenter c : bloodBankCenters) {
             Address address = addressService.findOne(c.getAddress().getId());
-            bloodBankcentersDTO.add(new BloodCenterListDTO(c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
+            bloodBankcentersDTO.add(new BloodCenterListtDTO(c.getId(), c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
         }
 
         return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);
