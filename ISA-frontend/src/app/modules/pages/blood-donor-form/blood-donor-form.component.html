@@ -79,6 +79,14 @@
           <mat-radio-button value = false name="no">Не</mat-radio-button>
         </mat-radio-group>
       </section>
+      <section>
+        <mat-label>11. Да ли је прошло више од 6 мјесеци кад сте посљедњи пут давали крв?
+        </mat-label>
+        <mat-radio-group aria-label="Select an option" [(ngModel)]="bloodDonorInfo.gaveBlood6Months">
+          <mat-radio-button value = true  name="yes">Да </mat-radio-button>
+          <mat-radio-button value = false name="no">Не</mat-radio-button>
+        </mat-radio-group>
+      </section>
 
       <br>
       <button class="buttons" style="float: right" (click)="submit()">Send</button>

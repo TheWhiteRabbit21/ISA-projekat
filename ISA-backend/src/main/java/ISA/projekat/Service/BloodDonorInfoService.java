@@ -3,7 +3,9 @@ package ISA.projekat.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import ISA.projekat.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
 import ISA.projekat.Model.AppointmentHistory;
@@ -11,11 +13,16 @@ import ISA.projekat.Model.BloodDonorInfo;
 import ISA.projekat.Repository.AppointmentHistoryRepository;
 import ISA.projekat.Repository.BloodDonorInfoRepository;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Service
 public class BloodDonorInfoService {
 
 	 @Autowired
 	 private BloodDonorInfoRepository bloodDonorInfoRepository;
+
+	 @Autowired
+	 private TokenUtils tokenUtils;
 	 
 	 @Autowired AppointmentHistoryRepository appointmentHistoryRepository;
 	 
@@ -23,8 +30,10 @@ public class BloodDonorInfoService {
 	        return bloodDonorInfoRepository.findAll();
 	 }
 	 
-	 public void Create(BloodDonorInfo bloodDonorInfo){
-		 	bloodDonorInfoRepository.save(bloodDonorInfo);
+	 public void Create(BloodDonorInfo bloodDonorInfo, String token){
+		 System.out.println(token);
+		 bloodDonorInfo.setUsername(tokenUtils.getUsernameFromToken(token.substring(7)));
+		 bloodDonorInfoRepository.save(bloodDonorInfo);
 	 }
 
 	public BloodDonorInfo findByDonorId(int id) {
