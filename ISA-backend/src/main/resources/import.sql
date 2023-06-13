@@ -72,3 +72,15 @@ insert into equipment(blood_quantity, needles) values (400, 100);
 insert into appointment_history(datum, donor_id, krvna_grupa, napomena_doktoru_medicine, bakar_sulfat, hemoglobinometar_vrednost, pluca, srce, ta, tip_kese, napomena, broj_lota_kese) values ('19-12-2022', 1, 'A+', 'Nap dok medicine 1', 'nizak', 'mala', 'losa pluca', 'slabo srce', 'nizak pritisak', 'mala', 'napomena1', 1);
 insert into appointment_history(datum, donor_id, krvna_grupa, napomena_doktoru_medicine, bakar_sulfat, hemoglobinometar_vrednost, pluca, srce, ta, tip_kese, napomena, broj_lota_kese) values ('20-12-2022', 1, 'A+', 'Nap dok medicine 2', 'visok', 'velika', 'sjajna pluca', 'jako srce', 'visok pritisak', 'srednja', 'napomena2', 2);
 insert into appointment_history(datum, donor_id, krvna_grupa, napomena_doktoru_medicine, bakar_sulfat, hemoglobinometar_vrednost, pluca, srce, ta, tip_kese, napomena, broj_lota_kese) values ('21-12-2022', 1, 'A+', 'Nap dok medicine 3', 'dobar', 'srednja', 'dobra pluca', 'dobro srce', 'normalan pritisak', 'velika', 'napomena3', 3);
+
+insert into predefined_appointments (date, time, duration, username, center_id, availability) values (to_date('22/06/2023', 'DD/MM/YYYY'), to_timestamp('12:00:00','HH24:MI:SS'), 30, 'juzer@gmail.com', 1, 0);
+insert into predefined_appointments (date, time, duration, username, center_id, availability) values (to_date('22/06/2023', 'DD/MM/YYYY'), to_timestamp('12:30:00','HH24:MI:SS'), 30, 'juzer@gmail.com', 1, 0);
+insert into predefined_appointments (date, time, duration, username, center_id, availability) values (to_date('22/06/2023', 'DD/MM/YYYY'), to_timestamp('13:00:00','HH24:MI:SS'), 30, 'juzer@gmail.com', 1, 0);
+
+insert into predefined_appointments (date, time, duration, username, center_id, availability) values (to_date('22/06/2023', 'DD/MM/YYYY'), to_timestamp('12:00:00','HH24:MI:SS'), 30, 'juzer@gmail.com', 2, 1);
+insert into predefined_appointments (date, time, duration, username, center_id, availability) values (to_date('22/06/2023', 'DD/MM/YYYY'), to_timestamp('12:30:00','HH24:MI:SS'), 30, 'juzer@gmail.com', 2, 1);
+insert into predefined_appointments (date, time, duration, username, center_id, availability) values (to_date('22/06/2023', 'DD/MM/YYYY'), to_timestamp('13:00:00','HH24:MI:SS'), 30, 'juzer@gmail.com', 2, 1);
+
+insert into predefined_appointments (date, time, duration, username, center_id, availability) values (to_date('22/06/2023', 'DD/MM/YYYY'), to_timestamp('12:00:00','HH24:MI:SS'), 30, 'juzer@gmail.com', 3, 1);
+insert into predefined_appointments (date, time, duration, username, center_id, availability) values (to_date('22/06/2023', 'DD/MM/YYYY'), to_timestamp('12:30:00','HH24:MI:SS'), 30, 'juzer@gmail.com', 3, 1);
+insert into predefined_appointments (date, time, duration, username, center_id, availability) values (to_date('22/06/2023', 'DD/MM/YYYY'), to_timestamp('13:00:00','HH24:MI:SS'), 30, 'juzer@gmail.com', 3, 1);

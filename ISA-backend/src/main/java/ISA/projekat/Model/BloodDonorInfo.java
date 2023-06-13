@@ -12,7 +12,10 @@ public class BloodDonorInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
+	@Column(nullable = true)
+	private String username;
+
 	@Column(nullable = false)
 	private boolean weight;
 	
@@ -44,6 +47,9 @@ public class BloodDonorInfo {
 	private boolean tattooLast6Months;
 
 	@Column(nullable = true)
+	private boolean gaveBlood6Months;
+
+	@Column(nullable = true)
 	private int donorId;
 	
 	public BloodDonorInfo() {
@@ -54,6 +60,7 @@ public class BloodDonorInfo {
 			boolean menstruation, boolean toothOutLast7Days, boolean takenMedicineInLast7Days,
 			boolean piercingLast6Months, boolean operationOrTransfusionLast6Months, boolean tattooLast6Months) {
 		super();
+		this.username = null;
 		this.id = id;
 		this.weight = weight;
 		this.skinIssues = skinIssues;
@@ -65,6 +72,41 @@ public class BloodDonorInfo {
 		this.piercingLast6Months = piercingLast6Months;
 		this.operationOrTransfusionLast6Months = operationOrTransfusionLast6Months;
 		this.tattooLast6Months = tattooLast6Months;
+	}
+
+	public BloodDonorInfo(String username, int id, boolean weight, boolean skinIssues, boolean feelHealthy, boolean bloodPressure,
+						  boolean menstruation, boolean toothOutLast7Days, boolean takenMedicineInLast7Days,
+						  boolean piercingLast6Months, boolean operationOrTransfusionLast6Months, boolean tattooLast6Months, boolean gaveBlood6Months) {
+		super();
+		this.username = username;
+		this.id = id;
+		this.weight = weight;
+		this.skinIssues = skinIssues;
+		this.feelHealthy = feelHealthy;
+		this.bloodPressure = bloodPressure;
+		this.menstruation = menstruation;
+		this.toothOutLast7Days = toothOutLast7Days;
+		this.takenMedicineInLast7Days = takenMedicineInLast7Days;
+		this.piercingLast6Months = piercingLast6Months;
+		this.operationOrTransfusionLast6Months = operationOrTransfusionLast6Months;
+		this.tattooLast6Months = tattooLast6Months;
+		this.gaveBlood6Months = gaveBlood6Months;
+	}
+
+	public boolean isGaveBlood6Months() {
+		return gaveBlood6Months;
+	}
+
+	public void setGaveBlood6Months(boolean gaveBlood6Months) {
+		this.gaveBlood6Months = gaveBlood6Months;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public int getId() {

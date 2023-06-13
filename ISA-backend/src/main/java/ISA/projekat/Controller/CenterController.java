@@ -53,6 +53,21 @@ public class CenterController {
 
         return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);
     }
+    @GetMapping(value = "/all")
+    public ResponseEntity<List<BloodCenterListtDTO>> getAllBloodCenters() {
+
+        List<BloodBankCenter> bloodBankCenters = centerService.findAll();
+
+        // convert users to DTOs
+        List<BloodCenterListtDTO> bloodBankcentersDTO = new ArrayList<>();
+        for (BloodBankCenter c : bloodBankCenters) {
+            Address address = addressService.findOne(c.getAddress().getId());
+            bloodBankcentersDTO.add(new BloodCenterListtDTO(c.getId(), c.getName(), c.getAverageRating(), address.getCity(), address.getCountry(), c.getDescription()));
+        }
+
+        return new ResponseEntity<>(bloodBankcentersDTO, HttpStatus.OK);
+    }
+
 
     @GetMapping(value = "/getAdmins")
     public ResponseEntity<List<CenterAdminDTO>> getAllAvailabelAdmins() {

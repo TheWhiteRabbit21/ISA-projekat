@@ -3,6 +3,9 @@ package ISA.projekat.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import ISA.projekat.Model.*;
+import ISA.projekat.Repository.PredefinedAppointmentsRepository;
+import ISA.projekat.Repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
@@ -12,9 +15,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ISA.projekat.DTOs.RegisteredUserDTO;
 import ISA.projekat.DTOs.UserDTO;
-import ISA.projekat.Model.Address;
-import ISA.projekat.Model.RegisteredUser;
-import ISA.projekat.Model.User;
 import ISA.projekat.Model.enums.Gender;
 import ISA.projekat.Model.enums.UserCategory;
 import ISA.projekat.Repository.RegisteredUserRepository;
@@ -25,6 +25,11 @@ public class RegisteredUserService {
 
     @Autowired
     private RegisteredUserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
+    @Autowired
+    private PredefinedAppointmentsRepository predefinedAppointmentsRepository;
+
 
     public int findIdByUsername(String username){
 		if(userRepository.findByUsername(username) != null){
@@ -50,7 +55,8 @@ public class RegisteredUserService {
     }
     
     public void RegisterUser(RegisteredUserDTO registeredUserDTO, Address address){
-    	userRepository.save(new RegisteredUser(registeredUserDTO.getUsername(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), address, registeredUserDTO.getPhoneNumber(), 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE, 0));
+        List<Role> roles  = roleRepository.findByName("ROLE_USER");
+    	userRepository.save(new RegisteredUser(registeredUserDTO.getUsername(), registeredUserDTO.getPassword(), registeredUserDTO.getName(), registeredUserDTO.getSurname(), registeredUserDTO.getGender(), registeredUserDTO.getJmbg(), address, registeredUserDTO.getPhoneNumber(), roles, 0.00, "", registeredUserDTO.getEstablishmentInfo(), registeredUserDTO.getOccupation(), UserCategory.BRONZE, 0));
     }
 
     public RegisteredUser findByJmbg(String jmbg) {
@@ -105,6 +111,10 @@ public class RegisteredUserService {
         }else{
             return Gender.FEMALE;
         }
+    }
+
+    public List<PredefinedAppointments> getAllPredefinedAppointments(){
+        return predefinedAppointmentsRepository.findAll();
     }
 
 }

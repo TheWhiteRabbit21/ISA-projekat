@@ -2,6 +2,9 @@ package ISA.projekat.Service;
 
 import java.util.List;
 
+import ISA.projekat.Model.BloodBankCenter;
+import ISA.projekat.Model.PredefinedAppointments;
+import ISA.projekat.Repository.PredefinedAppointmentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

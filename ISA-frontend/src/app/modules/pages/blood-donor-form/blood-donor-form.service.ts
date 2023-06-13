@@ -14,6 +14,7 @@ export class BloodDonor {
   piercingLast6Months: boolean = false;
   operationOrTransfusionLast6Months: boolean = false;
   tattooLast6Months: boolean = false;
+  gaveBlood6Months: boolean = false;
 }
 
 @Injectable({

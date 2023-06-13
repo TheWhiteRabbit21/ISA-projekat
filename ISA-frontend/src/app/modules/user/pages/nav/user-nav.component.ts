@@ -14,8 +14,24 @@ export interface NavRoute {
 export class UserNavComponent implements OnInit {
   m_Routes: NavRoute[] = [
     {
+      path: 'user-profile',
+      title: 'User Profile'
+    },
+    {
+      path: 'blood-donor-form',
+      title: 'Blood Donor Form'
+    },
+    {
       path: 'reserve-appointment',
       title: 'Reserve Appointment'
+    },
+    {
+      path: 'reserve-predefined-appointment',
+      title: 'Reserve Predefined Appointment'
+    },
+    {
+      path: 'reserved-appointments',
+      title: 'Reserved Appointments'
     }
   ];
   constructor() { }

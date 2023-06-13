@@ -8,6 +8,8 @@ import ISA.projekat.Model.Staff;
 import ISA.projekat.Repository.AddressRepository;
 import ISA.projekat.Repository.CenterAdminRepository;
 import ISA.projekat.Repository.CenterRepository;
+import ISA.projekat.Repository.PredefinedAppointmentsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +22,7 @@ public class CenterService {
 
     private final CenterRepository centerRepository;
 //    private final AddressRepository addressRepository;
+
     private final CenterAdminRepository centerAdminRepository;
     
     public CenterService(CenterRepository centerRepository, AddressRepository addressRepository, CenterAdminRepository centerAdminRepository) {

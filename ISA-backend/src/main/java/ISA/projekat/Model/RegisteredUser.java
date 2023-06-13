@@ -8,6 +8,8 @@ import javax.persistence.OneToOne;
 import ISA.projekat.Model.enums.Gender;
 import ISA.projekat.Model.enums.UserCategory;
 
+import java.util.List;
+
 
 @Entity
 @SuppressWarnings("serial")
@@ -45,8 +47,8 @@ public class RegisteredUser extends User {
 	
 	
 	public RegisteredUser(String username, String password, String name, String surname, Gender gender, String jmbg,
-			Address address, String phoneNumber, Double points, String userPerks, String infoInstitution, String profession,
-			UserCategory userCatagory, int penals) {
+						  Address address, String phoneNumber, Double points, String userPerks, String infoInstitution, String profession,
+						  UserCategory userCatagory, int penals) {
 		super(username, password, name, surname, gender, jmbg, address, phoneNumber);
 		this.points = points;
 		this.userPerks = userPerks;
@@ -55,6 +57,18 @@ public class RegisteredUser extends User {
 		this.userCatagory = userCatagory;
 		this.penals = penals;
 		}
+
+	public RegisteredUser(String username, String password, String name, String surname, Gender gender, String jmbg,
+						  Address address, String phoneNumber, List<Role> roles, Double points, String userPerks, String infoInstitution, String profession,
+						  UserCategory userCatagory, int penals) {
+		super(username, password, name, surname, gender, jmbg, address, phoneNumber, roles);
+		this.points = points;
+		this.userPerks = userPerks;
+		this.infoInstitution = infoInstitution;
+		this.profession = profession;
+		this.userCatagory = userCatagory;
+		this.penals = penals;
+	}
 
 
 
