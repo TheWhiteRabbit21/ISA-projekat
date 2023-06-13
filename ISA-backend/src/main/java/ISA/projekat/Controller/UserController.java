@@ -115,11 +115,12 @@ public class UserController {
     }
 
     @GetMapping(value = "/all-predefined-appointments/{id}")
-    public ResponseEntity<List<PredefinedAppointments>> getPredefinedAppointments(@PathVariable("id") int id) {
+    public ResponseEntity<List<PredefinedAppointments>> getPredefinedAppointments(@PathVariable("id") int id, @RequestHeader("Authorization") String header) {
 
         List<PredefinedAppointments> predefinedAppointments = userService.getAllPredefinedAppointments().stream()
                 .filter(appointments -> appointments.getCenterId() == id)
-                .filter(appointments -> appointments.getAvailability() == Availability.FREE)
+                .filter(appointments -> appointments.getAvailability() == Availability.FREE ||
+                        (appointments.getAvailability() == Availability.CANCELLED & !appointments.getUsername().contains(tokenUtils.getUsernameFromToken(header.substring(7)))))
                 .toList();
 
         return new ResponseEntity<>(predefinedAppointments, HttpStatus.OK);
@@ -160,6 +161,15 @@ public class UserController {
         if(predefinedAppointments.get().getDate().isAfter(LocalDate.now().plusDays(1))) {
             predefinedAppointments.get().setAvailability(Availability.CANCELLED);
             predefinedAppointmentsRepository.save(predefinedAppointments.get());
+
+           /* PredefinedAppointments oldPredefinedAppointment = new PredefinedAppointments();
+            oldPredefinedAppointment.setAvailability(Availability.FREE);
+            oldPredefinedAppointment.setCenterId(predefinedAppointments.get().getCenterId());
+            oldPredefinedAppointment.setDate(predefinedAppointments.get().getDate());
+            oldPredefinedAppointment.setDuration(predefinedAppointments.get().getDuration());
+            oldPredefinedAppointment.setTime(predefinedAppointments.get().getTime());
+            oldPredefinedAppointment.setUsername("noone");
+            predefinedAppointmentsRepository.save(oldPredefinedAppointment);*/
             cancel = true;
         }else{
             cancel = false;
