@@ -82,6 +82,22 @@ public class User implements Serializable, UserDetails{
 		this.phoneNumber = phoneNumber;
 	}
 
+	public User(String username, String password, String name, String surname, Gender gender, String jmbg,
+
+				Address address, String phoneNumber, List<Role> roles) {
+
+		super();
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.gender = gender;
+		this.jmbg = jmbg;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.roles = roles;
+	}
+
 	
 	
 	public User(Integer id, String username, String password, String name, String surname, Gender gender, String jmbg,
