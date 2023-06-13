@@ -1,5 +1,7 @@
 package ISA.projekat.Controller;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -123,6 +125,17 @@ public class UserController {
         return new ResponseEntity<>(predefinedAppointments, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/all-reserved-appointments-for-user")
+    public ResponseEntity<List<PredefinedAppointments>> getReservedAppointmentsForUser(@RequestHeader("Authorization") String header) {
+
+        List<PredefinedAppointments> predefinedAppointments = userService.getAllPredefinedAppointments().stream()
+                .filter(appointments -> appointments.getUsername().contains(tokenUtils.getUsernameFromToken(header.substring(7))))
+                .filter(appointments -> appointments.getAvailability() == Availability.RESERVED)
+                .toList();
+
+        return new ResponseEntity<>(predefinedAppointments, HttpStatus.OK);
+    }
+
     @PutMapping(value = "/reserve-predefined-appointment/{id}")
     public ResponseEntity<Boolean> reservePredefinedAppointment(@PathVariable("id") int id, @RequestHeader("Authorization") String header) {
         Boolean reserved;
@@ -137,6 +150,21 @@ public class UserController {
             reserved = false;
         }
         return new ResponseEntity(reserved, HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/cancel-appointment/{id}")
+    public ResponseEntity<Boolean> cancelPredefinedAppointment(@PathVariable("id") int id, @RequestHeader("Authorization") String header) {
+        Boolean cancel;
+        Optional<PredefinedAppointments> predefinedAppointments = predefinedAppointmentsRepository.findById(id);
+
+        if(predefinedAppointments.get().getDate().isAfter(LocalDate.now().plusDays(1))) {
+            predefinedAppointments.get().setAvailability(Availability.CANCELLED);
+            predefinedAppointmentsRepository.save(predefinedAppointments.get());
+            cancel = true;
+        }else{
+            cancel = false;
+        }
+        return new ResponseEntity(cancel, HttpStatus.OK);
     }
 
     @GetMapping(value = "/data")

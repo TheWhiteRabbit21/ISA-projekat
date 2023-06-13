@@ -1,3 +1,27 @@
-<p>
-  reserved-appointments works!
-</p>
+<section>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef> Time </th>
+      <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef> Duration </th>
+      <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="reserve">
+      <th mat-header-cell *matHeaderCellDef> Reserve appointment </th>
+      <td mat-cell *matCellDef="let element"> <button class="regbutton" (click)="cancel(element.id)"> Select </button> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</section>

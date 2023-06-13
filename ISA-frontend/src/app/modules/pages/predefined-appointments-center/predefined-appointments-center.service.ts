@@ -19,4 +19,12 @@ reserve(id: number): Observable<any>{
   return this.http.put<any>(this.route + 'api/users/reserve-predefined-appointment/' + id, {headers: this.headers});
 }
 
+getReservedAppointmentsForUser(): Observable<any>{
+  return this.http.get<any>(this.route + 'api/users/all-reserved-appointments-for-user', {headers: this.headers});
+}
+
+cancel(id: number): Observable<any>{
+  return this.http.put<any>(this.route + 'api/users/cancel-appointment/' + id, {headers: this.headers});
+}
+
 }
