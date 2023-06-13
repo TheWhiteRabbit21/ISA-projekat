@@ -10,13 +10,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { ReserveAppointmentComponent } from './pages/reserve-appointment/reserve-appointment.component';
+import { ReservePredefinedAppointmentComponent } from './pages/reserve-predefined-appointment/reserve-predefined-appointment.component';
+
 
 
 @NgModule({
   declarations: [
     UserComponent,
     UserNavComponent,
-    ReserveAppointmentComponent
+    ReserveAppointmentComponent,
+    ReservePredefinedAppointmentComponent
   ],
   imports: [
     CommonModule,

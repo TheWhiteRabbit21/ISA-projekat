@@ -16,4 +16,8 @@ export class BloodBankListService {
     getAllBloodCenters(page : Page) : Observable<BloodBank[]> {
         return this.http.post<BloodBank[]>(this.route + 'api/centers/all', page, {headers: this.headers});
     }
+
+    getAllBloodCenterss() : Observable<BloodBank[]> {
+        return this.http.get<BloodBank[]>(this.route + 'api/centers/all', {headers: this.headers});
+    }
 }
